@@ -1,60 +1,903 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yong Dai Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rui Qi | Technical Designer Portfolio</title>
+  <meta name="description" content="Rui Qi - Technical Designer portfolio focused on gameplay systems, prototyping, combat logic, interaction design, and Unreal Engine Blueprint implementation." />
+
   <style>
+    :root {
+      --bg: #080a0f;
+      --bg-soft: #0f121a;
+      --panel: rgba(255, 255, 255, 0.055);
+      --panel-strong: rgba(255, 255, 255, 0.09);
+      --text: #f3f0e8;
+      --muted: #a7acb8;
+      --subtle: #707784;
+      --line: rgba(255, 255, 255, 0.13);
+      --accent: #d6b36a;
+      --accent-soft: rgba(214, 179, 106, 0.16);
+      --blue: #81a8ff;
+      --danger: #ff6b6b;
+      --radius-lg: 28px;
+      --radius-md: 18px;
+      --radius-sm: 12px;
+      --max: 1180px;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #111;
-      color: #f5f5f5;
-      padding: 80px 12%;
-      line-height: 1.6;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(214, 179, 106, 0.16), transparent 30%),
+        radial-gradient(circle at 85% 5%, rgba(129, 168, 255, 0.16), transparent 34%),
+        linear-gradient(180deg, #080a0f 0%, #090b10 45%, #0d1018 100%);
+      color: var(--text);
+      line-height: 1.65;
     }
 
-    h1 {
-      font-size: 48px;
-      margin-bottom: 10px;
-    }
-
-    .card {
-      background: #1c1c1c;
-      border: 1px solid #333;
-      border-radius: 12px;
-      padding: 24px;
-      margin-top: 24px;
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.75), transparent 75%);
+      z-index: -1;
     }
 
     a {
-      color: #7ab7ff;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img, iframe {
+      max-width: 100%;
+      display: block;
+    }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(18px);
+      background: rgba(8, 10, 15, 0.74);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--accent-soft), rgba(255,255,255,0.04));
+      color: var(--accent);
+      box-shadow: 0 0 28px rgba(214, 179, 106, 0.13);
+      font-size: 14px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 10px 16px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.05);
+      transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+      font-weight: 650;
+      font-size: 14px;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      border-color: rgba(214, 179, 106, 0.45);
+      background: rgba(214, 179, 106, 0.1);
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, rgba(214, 179, 106, 0.95), rgba(157, 114, 48, 0.95));
+      color: #111;
+      border-color: transparent;
+    }
+
+    .hero {
+      padding: 96px 0 70px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border: 1px solid rgba(214, 179, 106, 0.26);
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 750;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(48px, 8vw, 92px);
+      line-height: 0.95;
+      margin: 22px 0 20px;
+      letter-spacing: -0.07em;
+    }
+
+    .hero-title span {
+      color: var(--accent);
+    }
+
+    .hero-copy {
+      color: var(--muted);
+      max-width: 670px;
+      font-size: 18px;
+      margin: 0 0 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .hero-panel {
+      position: relative;
+      background: linear-gradient(145deg, rgba(255,255,255,0.085), rgba(255,255,255,0.035));
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero-panel::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      background: radial-gradient(circle at 30% 0%, rgba(214, 179, 106, 0.20), transparent 34%);
+      pointer-events: none;
+    }
+
+    .video-frame {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: #050609;
+    }
+
+    .video-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .video-placeholder {
+      height: 100%;
+      display: grid;
+      place-items: center;
+      padding: 28px;
+      text-align: center;
+      background:
+        linear-gradient(135deg, rgba(214,179,106,0.12), rgba(129,168,255,0.08)),
+        #0b0d12;
+    }
+
+    .play-dot {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 16px;
+      background: var(--accent);
+      color: #111;
+      font-weight: 900;
+      box-shadow: 0 18px 50px rgba(214, 179, 106, 0.25);
+    }
+
+    .panel-caption {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .metric-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .metric {
+      background: rgba(0,0,0,0.24);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 16px;
+      padding: 14px;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 22px;
+      color: var(--text);
+      line-height: 1.1;
+    }
+
+    .metric span {
+      color: var(--subtle);
+      font-size: 12px;
+    }
+
+    section {
+      padding: 68px 0;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 28px;
+      align-items: end;
+      margin-bottom: 28px;
+    }
+
+    .section-kicker {
+      color: var(--accent);
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(30px, 5vw, 52px);
+      line-height: 1.03;
+      letter-spacing: -0.045em;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      margin: 0;
+      max-width: 670px;
+    }
+
+    .signature {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .sig-card, .project-card, .about-card, .contact-card {
+      background: linear-gradient(145deg, rgba(255,255,255,0.07), rgba(255,255,255,0.035));
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      box-shadow: 0 16px 50px rgba(0,0,0,0.18);
+    }
+
+    .sig-card {
+      padding: 22px;
+    }
+
+    .sig-num {
+      color: var(--accent);
+      font-weight: 900;
+      margin-bottom: 22px;
+    }
+
+    .sig-card h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+    }
+
+    .sig-card p {
+      color: var(--muted);
+      margin: 0;
+      font-size: 15px;
+    }
+
+    .filter-note {
+      color: var(--subtle);
+      font-size: 14px;
+      margin: 18px 0 0;
+    }
+
+    .projects {
+      display: grid;
+      gap: 24px;
+    }
+
+    .project-card {
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 0.98fr 1.02fr;
+      min-height: 370px;
+    }
+
+    .project-media {
+      padding: 18px;
+      border-right: 1px solid var(--line);
+      background: rgba(0,0,0,0.18);
+    }
+
+    .project-body {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .project-topline {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: flex-start;
+      color: var(--subtle);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 750;
+    }
+
+    .project-card h3 {
+      margin: 12px 0 10px;
+      font-size: clamp(25px, 4vw, 38px);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+    }
+
+    .project-summary {
+      color: var(--muted);
+      margin: 0 0 16px;
+    }
+
+    .details {
+      display: grid;
+      gap: 10px;
+      margin: 18px 0;
+    }
+
+    .detail-row {
+      display: grid;
+      grid-template-columns: 118px 1fr;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .detail-row strong {
+      color: var(--text);
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .tag {
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
+      color: var(--muted);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .project-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .small-link {
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .about-card {
+      padding: 26px;
+    }
+
+    .about-card h3 {
+      margin: 0 0 12px;
+      font-size: 22px;
+    }
+
+    .about-card p, .about-card li {
+      color: var(--muted);
+    }
+
+    .about-card ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .contact-card {
+      padding: 32px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .contact-card p {
+      color: var(--muted);
+      margin: 12px 0 0;
+    }
+
+    .contact-links {
+      display: grid;
+      gap: 10px;
+    }
+
+    .contact-links a {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+      border-radius: 14px;
+      padding: 13px 15px;
+      color: var(--text);
+    }
+
+    .contact-links a span {
+      color: var(--subtle);
+    }
+
+    footer {
+      padding: 34px 0 54px;
+      color: var(--subtle);
+      font-size: 13px;
+      border-top: 1px solid var(--line);
+    }
+
+    code {
+      background: rgba(255,255,255,0.08);
+      padding: 2px 6px;
+      border-radius: 6px;
+      color: var(--accent);
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .section-head,
+      .project-card,
+      .about-grid,
+      .contact-card {
+        grid-template-columns: 1fr;
+      }
+
+      .project-media {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .signature {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 62px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .wrap {
+        width: min(100% - 28px, var(--max));
+      }
+
+      .metric-row {
+        grid-template-columns: 1fr;
+      }
+
+      .detail-row {
+        grid-template-columns: 1fr;
+        gap: 2px;
+      }
+
+      .hero-actions, .project-actions {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
     }
   </style>
 </head>
+
 <body>
-  <h1>Yong Dai</h1>
-  <p>Technical Designer / Gameplay Systems / Unreal Engine Blueprint</p>
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top" aria-label="Rui Qi Portfolio Home">
+        <span class="brand-mark">RQ</span>
+        <span>Rui Qi</span>
+      </a>
+      <div class="nav-links">
+        <a href="#projects">Projects</a>
+        <a href="#signature">Design Signature</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
 
-  <div class="card">
-    <h2>Third-Person Combat System Prototype</h2>
-    <p>
-      A gameplay prototype focused on attack states, hit detection, damage logic,
-      enemy reactions, cooldowns, and combat feedback using Unreal Engine Blueprints.
-    </p>
-  </div>
+  <main id="top">
+    <header class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">Technical Designer Portfolio</div>
+          <h1 class="hero-title">Systems that players can <span>feel.</span></h1>
+          <p class="hero-copy">
+            I am Rui Qi, a technical designer focused on gameplay systems, rapid prototyping,
+            Blueprint implementation, combat logic, interaction design, and readable player feedback.
+          </p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#projects">View Projects</a>
+            <a class="btn" href="resume/Rui_Qi_Resume.pdf" target="_blank" rel="noreferrer">Download Resume</a>
+            <a class="btn" href="mailto:3150868896@qq.com">Email Me</a>
+          </div>
+        </div>
 
-  <div class="card">
-    <h2>Market Simulation UI Prototype</h2>
-    <p>
-      A GameMaker prototype with trading UI, event-based price changes,
-      inventory tracking, and daily economy simulation.
-    </p>
-  </div>
+        <aside class="hero-panel" aria-label="Demo reel preview">
+          <div class="video-frame">
+            <!-- Replace the placeholder below with your demo reel iframe later.
+                 Example:
+                 <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" title="Rui Qi Demo Reel" allowfullscreen></iframe>
+            -->
+            <div class="video-placeholder">
+              <div>
+                <div class="play-dot">▶</div>
+                <strong>Demo Reel Placeholder</strong>
+                <p style="color: var(--muted); margin: 8px 0 0;">
+                  Put your strongest 30–60 second video here.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="panel-caption">
+            <span>Gameplay systems · Blueprint · Prototypes</span>
+            <span>2026</span>
+          </div>
+          <div class="metric-row">
+            <div class="metric"><strong>TD</strong><span>Target Role</span></div>
+            <div class="metric"><strong>UE5</strong><span>Main Engine</span></div>
+            <div class="metric"><strong>Fast</strong><span>Prototype-first</span></div>
+          </div>
+        </aside>
+      </div>
+    </header>
 
-  <div class="card">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:3150868896@qq.com">3150868896@qq.com</a></p>
-  </div>
+    <section id="signature">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Design Signature</div>
+            <h2>Readable systems, not just features.</h2>
+          </div>
+          <p>
+            The memorable point of this portfolio is not a mascot or a gimmick. It is a clear design identity:
+            I build mechanics that are easy to test, easy to tune, and easy for players to understand through feedback.
+          </p>
+        </div>
+
+        <div class="signature">
+          <article class="sig-card">
+            <div class="sig-num">01</div>
+            <h3>System Logic</h3>
+            <p>State flow, conditions, cooldowns, variables, edge cases, and scalable implementation structure.</p>
+          </article>
+          <article class="sig-card">
+            <div class="sig-num">02</div>
+            <h3>Player Feedback</h3>
+            <p>Hit stop, enemy reactions, UI feedback, animation timing, camera response, and sound timing.</p>
+          </article>
+          <article class="sig-card">
+            <div class="sig-num">03</div>
+            <h3>Iteration</h3>
+            <p>Prototype fast, test the feel, expose tunable values, and refine based on player readability.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Featured Work</div>
+            <h2>Projects</h2>
+          </div>
+          <div>
+            <p>
+              Project order is controlled in one place inside the script at the bottom of this file.
+              Change <code>projectOrder</code> to move projects around without rewriting the page layout.
+            </p>
+            <p class="filter-note">Recommended order: strongest and most job-relevant project first.</p>
+          </div>
+        </div>
+
+        <div id="project-list" class="projects"></div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">About</div>
+            <h2>Technical design focus.</h2>
+          </div>
+          <p>
+            This section should be short and recruiter-friendly. Keep it focused on what you can build,
+            how you think, and what roles you are targeting.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <article class="about-card">
+            <h3>What I build</h3>
+            <p>
+              Gameplay prototypes, combat systems, interaction systems, economy/UI prototypes, Blueprint logic,
+              and mechanics that connect player input with clear game feedback.
+            </p>
+          </article>
+          <article class="about-card">
+            <h3>Tools & Skills</h3>
+            <ul>
+              <li>Unreal Engine 5 · Blueprint · Gameplay prototyping</li>
+              <li>Unity · C# basics · interaction prototypes</li>
+              <li>GameMaker · GML · UI and market simulation</li>
+              <li>Verse / UEFN · device logic and gameplay experiments</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="contact-card">
+          <div>
+            <div class="section-kicker">Contact</div>
+            <h2>Let’s talk about systems, prototypes, and gameplay feel.</h2>
+            <p>
+              For recruiting, collaboration, or project questions, email is the best way to reach me.
+            </p>
+          </div>
+          <div class="contact-links">
+            <a href="mailto:3150868896@qq.com">Email <span>3150868896@qq.com →</span></a>
+            <a href="resume/Rui_Qi_Resume.pdf" target="_blank" rel="noreferrer">Resume <span>PDF →</span></a>
+            <a href="https://github.com/RuiQiqq" target="_blank" rel="noreferrer">GitHub <span>@RuiQiqq →</span></a>
+            <a href="#" target="_blank" rel="noreferrer">LinkedIn <span>Add link →</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      © <span id="year"></span> Rui Qi. Technical Designer Portfolio. Built with GitHub Pages.
+    </div>
+  </footer>
+
+  <script>
+    // ============================================================
+    // HOW TO CHANGE PROJECT ORDER
+    // Move the project IDs below. The first ID appears first on the page.
+    // Example: ["market", "combat", "hardware"] puts Market Simulation first.
+    // ============================================================
+    const projectOrder = [
+      "combat",
+      "market",
+      "hardware"
+    ];
+
+    // ============================================================
+    // HOW TO EDIT PROJECT CONTENT
+    // Replace titles, summaries, role text, tool names, links, and video embeds here.
+    // For YouTube, use an embed link like: https://www.youtube.com/embed/VIDEO_ID
+    // For Bilibili, use the iframe embed URL from Bilibili's share/embed option.
+    // If videoEmbed is empty, the template shows a clean placeholder.
+    // ============================================================
+    const projects = {
+      combat: {
+        number: "01",
+        category: "Unreal Engine · Blueprint · Combat",
+        title: "Third-Person Combat System Prototype",
+        summary: "A gameplay prototype focused on attack state flow, hit detection, enemy reactions, damage logic, cooldowns, and combat feedback. The project uses placeholder assets, with the main focus on technical implementation and iteration.",
+        role: "Technical Designer / Blueprint Implementation",
+        tools: "Unreal Engine 5, Blueprint, Animation Montage, Gameplay State Logic",
+        focus: "Attack flow, damage handling, enemy response, feedback timing",
+        tags: ["UE5", "Blueprint", "Combat System", "Gameplay Prototype", "Hit Detection"],
+        videoEmbed: "",
+        videoLink: "#",
+        caseStudyLink: "#"
+      },
+
+      market: {
+        number: "02",
+        category: "GameMaker · UI · Economy",
+        title: "Market Simulation UI Prototype",
+        summary: "A desktop-style market game prototype with item trading, modal popup UI, inventory tracking, event-based price volatility, daily progression, and game-over logic based on cash flow.",
+        role: "Gameplay / UI Systems Designer",
+        tools: "GameMaker, GML, UI State Management, Economy Simulation",
+        focus: "Trading UI, price events, modal interaction, day loop",
+        tags: ["GameMaker", "GML", "UI System", "Economy Simulation", "Prototype"],
+        videoEmbed: "",
+        videoLink: "#",
+        caseStudyLink: "#"
+      },
+
+      hardware: {
+        number: "03",
+        category: "Interaction Design · Hardware Prototype",
+        title: "Interactive Forging Game Concept",
+        summary: "A first-person interactive forging concept that connects physical hammer input with digital game feedback. The design explores impact detection, player action recognition, and responsive visual feedback.",
+        role: "Interaction Designer / Gameplay Concept Designer",
+        tools: "Physical Input, Sensor Planning, Game Feedback Design, Prototype Documentation",
+        focus: "Hardware-game connection, impact feedback, first-person interaction",
+        tags: ["Interaction Design", "Hardware", "Prototype", "Game Feel", "Physical Input"],
+        videoEmbed: "",
+        videoLink: "#",
+        caseStudyLink: "#"
+      }
+    };
+
+    function videoMarkup(project) {
+      if (project.videoEmbed && project.videoEmbed.trim() !== "") {
+        return `
+          <iframe
+            src="${project.videoEmbed}"
+            title="${project.title} video"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        `;
+      }
+
+      return `
+        <div class="video-placeholder">
+          <div>
+            <div class="play-dot">▶</div>
+            <strong>${project.title}</strong>
+            <p style="color: var(--muted); margin: 8px 0 0;">Video embed placeholder</p>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderProjects() {
+      const list = document.querySelector("#project-list");
+      list.innerHTML = projectOrder.map((id) => {
+        const p = projects[id];
+        if (!p) return "";
+
+        return `
+          <article class="project-card">
+            <div class="project-media">
+              <div class="video-frame">
+                ${videoMarkup(p)}
+              </div>
+            </div>
+
+            <div class="project-body">
+              <div>
+                <div class="project-topline">
+                  <span>${p.category}</span>
+                  <span>${p.number}</span>
+                </div>
+                <h3>${p.title}</h3>
+                <p class="project-summary">${p.summary}</p>
+
+                <div class="details">
+                  <div class="detail-row"><strong>Role</strong><span>${p.role}</span></div>
+                  <div class="detail-row"><strong>Tools</strong><span>${p.tools}</span></div>
+                  <div class="detail-row"><strong>Focus</strong><span>${p.focus}</span></div>
+                </div>
+
+                <div class="tag-list">
+                  ${p.tags.map(tag => `<span class="tag">${tag}</span>`).join("")}
+                </div>
+              </div>
+
+              <div class="project-actions">
+                <a class="btn" href="${p.videoLink}" target="_blank" rel="noreferrer">Open Video</a>
+                <a class="btn" href="${p.caseStudyLink}" target="_blank" rel="noreferrer">Case Study</a>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    document.querySelector("#year").textContent = new Date().getFullYear();
+    renderProjects();
+  </script>
 </body>
 </html>
