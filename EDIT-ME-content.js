@@ -4,12 +4,13 @@
   This is the main file you edit.
   You usually do NOT need to edit the HTML, CSS, or JS files.
 
-  How to edit:
-  - Change text inside quotation marks.
-  - Change project order by editing the order number.
-  - Add or remove tags inside the tags array.
-  - Put YouTube embed links in videoEmbed if you have a video.
-  - Put image paths in coverImage if you upload images to assets/images/.
+  Quick edits:
+  - Change site text in site: { ... }
+  - Change demo reel video in site.demoReelEmbed
+  - Change resume PDF path in site.resumeUrl
+  - Change project order by editing each project's order number
+  - Change tags by editing the tags array
+  - Add cover images to assets/images/ and write the path in coverImage
 */
 
 window.PORTFOLIO_DATA = {
@@ -23,18 +24,20 @@ window.PORTFOLIO_DATA = {
     github: "https://github.com/RuiQiqq",
     linkedin: "#",
     resumeUrl: "assets/resume/Rui_Qi_Resume.pdf",
-    demoReelEmbed: "", 
-    demoReelLink: "#"
+
+    // Put your 30–60 second montage embed here later.
+    // YouTube example: "https://www.youtube.com/embed/VIDEO_ID"
+    demoReelEmbed: "",
+    demoReelLink: "#",
+    demoReelCoverImage: ""
   },
 
-  // These items appear in the right-side homepage snapshot card.
   snapshot: [
-    { label: "Focus", value: "Gameplay Systems / Combat / UI & Economy / Interaction" },
-    { label: "Tools", value: "UE5 Blueprint / GameMaker / Unity / UEFN" },
+    { label: "Focus", value: "Gameplay systems · Combat · UI/Economy · Interaction" },
+    { label: "Tools", value: "UE5 Blueprint · GameMaker · Unity · UEFN" },
     { label: "Target", value: "Gameplay Designer / Technical Designer roles" }
   ],
 
-  // These cards appear in the homepage "What I Build" section.
   focusAreas: [
     {
       title: "Combat & Interaction",
@@ -54,7 +57,6 @@ window.PORTFOLIO_DATA = {
     }
   ],
 
-  // Tags are optional, but they help keep your project cards clean.
   tags: {
     ue5: "UE5",
     blueprint: "Blueprint",
@@ -76,9 +78,6 @@ window.PORTFOLIO_DATA = {
     aiWorkflow: "AI-Assisted Workflow"
   },
 
-  // Add/edit projects here.
-  // featured: true means it appears in the homepage Featured Projects section.
-  // library: true means it appears in the Prototype Library / all projects list.
   projects: [
     {
       id: "combat-system",

@@ -1,41 +1,42 @@
 # Rui Qi Portfolio Website
 
-This is a free GitHub Pages portfolio site.
+## Main idea
+This version is mostly a one-page portfolio:
+- Top navigation scrolls down the home page: Projects / Resume / Contact.
+- Resume is previewed directly on the home page.
+- Resume also has a separate `resume-viewer.html` page for full PDF display and download.
+- Project details still use `project-detail.html?id=project-id`.
 
-## What to edit
-Main file to edit:
+## What you edit most
+Edit this file:
 
 `EDIT-ME-content.js`
 
 You can change:
-- Name
-- Homepage text
+- Name / title / intro
+- Demo reel embed link
+- Resume PDF path
 - Project order
 - Project tags
-- Project summaries
-- Video links
-- Project detail text
-- Resume link
+- Project text
 - Contact links
 
-## What not to edit first
-Try not to edit these unless you want layout/style changes:
-
-- `assets/css/website-look.css`
-- `assets/js/website-functions.js`
-- HTML files
-
-## Pages
-- `index.html` = homepage
-- `all-projects.html` = all projects page
-- `project-detail.html?id=combat-system` = project detail template
-- `resume-contact.html` = resume and contact page
-
-## Upload to GitHub
-Upload the unzipped files into your `RuiQiqq.github.io` repository.
-Do not upload the ZIP itself.
-
-## Resume
-Put your resume here:
+## Where to put resume
+Upload your PDF here:
 
 `assets/resume/Rui_Qi_Resume.pdf`
+
+## Where to put images
+Upload project images here:
+
+`assets/images/`
+
+Then write paths like:
+
+`assets/images/combat-cover.jpg`
+
+inside `EDIT-ME-content.js`.
+
+## Upload to GitHub Pages
+Do not upload the ZIP itself.
+Unzip it, then upload all files inside the folder to the root of your GitHub Pages repository.

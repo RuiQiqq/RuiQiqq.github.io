@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Project Detail | Rui Qi</title>
+  <title>Resume | Rui Qi</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -11,7 +11,7 @@
   <script src="EDIT-ME-content.js"></script>
   <script defer src="assets/js/website-functions.js"></script>
 </head>
-<body data-page="detail">
+<body data-page="resume">
   <header class="site-header">
     <a class="wordmark" href="index.html#top">Rui Qi</a>
     <nav class="nav-links" aria-label="Main navigation">
@@ -21,11 +21,27 @@
     </nav>
   </header>
 
-  <main id="project-detail-root"></main>
+  <main>
+    <section class="page-hero container">
+      <p class="eyebrow">Resume</p>
+      <h1>Resume Preview</h1>
+      <p>This page displays the PDF directly and includes a download button.</p>
+      <div class="hero-actions">
+        <a class="button primary" id="resume-viewer-download" href="assets/resume/Rui_Qi_Resume.pdf" target="_blank" rel="noreferrer">Download PDF</a>
+        <a class="button secondary" href="index.html#resume">Back to Portfolio</a>
+      </div>
+    </section>
+    <section class="container section">
+      <div class="resume-panel">
+        <iframe id="resume-full-frame" src="assets/resume/Rui_Qi_Resume.pdf" title="Rui Qi resume full PDF preview"></iframe>
+        <div class="resume-fallback">If the preview does not load, use the Download PDF button. Upload your resume as <strong>assets/resume/Rui_Qi_Resume.pdf</strong>.</div>
+      </div>
+    </section>
+  </main>
 
   <footer class="site-footer container">
     <span>© <span id="year"></span> Rui Qi</span>
-    <span><a href="index.html#featured">Back to projects</a></span>
+    <span><a href="index.html#contact">Contact</a></span>
   </footer>
 </body>
 </html>

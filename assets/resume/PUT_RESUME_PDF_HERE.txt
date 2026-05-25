@@ -1,5 +1,5 @@
-Put your resume PDF here and name it:
+Put your PDF resume here and name it:
 Rui_Qi_Resume.pdf
 
-The default link in EDIT-ME-content.js is:
+The website is already set to use:
 assets/resume/Rui_Qi_Resume.pdf

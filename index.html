@@ -14,15 +14,15 @@
 </head>
 <body data-page="home">
   <header class="site-header">
-    <a class="wordmark" href="index.html">Rui Qi</a>
+    <a class="wordmark" href="#top">Rui Qi</a>
     <nav class="nav-links" aria-label="Main navigation">
-      <a href="all-projects.html">Projects</a>
-      <a href="resume-contact.html#resume">Resume</a>
-      <a href="resume-contact.html#contact">Contact</a>
+      <a class="nav-link" href="#featured">Projects</a>
+      <a class="nav-link framed" href="#resume">Resume</a>
+      <a class="nav-link highlight" href="#contact">Contact</a>
     </nav>
   </header>
 
-  <main>
+  <main id="top">
     <section class="hero container">
       <div class="hero-copy">
         <p class="eyebrow" id="home-eyebrow">Portfolio</p>
@@ -31,11 +31,11 @@
         <p class="hero-subtitle" id="home-subtitle"></p>
         <p class="hero-intro" id="home-intro"></p>
         <div class="hero-actions">
-          <a class="button primary" href="all-projects.html">View Projects</a>
-          <a class="button secondary" id="home-resume-button" href="assets/resume/Rui_Qi_Resume.pdf">Download Resume</a>
+          <a class="button primary" href="#featured">View Projects</a>
+          <a class="button secondary" id="home-resume-button" href="assets/resume/Rui_Qi_Resume.pdf" target="_blank" rel="noreferrer">Download Resume</a>
         </div>
       </div>
-      <aside class="snapshot-card" id="home-snapshot" aria-label="Portfolio snapshot"></aside>
+      <aside class="hero-reel-card" id="home-reel" aria-label="Demo reel and portfolio snapshot"></aside>
     </section>
 
     <section class="section container" id="featured">
@@ -74,15 +74,30 @@
       </div>
     </section>
 
-    <section class="contact-strip container" id="contact-strip">
+    <section class="section container resume-section" id="resume">
+      <div class="resume-layout">
+        <div class="resume-card">
+          <p class="section-kicker">Resume</p>
+          <h2>Resume preview and download.</h2>
+          <p>The PDF is displayed here for quick review. You can also open it in a separate page or download it directly.</p>
+          <div class="resume-actions">
+            <a class="button primary" id="resume-download-main" href="assets/resume/Rui_Qi_Resume.pdf" target="_blank" rel="noreferrer">Download PDF</a>
+            <a class="button secondary" href="resume-viewer.html" target="_blank" rel="noreferrer">Open Resume Page</a>
+          </div>
+        </div>
+        <div class="resume-panel">
+          <iframe id="resume-preview-frame" src="assets/resume/Rui_Qi_Resume.pdf" title="Rui Qi resume PDF preview"></iframe>
+          <div class="resume-fallback">If the preview does not load, use the Download PDF button. Upload your resume as <strong>assets/resume/Rui_Qi_Resume.pdf</strong>.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-strip container" id="contact">
       <div>
         <p class="section-kicker">Contact</p>
         <h2>Interested in systems, prototypes, or gameplay feel?</h2>
       </div>
-      <div class="contact-actions">
-        <a class="button primary" id="footer-email-button" href="mailto:3150868896@qq.com">Email Me</a>
-        <a class="button secondary" href="resume-contact.html">Resume & Contact</a>
-      </div>
+      <div class="contact-grid" id="contact-grid"></div>
     </section>
   </main>
 
