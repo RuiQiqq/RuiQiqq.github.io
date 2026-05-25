@@ -4,15 +4,46 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projects | Rui Qi</title>
-  <meta name="description" content="All projects by Rui Qi." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/website-look.css" />
+  <script src="EDIT-ME-content.js"></script>
+  <script defer src="assets/js/website-functions.js"></script>
 </head>
 <body data-page="projects">
-  <div id="site-nav"></div>
-  <main id="app"></main>
-  <div id="site-footer"></div>
+  <header class="site-header">
+    <a class="wordmark" href="index.html">Rui Qi</a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="all-projects.html">Projects</a>
+      <a href="resume-contact.html#resume">Resume</a>
+      <a href="resume-contact.html#contact">Contact</a>
+    </nav>
+  </header>
 
-  <script src="EDIT-ME-content.js"></script>
-  <script src="assets/js/website-functions.js"></script>
+  <main>
+    <section class="page-hero container">
+      <p class="eyebrow">Projects</p>
+      <h1>Work and prototypes.</h1>
+      <p>Gameplay systems, technical design prototypes, UI/economy loops, interaction experiments, and smaller tests.</p>
+    </section>
+
+    <section class="section container">
+      <div class="section-heading two-col">
+        <div>
+          <p class="section-kicker">All Work</p>
+          <h2>Project Library</h2>
+        </div>
+        <p>Use this page as the main project archive. Featured projects can have full breakdown pages; smaller experiments can remain as compact cards.</p>
+      </div>
+      <div class="tag-filter" id="tag-filter"></div>
+      <div class="library-grid" id="all-projects-grid"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer container">
+    <span>© <span id="year"></span> Rui Qi</span>
+    <a href="resume-contact.html#contact">Contact</a>
+  </footer>
 </body>
 </html>

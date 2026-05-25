@@ -4,15 +4,28 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Project Detail | Rui Qi</title>
-  <meta name="description" content="Project detail page for Rui Qi portfolio." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/website-look.css" />
-</head>
-<body data-page="project-detail">
-  <div id="site-nav"></div>
-  <main id="app"></main>
-  <div id="site-footer"></div>
-
   <script src="EDIT-ME-content.js"></script>
-  <script src="assets/js/website-functions.js"></script>
+  <script defer src="assets/js/website-functions.js"></script>
+</head>
+<body data-page="detail">
+  <header class="site-header">
+    <a class="wordmark" href="index.html">Rui Qi</a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="all-projects.html">Projects</a>
+      <a href="resume-contact.html#resume">Resume</a>
+      <a href="resume-contact.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="project-detail-root"></main>
+
+  <footer class="site-footer container">
+    <a href="all-projects.html">← Back to Projects</a>
+    <a href="resume-contact.html#contact">Contact</a>
+  </footer>
 </body>
 </html>

@@ -1,0 +1,4 @@
+Put compressed project images here.
+Recommended: .webp or .jpg, around 1200px wide, under 1 MB if possible.
+Example path to use in EDIT-ME-content.js:
+assets/images/combat-cover.webp

@@ -1,75 +1,41 @@
 /*
   EDIT-ME-content.js
-  ==================
-  你以后主要改这个文件。其他 HTML / CSS / JS 文件尽量别动。
+  ------------------------------------------------------------
+  This is the main file you edit.
+  You usually do NOT need to edit the HTML, CSS, or JS files.
 
-  常用修改：
-  1. 改首页名字/定位：改 SITE
-  2. 改按钮和联系方式：改 SITE.email / SITE.resume / SITE.github / SITE.linkedin
-  3. 改标签：改 TAGS
-  4. 改项目顺序：改 PROJECTS 里的 order 数字
-  5. 改首页精选项目：featured: true / false
-  6. 改项目视频：videoEmbed / videoLink
-  7. 新增项目：复制 PROJECTS 里面任意一个项目对象，改 id/title/order 等
-
-  注意：
-  - id 只能用英文、小写、短横线，比如 combat-system，不要用中文。
-  - tags 里面写的是 TAGS 的 key，比如 "ue5"，不是显示名字。
-  - videoEmbed 可以先留空。以后有 YouTube/Bilibili embed 链接再填。
+  How to edit:
+  - Change text inside quotation marks.
+  - Change project order by editing the order number.
+  - Add or remove tags inside the tags array.
+  - Put YouTube embed links in videoEmbed if you have a video.
+  - Put image paths in coverImage if you upload images to assets/images/.
 */
 
-window.PORTFOLIO_CONTENT = {
-  SITE: {
+window.PORTFOLIO_DATA = {
+  site: {
     name: "Rui Qi",
-    shortName: "RQ",
-    role: "Gameplay Designer / Technical Designer",
-    heroTitle: "Gameplay systems, combat prototypes, UI/economy loops, and interaction experiments.",
-    description:
-      "I build playable prototypes in Unreal Engine, GameMaker, Unity, and UEFN, focusing on system logic, player feedback, and fast iteration.",
+    eyebrow: "Portfolio",
+    title: "Gameplay Systems & Technical Design",
+    subtitle: "Gameplay systems, combat prototypes, UI/economy loops, and interaction experiments.",
+    intro: "I build playable prototypes in Unreal Engine, GameMaker, Unity, and UEFN, focusing on system logic, player feedback, and fast iteration.",
     email: "3150868896@qq.com",
     github: "https://github.com/RuiQiqq",
     linkedin: "#",
-    resume: "assets/resume/Rui_Qi_Resume.pdf",
-    demoReelEmbed: "",
-    demoReelLink: "#",
-    location: "Salt Lake City, UT",
-    footerNote: "Gameplay Systems · Technical Design · Playable Prototypes"
+    resumeUrl: "assets/resume/Rui_Qi_Resume.pdf",
+    demoReelEmbed: "", 
+    demoReelLink: "#"
   },
 
-  TAGS: {
-    // Engine / Tool
-    ue5: { label: "UE5", group: "Engine / Tool" },
-    blueprint: { label: "Blueprint", group: "Engine / Tool" },
-    unity: { label: "Unity", group: "Engine / Tool" },
-    csharp: { label: "C#", group: "Engine / Tool" },
-    gamemaker: { label: "GameMaker", group: "Engine / Tool" },
-    gml: { label: "GML", group: "Engine / Tool" },
-    uefn: { label: "UEFN", group: "Engine / Tool" },
-    verse: { label: "Verse", group: "Engine / Tool" },
+  // These items appear in the right-side homepage snapshot card.
+  snapshot: [
+    { label: "Focus", value: "Gameplay Systems / Combat / UI & Economy / Interaction" },
+    { label: "Tools", value: "UE5 Blueprint / GameMaker / Unity / UEFN" },
+    { label: "Target", value: "Gameplay Designer / Technical Designer roles" }
+  ],
 
-    // System
-    combat: { label: "Combat", group: "System" },
-    hitDetection: { label: "Hit Detection", group: "System" },
-    enemyReaction: { label: "Enemy Reaction", group: "System" },
-    ui: { label: "UI System", group: "System" },
-    economy: { label: "Economy", group: "System" },
-    inventory: { label: "Inventory", group: "System" },
-    interaction: { label: "Interaction", group: "System" },
-    hardware: { label: "Hardware", group: "System" },
-    input: { label: "Input", group: "System" },
-    feedback: { label: "Player Feedback", group: "System" },
-
-    // Workflow / Role
-    technicalDesign: { label: "Technical Design", group: "Role / Workflow" },
-    gameplayDesign: { label: "Gameplay Design", group: "Role / Workflow" },
-    rapidPrototype: { label: "Rapid Prototyping", group: "Role / Workflow" },
-    prototype: { label: "Prototype", group: "Role / Workflow" },
-    teamProject: { label: "Team Project", group: "Role / Workflow" },
-    soloProject: { label: "Solo Project", group: "Role / Workflow" },
-    aiWorkflow: { label: "AI-Assisted Workflow", group: "Role / Workflow" }
-  },
-
-  TECHNICAL_FOCUS: [
+  // These cards appear in the homepage "What I Build" section.
+  focusAreas: [
     {
       title: "Combat & Interaction",
       text: "Attack states, hit detection, enemy reactions, input timing, interaction logic, and combat feedback."
@@ -79,227 +45,173 @@ window.PORTFOLIO_CONTENT = {
       text: "Trading UI, inventory flow, price events, daily loops, and readable player decision pressure."
     },
     {
-      title: "Prototyping & Implementation",
+      title: "Prototype Implementation",
       text: "Unreal Blueprint, GameMaker GML, Unity basics, UEFN Verse, rapid playable tests, and iteration notes."
     },
     {
       title: "Modern Workflow",
-      text: "AI-assisted debugging, implementation research, and documentation support while keeping final design decisions in engine."
+      text: "AI-assisted debugging, implementation research, documentation support, and faster iteration with final decisions tested in-engine."
     }
   ],
 
-  SKILLS: [
-    {
-      title: "Engines & Tools",
-      items: ["Unreal Engine 5", "GameMaker", "Unity", "UEFN", "GitHub Pages"]
-    },
-    {
-      title: "Implementation",
-      items: ["Blueprint", "GML", "C# basics", "Verse basics", "UI state logic"]
-    },
-    {
-      title: "Design Focus",
-      items: ["Gameplay systems", "Combat logic", "Interaction design", "Economy loops", "Rapid prototyping"]
-    },
-    {
-      title: "Workflow",
-      items: ["Playtesting notes", "Debugging", "Documentation", "AI-assisted research", "Iteration"]
-    }
-  ],
+  // Tags are optional, but they help keep your project cards clean.
+  tags: {
+    ue5: "UE5",
+    blueprint: "Blueprint",
+    combat: "Combat",
+    hitDetection: "Hit Detection",
+    enemyReaction: "Enemy Reaction",
+    gamemaker: "GameMaker",
+    gml: "GML",
+    ui: "UI System",
+    economy: "Economy",
+    interaction: "Interaction",
+    hardware: "Hardware",
+    unity: "Unity",
+    uefn: "UEFN",
+    verse: "Verse",
+    prototype: "Prototype",
+    team: "Team Project",
+    solo: "Solo Project",
+    aiWorkflow: "AI-Assisted Workflow"
+  },
 
-  PROJECTS: [
+  // Add/edit projects here.
+  // featured: true means it appears in the homepage Featured Projects section.
+  // library: true means it appears in the Prototype Library / all projects list.
+  projects: [
     {
       id: "combat-system",
       order: 1,
       featured: true,
+      library: true,
       title: "Third-Person Combat System Prototype",
-      subtitle: "Attack flow, hit detection, enemy reaction, and combat feedback in UE5 Blueprint.",
       category: "Unreal Engine · Blueprint · Combat",
       role: "Technical Designer / Blueprint Implementation",
-      status: "Prototype",
-      duration: "Portfolio Prototype",
-      team: "Solo / Small Team Placeholder",
+      summary: "A combat prototype focused on attack state flow, hit detection, enemy reactions, damage logic, cooldowns, and combat feedback.",
       tools: "Unreal Engine 5, Blueprint, Animation Montage, Gameplay State Logic",
-      summary:
-        "A third-person combat prototype focused on attack states, hit detection, enemy reactions, damage logic, cooldowns, and combat feedback. The project uses placeholder assets, with the main focus on technical implementation and iteration.",
       tags: ["ue5", "blueprint", "combat", "hitDetection", "enemyReaction", "prototype"],
       coverImage: "",
       videoEmbed: "",
       videoLink: "#",
-      detailLink: "project-detail.html?id=combat-system",
-      overview:
-        "This project is a third-person combat system prototype built to test attack input, active hit windows, enemy reactions, damage handling, cooldown timing, and feedback clarity. The visual assets are placeholders, so the main portfolio focus is the gameplay logic and technical design structure rather than final animation polish.",
-      contributions: [
-        "Implemented attack input and combat state logic.",
-        "Built hit detection and damage handling.",
-        "Added enemy health, hit reaction, and death behavior.",
-        "Tuned cooldown timing and attack windows.",
-        "Connected combat state changes with readable feedback moments."
-      ],
-      breakdown: {
-        input: "Player presses attack / heavy attack and moves into attack range.",
-        logic: "The system checks current combat state, cooldown status, active hit windows, target range, and whether damage should be applied.",
-        feedback: "The enemy reacts through health loss, hit reaction, knockback/death behavior, and visible combat feedback.",
-        iteration: "Timing, cooldowns, and feedback windows can be adjusted to make the system feel clearer and more responsive."
-      },
-      challenges: [
-        {
-          title: "Placeholder animation limitations",
-          text: "The prototype used limited animation assets, so the strongest focus was placed on combat logic, enemy reaction, and feedback timing instead of final animation quality."
-        },
-        {
-          title: "Readable combat state flow",
-          text: "The attack needed clear state boundaries so input, damage windows, and feedback did not feel random or disconnected."
-        }
-      ],
-      improvements: [
-        "Improve animation blending between locomotion and attack states.",
-        "Add clearer anticipation and recovery frames.",
-        "Expose more attack parameters for data-driven tuning.",
-        "Add more enemy behavior variety."
-      ],
-      workflowNotes:
-        "AI-assisted workflows can support debugging, implementation research, and documentation organization. Final system design, in-engine testing, and tuning should remain under the designer's control."
+      detail: {
+        overview: "This is a third-person combat prototype focused on attack states, hit detection, enemy reactions, damage logic, cooldowns, and combat feedback. The project uses placeholder assets, while the main focus is gameplay system behavior and iteration.",
+        whatIBuilt: [
+          "Implemented attack input and combat state logic.",
+          "Built hit detection and damage handling.",
+          "Added enemy health, hit reaction, and death behavior.",
+          "Tuned cooldown timing and attack windows.",
+          "Connected combat events with readable player feedback."
+        ],
+        breakdown: [
+          { label: "Input", text: "Player triggers attack actions through input events." },
+          { label: "Logic", text: "The system checks combat state, cooldown, active hit window, and enemy overlap." },
+          { label: "Feedback", text: "Enemies react through health loss, hit response, timing feedback, and combat state changes." },
+          { label: "Iteration", text: "Attack timing and feedback values were adjusted to make the prototype easier to read." }
+        ],
+        challenges: [
+          "Placeholder animations limited final visual polish, so the project focuses on system timing and feedback clarity.",
+          "Future improvement: cleaner animation blending between locomotion and attack states."
+        ],
+        workflowNotes: "AI tools can be used for debugging support, implementation research, and documentation organization. Final design decisions, in-engine testing, and system tuning should remain under my own control."
+      }
     },
-
     {
       id: "market-simulation",
       order: 2,
       featured: true,
+      library: true,
       title: "Market Simulation UI Prototype",
-      subtitle: "Trading UI, inventory flow, price events, and daily economy simulation in GameMaker.",
-      category: "GameMaker · GML · UI / Economy",
+      category: "GameMaker · UI · Economy",
       role: "Gameplay / UI Systems Designer",
-      status: "Prototype",
-      duration: "Class Project",
-      team: "Solo / Small Team Placeholder",
+      summary: "A desktop-style market game prototype with trading UI, inventory tracking, daily event-based price changes, and cash-flow game-over logic.",
       tools: "GameMaker, GML, UI State Management, Economy Simulation",
-      summary:
-        "A desktop-style market game prototype with item trading, modal popup UI, inventory tracking, event-based price volatility, daily progression, and game-over logic based on cash flow.",
-      tags: ["gamemaker", "gml", "ui", "economy", "inventory", "prototype"],
+      tags: ["gamemaker", "gml", "ui", "economy", "prototype"],
       coverImage: "",
       videoEmbed: "",
       videoLink: "#",
-      detailLink: "project-detail.html?id=market-simulation",
-      overview:
-        "This prototype explores a market simulation loop where players buy and sell items while random events affect next-day price movement. The system focuses on readable UI state, item data, inventory changes, and event-driven economy behavior.",
-      contributions: [
-        "Designed item trading UI and popup interaction flow.",
-        "Implemented buy/sell logic with inventory and cash updates.",
-        "Built event-based price change logic using item tags.",
-        "Handled modal UI states to prevent click-through bugs.",
-        "Implemented day progression and game-over conditions."
-      ],
-      breakdown: {
-        input: "Player selects an item, enters quantity, and chooses buy or sell.",
-        logic: "The system checks cash, inventory, item price, current events, and day progression before applying changes.",
-        feedback: "The UI updates cash, inventory count, item prices, daily events, and game-over state.",
-        iteration: "UI hitboxes, popup placement, event frequency, and price volatility can be tuned to improve readability and pressure."
-      },
-      challenges: [
-        {
-          title: "Modal UI click-through",
-          text: "The popup needed to block clicks from activating UI behind it, so the modal state had to control interaction priority."
-        },
-        {
-          title: "Readable economy events",
-          text: "Events needed to affect prices clearly without overwhelming the player with too much text or unclear cause/effect."
-        }
-      ],
-      improvements: [
-        "Add better visual hierarchy for event impact.",
-        "Improve tutorialization for new players.",
-        "Add graph/history display for price changes.",
-        "Add stronger balancing for risk and reward."
-      ],
-      workflowNotes:
-        "AI tools can support debugging and refactoring notes, but economy balance and UI readability require in-game testing and iteration."
+      detail: {
+        overview: "This project explores a trading interface and event-driven economy loop. Players buy and sell items while daily events affect price volatility and decision pressure.",
+        whatIBuilt: [
+          "Built popup UI behavior for item buy/sell interactions.",
+          "Implemented inventory and cash tracking.",
+          "Created event-based price change logic.",
+          "Added day progression and game-over checks."
+        ],
+        breakdown: [
+          { label: "Input", text: "Player selects an item, opens a modal, and enters buy/sell quantity." },
+          { label: "Logic", text: "The system updates inventory, cash, and prices based on item data and daily events." },
+          { label: "Feedback", text: "The UI displays price shifts, item ownership, cash state, and daily event impact." },
+          { label: "Iteration", text: "Interface layout and modal hitboxes were adjusted to avoid accidental clicks and improve readability." }
+        ],
+        challenges: [
+          "Modal UI layering required careful click handling so buttons under the popup would not accidentally trigger.",
+          "Future improvement: clearer data visualization for price trends and event history."
+        ],
+        workflowNotes: "AI-assisted workflow can support debugging and documentation, but final UI behavior and game-loop tuning are tested directly in GameMaker."
+      }
     },
-
     {
       id: "interactive-forging",
       order: 3,
       featured: true,
+      library: true,
       title: "Interactive Forging Game Concept",
-      subtitle: "Physical input, impact detection, and responsive game feedback for a forging interaction prototype.",
       category: "Interaction Design · Hardware Prototype",
       role: "Interaction Designer / Gameplay Concept Designer",
-      status: "Concept / Prototype Planning",
-      duration: "Project Concept",
-      team: "Team Project Placeholder",
-      tools: "Physical Input, Sensor Planning, Game Feedback Design, Prototype Documentation",
-      summary:
-        "A first-person interactive forging concept that connects physical hammer input with digital game feedback. The design explores impact detection, player action recognition, and responsive visual feedback.",
-      tags: ["interaction", "hardware", "input", "feedback", "technicalDesign", "prototype"],
+      summary: "A first-person forging concept connecting physical hammer input with digital gameplay feedback, impact detection, and responsive visual effects.",
+      tools: "Sensor Planning, Physical Input, Game Feedback Design, Prototype Documentation",
+      tags: ["interaction", "hardware", "prototype"],
       coverImage: "",
       videoEmbed: "",
       videoLink: "#",
-      detailLink: "project-detail.html?id=interactive-forging",
-      overview:
-        "This project explores a physical-digital forging experience where player hammer strikes are detected through hardware input and translated into first-person game feedback. The goal is to connect real impact, on-screen response, and game progression into one interaction loop.",
-      contributions: [
-        "Defined the core interaction loop between physical hammer input and game feedback.",
-        "Planned sensor-based impact detection for strike location and force.",
-        "Outlined first-person visual feedback for blade damage and forging response.",
-        "Explored future multiplayer extension ideas.",
-        "Organized project direction into staged prototype goals."
-      ],
-      breakdown: {
-        input: "Player physically strikes the hardware surface with a hammer.",
-        logic: "Sensors estimate strike location and force, then map the physical action to in-game effects.",
-        feedback: "The game displays blade reaction, damage effects, sound response, and progress changes based on the strike.",
-        iteration: "Sensor placement, input thresholds, and feedback strength can be tuned to make the interaction feel reliable and satisfying."
-      },
-      challenges: [
-        {
-          title: "Physical input reliability",
-          text: "The system needs reliable sensing so player strikes feel responsive instead of random or delayed."
-        }
-      ],
-      improvements: [
-        "Build a basic sensor prototype for strike force and location.",
-        "Create a clearer feedback scale for weak/strong strikes.",
-        "Test whether players understand the connection between physical impact and digital result."
-      ],
-      workflowNotes:
-        "AI-assisted research can help compare sensor options and organize documentation, but hardware feel must be validated through physical testing."
+      detail: {
+        overview: "This concept connects physical input and digital game feedback through a first-person forging interaction. The player uses physical hammer actions while the game responds visually to impact timing and location.",
+        whatIBuilt: [
+          "Designed the interaction flow between physical input and game feedback.",
+          "Planned sensor placement and impact-detection logic.",
+          "Defined first-person feedback and visual response goals.",
+          "Documented staged prototype goals for future development."
+        ],
+        breakdown: [
+          { label: "Input", text: "The player physically strikes the hardware surface." },
+          { label: "Logic", text: "Sensors detect strike position and strength, then send values to the game." },
+          { label: "Feedback", text: "The game shows forging effects, impact response, and blade-state changes." },
+          { label: "Iteration", text: "Future versions can expand into motion recognition and two-player interaction." }
+        ],
+        challenges: [
+          "The concept requires hardware reliability, sensor calibration, and clear mapping between physical action and screen feedback.",
+          "Future improvement: test multiple pressure sensors and define repeatable calibration steps."
+        ],
+        workflowNotes: "Documentation and implementation research can be AI-assisted, while hardware selection and interaction testing require physical prototyping."
+      }
     },
-
     {
       id: "uefn-shooting-prototype",
       order: 4,
       featured: false,
-      title: "UEFN Shooting Prototype",
-      subtitle: "Small gameplay prototype using UEFN / Verse devices and target practice logic.",
-      category: "UEFN · Verse · Gameplay Experiment",
+      library: true,
+      title: "UEFN Shooting Device Prototype",
+      category: "UEFN · Verse · Gameplay Device",
       role: "Gameplay Prototype Designer",
-      status: "Experiment",
-      duration: "Small Prototype",
-      team: "Solo",
+      summary: "A smaller UEFN prototype exploring device logic, player scoring, and shooting-game interaction flow.",
       tools: "UEFN, Verse, Creative Devices",
-      summary:
-        "A small prototype exploring shooting target logic, device interaction, and score/gameplay response using UEFN and Verse.",
-      tags: ["uefn", "verse", "gameplayDesign", "rapidPrototype", "prototype"],
+      tags: ["uefn", "verse", "prototype"],
       coverImage: "",
       videoEmbed: "",
       videoLink: "#",
-      detailLink: "project-detail.html?id=uefn-shooting-prototype",
-      overview:
-        "This is a small UEFN gameplay experiment focused on target practice logic and device-driven gameplay response.",
-      contributions: [
-        "Explored UEFN device logic.",
-        "Tested Verse-based gameplay response.",
-        "Built a small target practice interaction loop."
-      ],
-      breakdown: {
-        input: "Player shoots or interacts with a target.",
-        logic: "Verse/device logic detects the interaction and updates gameplay state.",
-        feedback: "Score, target state, or device feedback changes based on player action.",
-        iteration: "Target behavior and score feedback can be tuned for clearer practice flow."
-      },
-      challenges: [],
-      improvements: ["Add clearer scoring UI.", "Expand enemy/target variety."],
-      workflowNotes: "Small experiments like this are useful for learning fast implementation patterns."
+      detail: {
+        overview: "A small UEFN prototype focused on device-based gameplay logic and score-driven interaction.",
+        whatIBuilt: ["Connected devices for player interaction.", "Explored Verse-based gameplay logic.", "Tested simple scoring behavior."],
+        breakdown: [
+          { label: "Input", text: "Player interacts with targets or shooting devices." },
+          { label: "Logic", text: "Verse and devices process interactions and update score." },
+          { label: "Feedback", text: "The player receives score and device feedback." },
+          { label: "Iteration", text: "Future improvement: clearer round flow and feedback timing." }
+        ],
+        challenges: ["Verse syntax and device event flow required careful debugging."],
+        workflowNotes: "AI-assisted debugging can help compare syntax patterns, but testing must happen inside UEFN."
+      }
     }
   ]
 };
