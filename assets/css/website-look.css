@@ -73,25 +73,44 @@ img, iframe { max-width: 100%; display: block; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 40px;
-  padding: 8px 14px;
+  min-height: 42px;
+  min-width: 108px;
+  padding: 9px 18px;
   border-radius: 999px;
-  border: 1px solid transparent;
-  color: var(--muted);
+  border: 1.5px solid #4b3b5d;
+  background: #101024;
+  color: var(--text);
   font-size: 14px;
-  font-weight: 800;
+  font-weight: 850;
+  letter-spacing: -0.01em;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.02) inset;
+  transition: transform 140ms ease, background 140ms ease, border-color 140ms ease, color 140ms ease;
 }
-.nav-link:hover { color: var(--text); border-color: var(--line); }
+.nav-link:hover {
+  transform: translateY(-1px);
+  background: #17152d;
+  border-color: var(--pink-soft);
+  color: white;
+}
+.nav-link.project-pill {
+  border-color: #3f5f9a;
+  background: #0d1228;
+}
+.nav-link.project-pill:hover { border-color: var(--blue); }
 .nav-link.framed {
   border-color: #4b3b5d;
-  background: var(--panel);
+  background: #101024;
   color: var(--text);
 }
-.nav-link.framed:hover { border-color: var(--pink); }
 .nav-link.highlight {
   border-color: var(--pink);
   background: var(--pink);
   color: white;
+}
+.nav-link.highlight:hover {
+  border-color: var(--pink-soft);
+  background: var(--pink-soft);
+  color: var(--black);
 }
 
 .hero {
