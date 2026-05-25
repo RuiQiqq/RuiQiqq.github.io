@@ -59,7 +59,6 @@
       <nav class="nav">
         <div class="wrap navInner">
           <a class="brand" href="index.html" aria-label="Rui Qi Home">
-            <span class="brandMark">${SITE.shortName || "RQ"}</span>
             <span>${SITE.name}</span>
           </a>
           <div class="navLinks">
@@ -69,7 +68,7 @@
           </div>
           <div class="navCta">
             <a class="btn small secondary" href="${SITE.resume}" target="_blank" rel="noreferrer">Resume</a>
-            <a class="btn small primary" href="${emailHref}">Email</a>
+            <a class="btn small primary" href="resume-contact.html#contact">Contact</a>
           </div>
         </div>
       </nav>
@@ -165,7 +164,7 @@
             <div class="heroActions">
               <a class="btn primary" href="all-projects.html">View Projects</a>
               <a class="btn secondary" href="${SITE.resume}" target="_blank" rel="noreferrer">Download Resume</a>
-              <a class="btn red" href="${emailHref}">Email Me</a>
+              <a class="btn red" href="resume-contact.html#contact">Contact</a>
             </div>
           </div>
           <aside class="heroPanel" aria-label="Featured project preview">
@@ -323,7 +322,7 @@
               </div>
             </div>
             <div class="detailPanel"><h3>Workflow Notes</h3><p>${p.workflowNotes || ""}</p></div>
-            <div class="detailPanel"><h3>Contact</h3><p class="note">Interested in this project or my process?</p><a class="btn primary" href="${emailHref}">Email Me</a></div>
+            <div class="detailPanel"><h3>Contact</h3><p class="note">Interested in this project or my process?</p><a class="btn primary" href="resume-contact.html#contact">Contact</a></div>
           </aside>
         </div>
       </section>
@@ -342,7 +341,7 @@
             <p class="heroCopy">${SITE.description}</p>
             <div class="heroActions">
               <a class="btn primary" href="${SITE.resume}" target="_blank" rel="noreferrer">Download Resume</a>
-              <a class="btn red" href="${emailHref}">Email Me</a>
+              <a class="btn red" href="resume-contact.html#contact">Contact</a>
               <a class="btn secondary" href="all-projects.html">View Projects</a>
             </div>
           </div>
