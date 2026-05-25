@@ -1,0 +1,4 @@
+Put your resume PDF in this folder and name it:
+Rui_Qi_Resume.pdf
+
+Or change SITE.resume in EDIT-ME-content.js.
