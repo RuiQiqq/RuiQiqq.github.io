@@ -1,395 +1,399 @@
-function tagLabel(tagId) {
-  return (TAGS[tagId] && TAGS[tagId].label) || tagId;
-}
-
-function sortedProjects() {
-  return [...PROJECTS].sort((a, b) => (a.order || 999) - (b.order || 999));
-}
-
-function featuredProjects() {
-  return sortedProjects().filter(project => project.featured);
-}
-
-function libraryProjects() {
-  return sortedProjects().filter(project => !project.featured);
-}
-
-function safeLink(link) {
-  return link && link !== "#" ? link : "#";
-}
-
-function nav(active) {
-  const links = [
-    ["index.html", "Home", "home"],
-    ["all-projects.html", "Projects", "projects"],
-    ["about-contact.html", "About", "about"]
-  ];
-  return `
-    <nav class="nav">
-      <div class="wrap navInner">
-        <a class="brand" href="index.html">
-          <span class="brandMark">RQ</span>
-          <span>${SITE.brand}</span>
-        </a>
-        <div class="navLinks">
-          ${links.map(([href, label, key]) => `<a class="${active === key ? "activeLink" : ""}" href="${href}">${label}</a>`).join("")}
-          <a href="${SITE.resume}" target="_blank" rel="noreferrer">Resume</a>
-          <a href="mailto:${SITE.email}">Contact</a>
-        </div>
-      </div>
-    </nav>
-  `;
-}
-
-function footer() {
-  return `
-    <footer>
-      <div class="wrap">© <span id="year"></span> ${SITE.name}. ${SITE.footerNote}</div>
-    </footer>
-  `;
-}
-
-function placeholder(title) {
-  return `
-    <div class="placeholder">
-      <div>
-        <div class="playDot">▶</div>
-        <strong>${title}</strong>
-        <p style="color: var(--muted); margin: 8px 0 0;">Add cover image or video later</p>
-      </div>
-    </div>
-  `;
-}
-
-function mediaFrame(project, mode = "cover") {
-  if (mode === "video" && project.videoEmbed) {
-    return `
-      <div class="videoFrame">
-        <iframe src="${project.videoEmbed}" title="${project.title} video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-      </div>
-    `;
-  }
-
-  if (project.coverImage) {
-    return `
-      <div class="coverFrame">
-        <img src="${project.coverImage}" alt="${project.title} cover" style="width:100%; height:100%; object-fit:cover;">
-      </div>
-    `;
-  }
-
-  return `<div class="coverFrame">${placeholder(project.title)}</div>`;
-}
-
-function tagsMarkup(project) {
-  return `<div class="tags">${(project.tags || []).map(tag => `<span class="tag">${tagLabel(tag)}</span>`).join("")}</div>`;
-}
-
-function projectCard(project, compact = false) {
-  return `
-    <article class="projectCard ${compact ? "compact" : ""}" data-tags="${(project.tags || []).join(" ")}">
-      <div class="projectMedia">${mediaFrame(project)}</div>
-      <div class="projectBody">
-        <div>
-          <div class="topline"><span>${project.category}</span><span>${String(project.order).padStart(2, "0")}</span></div>
-          <h3>${project.title}</h3>
-          <p class="summary">${project.summary}</p>
-        </div>
-        ${!compact ? `
-          <div class="metaRows">
-            <div><strong>Role:</strong> ${project.role}</div>
-            <div><strong>Tools:</strong> ${project.tools}</div>
-          </div>
-        ` : ""}
-        ${tagsMarkup(project)}
-        <div class="projectActions">
-          <a class="btn small primary" href="${project.detailLink}">Project Breakdown</a>
-          ${project.videoLink && project.videoLink !== "#" ? `<a class="btn small" href="${project.videoLink}" target="_blank" rel="noreferrer">Watch Video</a>` : ""}
-        </div>
-      </div>
-    </article>
-  `;
-}
-
-function contactBlock() {
-  return `
-    <section>
-      <div class="wrap">
-        <div class="contactPanel card">
-          <div>
-            <div class="kicker">Contact</div>
-            <h2>Resume, links, and contact.</h2>
-            <p class="lede" style="margin-top:12px;">For recruiting, collaboration, or project questions, email is the best way to reach me.</p>
-          </div>
-          <div class="linkList">
-            <a href="mailto:${SITE.email}">Email <span>${SITE.email} →</span></a>
-            <a href="${SITE.resume}" target="_blank" rel="noreferrer">Resume <span>PDF →</span></a>
-            <a href="${SITE.github}" target="_blank" rel="noreferrer">GitHub <span>@RuiQiqq →</span></a>
-            <a href="${SITE.linkedin}" target="_blank" rel="noreferrer">LinkedIn <span>Add link →</span></a>
-          </div>
-        </div>
-      </div>
-    </section>
-  `;
-}
-
-function renderHome() {
-  document.body.insertAdjacentHTML("afterbegin", nav("home"));
-  document.querySelector("main").innerHTML = `
-    <header class="hero">
-      <div class="wrap heroGrid">
-        <div>
-          <div class="eyebrow">${SITE.role}</div>
-          <h1>${SITE.brand}</h1>
-          <p class="lede"><strong style="color:var(--text);">${SITE.heroTitle}</strong></p>
-          <p class="lede">${SITE.description}</p>
-          <div class="heroActions">
-            <a class="btn primary" href="all-projects.html">View Projects</a>
-            ${SITE.demoReelLink && SITE.demoReelLink !== "#" ? `<a class="btn" href="${SITE.demoReelLink}" target="_blank" rel="noreferrer">Watch Demo Reel</a>` : ""}
-            <a class="btn" href="${SITE.resume}" target="_blank" rel="noreferrer">Download Resume</a>
-            <a class="btn" href="mailto:${SITE.email}">Email Me</a>
-          </div>
-        </div>
-        <aside class="heroPanel">
-          <div class="videoFrame">
-            ${SITE.demoReelEmbed ? `<iframe src="${SITE.demoReelEmbed}" title="Demo Reel" allowfullscreen></iframe>` : placeholder("Demo Reel / Featured Project Preview")}
-          </div>
-          <div class="panelCaption"><span>Gameplay systems · Prototypes · Technical Design</span><span>${SITE.location}</span></div>
-        </aside>
-      </div>
-    </header>
-
-    <section>
-      <div class="wrap">
-        <div class="sectionHead">
-          <div><div class="kicker">Featured Work</div><h2>Featured Projects</h2></div>
-          <p>These are the projects that should represent the portfolio first. Change <strong>featured: true</strong> and <strong>order</strong> in <code>EDIT-ME-content.js</code> to control this section.</p>
-        </div>
-        <div class="projectsGrid">${featuredProjects().slice(0, 3).map(p => projectCard(p)).join("")}</div>
-      </div>
-    </section>
-
-    <section>
-      <div class="wrap">
-        <div class="sectionHead">
-          <div><div class="kicker">Prototype Library</div><h2>More Projects</h2></div>
-          <p>Smaller prototypes and experiments stay here so the homepage stays readable. View the full project list for all work.</p>
-        </div>
-        <div class="libraryGrid">${libraryProjects().slice(0, 8).map(p => projectCard(p, true)).join("")}</div>
-        <div style="margin-top:22px;"><a class="btn primary" href="all-projects.html">Open Full Project Library</a></div>
-      </div>
-    </section>
-
-    <section>
-      <div class="wrap">
-        <div class="sectionHead">
-          <div><div class="kicker">Technical Design Focus</div><h2>What I Build</h2></div>
-          <p>Clear categories help interviewers understand your TD direction quickly without reading every project page.</p>
-        </div>
-        <div class="grid4">${TECHNICAL_FOCUS.map(item => `<article class="card"><h3>${item.title}</h3><p>${item.text}</p></article>`).join("")}</div>
-      </div>
-    </section>
-
-    <section>
-      <div class="wrap">
-        <div class="sectionHead">
-          <div><div class="kicker">Systems Lab</div><h2>Design Notes</h2></div>
-          <p>A small personal section that gives the site some identity without blocking the recruiter reading path.</p>
-        </div>
-        <div class="grid3">${LAB_NOTES.map(item => `<article class="card"><h3>${item.title}</h3><p>${item.text}</p></article>`).join("")}</div>
-      </div>
-    </section>
-
-    ${contactBlock()}
-  `;
-  document.body.insertAdjacentHTML("beforeend", footer());
-}
-
-function renderProjectsPage() {
-  document.body.insertAdjacentHTML("afterbegin", nav("projects"));
-  const allTags = [...new Set(sortedProjects().flatMap(p => p.tags || []))];
-  document.querySelector("main").innerHTML = `
-    <header class="detailHero">
-      <div class="wrap">
-        <div class="eyebrow">Project Library</div>
-        <h1>Projects</h1>
-        <p class="lede">All gameplay systems, prototypes, UI/economy work, interaction experiments, and technical design pieces. Use filters to scan by tool or system type.</p>
-      </div>
-    </header>
-    <section style="padding-top:0;">
-      <div class="wrap">
-        <div class="filterBar">
-          <button class="btn small filterBtn active" data-filter="all">All</button>
-          <button class="btn small filterBtn" data-filter="featured">Featured</button>
-          ${allTags.map(tag => `<button class="btn small filterBtn" data-filter="${tag}">${tagLabel(tag)}</button>`).join("")}
-        </div>
-        <div id="projectGrid" class="projectsGrid">${sortedProjects().map(p => projectCard(p)).join("")}</div>
-      </div>
-    </section>
-  `;
-  document.body.insertAdjacentHTML("beforeend", footer());
-
-  document.querySelectorAll(".filterBtn").forEach(button => {
-    button.addEventListener("click", () => {
-      document.querySelectorAll(".filterBtn").forEach(b => b.classList.remove("active"));
-      button.classList.add("active");
-      const filter = button.dataset.filter;
-      document.querySelectorAll(".projectCard").forEach(card => {
-        const title = card.querySelector("h3").textContent;
-        const project = PROJECTS.find(p => p.title === title);
-        const show = filter === "all" || (filter === "featured" && project.featured) || (project.tags || []).includes(filter);
-        card.style.display = show ? "flex" : "none";
-      });
-    });
-  });
-}
-
-function renderDetailPage() {
-  document.body.insertAdjacentHTML("afterbegin", nav("projects"));
-  const params = new URLSearchParams(window.location.search);
-  const id = params.get("id");
-  const project = PROJECTS.find(p => p.id === id);
-
-  if (!project) {
-    document.querySelector("main").innerHTML = `
-      <header class="detailHero"><div class="wrap"><h1>Project not found</h1><p class="lede">Choose a project from the library.</p><a class="btn primary" href="all-projects.html">Back to Projects</a></div></header>
-    `;
-    document.body.insertAdjacentHTML("beforeend", footer());
+(function () {
+  const DATA = window.PORTFOLIO_CONTENT;
+  if (!DATA) {
+    document.body.innerHTML = "<p style='color:white;padding:40px'>Missing EDIT-ME-content.js</p>";
     return;
   }
 
-  document.title = `${project.title} | ${SITE.name}`;
+  const { SITE, TAGS, PROJECTS, TECHNICAL_FOCUS, SKILLS } = DATA;
+  const page = document.body.dataset.page;
+  const app = document.querySelector("#app");
 
-  document.querySelector("main").innerHTML = `
-    <header class="detailHero">
-      <div class="wrap detailGrid">
-        <div>
-          <div class="eyebrow">${project.category}</div>
-          <h1>${project.title}</h1>
-          <p class="lede">${project.subtitle}</p>
-          <div class="heroActions">
-            ${project.videoLink && project.videoLink !== "#" ? `<a class="btn primary" href="${project.videoLink}" target="_blank" rel="noreferrer">Watch Video</a>` : ""}
-            <a class="btn" href="all-projects.html">Back to Projects</a>
+  const sortProjects = () => [...PROJECTS].sort((a, b) => Number(a.order || 999) - Number(b.order || 999));
+  const featuredProjects = () => sortProjects().filter(p => p.featured).slice(0, 3);
+  const libraryProjects = () => sortProjects().filter(p => !p.featured);
+  const label = (tagKey) => TAGS[tagKey]?.label || tagKey;
+  const emailHref = `mailto:${SITE.email}`;
+
+  function tagHTML(tags = [], hot = false) {
+    return `<div class="tagList">${tags.map(t => `<span class="tag ${hot ? "hot" : ""}">${label(t)}</span>`).join("")}</div>`;
+  }
+
+  function videoHTML(projectOrSite, title = "Video") {
+    const embed = projectOrSite.videoEmbed || projectOrSite.demoReelEmbed || "";
+    const cover = projectOrSite.coverImage || "";
+
+    if (embed && embed.trim() !== "") {
+      return `
+        <div class="videoFrame">
+          <iframe src="${embed}" title="${title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+      `;
+    }
+
+    if (cover && cover.trim() !== "") {
+      return `
+        <div class="videoFrame">
+          <img src="${cover}" alt="${title}" style="width:100%;height:100%;object-fit:cover;" />
+        </div>
+      `;
+    }
+
+    return `
+      <div class="videoFrame">
+        <div class="videoPlaceholder">
+          <div>
+            <div class="playDot">▶</div>
+            <strong>${title}</strong>
+            <p class="note" style="margin:8px 0 0;">Add videoEmbed or coverImage in EDIT-ME-content.js</p>
           </div>
         </div>
-        <div class="heroPanel">
-          ${mediaFrame(project, "video")}
-          <div class="panelCaption"><span>${project.status}</span><span>${project.role}</span></div>
+      </div>
+    `;
+  }
+
+  function navHTML() {
+    const isProjects = page === "projects" || page === "project-detail";
+    const isResume = page === "resume-contact";
+    return `
+      <nav class="nav">
+        <div class="wrap navInner">
+          <a class="brand" href="index.html" aria-label="Rui Qi Home">
+            <span class="brandMark">${SITE.shortName || "RQ"}</span>
+            <span>${SITE.name}</span>
+          </a>
+          <div class="navLinks">
+            <a class="${isProjects ? "activeLink" : ""}" href="all-projects.html">Projects</a>
+            <a class="${isResume ? "activeLink" : ""}" href="resume-contact.html#resume">Resume</a>
+            <a href="resume-contact.html#contact">Contact</a>
+          </div>
+          <div class="navCta">
+            <a class="btn small secondary" href="${SITE.resume}" target="_blank" rel="noreferrer">Resume</a>
+            <a class="btn small primary" href="${emailHref}">Email</a>
+          </div>
         </div>
-      </div>
-    </header>
+      </nav>
+    `;
+  }
 
-    <section style="padding-top:18px;">
-      <div class="wrap detailGrid">
-        <article class="detailPanel">
-          <h3>Overview</h3>
-          <p>${project.overview}</p>
-          ${tagsMarkup(project)}
-        </article>
-        <article class="detailPanel">
-          <h3>Project Info</h3>
-          <div class="detailMeta"><strong>Role</strong><span>${project.role}</span></div>
-          <div class="detailMeta"><strong>Tools</strong><span>${project.tools}</span></div>
-          <div class="detailMeta"><strong>Status</strong><span>${project.status}</span></div>
-          <div class="detailMeta"><strong>Duration</strong><span>${project.duration}</span></div>
-          <div class="detailMeta"><strong>Team</strong><span>${project.team}</span></div>
-        </article>
-      </div>
-    </section>
-
-    <section>
-      <div class="wrap">
-        <div class="sectionHead">
-          <div><div class="kicker">Contribution</div><h2>What I Built</h2></div>
-          <p>Use this section to make your personal contribution impossible to miss.</p>
+  function footerHTML() {
+    return `
+      <footer class="footer">
+        <div class="wrap">
+          © ${new Date().getFullYear()} ${SITE.name}. ${SITE.footerNote || "Portfolio"}.
         </div>
-        <article class="detailPanel">
-          <ul class="detailList">${(project.contributions || []).map(item => `<li>${item}</li>`).join("")}</ul>
-        </article>
-      </div>
-    </section>
+      </footer>
+    `;
+  }
 
-    <section>
-      <div class="wrap">
-        <div class="sectionHead">
-          <div><div class="kicker">System Breakdown</div><h2>Input · Logic · Feedback · Iteration</h2></div>
-          <p>This structure keeps TD project pages concrete and easy to scan.</p>
+  function projectCard(project, index = 1) {
+    return `
+      <article class="projectCard">
+        <div class="projectMedia">${videoHTML(project, project.title)}</div>
+        <div class="projectBody">
+          <div>
+            <div class="projectTop"><span>${project.category}</span><span>${String(index).padStart(2, "0")}</span></div>
+            <h3>${project.title}</h3>
+            <p class="projectSummary">${project.summary}</p>
+            <div class="metaRows">
+              <div class="metaRow"><strong>Role</strong><span>${project.role}</span></div>
+              <div class="metaRow"><strong>Tools</strong><span>${project.tools}</span></div>
+              <div class="metaRow"><strong>Status</strong><span>${project.status}</span></div>
+            </div>
+            ${tagHTML(project.tags, true)}
+          </div>
+          <div class="projectActions">
+            <a class="btn primary" href="${project.detailLink}">Project Breakdown</a>
+            <a class="btn secondary" href="${project.videoLink || "#"}" target="_blank" rel="noreferrer">Open Video</a>
+          </div>
         </div>
-        <div class="breakdownGrid">
-          ${["input", "logic", "feedback", "iteration"].map(key => `<div class="breakdownItem"><h3>${key[0].toUpperCase() + key.slice(1)}</h3><p>${project.breakdown?.[key] || "Add content."}</p></div>`).join("")}
+      </article>
+    `;
+  }
+
+  function miniCard(project) {
+    return `
+      <article class="miniCard" data-tags="${(project.tags || []).join(" ")}">
+        <div class="miniMeta">${project.category}</div>
+        <h3>${project.title}</h3>
+        <p>${project.subtitle || project.summary}</p>
+        ${tagHTML(project.tags)}
+        <div class="projectActions" style="margin-top:18px;">
+          <a class="btn small primary" href="${project.detailLink}">Details</a>
+          <a class="btn small secondary" href="${project.videoLink || "#"}" target="_blank" rel="noreferrer">Video</a>
         </div>
-      </div>
-    </section>
+      </article>
+    `;
+  }
 
-    <section>
-      <div class="wrap">
-        <div class="sectionHead">
-          <div><div class="kicker">Process</div><h2>Challenges & Improvements</h2></div>
-          <p>This is where student and prototype projects can honestly show design judgment without sounding self-negative.</p>
+  function contactCTA() {
+    return `
+      <section id="contact">
+        <div class="wrap">
+          <div class="contactCard">
+            <div>
+              <div class="kicker">Contact</div>
+              <h2>Resume, email, and professional links.</h2>
+              <p class="lead">For recruiting, collaboration, or project questions, email is the fastest way to reach me.</p>
+            </div>
+            <div class="contactLinks">
+              <a href="${emailHref}">Email <span>${SITE.email} →</span></a>
+              <a href="${SITE.resume}" target="_blank" rel="noreferrer">Resume <span>PDF →</span></a>
+              <a href="${SITE.github}" target="_blank" rel="noreferrer">GitHub <span>Code / projects →</span></a>
+              <a href="${SITE.linkedin}" target="_blank" rel="noreferrer">LinkedIn <span>Add your link →</span></a>
+            </div>
+          </div>
         </div>
-        <div class="challengeGrid">
-          ${(project.challenges || []).length ? project.challenges.map(c => `<article class="detailPanel"><h3>${c.title}</h3><p>${c.text}</p></article>`).join("") : `<article class="detailPanel"><h3>Challenge</h3><p>Add one challenge you solved or learned from.</p></article>`}
-          <article class="detailPanel">
-            <h3>What I Would Improve</h3>
-            <ul class="detailList">${(project.improvements || []).map(item => `<li>${item}</li>`).join("")}</ul>
-          </article>
+      </section>
+    `;
+  }
+
+  function renderHome() {
+    const featured = featuredProjects();
+    const library = libraryProjects().slice(0, 6);
+    const preview = featured[0];
+
+    app.innerHTML = `
+      <header class="hero">
+        <div class="wrap heroGrid">
+          <div>
+            <div class="eyebrow">Portfolio</div>
+            <h1>${SITE.name}</h1>
+            <p class="heroRole">${SITE.role}</p>
+            <p class="heroTitle">${SITE.heroTitle}</p>
+            <p class="heroCopy">${SITE.description}</p>
+            <div class="heroActions">
+              <a class="btn primary" href="all-projects.html">View Projects</a>
+              <a class="btn secondary" href="${SITE.resume}" target="_blank" rel="noreferrer">Download Resume</a>
+              <a class="btn red" href="${emailHref}">Email Me</a>
+            </div>
+          </div>
+          <aside class="heroPanel" aria-label="Featured project preview">
+            <div class="previewContent">
+              ${SITE.demoReelEmbed ? videoHTML(SITE, "Demo Reel") : videoHTML(preview || SITE, preview?.title || "Featured Project Preview")}
+              <div class="previewMeta">
+                <h3>${SITE.demoReelEmbed ? "Demo Reel" : (preview?.title || "Featured Project Preview")}</h3>
+                <p>${SITE.demoReelEmbed ? "30–60 second reel for quick screening." : (preview?.subtitle || "Put your strongest project or demo reel here later.")}</p>
+              </div>
+            </div>
+          </aside>
         </div>
-      </div>
-    </section>
+      </header>
 
-    ${project.workflowNotes ? `<section><div class="wrap"><div class="notice"><strong>Workflow Notes:</strong> ${project.workflowNotes}</div></div></section>` : ""}
-    ${contactBlock()}
-  `;
-  document.body.insertAdjacentHTML("beforeend", footer());
-}
-
-function renderAboutPage() {
-  document.body.insertAdjacentHTML("afterbegin", nav("about"));
-  document.querySelector("main").innerHTML = `
-    <header class="detailHero">
-      <div class="wrap">
-        <div class="eyebrow">About</div>
-        <h1>${SITE.name}</h1>
-        <p class="lede">Technical designer focused on gameplay systems, rapid prototyping, interaction design, and playable system implementation.</p>
-      </div>
-    </header>
-
-    <section style="padding-top:0;">
-      <div class="wrap detailGrid">
-        <article class="detailPanel">
-          <h3>Profile</h3>
-          <p>I work on gameplay systems, combat prototypes, UI/economy loops, and interaction experiments. My portfolio is organized around technical design work: what the player does, how the system responds, and how feedback makes the mechanic readable.</p>
-        </article>
-        <article class="detailPanel">
-          <h3>Modern Workflow</h3>
-          <p>I use AI-assisted workflows to speed up prototyping, debugging, documentation, and implementation research, while keeping final design decisions, in-engine testing, and system tuning under my own control.</p>
-        </article>
-      </div>
-    </section>
-
-    <section>
-      <div class="wrap">
-        <div class="sectionHead">
-          <div><div class="kicker">Skills</div><h2>Tools & Focus</h2></div>
-          <p>Keep this practical. Recruiters should quickly understand your engine exposure and TD direction.</p>
+      <section id="featured">
+        <div class="wrap">
+          <div class="sectionHead">
+            <div>
+              <div class="kicker">Featured Projects</div>
+              <h2>Best work first.</h2>
+            </div>
+            <p>Only the strongest projects are expanded here. Smaller experiments stay in the project library so the homepage remains fast to read.</p>
+          </div>
+          <div class="grid">${featured.map((p, i) => projectCard(p, i + 1)).join("")}</div>
         </div>
-        <div class="grid4">${TECHNICAL_FOCUS.map(item => `<article class="card"><h3>${item.title}</h3><p>${item.text}</p></article>`).join("")}</div>
-      </div>
-    </section>
+      </section>
 
-    ${contactBlock()}
-  `;
-  document.body.insertAdjacentHTML("beforeend", footer());
-}
+      <section id="library-preview">
+        <div class="wrap">
+          <div class="sectionHead">
+            <div>
+              <div class="kicker">Prototype Library</div>
+              <h2>More projects, compact view.</h2>
+            </div>
+            <p>Smaller or less important projects are grouped into compact cards. Click into a project only when you want the breakdown.</p>
+          </div>
+          <div class="grid cols3">${library.length ? library.map(miniCard).join("") : `<div class="emptyState">Add non-featured projects in EDIT-ME-content.js to show them here.</div>`}</div>
+          <div style="margin-top:22px;"><a class="btn secondary" href="all-projects.html">See All Projects</a></div>
+        </div>
+      </section>
 
-function init() {
-  const page = document.body.dataset.page;
+      <section id="focus">
+        <div class="wrap">
+          <div class="sectionHead">
+            <div>
+              <div class="kicker">Technical Design Focus</div>
+              <h2>What I build.</h2>
+            </div>
+            <p>These categories help interviewers understand my design and implementation direction without reading every project page.</p>
+          </div>
+          <div class="grid cols4">
+            ${TECHNICAL_FOCUS.map(item => `<article class="infoCard"><h3>${item.title}</h3><p>${item.text}</p></article>`).join("")}
+          </div>
+        </div>
+      </section>
+
+      ${contactCTA()}
+    `;
+  }
+
+  function renderProjects() {
+    const projects = sortProjects();
+    const tagsUsed = [...new Set(projects.flatMap(p => p.tags || []))];
+    app.innerHTML = `
+      <header class="hero" style="padding-bottom:30px;">
+        <div class="wrap">
+          <div class="eyebrow">Projects</div>
+          <h1 style="max-width:920px;">Project Library</h1>
+          <p class="heroTitle" style="max-width:920px;">All gameplay systems, prototypes, interaction experiments, and technical design work in one place.</p>
+        </div>
+      </header>
+
+      <section style="padding-top:20px;">
+        <div class="wrap">
+          <div class="filterBar" id="filters">
+            <button class="filterButton active" data-filter="all">All</button>
+            <button class="filterButton" data-filter="featured">Featured</button>
+            ${tagsUsed.map(t => `<button class="filterButton" data-filter="${t}">${label(t)}</button>`).join("")}
+          </div>
+          <div class="grid cols3" id="projectGrid">
+            ${projects.map(miniCard).join("")}
+          </div>
+        </div>
+      </section>
+    `;
+
+    const buttons = [...document.querySelectorAll(".filterButton")];
+    const cards = [...document.querySelectorAll(".miniCard")];
+    buttons.forEach(button => {
+      button.addEventListener("click", () => {
+        buttons.forEach(b => b.classList.remove("active"));
+        button.classList.add("active");
+        const filter = button.dataset.filter;
+        cards.forEach(card => {
+          const id = card.querySelector("a")?.getAttribute("href")?.split("id=")[1];
+          const p = projects.find(x => x.id === id);
+          const visible = filter === "all" || (filter === "featured" && p?.featured) || card.dataset.tags.split(" ").includes(filter);
+          card.style.display = visible ? "block" : "none";
+        });
+      });
+    });
+  }
+
+  function renderProjectDetail() {
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+    const p = PROJECTS.find(project => project.id === id) || sortProjects()[0];
+
+    if (!p) {
+      app.innerHTML = `<div class="wrap" style="padding:80px 0;"><div class="emptyState">No projects found. Add projects in EDIT-ME-content.js.</div></div>`;
+      return;
+    }
+
+    app.innerHTML = `
+      <header class="detailHero">
+        <div class="wrap">
+          <div class="eyebrow">Project Breakdown</div>
+          <h1 class="detailTitle">${p.title}</h1>
+          <p class="heroTitle" style="max-width:900px;">${p.subtitle}</p>
+          ${tagHTML(p.tags, true)}
+          <div class="heroActions" style="margin-top:24px;">
+            <a class="btn secondary" href="all-projects.html">Back to Projects</a>
+            <a class="btn primary" href="${p.videoLink || "#"}" target="_blank" rel="noreferrer">Open Video</a>
+          </div>
+        </div>
+      </header>
+
+      <section style="padding-top:20px;">
+        <div class="wrap detailLayout">
+          <div class="grid">
+            <div class="detailPanel">${videoHTML(p, p.title)}</div>
+            <div class="detailPanel"><h3>Overview</h3><p>${p.overview}</p></div>
+            <div class="detailPanel"><h3>What I Built</h3><ul>${(p.contributions || []).map(x => `<li>${x}</li>`).join("")}</ul></div>
+            <div class="detailPanel">
+              <h3>System Breakdown</h3>
+              <div class="breakdownGrid">
+                <div class="breakdownItem"><strong>Input</strong><span>${p.breakdown?.input || ""}</span></div>
+                <div class="breakdownItem"><strong>Logic</strong><span>${p.breakdown?.logic || ""}</span></div>
+                <div class="breakdownItem"><strong>Feedback</strong><span>${p.breakdown?.feedback || ""}</span></div>
+                <div class="breakdownItem"><strong>Iteration</strong><span>${p.breakdown?.iteration || ""}</span></div>
+              </div>
+            </div>
+            <div class="detailPanel"><h3>Challenges & Solutions</h3>${(p.challenges || []).length ? (p.challenges || []).map(c => `<p><strong style="color:var(--text)">${c.title}</strong><br>${c.text}</p>`).join("") : `<p class="note">Add challenges in EDIT-ME-content.js.</p>`}</div>
+            <div class="detailPanel"><h3>What I Would Improve</h3><ul>${(p.improvements || []).map(x => `<li>${x}</li>`).join("")}</ul></div>
+          </div>
+          <aside class="grid">
+            <div class="detailPanel">
+              <h3>Project Info</h3>
+              <div class="metaRows">
+                <div class="metaRow"><strong>Role</strong><span>${p.role}</span></div>
+                <div class="metaRow"><strong>Tools</strong><span>${p.tools}</span></div>
+                <div class="metaRow"><strong>Status</strong><span>${p.status}</span></div>
+                <div class="metaRow"><strong>Duration</strong><span>${p.duration}</span></div>
+                <div class="metaRow"><strong>Team</strong><span>${p.team}</span></div>
+              </div>
+            </div>
+            <div class="detailPanel"><h3>Workflow Notes</h3><p>${p.workflowNotes || ""}</p></div>
+            <div class="detailPanel"><h3>Contact</h3><p class="note">Interested in this project or my process?</p><a class="btn primary" href="${emailHref}">Email Me</a></div>
+          </aside>
+        </div>
+      </section>
+    `;
+  }
+
+  function renderResumeContact() {
+    app.innerHTML = `
+      <header class="hero" id="resume">
+        <div class="wrap heroGrid">
+          <div>
+            <div class="eyebrow">Resume & Contact</div>
+            <h1>${SITE.name}</h1>
+            <p class="heroRole">${SITE.role}</p>
+            <p class="heroTitle">${SITE.heroTitle}</p>
+            <p class="heroCopy">${SITE.description}</p>
+            <div class="heroActions">
+              <a class="btn primary" href="${SITE.resume}" target="_blank" rel="noreferrer">Download Resume</a>
+              <a class="btn red" href="${emailHref}">Email Me</a>
+              <a class="btn secondary" href="all-projects.html">View Projects</a>
+            </div>
+          </div>
+          <div class="contactCard" style="display:block;">
+            <div class="kicker">Quick Links</div>
+            <div class="contactLinks" style="margin-top:18px;">
+              <a href="${emailHref}">Email <span>${SITE.email} →</span></a>
+              <a href="${SITE.resume}" target="_blank" rel="noreferrer">Resume <span>PDF →</span></a>
+              <a href="${SITE.github}" target="_blank" rel="noreferrer">GitHub <span>Open →</span></a>
+              <a href="${SITE.linkedin}" target="_blank" rel="noreferrer">LinkedIn <span>Add link →</span></a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section>
+        <div class="wrap">
+          <div class="sectionHead">
+            <div>
+              <div class="kicker">Skills</div>
+              <h2>Tools and focus areas.</h2>
+            </div>
+            <p>Keep this page practical: recruiter-friendly skills, resume link, and contact information.</p>
+          </div>
+          <div class="grid cols4">
+            ${SKILLS.map(group => `<article class="infoCard"><h3>${group.title}</h3><ul>${group.items.map(item => `<li>${item}</li>`).join("")}</ul></article>`).join("")}
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="wrap">
+          <div class="sectionHead">
+            <div>
+              <div class="kicker">Modern Workflow</div>
+              <h2>AI as an efficiency tool.</h2>
+            </div>
+            <p>I use AI-assisted workflows for debugging support, implementation research, documentation organization, and faster iteration. Final design decisions, in-engine testing, and tuning stay under my control.</p>
+          </div>
+        </div>
+      </section>
+
+      ${contactCTA()}
+    `;
+  }
+
+  document.querySelector("#site-nav").innerHTML = navHTML();
+  document.querySelector("#site-footer").innerHTML = footerHTML();
+
   if (page === "home") renderHome();
-  if (page === "projects") renderProjectsPage();
-  if (page === "project") renderDetailPage();
-  if (page === "about") renderAboutPage();
-  const year = document.querySelector("#year");
-  if (year) year.textContent = new Date().getFullYear();
-}
-
-init();
+  if (page === "projects") renderProjects();
+  if (page === "project-detail") renderProjectDetail();
+  if (page === "resume-contact") renderResumeContact();
+})();

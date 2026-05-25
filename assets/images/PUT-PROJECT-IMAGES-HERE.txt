@@ -1,1 +1,9 @@
-Put project cover images / screenshots here. Example: combat-cover.jpg
+把项目封面图、截图、压缩后的图片放在这里。
+
+推荐路径示例：
+assets/images/combat-cover.jpg
+assets/images/market-ui.jpg
+assets/images/forging-prototype.jpg
+
+然后在 EDIT-ME-content.js 的项目里写：
+coverImage: "assets/images/combat-cover.jpg"

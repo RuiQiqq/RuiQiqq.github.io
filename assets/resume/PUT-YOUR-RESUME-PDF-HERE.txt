@@ -1,4 +1,7 @@
-Put your resume PDF in this folder and name it:
+把你的简历 PDF 放在这里。
+
+推荐文件名：
 Rui_Qi_Resume.pdf
 
-Or change SITE.resume in EDIT-ME-content.js.
+然后在 EDIT-ME-content.js 里确认：
+resume: "assets/resume/Rui_Qi_Resume.pdf"
