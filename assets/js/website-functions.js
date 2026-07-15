@@ -1,22 +1,373 @@
-const DATA = window.PORTFOLIO_DATA || {};
+/*
+  Website behavior and bilingual switching.
+  You normally do not need to edit this file.
+  Edit portfolio content in EDIT-ME-English.js and EDIT-ME-Chinese.js.
+*/
+
+const LANGUAGE_KEY = "ruiqi-portfolio-language";
+
+const UI = {
+  en: {
+    navProjects: "Projects",
+    navResume: "Resume",
+    navContact: "Contact",
+    viewProjects: "View Projects",
+    downloadResume: "Download Resume",
+    selectedWork: "Selected Work",
+    featuredProjects: "Featured Projects",
+    featuredIntro: "Selected projects that best represent my gameplay systems, prototyping, and technical design work.",
+    focusKicker: "Technical Design Focus",
+    focusTitle: "What I Build",
+    focusIntro: "Clear categories help interviewers understand my direction quickly without reading every project page.",
+    libraryKicker: "Project Library",
+    libraryTitle: "More prototypes and experiments.",
+    libraryIntro: "Smaller projects stay collected in one place, so the homepage remains quick to read.",
+    openLibrary: "Open Full Project Library",
+    resumeKicker: "Resume",
+    resumeTitle: "Resume preview and download.",
+    resumeText: "The PDF is displayed here for quick review. You can also open it in a separate page or download it directly.",
+    downloadPdf: "Download PDF",
+    openResumePage: "Open Resume Page",
+    resumeFallback: "If the preview does not load, use the Download PDF button. Upload the English resume as <strong>assets/resume/Rui_Qi_Resume_EN.pdf</strong>.",
+    contactKicker: "Contact",
+    contactTitle: "Interested in systems, prototypes, or gameplay feel?",
+    footerRole: "Gameplay Systems & Technical Design",
+    projectsPageKicker: "Project Library",
+    projectsPageTitle: "All Projects",
+    projectsPageText: "Gameplay systems, prototypes, interaction experiments, UI/economy work, and technical design studies collected in one place.",
+    backHome: "Back to home",
+    backProjects: "Back to projects",
+    all: "All",
+    role: "Role",
+    tools: "Tools",
+    category: "Category",
+    projectBreakdown: "Project Breakdown",
+    openVideo: "Open Video",
+    details: "Details",
+    openLink: "Open Link",
+    downloadFile: "Download File",
+    overview: "Overview",
+    whatIBuilt: "What I Built",
+    systemBreakdown: "System Breakdown",
+    challenges: "Challenges & Improvements",
+    workflowNotes: "Workflow Notes",
+    projectNotFound: "Project not found.",
+    projectNotFoundText: "Please go back to the Projects page.",
+    demoReel: "Demo Reel",
+    montageTitle: "Project Montage",
+    montageText: "30–60 second overview of gameplay systems, prototypes, and interaction work.",
+    video: "Video",
+    openDemoReel: "Open Demo Reel",
+    montageSlot: "Project Montage Slot",
+    montageSlotText: "This area is reserved for a 30–60 second project reel. Until then, it works as a quick portfolio snapshot.",
+    placeholder: "Placeholder",
+    futureMontage: "Future montage",
+    montageTypes: "Gameplay / UI / Interaction",
+    youtubeNote: "Add a YouTube embed link in <strong>EDIT-ME-English.js</strong>.",
+    email: "Email",
+    resume: "Resume",
+    github: "GitHub",
+    linkedin: "LinkedIn",
+    openProfile: "Open Profile",
+    addLinkLater: "Add link later",
+    contactDownloadPdf: "Download PDF",
+    resumeViewerKicker: "Resume",
+    resumeViewerTitle: "Resume Preview",
+    resumeViewerText: "This page displays the English PDF directly and includes a download button.",
+    backPortfolio: "Back to Portfolio",
+    resumeContactKicker: "Resume & Contact",
+    resumeContactText: "Gameplay Designer / Technical Designer focused on playable systems, prototypes, and readable player feedback.",
+    skills: "Skills",
+    relevantFocus: "Relevant focus.",
+    resumeDownloadTitle: "Download PDF.",
+    resumeDownloadText: "Upload the English resume to <code>assets/resume/Rui_Qi_Resume_EN.pdf</code>, then this button will open it.",
+    reachMe: "Reach me here.",
+    professionalLinks: "Only include professional links. Daily personal social media is better left out unless it shows game development work.",
+    projects: "Projects"
+  },
+  zh: {
+    navProjects: "项目",
+    navResume: "简历",
+    navContact: "联系",
+    viewProjects: "查看项目",
+    downloadResume: "下载中文简历",
+    selectedWork: "精选作品",
+    featuredProjects: "重点项目",
+    featuredIntro: "这些项目集中展示了我的玩法系统、原型实现和技术设计能力。",
+    focusKicker: "技术设计方向",
+    focusTitle: "我的主要能力",
+    focusIntro: "通过明确的分类，让招聘者无需阅读所有项目页面，也能快速理解我的方向。",
+    libraryKicker: "项目库",
+    libraryTitle: "更多原型与实验",
+    libraryIntro: "较小型的项目集中放在这里，使首页保持清晰并方便快速浏览。",
+    openLibrary: "打开完整项目库",
+    resumeKicker: "中文简历",
+    resumeTitle: "简历预览与下载",
+    resumeText: "网页会直接展示中文 PDF，招聘者也可以在独立页面打开或下载。",
+    downloadPdf: "下载中文 PDF",
+    openResumePage: "打开简历页面",
+    resumeFallback: "如果预览无法加载，请使用下载按钮。请将中文简历上传为 <strong>assets/resume/Rui_Qi_Resume_ZH.pdf</strong>。",
+    contactKicker: "联系方式",
+    contactTitle: "欢迎交流玩法系统、原型设计与游戏体验。",
+    footerRole: "玩法系统与技术设计",
+    projectsPageKicker: "项目库",
+    projectsPageTitle: "全部项目",
+    projectsPageText: "玩法系统、可玩原型、交互实验、UI／经济系统与技术设计研究集中展示在此页面。",
+    backHome: "返回首页",
+    backProjects: "返回项目",
+    all: "全部",
+    role: "职责",
+    tools: "工具",
+    category: "分类",
+    projectBreakdown: "项目拆解",
+    openVideo: "打开 Bilibili 视频",
+    details: "查看详情",
+    openLink: "打开链接",
+    downloadFile: "下载文件",
+    overview: "项目概述",
+    whatIBuilt: "我的工作",
+    systemBreakdown: "系统拆解",
+    challenges: "问题与改进",
+    workflowNotes: "工作流程说明",
+    projectNotFound: "未找到该项目。",
+    projectNotFoundText: "请返回项目页面。",
+    demoReel: "作品混剪",
+    montageTitle: "项目演示视频",
+    montageText: "用 30–60 秒快速展示玩法系统、原型和交互设计。",
+    video: "视频",
+    openDemoReel: "在 Bilibili 打开",
+    montageSlot: "作品混剪位置",
+    montageSlotText: "此区域用于放置 30–60 秒的项目混剪；在添加视频之前，会显示作品集概览。",
+    placeholder: "待添加",
+    futureMontage: "待上传混剪",
+    montageTypes: "玩法／UI／交互",
+    youtubeNote: "请在 <strong>EDIT-ME-Chinese.js</strong> 中添加 Bilibili 嵌入链接。",
+    email: "邮箱",
+    resume: "中文简历",
+    github: "GitHub",
+    linkedin: "LinkedIn",
+    openProfile: "打开主页",
+    addLinkLater: "暂未添加",
+    contactDownloadPdf: "下载中文 PDF",
+    resumeViewerKicker: "中文简历",
+    resumeViewerTitle: "简历预览",
+    resumeViewerText: "此页面直接展示中文简历 PDF，并提供下载按钮。",
+    backPortfolio: "返回作品集",
+    resumeContactKicker: "简历与联系方式",
+    resumeContactText: "专注于可玩系统、原型实现和清晰玩家反馈的玩法策划／技术策划。",
+    skills: "技能",
+    relevantFocus: "相关能力",
+    resumeDownloadTitle: "下载中文 PDF",
+    resumeDownloadText: "请将中文简历上传到 <code>assets/resume/Rui_Qi_Resume_ZH.pdf</code>，此按钮会自动打开该文件。",
+    reachMe: "通过以下方式联系我",
+    professionalLinks: "建议只保留职业相关链接；除非能够展示游戏开发内容，否则无需加入日常个人社交账号。",
+    projects: "项目"
+  }
+};
+
+function getCurrentLanguage() {
+  const requested = new URLSearchParams(window.location.search).get("lang");
+  if (requested === "en" || requested === "zh") {
+    try { localStorage.setItem(LANGUAGE_KEY, requested); } catch (error) {}
+    return requested;
+  }
+  try {
+    const saved = localStorage.getItem(LANGUAGE_KEY);
+    if (saved === "en" || saved === "zh") return saved;
+  } catch (error) {}
+  return "en";
+}
+
+const CURRENT_LANGUAGE = getCurrentLanguage();
+const EN_DATA = window.PORTFOLIO_EN || {};
+const ZH_DATA = window.PORTFOLIO_ZH || {};
+
+function buildChineseData() {
+  const zhProjectsById = new Map((ZH_DATA.projects || []).map(project => [project.id, project]));
+  const englishProjectsById = new Map((EN_DATA.projects || []).map(project => [project.id, project]));
+  const orderedIds = [
+    ...(EN_DATA.projects || []).map(project => project.id),
+    ...(ZH_DATA.projects || []).map(project => project.id).filter(id => !englishProjectsById.has(id))
+  ];
+  const mergedProjects = orderedIds.map(id => {
+    const english = englishProjectsById.get(id) || {};
+    const chinese = zhProjectsById.get(id);
+    const merged = {
+      ...english,
+      ...(chinese || {}),
+      detail: { ...(english.detail || {}), ...((chinese && chinese.detail) || {}) }
+    };
+    // Never inherit English/YouTube media into the Chinese version.
+    merged.videoEmbed = chinese?.videoEmbed ?? "";
+    merged.videoLink = chinese?.videoLink ?? "#";
+    merged.videoFile = chinese?.videoFile ?? "";
+    merged.videoPlatform = chinese?.videoPlatform ?? "Bilibili";
+    merged.externalLinks = chinese?.externalLinks ?? [];
+    merged.downloadLinks = chinese?.downloadLinks ?? [];
+    return merged;
+  });
+  const zhSite = ZH_DATA.site || {};
+  return {
+    ...EN_DATA,
+    ...ZH_DATA,
+    site: {
+      ...(EN_DATA.site || {}),
+      ...zhSite,
+      resumeUrl: zhSite.resumeUrl || "assets/resume/Rui_Qi_Resume_ZH.pdf",
+      demoReelEmbed: zhSite.demoReelEmbed ?? "",
+      demoReelLink: zhSite.demoReelLink ?? "#",
+      demoReelCoverImage: zhSite.demoReelCoverImage ?? "",
+      demoReelPlatform: zhSite.demoReelPlatform || "Bilibili"
+    },
+    tags: { ...(EN_DATA.tags || {}), ...(ZH_DATA.tags || {}) },
+    snapshot: ZH_DATA.snapshot || EN_DATA.snapshot || [],
+    focusAreas: ZH_DATA.focusAreas || EN_DATA.focusAreas || [],
+    resumeSkills: ZH_DATA.resumeSkills || EN_DATA.resumeSkills || [],
+    projects: mergedProjects
+  };
+}
+
+const DATA = CURRENT_LANGUAGE === "zh" ? buildChineseData() : EN_DATA;
+const TEXT = UI[CURRENT_LANGUAGE];
 const projects = [...(DATA.projects || [])].sort((a, b) => (a.order || 999) - (b.order || 999));
 const tagMap = DATA.tags || {};
 
 function $(selector) { return document.querySelector(selector); }
 function safeText(value, fallback = "") { return value || fallback; }
+function escapeHtml(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
 function tagLabel(tagId) { return tagMap[tagId] || tagId; }
+function isRealLink(url) { return Boolean(url && url !== "#"); }
+
+function localizedUrl(url) {
+  if (!url || /^(https?:|mailto:|tel:|data:|javascript:)/i.test(url) || url.startsWith("assets/")) return url;
+  const hashIndex = url.indexOf("#");
+  const hash = hashIndex >= 0 ? url.slice(hashIndex) : "";
+  const beforeHash = hashIndex >= 0 ? url.slice(0, hashIndex) : url;
+  const queryIndex = beforeHash.indexOf("?");
+  let path = queryIndex >= 0 ? beforeHash.slice(0, queryIndex) : beforeHash;
+  const query = queryIndex >= 0 ? beforeHash.slice(queryIndex + 1) : "";
+  if (!path) path = window.location.pathname.split("/").pop() || "index.html";
+  const params = new URLSearchParams(query);
+  params.set("lang", CURRENT_LANGUAGE);
+  return `${path}?${params.toString()}${hash}`;
+}
+
+function setLanguage(language) {
+  if (language !== "en" && language !== "zh") return;
+  try { localStorage.setItem(LANGUAGE_KEY, language); } catch (error) {}
+  const url = new URL(window.location.href);
+  url.searchParams.set("lang", language);
+  window.location.href = url.toString();
+}
+
+function applyLanguageControls() {
+  if (!new URLSearchParams(window.location.search).has("lang")) {
+    const visibleUrl = new URL(window.location.href);
+    visibleUrl.searchParams.set("lang", CURRENT_LANGUAGE);
+    window.history.replaceState({}, "", visibleUrl.toString());
+  }
+  document.documentElement.lang = CURRENT_LANGUAGE === "zh" ? "zh-CN" : "en";
+  document.body.classList.toggle("lang-zh", CURRENT_LANGUAGE === "zh");
+  document.querySelectorAll("[data-language-choice]").forEach(button => {
+    const active = button.dataset.languageChoice === CURRENT_LANGUAGE;
+    button.classList.toggle("active", active);
+    button.setAttribute("aria-pressed", active ? "true" : "false");
+    button.addEventListener("click", () => setLanguage(button.dataset.languageChoice));
+  });
+}
+
+function applyStaticTranslations() {
+  document.querySelectorAll("[data-i18n]").forEach(element => {
+    const key = element.dataset.i18n;
+    if (TEXT[key] !== undefined) element.textContent = TEXT[key];
+  });
+  document.querySelectorAll("[data-i18n-html]").forEach(element => {
+    const key = element.dataset.i18nHtml;
+    if (TEXT[key] !== undefined) element.innerHTML = TEXT[key];
+  });
+  document.querySelectorAll(".wordmark").forEach(element => {
+    element.textContent = safeText(DATA.site?.name, "Rui Qi");
+  });
+}
+
+function localizeInternalLinks() {
+  document.querySelectorAll("a[href]").forEach(anchor => {
+    const href = anchor.getAttribute("href");
+    if (!href || href === "#") return;
+    if (href.startsWith("#") || /\.html(?:[?#]|$)/i.test(href)) {
+      anchor.setAttribute("href", localizedUrl(href));
+    }
+  });
+}
+
+function updatePageMetadata(title, description) {
+  document.title = title;
+  const meta = document.querySelector('meta[name="description"]');
+  if (meta && description) meta.setAttribute("content", description);
+}
+
 function tagsHtml(tags = []) {
-  return `<div class="tag-row">${tags.map(tag => `<span class="tag">${tagLabel(tag)}</span>`).join("")}</div>`;
+  return `<div class="tag-row">${tags.map(tag => `<span class="tag">${escapeHtml(tagLabel(tag))}</span>`).join("")}</div>`;
+}
+
+function embeddedMediaHtml(embedUrl, title) {
+  return `<div class="video-box"><iframe src="${escapeHtml(embedUrl)}" title="${escapeHtml(title)}" loading="lazy" scrolling="no" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;
+}
+
+function automaticEmbedUrl(explicitEmbed, normalLink) {
+  if (isRealLink(explicitEmbed)) return explicitEmbed;
+  if (!isRealLink(normalLink)) return "";
+  try {
+    const url = new URL(normalLink);
+    const host = url.hostname.replace(/^www\./, "");
+    if (host === "youtu.be") {
+      const id = url.pathname.split("/").filter(Boolean)[0];
+      return id ? `https://www.youtube.com/embed/${id}` : "";
+    }
+    if (host.endsWith("youtube.com")) {
+      const pathParts = url.pathname.split("/").filter(Boolean);
+      const id = url.searchParams.get("v") || ((pathParts[0] === "shorts" || pathParts[0] === "embed" || pathParts[0] === "live") ? pathParts[1] : "");
+      return id ? `https://www.youtube.com/embed/${id}` : "";
+    }
+    if (host.endsWith("bilibili.com")) {
+      if (host === "player.bilibili.com") return normalLink;
+      const match = url.pathname.match(/\/video\/(BV[a-zA-Z0-9]+)/i);
+      if (match) {
+        const page = url.searchParams.get("p") || "1";
+        return `https://player.bilibili.com/player.html?bvid=${match[1]}&page=${page}&high_quality=1&danmaku=0`;
+      }
+    }
+  } catch (error) {}
+  return "";
 }
 
 function mediaHtml(project) {
-  if (project.videoEmbed) {
-    return `<div class="video-box"><iframe src="${project.videoEmbed}" title="${project.title} video" allowfullscreen></iframe></div>`;
+  const embedUrl = automaticEmbedUrl(project.videoEmbed, project.videoLink);
+  if (embedUrl) return embeddedMediaHtml(embedUrl, `${project.title} ${project.videoPlatform || TEXT.video}`);
+  if (project.videoFile) {
+    return `<div class="video-box"><video controls preload="metadata" src="${escapeHtml(project.videoFile)}"></video></div>`;
   }
   if (project.coverImage) {
-    return `<img class="cover-image" src="${project.coverImage}" alt="${project.title} cover image">`;
+    return `<img class="cover-image" src="${escapeHtml(project.coverImage)}" alt="${escapeHtml(project.title)}">`;
   }
-  return `<div class="cover-placeholder"><span>${project.category || "Project Preview"}</span></div>`;
+  return `<div class="cover-placeholder"><span>${escapeHtml(project.category || TEXT.projectBreakdown)}</span></div>`;
+}
+
+function projectExtraLinksHtml(project) {
+  const externalLinks = (project.externalLinks || [])
+    .filter(link => isRealLink(link.url))
+    .map(link => `<a class="button secondary" href="${escapeHtml(link.url)}" target="_blank" rel="noreferrer">${escapeHtml(link.label || TEXT.openLink)}</a>`);
+  const downloadLinks = (project.downloadLinks || [])
+    .filter(link => isRealLink(link.url))
+    .map(link => `<a class="button secondary" href="${escapeHtml(link.url)}" download>${escapeHtml(link.label || TEXT.downloadFile)}</a>`);
+  return [...externalLinks, ...downloadLinks].join("");
 }
 
 function featuredProjectCard(project) {
@@ -25,179 +376,76 @@ function featuredProjectCard(project) {
       <div class="project-media">${mediaHtml(project)}</div>
       <div class="project-body">
         <div>
-          <div class="project-meta">${safeText(project.category)}</div>
-          <h3>${safeText(project.title)}</h3>
-          <p class="project-summary">${safeText(project.summary)}</p>
+          <div class="project-meta">${escapeHtml(safeText(project.category))}</div>
+          <h3>${escapeHtml(safeText(project.title))}</h3>
+          <p class="project-summary">${escapeHtml(safeText(project.summary))}</p>
           <div class="detail-list">
-            <div><strong>Role</strong><span>${safeText(project.role)}</span></div>
-            <div><strong>Tools</strong><span>${safeText(project.tools)}</span></div>
+            <div><strong>${TEXT.role}</strong><span>${escapeHtml(safeText(project.role))}</span></div>
+            <div><strong>${TEXT.tools}</strong><span>${escapeHtml(safeText(project.tools))}</span></div>
           </div>
           ${tagsHtml(project.tags)}
         </div>
         <div class="project-actions">
-          <a class="button primary" href="project-detail.html?id=${project.id}">Project Breakdown</a>
-          ${project.videoLink && project.videoLink !== "#" ? `<a class="button secondary" href="${project.videoLink}" target="_blank" rel="noreferrer">Open Video</a>` : ""}
+          <a class="button primary" href="${localizedUrl(`project-detail.html?id=${encodeURIComponent(project.id)}`)}">${TEXT.projectBreakdown}</a>
+          ${isRealLink(project.videoLink) ? `<a class="button secondary" href="${escapeHtml(project.videoLink)}" target="_blank" rel="noreferrer">${TEXT.openVideo}</a>` : ""}
+          ${projectExtraLinksHtml(project)}
         </div>
       </div>
-    </article>
-  `;
+    </article>`;
 }
 
 function libraryProjectCard(project) {
   return `
-    <article class="library-card" data-tags="${(project.tags || []).join(" ")}">
+    <article class="library-card" data-tags="${escapeHtml((project.tags || []).join(" "))}">
       <div>
-        <div class="project-meta">${safeText(project.category)}</div>
-        <h3>${safeText(project.title)}</h3>
-        <p>${safeText(project.summary)}</p>
+        <div class="project-meta">${escapeHtml(safeText(project.category))}</div>
+        <h3>${escapeHtml(safeText(project.title))}</h3>
+        <p>${escapeHtml(safeText(project.summary))}</p>
         ${tagsHtml(project.tags)}
       </div>
       <div class="project-actions">
-        <a class="button secondary" href="project-detail.html?id=${project.id}">Details</a>
+        <a class="button secondary" href="${localizedUrl(`project-detail.html?id=${encodeURIComponent(project.id)}`)}">${TEXT.details}</a>
       </div>
-    </article>
-  `;
+    </article>`;
 }
 
 function demoReelHtml(site) {
   const snapshotRows = (DATA.snapshot || []).map(item => `
-    <div><strong>${item.label}</strong><span>${item.value}</span></div>
-  `).join("");
+    <div><strong>${escapeHtml(item.label)}</strong><span>${escapeHtml(item.value)}</span></div>`).join("");
+  const platform = site.demoReelPlatform || (CURRENT_LANGUAGE === "zh" ? "Bilibili" : "YouTube");
 
-  if (site.demoReelEmbed) {
+  const reelEmbedUrl = automaticEmbedUrl(site.demoReelEmbed, site.demoReelLink);
+
+  if (reelEmbedUrl) {
     return `
       <div class="reel-header">
         <div>
-          <p class="section-kicker">Demo Reel</p>
-          <h3>Project Montage</h3>
-          <p>30–60 second overview of gameplay systems, prototypes, and interaction work.</p>
+          <p class="section-kicker">${TEXT.demoReel}</p>
+          <h3>${TEXT.montageTitle}</h3>
+          <p>${TEXT.montageText}</p>
         </div>
-        <span class="reel-status">Video</span>
+        <span class="reel-status">${escapeHtml(platform)}</span>
       </div>
-      <div class="video-box"><iframe src="${site.demoReelEmbed}" title="Rui Qi demo reel" allowfullscreen></iframe></div>
-      <div class="snapshot-mini">${snapshotRows}</div>
-    `;
+      ${embeddedMediaHtml(reelEmbedUrl, `${site.name} ${TEXT.demoReel}`)}
+      ${isRealLink(site.demoReelLink) ? `<div class="project-actions reel-actions"><a class="button secondary" href="${escapeHtml(site.demoReelLink)}" target="_blank" rel="noreferrer">${TEXT.openDemoReel}</a></div>` : ""}
+      <div class="snapshot-mini">${snapshotRows}</div>`;
   }
+
+  const cover = site.demoReelCoverImage
+    ? `<img class="cover-image" src="${escapeHtml(site.demoReelCoverImage)}" alt="${escapeHtml(TEXT.demoReel)}">`
+    : `<div class="video-placeholder"><div><div class="play-circle">▶</div><div class="placeholder-kicker">${TEXT.futureMontage}</div><div class="placeholder-title">${TEXT.montageTypes}</div><p class="placeholder-note">${TEXT.youtubeNote}</p></div></div>`;
 
   return `
     <div class="reel-header">
       <div>
-        <p class="section-kicker">Demo Reel</p>
-        <h3>Project Montage Slot</h3>
-        <p>This area is reserved for a 30–60 second project reel. Until then, it works as a quick portfolio snapshot.</p>
+        <p class="section-kicker">${TEXT.demoReel}</p>
+        <h3>${TEXT.montageSlot}</h3>
+        <p>${TEXT.montageSlotText}</p>
       </div>
-      <span class="reel-status">Placeholder</span>
+      <span class="reel-status">${TEXT.placeholder}</span>
     </div>
-    <div class="video-box">
-      <div class="video-placeholder">
-        <div>
-          <div class="play-circle">▶</div>
-          <div class="placeholder-kicker">Future montage</div>
-          <div class="placeholder-title">Gameplay / UI / Interaction</div>
-          <p class="placeholder-note">Add a YouTube embed link in <strong>EDIT-ME-content.js</strong>.</p>
-        </div>
-      </div>
-    </div>
-    <div class="snapshot-mini">${snapshotRows}</div>
-  `;
-}
-
-function renderHome() {
-  const site = DATA.site || {};
-  if ($("#home-eyebrow")) $("#home-eyebrow").textContent = safeText(site.eyebrow, "Portfolio");
-  if ($("#home-name")) $("#home-name").textContent = safeText(site.name, "Rui Qi");
-  if ($("#home-title")) $("#home-title").textContent = safeText(site.title, "Gameplay Systems & Technical Design");
-  if ($("#home-subtitle")) $("#home-subtitle").textContent = safeText(site.subtitle);
-  if ($("#home-intro")) $("#home-intro").textContent = safeText(site.intro);
-  if ($("#home-resume-button")) $("#home-resume-button").href = safeText(site.resumeUrl, "assets/resume/Rui_Qi_Resume.pdf");
-  if ($("#resume-download-main")) $("#resume-download-main").href = safeText(site.resumeUrl, "assets/resume/Rui_Qi_Resume.pdf");
-  if ($("#resume-preview-frame")) $("#resume-preview-frame").src = safeText(site.resumeUrl, "assets/resume/Rui_Qi_Resume.pdf");
-
-  const reel = $("#home-reel");
-  if (reel) reel.innerHTML = demoReelHtml(site);
-
-  const featured = projects.filter(p => p.featured);
-  if ($("#featured-projects")) $("#featured-projects").innerHTML = featured.map(featuredProjectCard).join("");
-
-  if ($("#focus-areas")) {
-    $("#focus-areas").innerHTML = (DATA.focusAreas || []).map(area => `
-      <article class="focus-card"><h3>${area.title}</h3><p>${area.text}</p></article>
-    `).join("");
-  }
-
-  const library = projects.filter(p => p.library);
-  if ($("#library-preview-grid")) $("#library-preview-grid").innerHTML = library.map(libraryProjectCard).join("");
-
-  renderContactLinks();
-}
-
-function renderProjectsPage() {
-  const grid = $("#all-projects-grid");
-  if (!grid) return;
-  const library = projects.filter(p => p.library);
-  grid.innerHTML = library.map(libraryProjectCard).join("");
-
-  const tagFilter = $("#tag-filter");
-  if (!tagFilter) return;
-  const usedTags = Array.from(new Set(library.flatMap(p => p.tags || [])));
-  tagFilter.innerHTML = `<button class="filter-button active" data-filter="all">All</button>` + usedTags.map(tag => `
-    <button class="filter-button" data-filter="${tag}">${tagLabel(tag)}</button>
-  `).join("");
-
-  tagFilter.addEventListener("click", event => {
-    const button = event.target.closest("button");
-    if (!button) return;
-    document.querySelectorAll(".filter-button").forEach(btn => btn.classList.remove("active"));
-    button.classList.add("active");
-    const filter = button.dataset.filter;
-    document.querySelectorAll(".library-card").forEach(card => {
-      const tags = card.dataset.tags || "";
-      card.style.display = filter === "all" || tags.includes(filter) ? "flex" : "none";
-    });
-  });
-}
-
-function renderDetailPage() {
-  const root = $("#project-detail-root");
-  if (!root) return;
-  const params = new URLSearchParams(window.location.search);
-  const id = params.get("id");
-  const project = projects.find(p => p.id === id) || projects[0];
-  if (!project) {
-    root.innerHTML = `<section class="page-hero container"><h1>Project not found.</h1><p>Please go back to the Projects page.</p></section>`;
-    return;
-  }
-  document.title = `${project.title} | Rui Qi`;
-  const detail = project.detail || {};
-  root.innerHTML = `
-    <section class="project-detail-hero container">
-      <div class="project-detail-grid">
-        <div class="detail-title">
-          <p class="eyebrow">Project Breakdown</p>
-          <h1>${project.title}</h1>
-          <p>${project.summary}</p>
-          ${tagsHtml(project.tags)}
-        </div>
-        <div class="snapshot-card">${mediaHtml(project)}</div>
-      </div>
-    </section>
-    <section class="detail-section container">
-      <h2>Overview</h2>
-      <p>${safeText(detail.overview, project.summary)}</p>
-      <div class="detail-list" style="margin-top: 22px;">
-        <div><strong>Role</strong><span>${project.role}</span></div>
-        <div><strong>Tools</strong><span>${project.tools}</span></div>
-        <div><strong>Category</strong><span>${project.category}</span></div>
-      </div>
-    </section>
-    <section class="detail-section container"><h2>What I Built</h2><ul>${(detail.whatIBuilt || []).map(item => `<li>${item}</li>`).join("")}</ul></section>
-    <section class="detail-section container">
-      <h2>System Breakdown</h2>
-      <div class="breakdown-grid">${(detail.breakdown || []).map(item => `<article class="breakdown-card"><h3>${item.label}</h3><p>${item.text}</p></article>`).join("")}</div>
-    </section>
-    <section class="detail-section container"><h2>Challenges & Improvements</h2><ul>${(detail.challenges || []).map(item => `<li>${item}</li>`).join("")}</ul></section>
-    <section class="detail-section container"><h2>Workflow Notes</h2><p>${safeText(detail.workflowNotes, "")}</p></section>
-  `;
+    <div class="video-box">${cover}</div>
+    <div class="snapshot-mini">${snapshotRows}</div>`;
 }
 
 function renderContactLinks() {
@@ -205,34 +453,139 @@ function renderContactLinks() {
   const contactGrid = $("#contact-grid");
   if (!contactGrid) return;
   const links = [
-    { label: "Email", value: site.email, href: `mailto:${site.email}` },
-    { label: "Resume", value: "Download PDF", href: site.resumeUrl },
-    { label: "GitHub", value: "RuiQiqq", href: site.github },
-    { label: "LinkedIn", value: site.linkedin && site.linkedin !== "#" ? "Open Profile" : "Add link later", href: site.linkedin || "#" }
+    { label: TEXT.email, value: site.email, href: `mailto:${site.email}` },
+    { label: TEXT.resume, value: TEXT.contactDownloadPdf, href: site.resumeUrl },
+    { label: TEXT.github, value: "RuiQiqq", href: site.github },
+    { label: TEXT.linkedin, value: site.linkedin && site.linkedin !== "#" ? TEXT.openProfile : TEXT.addLinkLater, href: site.linkedin || "#" }
   ];
   contactGrid.innerHTML = links.map(link => `
-    <a class="contact-link" href="${link.href}" ${link.href !== "#" ? 'target="_blank" rel="noreferrer"' : ""}>
-      <div><strong>${link.label}</strong><span>${link.value || ""}</span></div>
-      <span>→</span>
-    </a>
-  `).join("");
+    <a class="contact-link" href="${escapeHtml(link.href)}" ${link.href !== "#" ? 'target="_blank" rel="noreferrer"' : ""}>
+      <div><strong>${escapeHtml(link.label)}</strong><span>${escapeHtml(link.value || "")}</span></div><span>→</span>
+    </a>`).join("");
+}
+
+function renderHome() {
+  const site = DATA.site || {};
+  if ($("#home-eyebrow")) $("#home-eyebrow").textContent = safeText(site.eyebrow, "Portfolio");
+  if ($("#home-name")) $("#home-name").textContent = safeText(site.name, "Rui Qi");
+  if ($("#home-title")) $("#home-title").textContent = safeText(site.title);
+  if ($("#home-subtitle")) $("#home-subtitle").textContent = safeText(site.subtitle);
+  if ($("#home-intro")) $("#home-intro").textContent = safeText(site.intro);
+  if ($("#home-resume-button")) $("#home-resume-button").href = safeText(site.resumeUrl);
+  if ($("#resume-download-main")) $("#resume-download-main").href = safeText(site.resumeUrl);
+  if ($("#resume-preview-frame")) $("#resume-preview-frame").src = safeText(site.resumeUrl);
+  if ($("#home-reel")) $("#home-reel").innerHTML = demoReelHtml(site);
+  if ($("#featured-projects")) $("#featured-projects").innerHTML = projects.filter(p => p.featured).map(featuredProjectCard).join("");
+  if ($("#focus-areas")) {
+    $("#focus-areas").innerHTML = (DATA.focusAreas || []).map(area => `<article class="focus-card"><h3>${escapeHtml(area.title)}</h3><p>${escapeHtml(area.text)}</p></article>`).join("");
+  }
+  if ($("#library-preview-grid")) $("#library-preview-grid").innerHTML = projects.filter(p => p.library).map(libraryProjectCard).join("");
+  renderContactLinks();
+  updatePageMetadata(`${safeText(site.name, "Rui Qi")} | ${safeText(site.title, TEXT.footerRole)}`, safeText(site.subtitle));
+}
+
+function renderProjectsPage() {
+  const grid = $("#all-projects-grid");
+  if (!grid) return;
+  const library = projects.filter(p => p.library);
+  grid.innerHTML = library.map(libraryProjectCard).join("");
+  const tagFilter = $("#tag-filter");
+  if (tagFilter) {
+    const usedTags = Array.from(new Set(library.flatMap(p => p.tags || [])));
+    tagFilter.innerHTML = `<button class="filter-button active" data-filter="all">${TEXT.all}</button>` + usedTags.map(tag => `<button class="filter-button" data-filter="${escapeHtml(tag)}">${escapeHtml(tagLabel(tag))}</button>`).join("");
+    tagFilter.addEventListener("click", event => {
+      const button = event.target.closest("button");
+      if (!button) return;
+      document.querySelectorAll(".filter-button").forEach(btn => btn.classList.remove("active"));
+      button.classList.add("active");
+      const filter = button.dataset.filter;
+      document.querySelectorAll(".library-card").forEach(card => {
+        const tags = card.dataset.tags || "";
+        card.style.display = filter === "all" || tags.split(" ").includes(filter) ? "flex" : "none";
+      });
+    });
+  }
+  updatePageMetadata(`${TEXT.projectsPageTitle} | ${safeText(DATA.site?.name, "Rui Qi")}`, TEXT.projectsPageText);
+}
+
+function renderDetailPage() {
+  const root = $("#project-detail-root");
+  if (!root) return;
+  const id = new URLSearchParams(window.location.search).get("id");
+  const project = projects.find(p => p.id === id) || (id ? null : projects[0]);
+  if (!project) {
+    root.innerHTML = `<section class="page-hero container"><h1>${TEXT.projectNotFound}</h1><p>${TEXT.projectNotFoundText}</p></section>`;
+    updatePageMetadata(`${TEXT.projectNotFound} | ${safeText(DATA.site?.name, "Rui Qi")}`, TEXT.projectNotFoundText);
+    return;
+  }
+  const detail = project.detail || {};
+  root.innerHTML = `
+    <section class="project-detail-hero container">
+      <div class="project-detail-grid">
+        <div class="detail-title">
+          <p class="eyebrow">${TEXT.projectBreakdown}</p>
+          <h1>${escapeHtml(project.title)}</h1>
+          <p>${escapeHtml(project.summary)}</p>
+          ${tagsHtml(project.tags)}
+          <div class="project-actions detail-hero-actions">
+            ${isRealLink(project.videoLink) ? `<a class="button primary" href="${escapeHtml(project.videoLink)}" target="_blank" rel="noreferrer">${TEXT.openVideo}</a>` : ""}
+            ${projectExtraLinksHtml(project)}
+          </div>
+        </div>
+        <div class="snapshot-card">${mediaHtml(project)}</div>
+      </div>
+    </section>
+    <section class="detail-section container">
+      <h2>${TEXT.overview}</h2>
+      <p>${escapeHtml(safeText(detail.overview, project.summary))}</p>
+      <div class="detail-list" style="margin-top: 22px;">
+        <div><strong>${TEXT.role}</strong><span>${escapeHtml(project.role)}</span></div>
+        <div><strong>${TEXT.tools}</strong><span>${escapeHtml(project.tools)}</span></div>
+        <div><strong>${TEXT.category}</strong><span>${escapeHtml(project.category)}</span></div>
+      </div>
+    </section>
+    <section class="detail-section container"><h2>${TEXT.whatIBuilt}</h2><ul>${(detail.whatIBuilt || []).map(item => `<li>${escapeHtml(item)}</li>`).join("")}</ul></section>
+    <section class="detail-section container"><h2>${TEXT.systemBreakdown}</h2><div class="breakdown-grid">${(detail.breakdown || []).map(item => `<article class="breakdown-card"><h3>${escapeHtml(item.label)}</h3><p>${escapeHtml(item.text)}</p></article>`).join("")}</div></section>
+    <section class="detail-section container"><h2>${TEXT.challenges}</h2><ul>${(detail.challenges || []).map(item => `<li>${escapeHtml(item)}</li>`).join("")}</ul></section>
+    <section class="detail-section container"><h2>${TEXT.workflowNotes}</h2><p>${escapeHtml(safeText(detail.workflowNotes))}</p></section>`;
+  updatePageMetadata(`${project.title} | ${safeText(DATA.site?.name, "Rui Qi")}`, project.summary);
+}
+
+function renderContactPage() {
+  const site = DATA.site || {};
+  if ($("#resume-contact-name")) $("#resume-contact-name").textContent = safeText(site.name, "Rui Qi");
+  if ($("#resume-skill-list")) {
+    $("#resume-skill-list").innerHTML = (DATA.resumeSkills || []).map(item => `<div><strong>${escapeHtml(item.label)}</strong><span>${escapeHtml(item.value)}</span></div>`).join("");
+  }
+  if ($("#resume-download-main")) $("#resume-download-main").href = safeText(site.resumeUrl);
+  renderContactLinks();
+  updatePageMetadata(`${TEXT.resumeContactKicker} | ${safeText(site.name, "Rui Qi")}`, TEXT.resumeContactText);
 }
 
 function renderResumeViewer() {
   const site = DATA.site || {};
   const frame = $("#resume-full-frame");
   const download = $("#resume-viewer-download");
-  if (frame) frame.src = safeText(site.resumeUrl, "assets/resume/Rui_Qi_Resume.pdf");
-  if (download) download.href = safeText(site.resumeUrl, "assets/resume/Rui_Qi_Resume.pdf");
+  if (frame) frame.src = safeText(site.resumeUrl);
+  if (download) download.href = safeText(site.resumeUrl);
+  updatePageMetadata(`${TEXT.resumeViewerKicker} | ${safeText(site.name, "Rui Qi")}`, TEXT.resumeViewerText);
 }
 
-function setYear() { document.querySelectorAll("#year").forEach(el => el.textContent = new Date().getFullYear()); }
+function setYear() {
+  document.querySelectorAll("#year").forEach(element => { element.textContent = new Date().getFullYear(); });
+}
+
 function init() {
+  applyLanguageControls();
+  applyStaticTranslations();
   setYear();
   const page = document.body.dataset.page;
   if (page === "home") renderHome();
   if (page === "projects") renderProjectsPage();
   if (page === "detail") renderDetailPage();
+  if (page === "contact") renderContactPage();
   if (page === "resume") renderResumeViewer();
+  localizeInternalLinks();
 }
+
 init();

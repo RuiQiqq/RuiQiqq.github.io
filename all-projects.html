@@ -4,28 +4,36 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projects | Rui Qi</title>
+  <meta name="description" content="Rui Qi project library." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/website-look.css" />
-  <script src="EDIT-ME-content.js"></script>
+  <script src="EDIT-ME-English.js"></script>
+  <script src="EDIT-ME-Chinese.js"></script>
   <script defer src="assets/js/website-functions.js"></script>
 </head>
 <body data-page="projects">
   <header class="site-header">
     <a class="wordmark" href="index.html#top">Rui Qi</a>
-    <nav class="nav-links" aria-label="Main navigation">
-      <a class="nav-link framed project-pill" href="index.html#featured">Projects</a>
-      <a class="nav-link framed" href="index.html#resume">Resume</a>
-      <a class="nav-link highlight" href="index.html#contact">Contact</a>
-    </nav>
+    <div class="header-actions">
+      <nav class="nav-links" aria-label="Main navigation">
+        <a class="nav-link framed project-pill" href="index.html#featured" data-i18n="navProjects">Projects</a>
+        <a class="nav-link framed" href="index.html#resume" data-i18n="navResume">Resume</a>
+        <a class="nav-link highlight" href="index.html#contact" data-i18n="navContact">Contact</a>
+      </nav>
+      <div class="language-switch" aria-label="Language switch">
+        <button type="button" data-language-choice="en">EN</button>
+        <button type="button" data-language-choice="zh">中文</button>
+      </div>
+    </div>
   </header>
 
   <main>
     <section class="page-hero container">
-      <p class="eyebrow">Project Library</p>
-      <h1>All Projects</h1>
-      <p>Gameplay systems, prototypes, interaction experiments, UI/economy work, and technical design studies collected in one place.</p>
+      <p class="eyebrow" data-i18n="projectsPageKicker">Project Library</p>
+      <h1 data-i18n="projectsPageTitle">All Projects</h1>
+      <p data-i18n="projectsPageText">Gameplay systems, prototypes, interaction experiments, UI/economy work, and technical design studies collected in one place.</p>
     </section>
     <section class="section container">
       <div class="filter-bar" id="tag-filter"></div>
@@ -35,7 +43,7 @@
 
   <footer class="site-footer container">
     <span>© <span id="year"></span> Rui Qi</span>
-    <span><a href="index.html#top">Back to home</a></span>
+    <span><a href="index.html#top" data-i18n="backHome">Back to home</a></span>
   </footer>
 </body>
 </html>

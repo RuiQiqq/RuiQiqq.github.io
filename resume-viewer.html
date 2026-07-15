@@ -4,44 +4,52 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Resume | Rui Qi</title>
+  <meta name="description" content="Rui Qi resume preview." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/website-look.css" />
-  <script src="EDIT-ME-content.js"></script>
+  <script src="EDIT-ME-English.js"></script>
+  <script src="EDIT-ME-Chinese.js"></script>
   <script defer src="assets/js/website-functions.js"></script>
 </head>
 <body data-page="resume">
   <header class="site-header">
     <a class="wordmark" href="index.html#top">Rui Qi</a>
-    <nav class="nav-links" aria-label="Main navigation">
-      <a class="nav-link framed project-pill" href="index.html#featured">Projects</a>
-      <a class="nav-link framed" href="index.html#resume">Resume</a>
-      <a class="nav-link highlight" href="index.html#contact">Contact</a>
-    </nav>
+    <div class="header-actions">
+      <nav class="nav-links" aria-label="Main navigation">
+        <a class="nav-link framed project-pill" href="index.html#featured" data-i18n="navProjects">Projects</a>
+        <a class="nav-link framed" href="index.html#resume" data-i18n="navResume">Resume</a>
+        <a class="nav-link highlight" href="index.html#contact" data-i18n="navContact">Contact</a>
+      </nav>
+      <div class="language-switch" aria-label="Language switch">
+        <button type="button" data-language-choice="en">EN</button>
+        <button type="button" data-language-choice="zh">中文</button>
+      </div>
+    </div>
   </header>
 
   <main>
     <section class="page-hero container">
-      <p class="eyebrow">Resume</p>
-      <h1>Resume Preview</h1>
-      <p>This page displays the PDF directly and includes a download button.</p>
+      <p class="eyebrow" data-i18n="resumeViewerKicker">Resume</p>
+      <h1 data-i18n="resumeViewerTitle">Resume Preview</h1>
+      <p data-i18n="resumeViewerText">This page displays the PDF directly and includes a download button.</p>
       <div class="hero-actions">
-        <a class="button primary" id="resume-viewer-download" href="assets/resume/Rui_Qi_Resume.pdf" target="_blank" rel="noreferrer">Download PDF</a>
-        <a class="button secondary" href="index.html#resume">Back to Portfolio</a>
+        <a class="button primary" id="resume-viewer-download" href="assets/resume/Rui_Qi_Resume_EN.pdf" target="_blank" rel="noreferrer" data-i18n="downloadPdf">Download PDF</a>
+        <a class="button secondary" href="index.html#resume" data-i18n="backPortfolio">Back to Portfolio</a>
       </div>
     </section>
     <section class="container section">
       <div class="resume-panel">
-        <iframe id="resume-full-frame" src="assets/resume/Rui_Qi_Resume.pdf" title="Rui Qi resume full PDF preview"></iframe>
-        <div class="resume-fallback">If the preview does not load, use the Download PDF button. Upload your resume as <strong>assets/resume/Rui_Qi_Resume.pdf</strong>.</div>
+        <iframe id="resume-full-frame" src="assets/resume/Rui_Qi_Resume_EN.pdf" title="Rui Qi resume full PDF preview"></iframe>
+        <div class="resume-fallback" data-i18n-html="resumeFallback">If the preview does not load, use the Download PDF button.</div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer container">
     <span>© <span id="year"></span> Rui Qi</span>
-    <span><a href="index.html#contact">Contact</a></span>
+    <span><a href="index.html#contact" data-i18n="navContact">Contact</a></span>
   </footer>
 </body>
 </html>

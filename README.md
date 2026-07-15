@@ -1,42 +1,30 @@
-# Rui Qi Portfolio Website
+# Rui Qi Bilingual Portfolio
 
-## Main idea
-This version is mostly a one-page portfolio:
-- Top navigation scrolls down the home page: Projects / Resume / Contact.
-- Resume is previewed directly on the home page.
-- Resume also has a separate `resume-viewer.html` page for full PDF display and download.
-- Project details still use `project-detail.html?id=project-id`.
+This version supports English and Simplified Chinese on the same website.
 
-## What you edit most
-Edit this file:
+## Edit only these two files
 
-`EDIT-ME-content.js`
+- `EDIT-ME-English.js` — English text, English resume, YouTube links
+- `EDIT-ME-Chinese.js` — Chinese text, Chinese resume, Bilibili links
 
-You can change:
-- Name / title / intro
-- Demo reel embed link
-- Resume PDF path
-- Project order
-- Project tags
-- Project text
-- Contact links
+The language switch appears in the top navigation. The website remembers the selected language and also adds `?lang=en` or `?lang=zh` to shareable URLs.
 
-## Where to put resume
-Upload your PDF here:
+## Required resume filenames
 
-`assets/resume/Rui_Qi_Resume.pdf`
+- English: `assets/resume/Rui_Qi_Resume_EN.pdf`
+- Chinese: `assets/resume/Rui_Qi_Resume_ZH.pdf`
 
-## Where to put images
-Upload project images here:
+## Video links
 
-`assets/images/`
+You can normally paste only the public video URL into `videoLink` and leave `videoEmbed` empty.
 
-Then write paths like:
+- English YouTube: `https://www.youtube.com/watch?v=VIDEO_ID`
+- Chinese Bilibili: `https://www.bilibili.com/video/BVxxxxxxxxxx`
 
-`assets/images/combat-cover.jpg`
+The website automatically creates the embedded player. Use a full Bilibili BV link rather than a `b23.tv` short link.
 
-inside `EDIT-ME-content.js`.
+## Adding a project
 
-## Upload to GitHub Pages
-Do not upload the ZIP itself.
-Unzip it, then upload all files inside the folder to the root of your GitHub Pages repository.
+Copy one complete project object into both language files. Keep the same `id` in English and Chinese, then translate the visible text and use the appropriate platform-specific links.
+
+See `中文修改指南.md` for detailed instructions.

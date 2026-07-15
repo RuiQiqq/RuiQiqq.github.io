@@ -1,0 +1,6 @@
+将可下载文件放在这里，例如：
+- Game_Design_Document_EN.pdf
+- Game_Design_Document_ZH.pdf
+- Playable_Build.zip
+
+然后分别在 EDIT-ME-English.js 或 EDIT-ME-Chinese.js 的 downloadLinks 中填写对应路径。
