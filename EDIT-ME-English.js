@@ -81,7 +81,7 @@ window.PORTFOLIO_EN = {
   projects: [
     {
       id: "punk-plush-panic",
-      order: 1,
+      order: 2,
       featured: true,
       library: true,
       title: "Punk Plush Panic",
@@ -155,7 +155,7 @@ window.PORTFOLIO_EN = {
     },
     {
       id: "third-person-soulslike",
-      order: 2,
+      order: 1,
       featured: true,
       library: true,
       title: "Third-Person Soulslike Combat Prototype",
@@ -165,7 +165,7 @@ window.PORTFOLIO_EN = {
       tools: "Unreal Engine 5, Blueprint, Animation Montage, Modular Combat Logic, Decoupled Communication, Numerical Tuning",
       tags: ["unreal", "blueprint", "combat", "soulslike", "hitDetection", "enemyReaction", "projectile", "numericalDesign", "decoupling", "solo"],
       coverImage: "",
-      videoEmbed: "https://www.youtube.com/embed/IDIwe-tPvXk",
+      videoEmbed: "https://www.youtube.com/embed/IDIwe-tPvXk?autoplay=0&playsinline=1&rel=0",
       videoLink: "https://youtu.be/IDIwe-tPvXk",
       videoFile: "",
       videoPlatform: "YouTube",

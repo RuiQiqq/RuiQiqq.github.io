@@ -335,8 +335,27 @@ function tagsHtml(tags = []) {
   return `<div class="tag-row">${tags.map(tag => `<span class="tag">${escapeHtml(tagLabel(tag))}</span>`).join("")}</div>`;
 }
 
+function withAutoplayDisabled(embedUrl) {
+  if (!embedUrl) return "";
+  try {
+    const url = new URL(embedUrl);
+    const host = url.hostname.replace(/^www\./, "");
+    if (host === "youtu.be" || host.endsWith("youtube.com") || host.endsWith("youtube-nocookie.com")) {
+      url.searchParams.set("autoplay", "0");
+      url.searchParams.set("playsinline", "1");
+      url.searchParams.set("rel", "0");
+    }
+    if (host === "player.bilibili.com" || host.endsWith("bilibili.com")) {
+      url.searchParams.set("autoplay", "0");
+    }
+    return url.toString();
+  } catch (error) {
+    return embedUrl;
+  }
+}
+
 function embeddedMediaHtml(embedUrl, title) {
-  return `<div class="video-box"><iframe src="${escapeHtml(embedUrl)}" title="${escapeHtml(title)}" loading="lazy" scrolling="no" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;
+  return `<div class="video-box"><iframe src="${escapeHtml(withAutoplayDisabled(embedUrl))}" title="${escapeHtml(title)}" loading="lazy" scrolling="no" allow="fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;
 }
 
 function automaticEmbedUrl(explicitEmbed, normalLink) {
@@ -347,19 +366,19 @@ function automaticEmbedUrl(explicitEmbed, normalLink) {
     const host = url.hostname.replace(/^www\./, "");
     if (host === "youtu.be") {
       const id = url.pathname.split("/").filter(Boolean)[0];
-      return id ? `https://www.youtube.com/embed/${id}` : "";
+      return id ? `https://www.youtube.com/embed/${id}?autoplay=0&playsinline=1&rel=0` : "";
     }
     if (host.endsWith("youtube.com")) {
       const pathParts = url.pathname.split("/").filter(Boolean);
       const id = url.searchParams.get("v") || ((pathParts[0] === "shorts" || pathParts[0] === "embed" || pathParts[0] === "live") ? pathParts[1] : "");
-      return id ? `https://www.youtube.com/embed/${id}` : "";
+      return id ? `https://www.youtube.com/embed/${id}?autoplay=0&playsinline=1&rel=0` : "";
     }
     if (host.endsWith("bilibili.com")) {
       if (host === "player.bilibili.com") return normalLink;
       const match = url.pathname.match(/\/video\/(BV[a-zA-Z0-9]+)/i);
       if (match) {
         const page = url.searchParams.get("p") || "1";
-        return `https://player.bilibili.com/player.html?bvid=${match[1]}&page=${page}&high_quality=1&danmaku=0`;
+        return `https://player.bilibili.com/player.html?bvid=${match[1]}&page=${page}&high_quality=1&danmaku=0&autoplay=0`;
       }
     }
   } catch (error) {}

@@ -81,7 +81,7 @@ window.PORTFOLIO_ZH = {
   projects: [
     {
       id: "punk-plush-panic",
-      order: 1,
+      order: 2,
       featured: true,
       library: true,
       title: "Punk Plush Panic",
@@ -155,7 +155,7 @@ window.PORTFOLIO_ZH = {
     },
     {
       id: "third-person-soulslike",
-      order: 2,
+      order: 1,
       featured: true,
       library: true,
       title: "第三人称类魂战斗原型",
@@ -165,7 +165,7 @@ window.PORTFOLIO_ZH = {
       tools: "Unreal Engine 5、Blueprint、Animation Montage、模块化战斗逻辑、解耦通信、数值调试",
       tags: ["unreal", "blueprint", "combat", "soulslike", "hitDetection", "enemyReaction", "projectile", "numericalDesign", "decoupling", "solo"],
       coverImage: "",
-      videoEmbed: "https://player.bilibili.com/player.html?bvid=BV18sNQ61EdW&page=1&high_quality=1&danmaku=0",
+      videoEmbed: "https://player.bilibili.com/player.html?bvid=BV18sNQ61EdW&page=1&high_quality=1&danmaku=0&autoplay=0",
       videoLink: "https://www.bilibili.com/video/BV18sNQ61EdW/",
       videoFile: "",
       videoPlatform: "Bilibili",
