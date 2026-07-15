@@ -4,14 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Resume & Contact | Rui Qi</title>
-  <meta name="description" content="Rui Qi resume and contact information." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/website-look.css" />
-  <script src="EDIT-ME-English.js"></script>
-  <script src="EDIT-ME-Chinese.js"></script>
-  <script defer src="assets/js/website-functions.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/website-look.css?v=3" />
+  <script src="EDIT-ME-English.js?v=3"></script>
+  <script src="EDIT-ME-Chinese.js?v=3"></script>
+  <script defer src="assets/js/website-functions.js?v=3"></script>
 </head>
 <body data-page="contact">
   <header class="site-header">
@@ -22,7 +21,7 @@
         <a class="nav-link framed" href="resume-contact.html#resume" data-i18n="navResume">Resume</a>
         <a class="nav-link highlight" href="resume-contact.html#contact" data-i18n="navContact">Contact</a>
       </nav>
-      <div class="language-switch" aria-label="Language switch">
+      <div class="language-switch" aria-label="Language switcher">
         <button type="button" data-language-choice="en">EN</button>
         <button type="button" data-language-choice="zh">中文</button>
       </div>
@@ -31,32 +30,37 @@
 
   <main>
     <section class="page-hero container">
-      <p class="eyebrow" data-i18n="resumeContactKicker">Resume & Contact</p>
-      <h1 id="resume-contact-name">Rui Qi</h1>
-      <p data-i18n="resumeContactText">Gameplay Designer / Technical Designer focused on playable systems, prototypes, and readable player feedback.</p>
+      <p class="eyebrow">Resume & Contact</p>
+      <h1>Rui Qi</h1>
+      <p>Gameplay Designer / Technical Designer focused on playable systems, prototypes, and readable player feedback.</p>
     </section>
 
     <section class="section container resume-layout" id="resume">
       <div class="resume-card">
-        <p class="section-kicker" data-i18n="skills">Skills</p>
-        <h2 data-i18n="relevantFocus">Relevant focus.</h2>
-        <div class="skill-list detail-list" id="resume-skill-list"></div>
+        <p class="section-kicker">Skills</p>
+        <h2>Relevant focus.</h2>
+        <div class="skill-list">
+          <div><strong>Engines</strong><span>Unreal Engine 5, Unity, GameMaker, UEFN</span></div>
+          <div><strong>Implementation</strong><span>Blueprint, GML, C# basics, Verse basics</span></div>
+          <div><strong>Technical Design</strong><span>Gameplay systems, combat logic, UI flow, economy loops, interaction design</span></div>
+          <div><strong>Workflow</strong><span>Rapid prototyping, debugging, documentation, AI-assisted workflow</span></div>
+        </div>
       </div>
       <div class="resume-card highlight-card">
-        <p class="section-kicker" data-i18n="resumeKicker">Resume</p>
-        <h2 data-i18n="resumeDownloadTitle">Download PDF.</h2>
-        <p data-i18n-html="resumeDownloadText">Upload your resume PDF, then this button will open it.</p>
-        <a class="button primary" id="resume-download-main" href="assets/resume/Rui_Qi_Resume_EN.pdf" target="_blank" rel="noreferrer" data-i18n="downloadResume">Download Resume</a>
+        <p class="section-kicker">Resume</p>
+        <h2>Download PDF.</h2>
+        <p>Upload your resume to <code>assets/resume/Rui_Qi_Resume.pdf</code>, then this button will open it.</p>
+        <a class="button primary" id="resume-download-main" href="assets/resume/Rui_Qi_Resume.pdf">Download Resume</a>
       </div>
     </section>
 
     <section class="section container" id="contact">
       <div class="section-heading two-col">
         <div>
-          <p class="section-kicker" data-i18n="contactKicker">Contact</p>
-          <h2 data-i18n="reachMe">Reach me here.</h2>
+          <p class="section-kicker">Contact</p>
+          <h2>Reach me here.</h2>
         </div>
-        <p data-i18n="professionalLinks">Only include professional links.</p>
+        <p>Only include professional links. Daily personal social media is better left out unless it shows game development work.</p>
       </div>
       <div class="contact-grid" id="contact-grid"></div>
     </section>
@@ -64,7 +68,7 @@
 
   <footer class="site-footer container">
     <span>© <span id="year"></span> Rui Qi</span>
-    <a href="all-projects.html" data-i18n="projects">Projects</a>
+    <a href="all-projects.html">Projects</a>
   </footer>
 </body>
 </html>

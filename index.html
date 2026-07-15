@@ -7,11 +7,11 @@
   <meta name="description" content="Rui Qi portfolio for gameplay systems, technical design, prototypes, UI/economy loops, and interaction experiments." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/website-look.css" />
-  <script src="EDIT-ME-English.js"></script>
-  <script src="EDIT-ME-Chinese.js"></script>
-  <script defer src="assets/js/website-functions.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/website-look.css?v=3" />
+  <script src="EDIT-ME-English.js?v=3"></script>
+  <script src="EDIT-ME-Chinese.js?v=3"></script>
+  <script defer src="assets/js/website-functions.js?v=3"></script>
 </head>
 <body data-page="home">
   <header class="site-header">
@@ -22,7 +22,7 @@
         <a class="nav-link framed" href="#resume" data-i18n="navResume">Resume</a>
         <a class="nav-link highlight" href="#contact" data-i18n="navContact">Contact</a>
       </nav>
-      <div class="language-switch" aria-label="Language switch">
+      <div class="language-switch" aria-label="Language switcher">
         <button type="button" data-language-choice="en">EN</button>
         <button type="button" data-language-choice="zh">中文</button>
       </div>
@@ -38,8 +38,8 @@
         <p class="hero-subtitle" id="home-subtitle"></p>
         <p class="hero-intro" id="home-intro"></p>
         <div class="hero-actions">
-          <a class="button primary" href="#featured" data-i18n="viewProjects">View Projects</a>
-          <a class="button secondary" id="home-resume-button" href="assets/resume/Rui_Qi_Resume_EN.pdf" target="_blank" rel="noreferrer" data-i18n="downloadResume">Download Resume</a>
+          <a class="button primary" href="#featured">View Projects</a>
+          <a class="button secondary" id="home-resume-button" href="assets/resume/Rui_Qi_Resume.pdf" target="_blank" rel="noreferrer">Download Resume</a>
         </div>
       </div>
       <aside class="hero-reel-card" id="home-reel" aria-label="Demo reel and portfolio snapshot"></aside>
@@ -48,10 +48,10 @@
     <section class="section container" id="featured">
       <div class="section-heading two-col">
         <div>
-          <p class="section-kicker" data-i18n="selectedWork">Selected Work</p>
-          <h2 data-i18n="featuredProjects">Featured Projects</h2>
+          <p class="section-kicker">Selected Work</p>
+          <h2>Featured Projects</h2>
         </div>
-        <p data-i18n="featuredIntro">Selected projects that best represent my gameplay systems, prototyping, and technical design work.</p>
+        <p>Selected projects that best represent my gameplay systems, prototyping, and technical design work.</p>
       </div>
       <div class="featured-list" id="featured-projects"></div>
     </section>
@@ -59,10 +59,10 @@
     <section class="section container soft-panel" id="focus">
       <div class="section-heading two-col">
         <div>
-          <p class="section-kicker" data-i18n="focusKicker">Technical Design Focus</p>
-          <h2 data-i18n="focusTitle">What I Build</h2>
+          <p class="section-kicker">Technical Design Focus</p>
+          <h2>What I Build</h2>
         </div>
-        <p data-i18n="focusIntro">Clear categories help interviewers understand my direction quickly without reading every project page.</p>
+        <p>Clear categories help interviewers understand my direction quickly without reading every project page.</p>
       </div>
       <div class="focus-grid" id="focus-areas"></div>
     </section>
@@ -70,39 +70,39 @@
     <section class="section container" id="library-preview">
       <div class="section-heading two-col">
         <div>
-          <p class="section-kicker" data-i18n="libraryKicker">Project Library</p>
-          <h2 data-i18n="libraryTitle">More prototypes and experiments.</h2>
+          <p class="section-kicker">Project Library</p>
+          <h2>More prototypes and experiments.</h2>
         </div>
-        <p data-i18n="libraryIntro">Smaller projects stay collected in one place, so the homepage remains quick to read.</p>
+        <p>Smaller projects stay collected in one place, so the homepage remains quick to read.</p>
       </div>
       <div class="library-grid compact" id="library-preview-grid"></div>
       <div class="center-action">
-        <a class="button secondary" href="all-projects.html" data-i18n="openLibrary">Open Full Project Library</a>
+        <a class="button secondary" href="all-projects.html">Open Full Project Library</a>
       </div>
     </section>
 
     <section class="section container resume-section" id="resume">
       <div class="resume-layout">
         <div class="resume-card">
-          <p class="section-kicker" data-i18n="resumeKicker">Resume</p>
-          <h2 data-i18n="resumeTitle">Resume preview and download.</h2>
-          <p data-i18n="resumeText">The PDF is displayed here for quick review. You can also open it in a separate page or download it directly.</p>
+          <p class="section-kicker">Resume</p>
+          <h2>Resume preview and download.</h2>
+          <p>The PDF is displayed here for quick review. You can also open it in a separate page or download it directly.</p>
           <div class="resume-actions">
-            <a class="button primary" id="resume-download-main" href="assets/resume/Rui_Qi_Resume_EN.pdf" target="_blank" rel="noreferrer" data-i18n="downloadPdf">Download PDF</a>
-            <a class="button secondary" href="resume-viewer.html" target="_blank" rel="noreferrer" data-i18n="openResumePage">Open Resume Page</a>
+            <a class="button primary" id="resume-download-main" href="assets/resume/Rui_Qi_Resume.pdf" target="_blank" rel="noreferrer">Download PDF</a>
+            <a class="button secondary" href="resume-viewer.html" target="_blank" rel="noreferrer">Open Resume Page</a>
           </div>
         </div>
         <div class="resume-panel">
-          <iframe id="resume-preview-frame" src="assets/resume/Rui_Qi_Resume_EN.pdf" title="Rui Qi resume PDF preview"></iframe>
-          <div class="resume-fallback" data-i18n-html="resumeFallback">If the preview does not load, use the Download PDF button.</div>
+          <iframe id="resume-preview-frame" src="assets/resume/Rui_Qi_Resume.pdf" title="Rui Qi resume PDF preview"></iframe>
+          <div class="resume-fallback">If the preview does not load, use the Download PDF button. Upload your resume as <strong>assets/resume/Rui_Qi_Resume.pdf</strong>.</div>
         </div>
       </div>
     </section>
 
     <section class="contact-strip container" id="contact">
       <div>
-        <p class="section-kicker" data-i18n="contactKicker">Contact</p>
-        <h2 data-i18n="contactTitle">Interested in systems, prototypes, or gameplay feel?</h2>
+        <p class="section-kicker">Contact</p>
+        <h2>Interested in systems, prototypes, or gameplay feel?</h2>
       </div>
       <div class="contact-grid" id="contact-grid"></div>
     </section>
@@ -110,7 +110,7 @@
 
   <footer class="site-footer container">
     <span>© <span id="year"></span> Rui Qi</span>
-    <span data-i18n="footerRole">Gameplay Systems & Technical Design</span>
+    <span>Gameplay Systems & Technical Design</span>
   </footer>
 </body>
 </html>
