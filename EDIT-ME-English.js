@@ -8,9 +8,9 @@ window.PORTFOLIO_EN = {
   site: {
     name: "Rui Qi",
     eyebrow: "Portfolio",
-    title: "Blueprint Systems, Technical Design & Technical Art",
-    subtitle: "Blueprint development, combat systems, modular architecture, numerical and level design, plus foundational VFX.",
-    intro: "I build and iterate playable game systems with Unreal Engine, Godot, and Unity. My core strengths are Unreal Blueprint scripting, modular system architecture, and debugging, supported by combat design, numerical and level design, and foundational VFX and technical art experience.",
+    title: "Technical Designer / Gameplay Systems Designer",
+    subtitle: "Gameplay systems, combat design, rapid prototyping, and in-engine iteration.",
+    intro: "I design and implement gameplay systems through rapid prototyping, Blueprint scripting, in-engine testing, and cross-disciplinary iteration. I focus on turning design goals into clear, playable, and maintainable systems.",
     email: "3150868896@qq.com",
     github: "https://github.com/RuiQiqq",
     linkedin: "#",
@@ -22,9 +22,9 @@ window.PORTFOLIO_EN = {
   },
 
   snapshot: [
-    { label: "Focus", value: "Blueprint Systems · Technical Design · Level & Numerical Design · VFX" },
+    { label: "Focus", value: "Gameplay Systems · Technical Design · Combat Design" },
     { label: "Tools", value: "Unreal Engine · Godot · Unity" },
-    { label: "Target", value: "Technical Designer / Blueprint Developer roles" }
+    { label: "Target", value: "Technical Designer / Gameplay Systems Designer" }
   ],
 
   focusAreas: [
@@ -164,7 +164,7 @@ window.PORTFOLIO_EN = {
       summary: "A third-person action prototype built entirely in Unreal Blueprint. It focuses on attack flow, dodge timing, hit detection, enemy reactions, projectile behavior, numerical tuning, and modular system communication without relying on rigid hard-coded references.",
       tools: "Unreal Engine 5, Blueprint, Animation Montage, Modular Combat Logic, Decoupled Communication, Numerical Tuning",
       tags: ["unreal", "blueprint", "combat", "soulslike", "hitDetection", "enemyReaction", "projectile", "numericalDesign", "decoupling", "solo"],
-      coverImage: "",
+      coverImage: "assets/images/soulslike-video-cover-en.jpg",
       videoEmbed: "https://www.youtube.com/embed/IDIwe-tPvXk?autoplay=0&playsinline=1&rel=0",
       videoLink: "https://youtu.be/IDIwe-tPvXk",
       videoFile: "",

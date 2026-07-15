@@ -28,7 +28,3 @@ The website automatically creates the embedded player. Use a full Bilibili BV li
 Copy one complete project object into both language files. Keep the same `id` in English and Chinese, then translate the visible text and use the appropriate platform-specific links.
 
 See `中文修改指南.md` for detailed instructions.
-
-## Blueprint / System Breakdown
-
-This version includes `system-breakdown.html`, a reusable page for Blueprint screenshots, system diagrams, and technical-design explanations. Edit each project's `blueprintSections` array in the English and Chinese content files. Put screenshots in `assets/images/` and fill the section's `image` path.

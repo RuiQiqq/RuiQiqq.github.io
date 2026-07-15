@@ -52,6 +52,7 @@ const UI = {
     backProject: "Back to project",
     imagePlaceholder: "Blueprint / diagram image slot",
     openVideo: "Open Video",
+    playHere: "Play here",
     details: "Details",
     openLink: "Open Link",
     downloadFile: "Download File",
@@ -139,6 +140,7 @@ const UI = {
     backProject: "返回项目详情",
     imagePlaceholder: "蓝图／流程图图片位置",
     openVideo: "打开 Bilibili 视频",
+    playHere: "在此播放",
     details: "查看详情",
     openLink: "打开链接",
     downloadFile: "下载文件",
@@ -358,6 +360,24 @@ function embeddedMediaHtml(embedUrl, title) {
   return `<div class="video-box"><iframe src="${escapeHtml(withAutoplayDisabled(embedUrl))}" title="${escapeHtml(title)}" loading="lazy" scrolling="no" allow="fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;
 }
 
+function withAutoplayAfterClick(embedUrl) {
+  if (!embedUrl) return "";
+  try {
+    const url = new URL(embedUrl);
+    const host = url.hostname.replace(/^www\./, "");
+    if (host === "youtu.be" || host.endsWith("youtube.com") || host.endsWith("youtube-nocookie.com") || host === "player.bilibili.com" || host.endsWith("bilibili.com")) {
+      url.searchParams.set("autoplay", "1");
+    }
+    if (host === "youtu.be" || host.endsWith("youtube.com") || host.endsWith("youtube-nocookie.com")) {
+      url.searchParams.set("playsinline", "1");
+      url.searchParams.set("rel", "0");
+    }
+    return url.toString();
+  } catch (error) {
+    return embedUrl;
+  }
+}
+
 function automaticEmbedUrl(explicitEmbed, normalLink) {
   if (isRealLink(explicitEmbed)) return explicitEmbed;
   if (!isRealLink(normalLink)) return "";
@@ -397,6 +417,38 @@ function mediaHtml(project) {
   return `<div class="cover-placeholder"><span>${escapeHtml(project.category || TEXT.projectBreakdown)}</span></div>`;
 }
 
+function featuredMediaHtml(project) {
+  const embedUrl = automaticEmbedUrl(project.videoEmbed, project.videoLink);
+  if (!embedUrl || !project.coverImage) return mediaHtml(project);
+  const title = `${project.title} ${project.videoPlatform || TEXT.video}`;
+  return `
+    <div class="inline-video-preview" data-inline-video-preview data-embed-url="${escapeHtml(embedUrl)}" data-video-title="${escapeHtml(title)}" style="--preview-poster: url('${escapeHtml(project.coverImage)}')">
+      <div class="inline-video-frame">
+        <img src="${escapeHtml(project.coverImage)}" alt="${escapeHtml(project.title)}">
+        <button class="inline-video-play" type="button" data-inline-video-play aria-label="${escapeHtml(TEXT.playHere)}: ${escapeHtml(project.title)}">
+          <span class="inline-video-play-icon">▶</span>
+          <span class="inline-video-play-label">${escapeHtml(TEXT.playHere)}</span>
+        </button>
+      </div>
+    </div>`;
+}
+
+function bindInlineVideoPreviews() {
+  document.querySelectorAll("[data-inline-video-preview]").forEach(preview => {
+    const button = preview.querySelector("[data-inline-video-play]");
+    if (!button || button.dataset.bound === "true") return;
+    button.dataset.bound = "true";
+    button.addEventListener("click", () => {
+      const frame = preview.querySelector(".inline-video-frame");
+      const embedUrl = preview.dataset.embedUrl || "";
+      const title = preview.dataset.videoTitle || TEXT.video;
+      if (!frame || !embedUrl) return;
+      frame.classList.add("is-playing");
+      frame.innerHTML = `<iframe src="${escapeHtml(withAutoplayAfterClick(embedUrl))}" title="${escapeHtml(title)}" loading="eager" scrolling="no" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+    });
+  });
+}
+
 function hasBlueprintSections(project) {
   return Array.isArray(project?.blueprintSections) && project.blueprintSections.length > 0;
 }
@@ -419,7 +471,7 @@ function projectExtraLinksHtml(project) {
 function featuredProjectCard(project) {
   return `
     <article class="featured-card">
-      <div class="project-media">${mediaHtml(project)}</div>
+      <div class="project-media${automaticEmbedUrl(project.videoEmbed, project.videoLink) && project.coverImage ? " project-media--preview" : ""}">${featuredMediaHtml(project)}</div>
       <div class="project-body">
         <div>
           <div class="project-meta">${escapeHtml(safeText(project.category))}</div>
@@ -583,7 +635,10 @@ function renderHome() {
     [$("#home-resume-button"), $("#resume-download-main")].filter(Boolean)
   );
   if ($("#home-reel")) $("#home-reel").innerHTML = demoReelHtml(site);
-  if ($("#featured-projects")) $("#featured-projects").innerHTML = projects.filter(p => p.featured).map(featuredProjectCard).join("");
+  if ($("#featured-projects")) {
+    $("#featured-projects").innerHTML = projects.filter(p => p.featured).map(featuredProjectCard).join("");
+    bindInlineVideoPreviews();
+  }
   if ($("#focus-areas")) {
     $("#focus-areas").innerHTML = (DATA.focusAreas || []).map(area => `<article class="focus-card"><h3>${escapeHtml(area.title)}</h3><p>${escapeHtml(area.text)}</p></article>`).join("");
   }

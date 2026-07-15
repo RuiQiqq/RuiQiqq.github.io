@@ -8,9 +8,9 @@ window.PORTFOLIO_ZH = {
   site: {
     name: "祁睿",
     eyebrow: "作品集",
-    title: "蓝图系统、技术设计与基础技术美术",
-    subtitle: "蓝图开发、战斗系统、模块化架构、数值与关卡设计，以及基础 VFX。",
-    intro: "我使用 Unreal Engine、Godot 和 Unity 制作并迭代可玩的游戏系统。我的核心能力是 Unreal Blueprint 脚本、模块化系统结构与调试，同时具备战斗设计、数值与关卡设计，以及基础 VFX 和技术美术经验。",
+    title: "技术策划／玩法系统设计",
+    subtitle: "玩法系统、战斗设计、快速原型与引擎内迭代。",
+    intro: "我通过快速原型、蓝图脚本、引擎内测试和跨职能协作设计并实现玩法系统，重点是把设计目标转化为清晰、可玩且便于维护的系统。",
     email: "3150868896@qq.com",
     github: "https://github.com/RuiQiqq",
     linkedin: "#",
@@ -22,9 +22,9 @@ window.PORTFOLIO_ZH = {
   },
 
   snapshot: [
-    { label: "方向", value: "蓝图系统 · 技术设计 · 数值与关卡设计 · VFX" },
+    { label: "方向", value: "玩法系统 · 技术设计 · 战斗设计" },
     { label: "工具", value: "Unreal Engine · Godot · Unity" },
-    { label: "目标岗位", value: "技术策划／技术设计／蓝图开发" }
+    { label: "目标岗位", value: "技术策划／玩法系统设计" }
   ],
 
   focusAreas: [
@@ -164,7 +164,7 @@ window.PORTFOLIO_ZH = {
       summary: "一个完全使用 Unreal Blueprint 搭建的第三人称动作原型，重点研究攻击流程、闪避时机、命中检测、敌人反馈、射弹行为、数值调试，以及不依赖僵硬硬编码引用的模块化系统通信。",
       tools: "Unreal Engine 5、Blueprint、Animation Montage、模块化战斗逻辑、解耦通信、数值调试",
       tags: ["unreal", "blueprint", "combat", "soulslike", "hitDetection", "enemyReaction", "projectile", "numericalDesign", "decoupling", "solo"],
-      coverImage: "",
+      coverImage: "assets/images/soulslike-video-cover-zh.jpg",
       videoEmbed: "https://player.bilibili.com/player.html?bvid=BV18sNQ61EdW&page=1&high_quality=1&danmaku=0&autoplay=0",
       videoLink: "https://www.bilibili.com/video/BV18sNQ61EdW/",
       videoFile: "",
