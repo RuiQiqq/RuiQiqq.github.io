@@ -14,7 +14,7 @@
 
 window.PORTFOLIO_ZH = {
   site: {
-    name: "Rui Qi",
+    name: "祁睿",
     eyebrow: "作品集",
     title: "玩法系统与技术设计",
     subtitle: "玩法系统、战斗原型、UI／经济循环与交互实验。",
