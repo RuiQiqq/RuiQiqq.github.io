@@ -398,6 +398,46 @@ h1, h2, h3 {
 .filter-bar { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 26px; }
 .filter-button { border: 1px solid var(--line); background: var(--panel); color: var(--muted); border-radius: 999px; padding: 9px 12px; cursor: pointer; font-weight: 850; }
 .filter-button.active, .filter-button:hover { border-color: var(--pink); color: white; background: var(--pink); }
+
+.button.disabled,
+.button[aria-disabled="true"] {
+  opacity: 0.58;
+  cursor: not-allowed;
+  pointer-events: none;
+  box-shadow: none;
+}
+
+.resume-missing {
+  min-height: 520px;
+  padding: 48px;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  gap: 12px;
+  color: var(--text);
+  background: radial-gradient(circle at 50% 35%, rgba(209,11,112,0.10), transparent 42%);
+}
+
+.resume-missing strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: clamp(24px, 3vw, 36px);
+  line-height: 1.15;
+}
+
+.resume-missing p {
+  max-width: 620px;
+  margin: 0 auto;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.contact-link.disabled {
+  opacity: 0.58;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 .project-detail-grid { display: grid; grid-template-columns: 1fr 0.8fr; gap: 28px; align-items: center; }
 .detail-section { padding: 34px; margin-top: 22px; }
 .detail-section h2 { font-size: 36px; margin-bottom: 14px; }

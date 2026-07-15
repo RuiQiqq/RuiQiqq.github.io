@@ -7,10 +7,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/website-look.css?v=3" />
-  <script src="EDIT-ME-English.js?v=3"></script>
-  <script src="EDIT-ME-Chinese.js?v=3"></script>
-  <script defer src="assets/js/website-functions.js?v=3"></script>
+  <link rel="stylesheet" href="assets/css/website-look.css?v=5" />
+  <script src="EDIT-ME-English.js?v=5"></script>
+  <script src="EDIT-ME-Chinese.js?v=5"></script>
+  <script defer src="assets/js/website-functions.js?v=5"></script>
 </head>
 <body data-page="resume">
   <header class="site-header">
@@ -30,25 +30,25 @@
 
   <main>
     <section class="page-hero container">
-      <p class="eyebrow">Resume</p>
-      <h1>Resume Preview</h1>
-      <p>This page displays the PDF directly and includes a download button.</p>
+      <p class="eyebrow" data-i18n="resumeViewerKicker">Resume</p>
+      <h1 data-i18n="resumeViewerTitle">Resume Preview</h1>
+      <p data-i18n="resumeViewerText">This page displays the PDF directly and includes a download button.</p>
       <div class="hero-actions">
-        <a class="button primary" id="resume-viewer-download" href="assets/resume/Rui_Qi_Resume.pdf" target="_blank" rel="noreferrer">Download PDF</a>
-        <a class="button secondary" href="index.html#resume">Back to Portfolio</a>
+        <a class="button primary" id="resume-viewer-download" href="#" target="_blank" rel="noreferrer" data-i18n="downloadPdf">Download PDF</a>
+        <a class="button secondary" href="index.html#resume" data-i18n="backPortfolio">Back to Portfolio</a>
       </div>
     </section>
     <section class="container section">
-      <div class="resume-panel">
-        <iframe id="resume-full-frame" src="assets/resume/Rui_Qi_Resume.pdf" title="Rui Qi resume full PDF preview"></iframe>
-        <div class="resume-fallback">If the preview does not load, use the Download PDF button. Upload your resume as <strong>assets/resume/Rui_Qi_Resume.pdf</strong>.</div>
+      <div class="resume-panel" id="resume-full-panel">
+        <iframe id="resume-full-frame" title="Full resume PDF preview"></iframe>
+        <div class="resume-fallback" data-i18n-html="resumeFallback">If the preview does not load, use the Download PDF button.</div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer container">
-    <span>© <span id="year"></span> Rui Qi</span>
-    <span><a href="index.html#contact">Contact</a></span>
+    <span>© <span id="year"></span> <span data-site-name>Rui Qi</span></span>
+    <span><a href="index.html#contact" data-i18n="navContact">Contact</a></span>
   </footer>
 </body>
 </html>

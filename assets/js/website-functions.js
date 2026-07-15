@@ -29,6 +29,9 @@ const UI = {
     downloadPdf: "Download PDF",
     openResumePage: "Open Resume Page",
     resumeFallback: "If the preview does not load, use the Download PDF button. Upload the English resume as <strong>assets/resume/Rui_Qi_Resume_EN.pdf</strong>.",
+    resumeMissingTitle: "Resume PDF not uploaded yet",
+    resumeMissingText: "Upload the English resume to assets/resume/Rui_Qi_Resume_EN.pdf. The preview and download buttons will become available automatically.",
+    resumeUnavailable: "Resume Not Uploaded",
     contactKicker: "Contact",
     contactTitle: "Interested in systems, prototypes, or gameplay feel?",
     footerRole: "Gameplay Systems & Technical Design",
@@ -107,6 +110,9 @@ const UI = {
     downloadPdf: "下载中文 PDF",
     openResumePage: "打开简历页面",
     resumeFallback: "如果预览无法加载，请使用下载按钮。请将中文简历上传为 <strong>assets/resume/Rui_Qi_Resume_ZH.pdf</strong>。",
+    resumeMissingTitle: "中文简历尚未上传",
+    resumeMissingText: "请将中文简历上传到 assets/resume/Rui_Qi_Resume_ZH.pdf。上传后，预览窗口和下载按钮会自动启用。",
+    resumeUnavailable: "中文简历尚未上传",
     contactKicker: "联系方式",
     contactTitle: "欢迎交流玩法系统、原型设计与游戏体验。",
     footerRole: "玩法系统与技术设计",
@@ -144,9 +150,9 @@ const UI = {
     youtubeNote: "请在 <strong>EDIT-ME-Chinese.js</strong> 中添加 Bilibili 嵌入链接。",
     email: "邮箱",
     resume: "中文简历",
-    github: "GitHub",
-    linkedin: "LinkedIn",
-    openProfile: "打开主页",
+    github: "GitHub 主页",
+    linkedin: "LinkedIn 主页",
+    openProfile: "打开职业主页",
     addLinkLater: "暂未添加",
     contactDownloadPdf: "下载中文 PDF",
     resumeViewerKicker: "中文简历",
@@ -292,8 +298,8 @@ function applyStaticTranslations() {
     const key = element.dataset.i18nHtml;
     if (TEXT[key] !== undefined) element.innerHTML = TEXT[key];
   });
-  document.querySelectorAll(".wordmark").forEach(element => {
-    element.textContent = safeText(DATA.site?.name, "Rui Qi");
+  document.querySelectorAll(".wordmark, [data-site-name]").forEach(element => {
+    element.textContent = safeText(DATA.site?.name, CURRENT_LANGUAGE === "zh" ? "祁睿" : "Rui Qi");
   });
 }
 
@@ -448,20 +454,78 @@ function demoReelHtml(site) {
     <div class="snapshot-mini">${snapshotRows}</div>`;
 }
 
+const resumeAvailabilityCache = new Map();
+
+async function resumeFileExists(url) {
+  if (!isRealLink(url)) return false;
+  if (resumeAvailabilityCache.has(url)) return resumeAvailabilityCache.get(url);
+  const request = fetch(url, { method: "HEAD", cache: "no-store" })
+    .then(response => response.ok)
+    .catch(() => false);
+  resumeAvailabilityCache.set(url, request);
+  return request;
+}
+
+function setResumeButtonState(button, url, available) {
+  if (!button) return;
+  if (available) {
+    button.href = url;
+    button.classList.remove("disabled");
+    button.removeAttribute("aria-disabled");
+    button.onclick = null;
+  } else {
+    button.href = "#";
+    button.classList.add("disabled");
+    button.setAttribute("aria-disabled", "true");
+    button.textContent = TEXT.resumeUnavailable;
+    button.onclick = event => event.preventDefault();
+  }
+}
+
+async function configureResumeAssets(url, frame, panel, buttons = []) {
+  const available = await resumeFileExists(url);
+  buttons.forEach(button => setResumeButtonState(button, url, available));
+  if (!frame || !panel) return;
+  if (available) {
+    frame.src = url;
+    return;
+  }
+  panel.innerHTML = `
+    <div class="resume-missing">
+      <strong>${escapeHtml(TEXT.resumeMissingTitle)}</strong>
+      <p>${escapeHtml(TEXT.resumeMissingText)}</p>
+    </div>
+    <div class="resume-fallback">${TEXT.resumeFallback}</div>`;
+}
+
 function renderContactLinks() {
   const site = DATA.site || {};
   const contactGrid = $("#contact-grid");
   if (!contactGrid) return;
   const links = [
-    { label: TEXT.email, value: site.email, href: `mailto:${site.email}` },
-    { label: TEXT.resume, value: TEXT.contactDownloadPdf, href: site.resumeUrl },
-    { label: TEXT.github, value: "RuiQiqq", href: site.github },
-    { label: TEXT.linkedin, value: site.linkedin && site.linkedin !== "#" ? TEXT.openProfile : TEXT.addLinkLater, href: site.linkedin || "#" }
+    { type: "email", label: TEXT.email, value: site.email, href: `mailto:${site.email}` },
+    { type: "resume", label: TEXT.resume, value: TEXT.contactDownloadPdf, href: site.resumeUrl },
+    { type: "github", label: TEXT.github, value: "RuiQiqq", href: site.github },
+    { type: "linkedin", label: TEXT.linkedin, value: site.linkedin && site.linkedin !== "#" ? TEXT.openProfile : TEXT.addLinkLater, href: site.linkedin || "#" }
   ];
   contactGrid.innerHTML = links.map(link => `
-    <a class="contact-link" href="${escapeHtml(link.href)}" ${link.href !== "#" ? 'target="_blank" rel="noreferrer"' : ""}>
+    <a class="contact-link" data-contact-type="${escapeHtml(link.type)}" href="${escapeHtml(link.href)}" ${link.href !== "#" ? 'target="_blank" rel="noreferrer"' : ""}>
       <div><strong>${escapeHtml(link.label)}</strong><span>${escapeHtml(link.value || "")}</span></div><span>→</span>
     </a>`).join("");
+
+  const resumeLink = contactGrid.querySelector('[data-contact-type="resume"]');
+  if (resumeLink) {
+    resumeFileExists(site.resumeUrl).then(available => {
+      if (available) return;
+      resumeLink.href = "#";
+      resumeLink.classList.add("disabled");
+      resumeLink.removeAttribute("target");
+      resumeLink.removeAttribute("rel");
+      const value = resumeLink.querySelector("span");
+      if (value) value.textContent = TEXT.resumeUnavailable;
+      resumeLink.addEventListener("click", event => event.preventDefault());
+    });
+  }
 }
 
 function renderHome() {
@@ -471,9 +535,12 @@ function renderHome() {
   if ($("#home-title")) $("#home-title").textContent = safeText(site.title);
   if ($("#home-subtitle")) $("#home-subtitle").textContent = safeText(site.subtitle);
   if ($("#home-intro")) $("#home-intro").textContent = safeText(site.intro);
-  if ($("#home-resume-button")) $("#home-resume-button").href = safeText(site.resumeUrl);
-  if ($("#resume-download-main")) $("#resume-download-main").href = safeText(site.resumeUrl);
-  if ($("#resume-preview-frame")) $("#resume-preview-frame").src = safeText(site.resumeUrl);
+  configureResumeAssets(
+    safeText(site.resumeUrl),
+    $("#resume-preview-frame"),
+    $("#resume-preview-panel"),
+    [$("#home-resume-button"), $("#resume-download-main")].filter(Boolean)
+  );
   if ($("#home-reel")) $("#home-reel").innerHTML = demoReelHtml(site);
   if ($("#featured-projects")) $("#featured-projects").innerHTML = projects.filter(p => p.featured).map(featuredProjectCard).join("");
   if ($("#focus-areas")) {
@@ -557,18 +624,25 @@ function renderContactPage() {
   if ($("#resume-skill-list")) {
     $("#resume-skill-list").innerHTML = (DATA.resumeSkills || []).map(item => `<div><strong>${escapeHtml(item.label)}</strong><span>${escapeHtml(item.value)}</span></div>`).join("");
   }
-  if ($("#resume-download-main")) $("#resume-download-main").href = safeText(site.resumeUrl);
+  configureResumeAssets(
+    safeText(site.resumeUrl),
+    null,
+    null,
+    [$("#resume-download-main")].filter(Boolean)
+  );
   renderContactLinks();
   updatePageMetadata(`${TEXT.resumeContactKicker} | ${safeText(site.name, "Rui Qi")}`, TEXT.resumeContactText);
 }
 
 function renderResumeViewer() {
   const site = DATA.site || {};
-  const frame = $("#resume-full-frame");
-  const download = $("#resume-viewer-download");
-  if (frame) frame.src = safeText(site.resumeUrl);
-  if (download) download.href = safeText(site.resumeUrl);
-  updatePageMetadata(`${TEXT.resumeViewerKicker} | ${safeText(site.name, "Rui Qi")}`, TEXT.resumeViewerText);
+  configureResumeAssets(
+    safeText(site.resumeUrl),
+    $("#resume-full-frame"),
+    $("#resume-full-panel"),
+    [$("#resume-viewer-download")].filter(Boolean)
+  );
+  updatePageMetadata(`${TEXT.resumeViewerKicker} | ${safeText(site.name, CURRENT_LANGUAGE === "zh" ? "祁睿" : "Rui Qi")}`, TEXT.resumeViewerText);
 }
 
 function setYear() {
