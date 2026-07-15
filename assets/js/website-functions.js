@@ -53,6 +53,7 @@ const UI = {
     imagePlaceholder: "Blueprint / diagram image slot",
     openVideo: "Open Video",
     playHere: "Play here",
+    loadingVideo: "Loading video…",
     details: "Details",
     openLink: "Open Link",
     downloadFile: "Download File",
@@ -141,6 +142,7 @@ const UI = {
     imagePlaceholder: "蓝图／流程图图片位置",
     openVideo: "打开 Bilibili 视频",
     playHere: "在此播放",
+    loadingVideo: "正在载入视频…",
     details: "查看详情",
     openLink: "打开链接",
     downloadFile: "下载文件",
@@ -422,9 +424,9 @@ function featuredMediaHtml(project) {
   if (!embedUrl || !project.coverImage) return mediaHtml(project);
   const title = `${project.title} ${project.videoPlatform || TEXT.video}`;
   return `
-    <div class="inline-video-preview" data-inline-video-preview data-embed-url="${escapeHtml(embedUrl)}" data-video-title="${escapeHtml(title)}" style="--preview-poster: url('${escapeHtml(project.coverImage)}')">
+    <div class="inline-video-preview" data-inline-video-preview data-embed-url="${escapeHtml(embedUrl)}" data-video-title="${escapeHtml(title)}">
       <div class="inline-video-frame">
-        <img src="${escapeHtml(project.coverImage)}" alt="${escapeHtml(project.title)}">
+        <img src="${escapeHtml(project.coverImage)}" alt="${escapeHtml(project.title)}" decoding="async" fetchpriority="high">
         <button class="inline-video-play" type="button" data-inline-video-play aria-label="${escapeHtml(TEXT.playHere)}: ${escapeHtml(project.title)}">
           <span class="inline-video-play-icon">▶</span>
           <span class="inline-video-play-label">${escapeHtml(TEXT.playHere)}</span>
@@ -443,8 +445,22 @@ function bindInlineVideoPreviews() {
       const embedUrl = preview.dataset.embedUrl || "";
       const title = preview.dataset.videoTitle || TEXT.video;
       if (!frame || !embedUrl) return;
+
+      button.disabled = true;
       frame.classList.add("is-playing");
-      frame.innerHTML = `<iframe src="${escapeHtml(withAutoplayAfterClick(embedUrl))}" title="${escapeHtml(title)}" loading="eager" scrolling="no" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+      frame.innerHTML = `<div class="inline-video-loader" aria-live="polite">${escapeHtml(TEXT.loadingVideo || "Loading video")}</div>`;
+
+      const iframe = document.createElement("iframe");
+      iframe.src = withAutoplayAfterClick(embedUrl);
+      iframe.title = title;
+      iframe.loading = "eager";
+      iframe.scrolling = "no";
+      iframe.allow = "autoplay; fullscreen; picture-in-picture";
+      iframe.allowFullscreen = true;
+      iframe.addEventListener("load", () => frame.classList.add("is-loaded"), { once: true });
+      frame.appendChild(iframe);
+
+      window.setTimeout(() => frame.classList.add("is-loaded"), 3500);
     });
   });
 }
