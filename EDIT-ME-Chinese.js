@@ -1,15 +1,7 @@
 /*
   EDIT-ME-Chinese.js
-  ------------------------------------------------------------
-  这个文件只控制网站的中文版本。
-  英文版本在 EDIT-ME-English.js。
-
-  重要规则：
-  - 中英文对应项目的 id 必须完全相同。
-  - 中文视频请填写 Bilibili 嵌入链接和普通播放链接。
-  - 中文简历默认路径为 assets/resume/Rui_Qi_Resume_ZH.pdf。
-  - 图片可以与英文版共用，也可以分别设置。
-  - 文字必须放在英文半角双引号 " " 中。
+  这个文件控制网站的中文版本。
+  中英文对应项目的 id 必须完全相同。
 */
 
 window.PORTFOLIO_ZH = {
@@ -17,17 +9,12 @@ window.PORTFOLIO_ZH = {
     name: "祁睿",
     eyebrow: "作品集",
     title: "玩法系统与技术设计",
-    subtitle: "玩法系统、战斗原型、UI／经济循环与交互实验。",
-    intro: "我使用 Unreal Engine、GameMaker、Unity 和 UEFN 制作可玩的游戏原型，重点关注系统逻辑、玩家反馈和快速迭代。",
+    subtitle: "战斗系统、数值设计、可玩原型与迭代式玩法开发。",
+    intro: "我使用 Unreal Engine、Godot 和 Unity 制作可玩的游戏原型，重点关注玩法逻辑、战斗反馈、数值调试和快速迭代。",
     email: "3150868896@qq.com",
     github: "https://github.com/RuiQiqq",
     linkedin: "#",
     resumeUrl: "assets/resume/Rui_Qi_Resume_ZH.pdf",
-
-    // 中文演示视频设置
-    // Bilibili 嵌入链接示例：
-    // "https://player.bilibili.com/player.html?bvid=BVxxxxxxxxxx&page=1&high_quality=1&danmaku=0"
-    // Bilibili 普通链接示例："https://www.bilibili.com/video/BVxxxxxxxxxx"
     demoReelEmbed: "",
     demoReelLink: "#",
     demoReelCoverImage: "",
@@ -35,73 +22,68 @@ window.PORTFOLIO_ZH = {
   },
 
   snapshot: [
-    { label: "方向", value: "玩法系统 · 战斗 · UI／经济 · 交互" },
-    { label: "工具", value: "UE5 蓝图 · GameMaker · Unity · UEFN" },
+    { label: "方向", value: "战斗 · 玩法系统 · 数值设计 · 原型开发" },
+    { label: "工具", value: "Unreal Engine · Godot · Unity" },
     { label: "目标岗位", value: "玩法策划／技术策划" }
   ],
 
   focusAreas: [
     {
-      title: "战斗与交互",
-      text: "攻击状态、命中检测、敌人受击、输入时机、交互逻辑和战斗反馈。"
+      title: "战斗系统",
+      text: "攻击流程、命中检测、敌人受击、闪避时机、射弹、状态切换和清晰的战斗反馈。"
     },
     {
-      title: "UI 与经济系统",
-      text: "交易界面、库存流程、价格事件、每日循环，以及清晰可读的决策压力。"
+      title: "数值设计",
+      text: "玩法数值、伤害关系、冷却时间、判定窗口、成长参数，以及在引擎内反复测试和调整。"
     },
     {
-      title: "原型实现",
-      text: "使用 Unreal 蓝图、GameMaker GML、Unity 和 UEFN Verse 快速制作并测试可玩原型。"
+      title: "可玩原型",
+      text: "使用 Unreal Engine、Godot 和 Unity 快速实现玩法想法，在投入最终表现前先验证实际体验。"
     },
     {
-      title: "现代工作流程",
-      text: "使用 AI 辅助排查问题、研究实现方法和整理文档，但最终设计决策与数值调试由我在引擎内完成。"
+      title: "迭代与文档",
+      text: "测试玩家体验、定位问题、记录设计决策，并通过多轮实现持续完善系统。"
     }
   ],
 
   resumeSkills: [
-    { label: "游戏引擎", value: "Unreal Engine 5、Unity、GameMaker、UEFN" },
-    { label: "实现能力", value: "Blueprint、GML、C# 基础、Verse 基础" },
-    { label: "技术设计", value: "玩法系统、战斗逻辑、UI 流程、经济循环、交互设计" },
-    { label: "工作流程", value: "快速原型、调试、文档整理、AI 辅助工作流" }
+    { label: "游戏引擎", value: "Unreal Engine、Godot、Unity" },
+    { label: "玩法实现", value: "战斗系统、玩法逻辑、玩家反馈、原型实现" },
+    { label: "设计能力", value: "数值调试、机制迭代、系统文档、玩法分析" },
+    { label: "工作流程", value: "快速原型、调试、试玩测试、文档整理、AI 辅助研究" }
   ],
 
   tags: {
-    ue5: "UE5",
+    unreal: "Unreal Engine",
+    godot: "Godot",
+    unity: "Unity",
     blueprint: "蓝图",
     combat: "战斗系统",
+    soulslike: "类魂",
     hitDetection: "命中检测",
     enemyReaction: "敌人反馈",
-    gamemaker: "GameMaker",
-    gml: "GML",
-    ui: "UI 系统",
-    economy: "经济系统",
-    interaction: "交互设计",
-    hardware: "硬件",
-    unity: "Unity",
-    uefn: "UEFN",
-    verse: "Verse",
+    projectile: "射弹系统",
+    numericalDesign: "数值设计",
+    gameplaySystem: "玩法系统",
     prototype: "原型",
     team: "团队项目",
     solo: "个人项目",
-    aiWorkflow: "AI 辅助工作流"
+    iteration: "迭代"
   },
 
   projects: [
     {
-      id: "combat-system",
+      id: "punk-plush-panic",
       order: 1,
       featured: true,
       library: true,
-      title: "第三人称战斗系统原型",
-      category: "Unreal Engine · 蓝图 · 战斗",
-      role: "技术策划／蓝图实现",
-      summary: "一个围绕攻击状态流程、命中检测、敌人受击、伤害逻辑、冷却和战斗反馈制作的战斗原型。",
-      tools: "Unreal Engine 5、Blueprint、Animation Montage、玩法状态逻辑",
-      tags: ["ue5", "blueprint", "combat", "hitDetection", "enemyReaction", "prototype"],
+      title: "Punk Plush Panic",
+      category: "游戏原型 · 玩法设计 · 团队项目",
+      role: "玩法设计／原型开发",
+      summary: "一个围绕明确主题制作的可玩游戏项目，重点展示玩法体验验证、开发过程中的迭代，以及最终原型呈现。",
+      tools: "Unreal Engine、玩法原型、试玩测试、设计文档",
+      tags: ["unreal", "gameplaySystem", "prototype", "team", "iteration"],
       coverImage: "",
-
-      // 中文项目视频请使用 Bilibili，不要复制英文版 YouTube 链接。
       videoEmbed: "",
       videoLink: "#",
       videoFile: "",
@@ -109,38 +91,37 @@ window.PORTFOLIO_ZH = {
       externalLinks: [],
       downloadLinks: [],
       detail: {
-        overview: "这是一个第三人称战斗原型，主要展示攻击状态、命中检测、敌人受击、伤害逻辑、冷却和战斗反馈。项目使用了占位资源，重点是玩法系统行为与迭代过程。",
+        overview: "Punk Plush Panic 是一个通过原型开发与持续迭代完成的可玩游戏项目。该页面将用于展示最终玩法、我的个人贡献，以及设计在开发过程中的变化。",
         whatIBuilt: [
-          "实现攻击输入与战斗状态逻辑。",
-          "搭建命中检测和伤害处理。",
-          "加入敌人生命值、受击反应和死亡行为。",
-          "调整冷却时间和攻击判定窗口。",
-          "将战斗事件连接到清晰的玩家反馈。"
+          "参与玩法设计与原型开发。",
+          "测试核心概念是否能够传达预期的玩家体验。",
+          "根据实际实现和试玩结果调整玩法。",
+          "整理项目资料，用于最终展示和作品集说明。"
         ],
         breakdown: [
-          { label: "输入", text: "玩家通过输入事件触发攻击行为。" },
-          { label: "逻辑", text: "系统检查战斗状态、冷却、有效命中窗口和敌人重叠。" },
-          { label: "反馈", text: "敌人通过生命值变化、受击反应、时机反馈和状态切换回应攻击。" },
-          { label: "迭代", text: "通过调整攻击时机与反馈数值，提高原型的可读性。" }
+          { label: "概念", text: "项目从明确的主题方向和体验目标出发。" },
+          { label: "原型", text: "尽早将核心想法实现为可玩的内容，以实际体验而不是只依靠文字方案进行判断。" },
+          { label: "测试", text: "通过试玩和实际实现结果，发现体验中不清晰或效果不足的部分。" },
+          { label: "迭代", text: "持续调整设计，提高玩法可读性、节奏，以及主题与玩法之间的联系。" }
         ],
         challenges: [
-          "占位动画限制了最终视觉完成度，因此该项目重点展示系统时机和反馈清晰度。",
-          "后续可进一步改进移动与攻击状态之间的动画混合。"
+          "当前项目页面仍需要补充最终截图、视频和更准确的个人贡献说明。",
+          "后续应使用完成版本中的具体案例替换目前较概括的描述。"
         ],
-        workflowNotes: "AI 工具可用于辅助排查问题、研究实现方式和整理文档；最终的设计判断、引擎内测试和系统调试由我完成。"
+        workflowNotes: "最终作品集页面需要明确区分我的个人贡献与其他团队成员完成的内容。"
       }
     },
     {
-      id: "market-simulation",
+      id: "third-person-soulslike",
       order: 2,
       featured: true,
       library: true,
-      title: "市场模拟 UI 原型",
-      category: "GameMaker · UI · 经济系统",
-      role: "玩法／UI 系统设计",
-      summary: "一个桌面式市场游戏原型，包含交易界面、库存追踪、每日事件驱动的价格变化和现金流失败条件。",
-      tools: "GameMaker、GML、UI 状态管理、经济模拟",
-      tags: ["gamemaker", "gml", "ui", "economy", "prototype"],
+      title: "第三人称类魂战斗原型",
+      category: "Unreal Engine · 蓝图 · 战斗系统",
+      role: "玩法设计／蓝图实现",
+      summary: "一个第三人称动作原型，重点研究攻击流程、闪避时机、命中检测、敌人受击、射弹行为和清晰的战斗反馈。",
+      tools: "Unreal Engine、Blueprint、Animation Montage、战斗状态逻辑、数值调试",
+      tags: ["unreal", "blueprint", "combat", "soulslike", "hitDetection", "enemyReaction", "projectile", "numericalDesign", "solo"],
       coverImage: "",
       videoEmbed: "",
       videoLink: "#",
@@ -149,100 +130,25 @@ window.PORTFOLIO_ZH = {
       externalLinks: [],
       downloadLinks: [],
       detail: {
-        overview: "该项目探索交易界面和事件驱动的经济循环。玩家买卖物品，每日事件会改变价格波动和决策压力。",
+        overview: "这是一个受到类魂战斗启发的第三人称战斗原型，用于研究战斗节奏、攻击与闪避时机、命中检测、敌人反馈、射弹行为，以及玩家反馈是否足够清晰。",
         whatIBuilt: [
-          "制作物品买入／卖出弹窗的 UI 行为。",
-          "实现库存与现金追踪。",
-          "建立事件驱动的价格变化逻辑。",
-          "加入天数推进和游戏失败检查。"
+          "实现玩家攻击和闪避行为。",
+          "搭建命中检测、伤害处理和敌人受击逻辑。",
+          "实现射弹碰撞与销毁行为。",
+          "通过测试调整战斗时机、冷却和玩法数值。",
+          "将玩法事件连接到动画、音效、特效和界面反馈。"
         ],
         breakdown: [
-          { label: "输入", text: "玩家选择物品、打开弹窗，并输入买卖数量。" },
-          { label: "逻辑", text: "系统根据物品数据和每日事件更新库存、现金与价格。" },
-          { label: "反馈", text: "界面展示价格变化、持有数量、现金状态和每日事件影响。" },
-          { label: "迭代", text: "调整界面布局和弹窗点击区域，减少误触并提高可读性。" }
+          { label: "输入", text: "玩家输入触发攻击、闪避和其他战斗行为，同时系统检查当前状态。" },
+          { label: "战斗逻辑", text: "攻击判定窗口、命中检测、伤害、冷却、射弹碰撞和敌人状态共同决定战斗结果。" },
+          { label: "反馈", text: "动画、音效、受击反应、特效和 UI 用于说明玩家行为是否成功。" },
+          { label: "数值调试", text: "反复调整伤害、判定时间、冷却和其他数值，以改善战斗节奏和可读性。" }
         ],
         challenges: [
-          "弹窗层级需要谨慎处理点击事件，避免弹窗下方按钮被意外触发。",
-          "后续可加入更清晰的价格趋势与事件历史可视化。"
+          "动画衔接和战斗时机需要反复测试，因为很小的改动也会明显影响操作响应。",
+          "占位资源限制了最终视觉完成度，因此当前原型更强调系统行为和反馈清晰度。"
         ],
-        workflowNotes: "AI 可辅助调试和整理文档，但最终 UI 行为与游戏循环调试均在 GameMaker 中完成。"
-      }
-    },
-    {
-      id: "interactive-forging",
-      order: 3,
-      featured: true,
-      library: true,
-      title: "互动锻造游戏概念",
-      category: "交互设计 · 硬件原型",
-      role: "交互设计／玩法概念设计",
-      summary: "一个第一人称锻造概念，通过实体锤击输入连接数字玩法反馈、撞击检测和视觉特效。",
-      tools: "传感器规划、实体输入、游戏反馈设计、原型文档",
-      tags: ["interaction", "hardware", "prototype"],
-      coverImage: "",
-      videoEmbed: "",
-      videoLink: "#",
-      videoFile: "",
-      videoPlatform: "Bilibili",
-      externalLinks: [],
-      downloadLinks: [],
-      detail: {
-        overview: "该概念通过第一人称锻造交互，将实体输入与数字游戏反馈连接起来。玩家进行真实锤击，游戏根据撞击位置与时机产生视觉响应。",
-        whatIBuilt: [
-          "设计实体输入与游戏反馈之间的交互流程。",
-          "规划传感器位置和撞击检测逻辑。",
-          "定义第一人称反馈和视觉响应目标。",
-          "整理分阶段原型目标，便于后续开发。"
-        ],
-        breakdown: [
-          { label: "输入", text: "玩家使用实体锤子敲击硬件表面。" },
-          { label: "逻辑", text: "传感器检测敲击位置和力度，并将数据发送到游戏。" },
-          { label: "反馈", text: "游戏展示锻造火花、撞击反馈和武器状态变化。" },
-          { label: "迭代", text: "后续版本可扩展动作识别和双人互动。" }
-        ],
-        challenges: [
-          "该概念需要解决硬件稳定性、传感器校准，以及实体动作与屏幕反馈之间的清晰映射。",
-          "后续可测试多种压力传感器并制定可重复的校准流程。"
-        ],
-        workflowNotes: "文档与实现研究可以使用 AI 辅助，但硬件选型和交互测试必须通过实体原型完成。"
-      }
-    },
-    {
-      id: "uefn-shooting-prototype",
-      order: 4,
-      featured: false,
-      library: true,
-      title: "UEFN 射击装置原型",
-      category: "UEFN · Verse · 玩法装置",
-      role: "玩法原型设计",
-      summary: "一个较小型的 UEFN 原型，用于探索装置逻辑、玩家计分和射击玩法流程。",
-      tools: "UEFN、Verse、Creative Devices",
-      tags: ["uefn", "verse", "prototype"],
-      coverImage: "",
-      videoEmbed: "",
-      videoLink: "#",
-      videoFile: "",
-      videoPlatform: "Bilibili",
-      externalLinks: [],
-      downloadLinks: [],
-      detail: {
-        overview: "一个围绕装置玩法逻辑与计分交互制作的小型 UEFN 原型。",
-        whatIBuilt: [
-          "连接用于玩家交互的装置。",
-          "探索基于 Verse 的玩法逻辑。",
-          "测试基础计分行为。"
-        ],
-        breakdown: [
-          { label: "输入", text: "玩家与目标或射击装置进行交互。" },
-          { label: "逻辑", text: "Verse 和装置处理交互并更新分数。" },
-          { label: "反馈", text: "玩家获得计分和装置反馈。" },
-          { label: "迭代", text: "后续可完善回合流程和反馈时机。" }
-        ],
-        challenges: [
-          "Verse 语法和装置事件流程需要反复排查。"
-        ],
-        workflowNotes: "AI 可辅助对照语法与排查问题，但所有功能仍需在 UEFN 内测试。"
+        workflowNotes: "AI 工具可以辅助排查问题和研究实现方式；最终设计判断、蓝图结构、引擎内测试和数值调试由我完成。"
       }
     }
   ]
