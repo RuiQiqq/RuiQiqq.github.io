@@ -9,9 +9,7 @@
     "github": "https://github.com/RuiQiqq",
     "linkedin": "https://www.linkedin.com/in/rui-qi-9b58b8222/",
     "resumeUrl": "/assets/resume/Rui_Qi_Resume_ZH.pdf",
-    "demoReelEmbed": "",
     "demoReelLink": "#",
-    "demoReelCoverImage": "",
     "demoReelPlatform": "Bilibili"
   },
   "snapshot": [
@@ -122,12 +120,9 @@
         "solo"
       ],
       "coverImage": "/assets/images/soulslike-video-cover-zh.jpg",
-      "videoEmbed": "https://player.bilibili.com/player.html?bvid=BV18sNQ61EdW&page=1&high_quality=1&danmaku=0&autoplay=0",
       "videoLink": "https://www.bilibili.com/video/BV18sNQ61EdW/",
-      "videoFile": "",
+      "videoEmbed": "https://player.bilibili.com/player.html?bvid=BV18sNQ61EdW&page=1&high_quality=1&danmaku=0&autoplay=0",
       "videoPlatform": "Bilibili",
-      "externalLinks": [],
-      "downloadLinks": [],
       "detail": {
         "overview": "这是一个完全使用 Unreal Blueprint 制作的第三人称动作原型，没有使用 C++。项目既用于验证攻击、闪避、命中与敌人反馈，也用于练习可维护的系统组织方式：通过 EnemyBase、ProjectileBase、Actor Component、Blueprint Interface 和组件标签减少模块间直接 Cast 与硬编码引用。",
         "whatIBuilt": [
@@ -167,7 +162,6 @@
         {
           "title": "战斗输入与状态流程",
           "text": "展示攻击、闪避和输入缓存如何进入战斗状态流程，以及状态验证如何避免动作冲突。",
-          "image": "",
           "imageLabel": "上传后替换：soulslike-input-state-blueprint.png",
           "bullets": [
             "输入入口",
@@ -179,7 +173,6 @@
         {
           "title": "攻击判定与 AnimNotifyState",
           "text": "展示如何通过 AnimNotifyState 打开和关闭武器有效判定帧，并将命中、伤害、受击反馈和 UI 飘字对齐。",
-          "image": "",
           "imageLabel": "上传后替换：soulslike-hit-damage-blueprint.png",
           "bullets": [
             "Active Frames",
@@ -191,7 +184,6 @@
         {
           "title": "解耦式蓝图架构",
           "text": "展示 EnemyBase、ProjectileBase、Actor Component、Blueprint Interface 与组件标签之间的通信关系。",
-          "image": "",
           "imageLabel": "上传后替换：soulslike-decoupled-architecture.png",
           "bullets": [
             "通用基础类",
@@ -203,7 +195,6 @@
         {
           "title": "数据驱动数值调试",
           "text": "展示 Data Asset 或暴露参数，以及 Box Trace Draw Debug 如何帮助逐帧校准伤害、范围、冷却与无敌帧。",
-          "image": "",
           "imageLabel": "上传后替换：soulslike-numerical-tuning.png",
           "bullets": [
             "集中参数",
@@ -237,9 +228,8 @@
         "team"
       ],
       "coverImage": "/assets/images/punk-plush-panic-steam.png",
-      "videoEmbed": "https://player.bilibili.com/player.html?bvid=BV1tRMz67EBu&page=1&high_quality=1&danmaku=0&autoplay=0",
       "videoLink": "https://www.bilibili.com/video/BV1tRMz67EBu/",
-      "videoFile": "",
+      "videoEmbed": "https://player.bilibili.com/player.html?bvid=BV1tRMz67EBu&page=1&high_quality=1&danmaku=0&autoplay=0",
       "videoPlatform": "Bilibili",
       "externalLinks": [
         {
@@ -247,7 +237,6 @@
           "url": "https://store.steampowered.com/app/4343350/Punk_Plush_Panic/"
         }
       ],
-      "downloadLinks": [],
       "detail": {
         "overview": "Punk Plush Panic 是我的 Capstone 毕业项目，由跨专业团队共同完成。玩家需要在三名角色之间切换，并组合不同能力应对敌人波次。我的工作集中在战斗与系统设计、关卡和遭遇迭代、VFX 反馈、试玩反馈整理，以及与程序沟通 Boss 攻击可读性。",
         "whatIBuilt": [
@@ -287,7 +276,6 @@
         {
           "title": "Boss 技能时机与地面预警",
           "text": "放置 Boss 攻击修改前后的画面、技能时间轴和地面指示器截图，解释预警、范围和伤害发生之间的关系。",
-          "image": "",
           "imageLabel": "上传后替换：punk-boss-telegraph-blueprint.png",
           "bullets": [
             "原始问题",
@@ -299,7 +287,6 @@
         {
           "title": "关卡范围与按期交付",
           "text": "展示被保留与删减的关卡内容，说明如何根据时间、核心体验和团队依赖重新确定范围。",
-          "image": "",
           "imageLabel": "上传后替换：punk-level-scope-breakdown.png",
           "bullets": [
             "原始范围",
@@ -311,7 +298,6 @@
         {
           "title": "试玩反馈与迭代",
           "text": "展示试玩反馈记录、问题分类和最终采纳的修改，说明如何把主观反馈转化为可执行任务。",
-          "image": "",
           "imageLabel": "上传后替换：punk-playtest-iteration.png",
           "bullets": [
             "反馈来源",
@@ -323,7 +309,6 @@
         {
           "title": "VFX 作为玩法反馈",
           "text": "展示烟雾、风、初版技能和 Buff 特效，并说明哪些效果用于环境氛围，哪些用于玩法可读性。",
-          "image": "",
           "imageLabel": "上传后替换：punk-vfx-breakdown.png",
           "bullets": [
             "场景特效",
@@ -339,6 +324,7 @@
       "order": 3,
       "featured": false,
       "library": true,
+      "status": "等待补充项目素材",
       "title": "Breach Brew｜失压救援队",
       "category": "商业项目 · Unreal Engine · 环境玩法系统",
       "role": "技术设计／技术美术／玩法系统实现",
@@ -353,13 +339,8 @@
         "vfx",
         "decoupling"
       ],
-      "coverImage": "",
-      "videoEmbed": "",
       "videoLink": "#",
       "videoPlatform": "Bilibili",
-      "externalLinks": [],
-      "downloadLinks": [],
-      "status": "等待补充项目素材",
       "detail": {
         "overview": "Breach Brew｜失压救援队是一项商业游戏项目。我参与设计和实现环境温度系统，使温度变化能够驱动玩法状态、材质表现和 Niagara 特效，并与技术美术和设计成员协作完成引擎内整合。",
         "whatIBuilt": [
@@ -419,7 +400,6 @@
         {
           "title": "事件驱动温度系统",
           "text": "展示温度数据如何更新房间、交互对象和视觉状态，并说明为什么使用低频或事件驱动方式。",
-          "image": "",
           "imageLabel": "上传后替换：breach-brew-temperature-system.png",
           "bullets": [
             "温度数据",
@@ -431,7 +411,6 @@
         {
           "title": "材质与 Niagara 接入",
           "text": "展示玩法数值如何驱动材质参数与 Niagara 效果，使视觉表现与系统状态保持一致。",
-          "image": "",
           "imageLabel": "上传后替换：breach-brew-material-vfx.png",
           "bullets": [
             "参数范围",
@@ -443,10 +422,82 @@
       ]
     },
     {
+      "id": "maimed-maintenance",
+      "order": 5,
+      "featured": false,
+      "library": true,
+      "title": "Maimed Maintenance",
+      "category": "VR 密室逃脱原型 · Unreal Engine",
+      "role": "玩法蓝图／关卡设计／环境搭建／材质制作",
+      "summary": "一个 VR 密室逃脱原型。我完成了部分谜题、门逻辑、交互手感调整、环境搭建，以及玻璃、水等材质，用于验证沉浸式解谜和空间引导。",
+      "tools": "Unreal Engine、Blueprint、VR 交互、关卡搭建、材质",
+      "tags": [
+        "unreal",
+        "blueprint",
+        "vr",
+        "puzzle",
+        "levelDesign",
+        "material",
+        "prototype"
+      ],
+      "videoLink": "https://www.bilibili.com/video/BV1d5MS6sEoc/",
+      "videoEmbed": "https://player.bilibili.com/player.html?bvid=BV1d5MS6sEoc&page=1&high_quality=1&danmaku=0&autoplay=0",
+      "videoPlatform": "Bilibili",
+      "detail": {
+        "overview": "Maimed Maintenance 是一个 VR 密室逃脱原型，重点验证空间探索、谜题交互与环境沉浸感。我的贡献包括部分谜题实现、门逻辑、交互手感调整、场景搭建，以及玻璃和水等材质。",
+        "whatIBuilt": [
+          "实现部分解谜交互和门的状态逻辑。",
+          "根据 VR 操作体验调整交互距离、反馈和使用手感。",
+          "完成部分关卡与环境搭建。",
+          "制作并调整玻璃、水和其他环境材质。"
+        ],
+        "breakdown": [
+          {
+            "label": "谜题逻辑",
+            "text": "将谜题条件、交互结果和场景状态连接成可测试流程。"
+          },
+          {
+            "label": "门与状态",
+            "text": "处理门的条件判断、开关状态与交互反馈。"
+          },
+          {
+            "label": "VR 手感",
+            "text": "根据头显中的实际体验调整交互范围、反馈速度和物体操作。"
+          },
+          {
+            "label": "环境与材质",
+            "text": "通过场景搭建和玻璃、水等材质强化空间辨识与沉浸感。"
+          }
+        ],
+        "challenges": [
+          "VR 中在桌面端看似合理的距离和反馈，在头显内可能显得迟钝或不自然，因此必须实际佩戴设备测试。"
+        ],
+        "workflowNotes": "该项目适合用短视频展示谜题和门逻辑，再用截图补充材质与环境搭建。无需把每一个小机制单独拆成项目。"
+      },
+      "mediaGallery": [
+        {
+          "type": "placeholder",
+          "title": "谜题与门逻辑",
+          "note": "上传蓝图或游戏内演示截图"
+        },
+        {
+          "type": "placeholder",
+          "title": "VR 交互手感",
+          "note": "上传交互前后对比或测试说明"
+        },
+        {
+          "type": "placeholder",
+          "title": "玻璃与水材质",
+          "note": "上传材质球和场景内效果"
+        }
+      ]
+    },
+    {
       "id": "the-e-book-data-pipeline",
       "order": 4,
       "featured": false,
       "library": true,
+      "status": "等待补充工具截图",
       "title": "源书行者｜The E Book",
       "category": "商业项目 · Unity · 数值配置与数据工具",
       "role": "数值配置／工作流设计／AI 辅助工具开发",
@@ -460,13 +511,8 @@
         "aiWorkflow",
         "gameplaySystem"
       ],
-      "coverImage": "",
-      "videoEmbed": "",
       "videoLink": "#",
       "videoPlatform": "Bilibili",
-      "externalLinks": [],
-      "downloadLinks": [],
-      "status": "等待补充工具截图",
       "detail": {
         "overview": "在《源书行者》中，我负责维护玩法数值配置，并针对策划修改数据不便的问题重构 Excel 表格结构和工作流。随后借助 AI 辅助开发了转换工具，把设计人员使用的 Excel 数据自动转为 Unity 可直接读取的配置格式。",
         "whatIBuilt": [
@@ -519,84 +565,18 @@
       ]
     },
     {
-      "id": "maimed-maintenance",
+      "id": "level-designs",
       "order": 5,
       "featured": false,
       "library": true,
-      "title": "Maimed Maintenance",
-      "category": "VR 密室逃脱原型 · Unreal Engine",
-      "role": "玩法蓝图／关卡设计／环境搭建／材质制作",
-      "summary": "一个 VR 密室逃脱原型。我完成了部分谜题、门逻辑、交互手感调整、环境搭建，以及玻璃、水等材质，用于验证沉浸式解谜和空间引导。",
-      "tools": "Unreal Engine、Blueprint、VR 交互、关卡搭建、材质",
-      "tags": [
-        "unreal",
-        "blueprint",
-        "vr",
-        "puzzle",
-        "levelDesign",
-        "material",
-        "prototype"
-      ],
-      "coverImage": "",
-      "videoEmbed": "https://player.bilibili.com/player.html?bvid=BV1d5MS6sEoc&page=1&high_quality=1&danmaku=0&autoplay=0",
-      "videoLink": "https://www.bilibili.com/video/BV1d5MS6sEoc/",
-      "videoPlatform": "Bilibili",
-      "externalLinks": [],
-      "downloadLinks": [],
-      "detail": {
-        "overview": "Maimed Maintenance 是一个 VR 密室逃脱原型，重点验证空间探索、谜题交互与环境沉浸感。我的贡献包括部分谜题实现、门逻辑、交互手感调整、场景搭建，以及玻璃和水等材质。",
-        "whatIBuilt": [
-          "实现部分解谜交互和门的状态逻辑。",
-          "根据 VR 操作体验调整交互距离、反馈和使用手感。",
-          "完成部分关卡与环境搭建。",
-          "制作并调整玻璃、水和其他环境材质。"
-        ],
-        "breakdown": [
-          {
-            "label": "谜题逻辑",
-            "text": "将谜题条件、交互结果和场景状态连接成可测试流程。"
-          },
-          {
-            "label": "门与状态",
-            "text": "处理门的条件判断、开关状态与交互反馈。"
-          },
-          {
-            "label": "VR 手感",
-            "text": "根据头显中的实际体验调整交互范围、反馈速度和物体操作。"
-          },
-          {
-            "label": "环境与材质",
-            "text": "通过场景搭建和玻璃、水等材质强化空间辨识与沉浸感。"
-          }
-        ],
-        "challenges": [
-          "VR 中在桌面端看似合理的距离和反馈，在头显内可能显得迟钝或不自然，因此必须实际佩戴设备测试。"
-        ],
-        "workflowNotes": "该项目适合用短视频展示谜题和门逻辑，再用截图补充材质与环境搭建。无需把每一个小机制单独拆成项目。"
-      },
-      "mediaGallery": [
-        {
-          "type": "placeholder",
-          "title": "谜题与门逻辑",
-          "note": "上传蓝图或游戏内演示截图"
-        },
-        {
-          "type": "placeholder",
-          "title": "VR 交互手感",
-          "note": "上传交互前后对比或测试说明"
-        },
-        {
-          "type": "placeholder",
-          "title": "玻璃与水材质",
-          "note": "上传材质球和场景内效果"
-        }
-      ]
+      "title": "一些关卡设计"
     },
     {
       "id": "visual-studies",
       "order": 6,
       "featured": false,
       "library": true,
+      "status": "试装占位：等待上传素材",
       "title": "VFX、3D 模型与怪物设计练习",
       "category": "其他作品 · Unity VFX · 基础建模 · 概念设计",
       "role": "VFX／基础建模／视觉探索",
@@ -609,13 +589,8 @@
         "conceptArt",
         "draft"
       ],
-      "coverImage": "",
-      "videoEmbed": "",
       "videoLink": "#",
       "videoPlatform": "Bilibili",
-      "externalLinks": [],
-      "downloadLinks": [],
-      "status": "试装占位：等待上传素材",
       "detail": {
         "overview": "这个页面用于集中展示较小的视觉作品。它不是一个单独的游戏项目，而是按 VFX、3D 模型和怪物设计分组的媒体画廊。上传素材后，每一组都可以包含多张图片和多个视频。",
         "whatIBuilt": [
@@ -659,6 +634,13 @@
           "note": "可放草图、轮廓迭代和最终设计"
         }
       ]
+    },
+    {
+      "id": "7",
+      "order": 0,
+      "featured": false,
+      "library": true,
+      "title": "TutuRabbit跑酷原型-团队项目"
     }
   ]
 }
