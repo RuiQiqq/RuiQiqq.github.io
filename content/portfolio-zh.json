@@ -119,7 +119,7 @@
         "decoupling",
         "solo"
       ],
-      "coverImage": "/assets/images/soulslike-video-cover-zh.jpg",
+      "coverImage": "/assets/images/soulslike-video-cover.jpg",
       "videoLink": "https://www.bilibili.com/video/BV18sNQ61EdW/",
       "videoEmbed": "https://player.bilibili.com/player.html?bvid=BV18sNQ61EdW&page=1&high_quality=1&danmaku=0&autoplay=0",
       "videoPlatform": "Bilibili",
@@ -128,7 +128,7 @@
         "whatIBuilt": [
           "实现轻攻击、重攻击、闪避、耐力、锁定、命中检测、伤害与敌人受击反馈。",
           "实现射弹生成、碰撞、有效目标判断和销毁流程。",
-          "使用 AnimNotifyState 控制不同近战武器的有效判定帧，并对齐受击反馈与 UI 伤害飘字。",
+          "使用 AnimNotifyState 控制不同近战武器的有效判定帧，以及ComboWindow，并对齐受击反馈。",
           "处理输入缓存与动画状态流转，减少高频战斗中的动作粘滞和状态冲突。",
           "完成动画资源与骨骼重定向，并将动画、音效、VFX 和 UI 接入战斗事件。",
           "使用可编辑参数、Data Asset 和可视化 Debug Trace 支持快速数值迭代。"
@@ -210,11 +210,12 @@
       "order": 2,
       "featured": true,
       "library": true,
+      "status": "已完成",
       "title": "Punk Plush Panic",
       "category": "Capstone 毕业项目 · 2.5D 平台动作 · 团队项目",
       "role": "战斗策划／关卡设计／VFX／系统设计",
       "summary": "一款快节奏的 2.5D 平台动作游戏，玩家在三名角色之间切换并组合能力对抗敌人波次。我负责战斗与系统设计、关卡迭代、VFX，以及 Boss 攻击时机和可读性优化。",
-      "tools": "Unreal Engine、Blueprint、关卡设计、Boss 设计、VFX、试玩反馈、跨职能协作",
+      "tools": "Unity、Blueprint、关卡设计、Boss 设计、VFX、试玩反馈、跨职能协作",
       "tags": [
         "unreal",
         "blueprint",
@@ -640,7 +641,13 @@
       "order": 7,
       "featured": false,
       "library": true,
-      "title": "TutuRabbit跑酷原型-Godot团队项目"
+      "title": "TutuRabbit跑酷原型-Godot团队项目",
+      "coverImage": "/assets/images/2026080615032462.png",
+      "downloadLinks": [
+        {
+          "label": "https://markqirui.itch.io/tutu-rabbit"
+        }
+      ]
     }
   ]
 }
