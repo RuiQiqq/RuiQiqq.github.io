@@ -618,6 +618,10 @@ h1, h2, h3 {
 .breakdown-card { padding: 20px; }
 .breakdown-card h3 { color: var(--pink-soft); font-size: 18px; }
 .breakdown-card p { color: var(--muted); margin-top: 8px; font-size: 15px; }
+.breakdown-card { overflow: hidden; padding: 0; }
+.breakdown-card-copy { padding: 20px; }
+.breakdown-card-media { aspect-ratio: 16 / 9; overflow: hidden; border-bottom: 1px solid var(--line); background: var(--bg); }
+.breakdown-card-media img { width: 100%; height: 100%; display: block; object-fit: cover; }
 
 @media (max-width: 980px) {
   .hero, .featured-card, .two-col, .resume-layout, .contact-strip, .project-detail-grid { grid-template-columns: 1fr; }

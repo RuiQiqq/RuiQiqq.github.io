@@ -141,19 +141,27 @@
         "breakdown": [
           {
             "label": "Modular Communication",
-            "text": "Extracted EnemyBase and ProjectileBase, moved reusable logic into Actor Components, and used Blueprint Interfaces and component tags to reduce direct references."
+            "text": "Extracted EnemyBase and ProjectileBase, moved reusable logic into Actor Components, and used Blueprint Interfaces and component tags to reduce direct references.",
+            "image": "",
+            "imageAlt": ""
           },
           {
             "label": "Animation & Hit Frames",
-            "text": "Used AnimNotifyState to define active frames so collision, damage, reaction, and UI feedback match the visible animation."
+            "text": "Used AnimNotifyState to define active frames so collision, damage, reaction, and UI feedback match the visible animation.",
+            "image": "",
+            "imageAlt": ""
           },
           {
             "label": "Input & State Flow",
-            "text": "Organized input buffering and animation-state transitions to reduce conflicts between attacks, dodges, and reactions."
+            "text": "Organized input buffering and animation-state transitions to reduce conflicts between attacks, dodges, and reactions.",
+            "image": "",
+            "imageAlt": ""
           },
           {
             "label": "Data-Driven Debugging",
-            "text": "Exposed damage, cooldown, and timing parameters and used Draw Debug traces to calibrate attack ranges and invulnerability frames."
+            "text": "Exposed damage, cooldown, and timing parameters and used Draw Debug traces to calibrate attack ranges and invulnerability frames.",
+            "image": "",
+            "imageAlt": ""
           }
         ],
         "challenges": [
@@ -163,7 +171,7 @@
         ],
         "workflowNotes": "I iterated in PIE with data-driven parameters and visual debugging for damage, cooldowns, attack windows, and dodge invulnerability. AI tools supported research and troubleshooting; the final Blueprint structure, implementation, and validation were completed in Unreal Engine."
       },
-      "blueprintSections": [
+      "systemSections": [
         {
           "title": "Combat Input & State Flow",
           "text": "Show how attack, dodge, and buffered inputs enter the combat-state flow and how validation prevents action conflicts.",
@@ -212,7 +220,11 @@
             "Before and after"
           ]
         }
-      ]
+      ],
+      "breakdownButtonLabel": "Combat Systems & Blueprint Breakdown",
+      "breakdownPageKicker": "Combat Prototype Breakdown",
+      "breakdownPageTitle": "Combat Systems, Blueprint Architecture & Tuning",
+      "breakdownPageIntro": "A closer look at combat flow, animation-driven hit windows, modular communication, tuning, and Blueprint implementation. Every title, description, and image remains editable in Pages CMS."
     },
     {
       "id": "punk-plush-panic",
@@ -220,13 +232,12 @@
       "featured": true,
       "library": true,
       "title": "Punk Plush Panic",
-      "category": "Capstone · 2.5D Action Platformer · Team Project",
+      "category": "Unity · Capstone · 2.5D Action Platformer · Team Project",
       "role": "Combat Design / Level Design / VFX / Systems Design",
       "summary": "A fast-paced 2.5D action platformer where players swap between three characters and combine their abilities against enemy waves. I contributed combat and systems design, level iteration, VFX, boss timing, and attack readability improvements.",
-      "tools": "Unreal Engine, Blueprint, Level Design, Boss Design, VFX, Playtest Feedback, Cross-Discipline Collaboration",
+      "tools": "Unity, Level Design, Boss Design, VFX, Playtest Feedback, Cross-Discipline Collaboration",
       "tags": [
-        "unreal",
-        "blueprint",
+        "unity",
         "capstone",
         "combat",
         "levelDesign",
@@ -261,19 +272,27 @@
         "breakdown": [
           {
             "label": "Boss Telegraphing",
-            "text": "Retuned release timing and coordinated ground indicators so players could read attack range and react fairly."
+            "text": "Retuned release timing and coordinated ground indicators so players could read attack range and react fairly.",
+            "image": "",
+            "imageAlt": ""
           },
           {
             "label": "Scope Management",
-            "text": "Evaluated level priorities and cut lower-value content when time became limited, protecting the core flow and team delivery."
+            "text": "Evaluated level priorities and cut lower-value content when time became limited, protecting the core flow and team delivery.",
+            "image": "",
+            "imageAlt": ""
           },
           {
             "label": "Playtesting & Iteration",
-            "text": "Collected feedback, categorized experience problems, and discussed implementation cost and value with the team."
+            "text": "Collected feedback, categorized experience problems, and discussed implementation cost and value with the team.",
+            "image": "",
+            "imageAlt": ""
           },
           {
             "label": "VFX Feedback",
-            "text": "Created environmental and early gameplay effects that communicated mood, abilities, and state changes while helping define later visual requirements."
+            "text": "Created environmental and early gameplay effects that communicated mood, abilities, and state changes while helping define later visual requirements.",
+            "image": "",
+            "imageAlt": ""
           }
         ],
         "challenges": [
@@ -283,7 +302,7 @@
         ],
         "workflowNotes": "My workflow combined identifying player-experience problems, proposing solutions, coordinating implementation, gathering playtest feedback, and iterating with the team. The boss telegraph and level-scope decisions demonstrate both experience design and production judgment."
       },
-      "blueprintSections": [
+      "systemSections": [
         {
           "title": "Boss Timing & Ground Telegraph",
           "text": "Show the boss attack before and after the change, including timing, warning area, and damage release.",
@@ -332,7 +351,11 @@
             "Why effects changed"
           ]
         }
-      ]
+      ],
+      "breakdownButtonLabel": "Systems, Level & Feedback Breakdown",
+      "breakdownPageKicker": "Capstone Breakdown",
+      "breakdownPageTitle": "Systems Design, Level Iteration & Player Feedback",
+      "breakdownPageIntro": "A closer look at boss telegraphs, scope decisions, playtest feedback, VFX, and cross-discipline collaboration. This page is no longer Blueprint-specific and can use Unity screenshots, diagrams, GIFs, spreadsheets, or document images."
     },
     {
       "id": "breach-brew",
@@ -372,19 +395,27 @@
         "breakdown": [
           {
             "label": "Temperature State",
-            "text": "Used shared state and events to update environmental temperature rather than running complex independent logic on every object."
+            "text": "Used shared state and events to update environmental temperature rather than running complex independent logic on every object.",
+            "image": "",
+            "imageAlt": ""
           },
           {
             "label": "Material Response",
-            "text": "Drove heat and cold transitions through parameters so visual state responds smoothly to gameplay data."
+            "text": "Drove heat and cold transitions through parameters so visual state responds smoothly to gameplay data.",
+            "image": "",
+            "imageAlt": ""
           },
           {
             "label": "Niagara Feedback",
-            "text": "Connected VFX to environmental events so players can quickly read temperature and danger changes."
+            "text": "Connected VFX to environmental events so players can quickly read temperature and danger changes.",
+            "image": "",
+            "imageAlt": ""
           },
           {
             "label": "Cross-Discipline Integration",
-            "text": "Separated system interfaces and visual responsibilities so design and technical art could iterate independently."
+            "text": "Separated system interfaces and visual responsibilities so design and technical art could iterate independently.",
+            "image": "",
+            "imageAlt": ""
           }
         ],
         "challenges": [
@@ -415,7 +446,7 @@
           "note": "Add a diagram linking temperature events to visual feedback"
         }
       ],
-      "blueprintSections": [
+      "systemSections": [
         {
           "title": "Event-Driven Temperature System",
           "text": "Show how temperature data updates rooms, interactable objects, and visual states, and why the system uses low-frequency or event-driven updates.",
@@ -440,7 +471,11 @@
             "Readability testing"
           ]
         }
-      ]
+      ],
+      "breakdownButtonLabel": "System / Design Breakdown",
+      "breakdownPageKicker": "Project Breakdown",
+      "breakdownPageTitle": "System & Design Breakdown",
+      "breakdownPageIntro": "A flexible space for system screenshots, diagrams, Blueprints, level layouts, GIFs, visual results, and design reasoning."
     },
     {
       "id": "the-e-book-data-pipeline",
@@ -479,19 +514,27 @@
         "breakdown": [
           {
             "label": "Designer-Friendly Input",
-            "text": "Allowed designers to work in readable spreadsheets instead of engine-facing data formats."
+            "text": "Allowed designers to work in readable spreadsheets instead of engine-facing data formats.",
+            "image": "",
+            "imageAlt": ""
           },
           {
             "label": "Automated Conversion",
-            "text": "Converted Excel data into a Unity-readable format and reduced repeated manual work."
+            "text": "Converted Excel data into a Unity-readable format and reduced repeated manual work.",
+            "image": "",
+            "imageAlt": ""
           },
           {
             "label": "Error Control",
-            "text": "Used structural constraints and validation to reduce missing fields and format mismatches."
+            "text": "Used structural constraints and validation to reduce missing fields and format mismatches.",
+            "image": "",
+            "imageAlt": ""
           },
           {
             "label": "Iteration Speed",
-            "text": "Shortened the path between data edits and in-engine testing."
+            "text": "Shortened the path between data edits and in-engine testing.",
+            "image": "",
+            "imageAlt": ""
           }
         ],
         "challenges": [
@@ -516,7 +559,11 @@
           "title": "Unity Data Output",
           "note": "Add an example of the converted data in Unity"
         }
-      ]
+      ],
+      "breakdownButtonLabel": "System / Design Breakdown",
+      "breakdownPageKicker": "Project Breakdown",
+      "breakdownPageTitle": "System & Design Breakdown",
+      "breakdownPageIntro": "A flexible space for system screenshots, diagrams, Blueprints, level layouts, GIFs, visual results, and design reasoning."
     },
     {
       "id": "maimed-maintenance",
@@ -554,19 +601,27 @@
         "breakdown": [
           {
             "label": "Puzzle Logic",
-            "text": "Connected puzzle conditions, interaction results, and environment states into a testable flow."
+            "text": "Connected puzzle conditions, interaction results, and environment states into a testable flow.",
+            "image": "",
+            "imageAlt": ""
           },
           {
             "label": "Door & State Logic",
-            "text": "Handled conditions, open/closed states, and interaction feedback."
+            "text": "Handled conditions, open/closed states, and interaction feedback.",
+            "image": "",
+            "imageAlt": ""
           },
           {
             "label": "VR Interaction Feel",
-            "text": "Adjusted ranges, response speed, and object handling through in-headset testing."
+            "text": "Adjusted ranges, response speed, and object handling through in-headset testing.",
+            "image": "",
+            "imageAlt": ""
           },
           {
             "label": "Environment & Materials",
-            "text": "Used level assembly and glass and water materials to improve spatial readability and immersion."
+            "text": "Used level assembly and glass and water materials to improve spatial readability and immersion.",
+            "image": "",
+            "imageAlt": ""
           }
         ],
         "challenges": [
@@ -590,7 +645,11 @@
           "title": "Glass & Water Materials",
           "note": "Add material and in-environment screenshots"
         }
-      ]
+      ],
+      "breakdownButtonLabel": "System / Design Breakdown",
+      "breakdownPageKicker": "Project Breakdown",
+      "breakdownPageTitle": "System & Design Breakdown",
+      "breakdownPageIntro": "A flexible space for system screenshots, diagrams, Blueprints, level layouts, GIFs, visual results, and design reasoning."
     },
     {
       "id": "visual-studies",
@@ -626,15 +685,21 @@
         "breakdown": [
           {
             "label": "VFX",
-            "text": "Show the visual goal, production process, trigger method, and final effect."
+            "text": "Show the visual goal, production process, trigger method, and final effect.",
+            "image": "",
+            "imageAlt": ""
           },
           {
             "label": "3D Models",
-            "text": "Show models, materials, wireframes, and engine presentation without creating a separate project for each asset."
+            "text": "Show models, materials, wireframes, and engine presentation without creating a separate project for each asset.",
+            "image": "",
+            "imageAlt": ""
           },
           {
             "label": "Creature Design",
-            "text": "Show silhouettes, sketches, final design, and a concise design intention."
+            "text": "Show silhouettes, sketches, final design, and a concise design intention.",
+            "image": "",
+            "imageAlt": ""
           }
         ],
         "challenges": [
@@ -658,7 +723,11 @@
           "title": "Creature Concept Art",
           "note": "Supports sketches, silhouette iterations, and final designs"
         }
-      ]
+      ],
+      "breakdownButtonLabel": "System / Design Breakdown",
+      "breakdownPageKicker": "Project Breakdown",
+      "breakdownPageTitle": "System & Design Breakdown",
+      "breakdownPageIntro": "A flexible space for system screenshots, diagrams, Blueprints, level layouts, GIFs, visual results, and design reasoning."
     }
   ]
 }

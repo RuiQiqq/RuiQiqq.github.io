@@ -45,12 +45,12 @@ const UI = {
     tools: "Tools",
     category: "Category",
     projectBreakdown: "Project Breakdown",
-    blueprintBreakdown: "Blueprint / System Breakdown",
-    systemPageKicker: "Technical Breakdown",
-    systemPageTitle: "Blueprint & System Breakdown",
-    systemPageIntro: "A dedicated space for Blueprint screenshots, system diagrams, implementation notes, and design reasoning.",
+    blueprintBreakdown: "System / Design Breakdown",
+    systemPageKicker: "Project Breakdown",
+    systemPageTitle: "System & Design Breakdown",
+    systemPageIntro: "A flexible space for system screenshots, diagrams, level layouts, visual results, implementation notes, and design reasoning.",
     backProject: "Back to project",
-    imagePlaceholder: "Blueprint / diagram image slot",
+    imagePlaceholder: "System screenshot / diagram / visual slot",
     openVideo: "Open Video",
     playHere: "Play here",
     loadingVideo: "Loading video…",
@@ -137,12 +137,12 @@ const UI = {
     tools: "工具",
     category: "分类",
     projectBreakdown: "项目拆解",
-    blueprintBreakdown: "蓝图／系统拆解",
-    systemPageKicker: "技术拆解",
-    systemPageTitle: "蓝图与系统拆解",
-    systemPageIntro: "用于展示蓝图截图、系统流程图、实现说明和设计判断的独立页面。",
+    blueprintBreakdown: "系统／设计拆解",
+    systemPageKicker: "项目拆解",
+    systemPageTitle: "系统与设计拆解",
+    systemPageIntro: "用于展示系统截图、流程图、关卡图、蓝图、GIF、效果图、实现说明和设计判断的独立页面。",
     backProject: "返回项目详情",
-    imagePlaceholder: "蓝图／流程图图片位置",
+    imagePlaceholder: "系统截图／流程图／效果图位置",
     openVideo: "打开 Bilibili 视频",
     playHere: "在此播放",
     loadingVideo: "正在载入视频…",
@@ -522,13 +522,21 @@ function mediaGallerySectionHtml(project) {
   </section>`;
 }
 
+function getSystemSections(project) {
+  if (Array.isArray(project?.systemSections)) return project.systemSections;
+  // Backward compatibility with older content files.
+  if (Array.isArray(project?.blueprintSections)) return project.blueprintSections;
+  return [];
+}
+
 function hasBlueprintSections(project) {
-  return Array.isArray(project?.blueprintSections) && project.blueprintSections.length > 0;
+  return getSystemSections(project).length > 0;
 }
 
 function blueprintBreakdownButtonHtml(project, buttonClass = "button secondary") {
   if (!hasBlueprintSections(project)) return "";
-  return `<a class="${buttonClass}" href="${localizedUrl(`system-breakdown.html?id=${encodeURIComponent(project.id)}`)}">${TEXT.blueprintBreakdown}</a>`;
+  const label = safeText(project.breakdownButtonLabel, TEXT.blueprintBreakdown);
+  return `<a class="${buttonClass}" href="${localizedUrl(`system-breakdown.html?id=${encodeURIComponent(project.id)}`)}">${escapeHtml(label)}</a>`;
 }
 
 function projectExtraLinksHtml(project) {
@@ -789,7 +797,7 @@ function renderDetailPage() {
     </section>
     <section class="detail-section container"><h2>${TEXT.whatIBuilt}</h2><ul>${(detail.whatIBuilt || []).map(item => `<li>${escapeHtml(item)}</li>`).join("")}</ul></section>
     ${mediaGallerySectionHtml(project)}
-    <section class="detail-section container"><h2>${TEXT.systemBreakdown}</h2><div class="breakdown-grid">${(detail.breakdown || []).map(item => `<article class="breakdown-card"><h3>${escapeHtml(item.label)}</h3><p>${escapeHtml(item.text)}</p></article>`).join("")}</div></section>
+    <section class="detail-section container"><h2>${TEXT.systemBreakdown}</h2><div class="breakdown-grid">${(detail.breakdown || []).map(item => `<article class="breakdown-card">${item.image ? `<div class="breakdown-card-media"><img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.imageAlt || item.label || project.title)}" loading="lazy"></div>` : ""}<div class="breakdown-card-copy"><h3>${escapeHtml(item.label)}</h3><p>${escapeHtml(item.text)}</p></div></article>`).join("")}</div></section>
     <section class="detail-section container"><h2>${TEXT.challenges}</h2><ul>${(detail.challenges || []).map(item => `<li>${escapeHtml(item)}</li>`).join("")}</ul></section>
     <section class="detail-section container"><h2>${TEXT.workflowNotes}</h2><p>${escapeHtml(safeText(detail.workflowNotes))}</p></section>`;
   bindInlineVideoPreviews();
@@ -806,13 +814,16 @@ function renderSystemBreakdownPage() {
     updatePageMetadata(`${TEXT.projectNotFound} | ${safeText(DATA.site?.name, "Rui Qi")}`, TEXT.projectNotFoundText);
     return;
   }
-  const sections = project.blueprintSections || [];
+  const sections = getSystemSections(project);
+  const pageKicker = safeText(project.breakdownPageKicker, TEXT.systemPageKicker);
+  const pageTitle = safeText(project.breakdownPageTitle, TEXT.systemPageTitle);
+  const pageIntro = safeText(project.breakdownPageIntro, TEXT.systemPageIntro);
   root.innerHTML = `
     <section class="page-hero container system-page-hero">
-      <p class="eyebrow">${TEXT.systemPageKicker}</p>
+      <p class="eyebrow">${escapeHtml(pageKicker)}</p>
       <h1>${escapeHtml(project.title)}</h1>
-      <h2>${TEXT.systemPageTitle}</h2>
-      <p>${TEXT.systemPageIntro}</p>
+      <h2>${escapeHtml(pageTitle)}</h2>
+      <p>${escapeHtml(pageIntro)}</p>
       <div class="hero-actions">
         <a class="button secondary" href="${localizedUrl(`project-detail.html?id=${encodeURIComponent(project.id)}`)}">${TEXT.backProject}</a>
         ${isRealLink(project.videoLink) ? `<a class="button primary" href="${escapeHtml(project.videoLink)}" target="_blank" rel="noreferrer">${TEXT.openVideo}</a>` : ""}
@@ -834,7 +845,7 @@ function renderSystemBreakdownPage() {
           </div>
         </article>`).join("")}
     </section>`;
-  updatePageMetadata(`${TEXT.systemPageTitle} | ${project.title}`, project.summary);
+  updatePageMetadata(`${safeText(project.breakdownPageTitle, TEXT.systemPageTitle)} | ${project.title}`, project.summary);
 }
 
 function renderContactPage() {
