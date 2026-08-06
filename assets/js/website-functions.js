@@ -1,7 +1,7 @@
 /*
   Website behavior and bilingual switching.
   You normally do not need to edit this file.
-  Edit portfolio content in EDIT-ME-English.js and EDIT-ME-Chinese.js.
+  Edit portfolio content through Pages CMS. Data is stored in content/portfolio-en.json and content/portfolio-zh.json.
 */
 
 const LANGUAGE_KEY = "ruiqi-portfolio-language";
@@ -15,13 +15,13 @@ const UI = {
     downloadResume: "Download Resume",
     selectedWork: "Selected Work",
     featuredProjects: "Featured Projects",
-    featuredIntro: "Selected projects that best represent my gameplay systems, prototyping, and technical design work.",
-    focusKicker: "Technical Design Focus",
-    focusTitle: "What I Build",
+    featuredIntro: "Selected projects that best represent my gameplay design, systems thinking, level work, and in-engine iteration.",
+    focusKicker: "Design Focus",
+    focusTitle: "What I Do",
     focusIntro: "Clear categories help interviewers understand my direction quickly without reading every project page.",
     libraryKicker: "Project Library",
-    libraryTitle: "More prototypes and experiments.",
-    libraryIntro: "Smaller projects stay collected in one place, so the homepage remains quick to read.",
+    libraryTitle: "Other work and experiments.",
+    libraryIntro: "Commercial work, VR prototypes, tools, VFX, and visual studies are grouped here without overwhelming the featured section.",
     openLibrary: "Open Full Project Library",
     resumeKicker: "Resume",
     resumeTitle: "Resume preview and download.",
@@ -34,10 +34,10 @@ const UI = {
     resumeUnavailable: "Resume Not Uploaded",
     contactKicker: "Contact",
     contactTitle: "Interested in systems, prototypes, or gameplay feel?",
-    footerRole: "Gameplay Systems & Technical Design",
+    footerRole: "Gameplay Design & Prototyping",
     projectsPageKicker: "Project Library",
     projectsPageTitle: "All Projects",
-    projectsPageText: "Combat systems, numerical design, playable prototypes, and technical design work collected in one place.",
+    projectsPageText: "Gameplay prototypes, commercial work, tools, VFX, level design, and visual studies collected in one place.",
     backHome: "Back to home",
     backProjects: "Back to projects",
     all: "All",
@@ -62,6 +62,9 @@ const UI = {
     systemBreakdown: "System Breakdown",
     challenges: "Challenges & Improvements",
     workflowNotes: "Workflow Notes",
+    mediaGallery: "Media Gallery",
+    mediaGalleryIntro: "This project can contain multiple independent videos and images. Videos load only after the viewer clicks them.",
+    assetsPending: "Assets pending",
     projectNotFound: "Project not found.",
     projectNotFoundText: "Please go back to the Projects page.",
     demoReel: "Demo Reel",
@@ -74,7 +77,7 @@ const UI = {
     placeholder: "Placeholder",
     futureMontage: "Future montage",
     montageTypes: "Gameplay / UI / Interaction",
-    youtubeNote: "Add a YouTube embed link in <strong>EDIT-ME-English.js</strong>.",
+    youtubeNote: "Add a YouTube link in Pages CMS under English Website Content.",
     email: "Email",
     resume: "Resume",
     github: "GitHub",
@@ -87,7 +90,7 @@ const UI = {
     resumeViewerText: "This page displays the English PDF directly and includes a download button.",
     backPortfolio: "Back to Portfolio",
     resumeContactKicker: "Resume & Contact",
-    resumeContactText: "Gameplay Designer / Technical Designer focused on playable systems, prototypes, and readable player feedback.",
+    resumeContactText: "Gameplay designer focused on playable systems, level experiences, rapid prototypes, and readable player feedback.",
     skills: "Skills",
     relevantFocus: "Relevant focus.",
     resumeDownloadTitle: "Download PDF.",
@@ -104,13 +107,13 @@ const UI = {
     downloadResume: "下载中文简历",
     selectedWork: "精选作品",
     featuredProjects: "重点项目",
-    featuredIntro: "这些项目集中展示了我的玩法系统、原型实现和技术设计能力。",
-    focusKicker: "技术设计方向",
-    focusTitle: "我的主要能力",
+    featuredIntro: "这些项目集中展示了我的玩法设计、系统思考、关卡工作和引擎内迭代能力。",
+    focusKicker: "设计方向",
+    focusTitle: "我能做什么",
     focusIntro: "通过明确的分类，让招聘者无需阅读所有项目页面，也能快速理解我的方向。",
     libraryKicker: "项目库",
-    libraryTitle: "更多原型与实验",
-    libraryIntro: "较小型的项目集中放在这里，使首页保持清晰并方便快速浏览。",
+    libraryTitle: "其他作品与实验",
+    libraryIntro: "商业项目、VR 原型、数据工具、VFX 与视觉练习集中展示在这里，不挤占重点项目。",
     openLibrary: "打开完整项目库",
     resumeKicker: "中文简历",
     resumeTitle: "简历预览与下载",
@@ -123,10 +126,10 @@ const UI = {
     resumeUnavailable: "中文简历尚未上传",
     contactKicker: "联系方式",
     contactTitle: "欢迎交流玩法系统、原型设计与游戏体验。",
-    footerRole: "玩法系统与技术设计",
+    footerRole: "玩法设计与原型实现",
     projectsPageKicker: "项目库",
     projectsPageTitle: "全部项目",
-    projectsPageText: "战斗系统、数值设计、可玩原型与技术设计内容集中展示在此页面。",
+    projectsPageText: "玩法原型、商业项目、数据工具、VFX、关卡和视觉练习集中展示在此页面。",
     backHome: "返回首页",
     backProjects: "返回项目",
     all: "全部",
@@ -151,6 +154,9 @@ const UI = {
     systemBreakdown: "系统拆解",
     challenges: "问题与改进",
     workflowNotes: "工作流程说明",
+    mediaGallery: "媒体画廊",
+    mediaGalleryIntro: "同一个项目可以放多个独立视频和图片；视频只会在访客点击后加载。",
+    assetsPending: "素材待补充",
     projectNotFound: "未找到该项目。",
     projectNotFoundText: "请返回项目页面。",
     demoReel: "作品混剪",
@@ -163,7 +169,7 @@ const UI = {
     placeholder: "待添加",
     futureMontage: "待上传混剪",
     montageTypes: "玩法／UI／交互",
-    youtubeNote: "请在 <strong>EDIT-ME-Chinese.js</strong> 中添加 Bilibili 嵌入链接。",
+    youtubeNote: "请在 Pages CMS 的“中文网站内容”中添加 Bilibili 链接。",
     email: "邮箱",
     resume: "中文简历",
     github: "GitHub 主页",
@@ -176,7 +182,7 @@ const UI = {
     resumeViewerText: "此页面直接展示中文简历 PDF，并提供下载按钮。",
     backPortfolio: "返回作品集",
     resumeContactKicker: "简历与联系方式",
-    resumeContactText: "专注于可玩系统、原型实现和清晰玩家反馈的玩法策划／技术策划。",
+    resumeContactText: "专注于可玩系统、关卡体验、快速原型和清晰玩家反馈的玩法策划。",
     skills: "技能",
     relevantFocus: "相关能力",
     resumeDownloadTitle: "下载中文 PDF",
@@ -226,6 +232,8 @@ function buildChineseData() {
     merged.videoPlatform = chinese?.videoPlatform ?? "Bilibili";
     merged.externalLinks = chinese?.externalLinks ?? [];
     merged.downloadLinks = chinese?.downloadLinks ?? [];
+    merged.mediaGallery = chinese?.mediaGallery ?? [];
+    merged.status = chinese?.status ?? "";
     return merged;
   });
   const zhSite = ZH_DATA.site || {};
@@ -426,7 +434,8 @@ function featuredMediaHtml(project) {
   return `
     <div class="inline-video-preview" data-inline-video-preview data-embed-url="${escapeHtml(embedUrl)}" data-video-title="${escapeHtml(title)}">
       <div class="inline-video-frame">
-        <img src="${escapeHtml(project.coverImage)}" alt="${escapeHtml(project.title)}" decoding="async" fetchpriority="high">
+        <img class="inline-video-backdrop" src="${escapeHtml(project.coverImage)}" alt="" aria-hidden="true" decoding="async">
+        <img class="inline-video-poster" src="${escapeHtml(project.coverImage)}" alt="${escapeHtml(project.title)}" decoding="async" fetchpriority="high">
         <button class="inline-video-play" type="button" data-inline-video-play aria-label="${escapeHtml(TEXT.playHere)}: ${escapeHtml(project.title)}">
           <span class="inline-video-play-icon">▶</span>
           <span class="inline-video-play-label">${escapeHtml(TEXT.playHere)}</span>
@@ -465,6 +474,54 @@ function bindInlineVideoPreviews() {
   });
 }
 
+
+function galleryPreviewHtml(item, project) {
+  const type = item?.type || "placeholder";
+  const title = safeText(item?.title, TEXT.mediaGallery);
+  const note = safeText(item?.note);
+
+  if (type === "image" && item.src) {
+    return `<article class="media-gallery-card">
+      <img class="media-gallery-image" src="${escapeHtml(item.src)}" alt="${escapeHtml(item.alt || title)}" loading="lazy">
+      <div class="media-gallery-copy"><h3>${escapeHtml(title)}</h3>${note ? `<p>${escapeHtml(note)}</p>` : ""}</div>
+    </article>`;
+  }
+
+  if (type === "video") {
+    const embedUrl = automaticEmbedUrl(item.embed, item.link);
+    const poster = item.poster || project.coverImage || "";
+    if (embedUrl) {
+      const posterHtml = poster
+        ? `<img class="inline-video-backdrop" src="${escapeHtml(poster)}" alt="" aria-hidden="true"><img class="inline-video-poster" src="${escapeHtml(poster)}" alt="${escapeHtml(title)}" loading="lazy">`
+        : `<div class="gallery-video-placeholder"><span>▶</span></div>`;
+      return `<article class="media-gallery-card media-gallery-card--video">
+        <div class="inline-video-preview gallery-inline-video" data-inline-video-preview data-embed-url="${escapeHtml(embedUrl)}" data-video-title="${escapeHtml(title)}">
+          <div class="inline-video-frame">
+            ${posterHtml}
+            <button class="inline-video-play" type="button" data-inline-video-play aria-label="${escapeHtml(TEXT.playHere)}: ${escapeHtml(title)}">
+              <span class="inline-video-play-icon">▶</span><span class="inline-video-play-label">${escapeHtml(TEXT.playHere)}</span>
+            </button>
+          </div>
+        </div>
+        <div class="media-gallery-copy"><h3>${escapeHtml(title)}</h3>${note ? `<p>${escapeHtml(note)}</p>` : ""}${isRealLink(item.link) ? `<a href="${escapeHtml(item.link)}" target="_blank" rel="noreferrer">${escapeHtml(TEXT.openVideo)} ↗</a>` : ""}</div>
+      </article>`;
+    }
+  }
+
+  return `<article class="media-gallery-card media-gallery-card--placeholder">
+    <div class="media-gallery-placeholder"><span>＋</span><strong>${escapeHtml(title)}</strong><p>${escapeHtml(note || TEXT.assetsPending)}</p></div>
+  </article>`;
+}
+
+function mediaGallerySectionHtml(project) {
+  const items = Array.isArray(project?.mediaGallery) ? project.mediaGallery : [];
+  if (!items.length) return "";
+  return `<section class="detail-section container media-gallery-section">
+    <div class="media-gallery-heading"><div><p class="section-kicker">${escapeHtml(TEXT.mediaGallery)}</p><h2>${escapeHtml(TEXT.mediaGallery)}</h2></div><p>${escapeHtml(TEXT.mediaGalleryIntro)}</p></div>
+    <div class="media-gallery-grid">${items.map(item => galleryPreviewHtml(item, project)).join("")}</div>
+  </section>`;
+}
+
 function hasBlueprintSections(project) {
   return Array.isArray(project?.blueprintSections) && project.blueprintSections.length > 0;
 }
@@ -490,7 +547,7 @@ function featuredProjectCard(project) {
       <div class="project-media${automaticEmbedUrl(project.videoEmbed, project.videoLink) && project.coverImage ? " project-media--preview" : ""}">${featuredMediaHtml(project)}</div>
       <div class="project-body">
         <div>
-          <div class="project-meta">${escapeHtml(safeText(project.category))}</div>
+          <div class="project-meta-row"><div class="project-meta">${escapeHtml(safeText(project.category))}</div>${project.status ? `<span class="project-status">${escapeHtml(project.status)}</span>` : ""}</div>
           <h3>${escapeHtml(safeText(project.title))}</h3>
           <p class="project-summary">${escapeHtml(safeText(project.summary))}</p>
           <div class="detail-list">
@@ -510,16 +567,22 @@ function featuredProjectCard(project) {
 }
 
 function libraryProjectCard(project) {
+  const media = project.coverImage
+    ? `<div class="library-card-media"><img src="${escapeHtml(project.coverImage)}" alt="${escapeHtml(project.title)}" loading="lazy"></div>`
+    : `<div class="library-card-media library-card-media--placeholder"><span>${escapeHtml(project.status || TEXT.assetsPending)}</span></div>`;
   return `
-    <article class="library-card" data-tags="${escapeHtml((project.tags || []).join(" "))}">
-      <div>
-        <div class="project-meta">${escapeHtml(safeText(project.category))}</div>
-        <h3>${escapeHtml(safeText(project.title))}</h3>
-        <p>${escapeHtml(safeText(project.summary))}</p>
-        ${tagsHtml(project.tags)}
-      </div>
-      <div class="project-actions">
-        <a class="button secondary" href="${localizedUrl(`project-detail.html?id=${encodeURIComponent(project.id)}`)}">${TEXT.details}</a>
+    <article class="library-card library-card--with-media" data-tags="${escapeHtml((project.tags || []).join(" "))}">
+      ${media}
+      <div class="library-card-content">
+        <div>
+          <div class="project-meta-row"><div class="project-meta">${escapeHtml(safeText(project.category))}</div>${project.status ? `<span class="project-status">${escapeHtml(project.status)}</span>` : ""}</div>
+          <h3>${escapeHtml(safeText(project.title))}</h3>
+          <p>${escapeHtml(safeText(project.summary))}</p>
+          ${tagsHtml(project.tags)}
+        </div>
+        <div class="project-actions">
+          <a class="button secondary" href="${localizedUrl(`project-detail.html?id=${encodeURIComponent(project.id)}`)}">${TEXT.details}</a>
+        </div>
       </div>
     </article>`;
 }
@@ -658,7 +721,7 @@ function renderHome() {
   if ($("#focus-areas")) {
     $("#focus-areas").innerHTML = (DATA.focusAreas || []).map(area => `<article class="focus-card"><h3>${escapeHtml(area.title)}</h3><p>${escapeHtml(area.text)}</p></article>`).join("");
   }
-  if ($("#library-preview-grid")) $("#library-preview-grid").innerHTML = projects.filter(p => p.library).map(libraryProjectCard).join("");
+  if ($("#library-preview-grid")) $("#library-preview-grid").innerHTML = projects.filter(p => p.library && !p.featured).map(libraryProjectCard).join("");
   renderContactLinks();
   updatePageMetadata(`${safeText(site.name, "Rui Qi")} | ${safeText(site.title, TEXT.footerRole)}`, safeText(site.subtitle));
 }
@@ -725,9 +788,11 @@ function renderDetailPage() {
       </div>
     </section>
     <section class="detail-section container"><h2>${TEXT.whatIBuilt}</h2><ul>${(detail.whatIBuilt || []).map(item => `<li>${escapeHtml(item)}</li>`).join("")}</ul></section>
+    ${mediaGallerySectionHtml(project)}
     <section class="detail-section container"><h2>${TEXT.systemBreakdown}</h2><div class="breakdown-grid">${(detail.breakdown || []).map(item => `<article class="breakdown-card"><h3>${escapeHtml(item.label)}</h3><p>${escapeHtml(item.text)}</p></article>`).join("")}</div></section>
     <section class="detail-section container"><h2>${TEXT.challenges}</h2><ul>${(detail.challenges || []).map(item => `<li>${escapeHtml(item)}</li>`).join("")}</ul></section>
     <section class="detail-section container"><h2>${TEXT.workflowNotes}</h2><p>${escapeHtml(safeText(detail.workflowNotes))}</p></section>`;
+  bindInlineVideoPreviews();
   updatePageMetadata(`${project.title} | ${safeText(DATA.site?.name, "Rui Qi")}`, project.summary);
 }
 

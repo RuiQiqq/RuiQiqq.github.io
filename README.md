@@ -1,30 +1,20 @@
-# Rui Qi Bilingual Portfolio
+# Rui Qi / 祁睿 Portfolio — Pages CMS Edition
 
-This version supports English and Simplified Chinese on the same website.
+This version keeps the existing GitHub Pages website and adds a Pages CMS editing layer.
 
-## Edit only these two files
+## Editable content
 
-- `EDIT-ME-English.js` — English text, English resume, YouTube links
-- `EDIT-ME-Chinese.js` — Chinese text, Chinese resume, Bilibili links
+- `content/portfolio-en.json`
+- `content/portfolio-zh.json`
+- `.pages.yml` defines the visual editor.
 
-The language switch appears in the top navigation. The website remembers the selected language and also adds `?lang=en` or `?lang=zh` to shareable URLs.
+Do not edit the legacy `EDIT-ME-*.js` files.
 
-## Required resume filenames
+## Pages CMS
 
-- English: `assets/resume/Rui_Qi_Resume_EN.pdf`
-- Chinese: `assets/resume/Rui_Qi_Resume_ZH.pdf`
+1. Upload the complete folder contents to the root of `RuiQiqq.github.io`.
+2. Confirm `.pages.yml` and the `content` folder are at the repository root.
+3. Reopen or refresh the repository in Pages CMS.
+4. Edit content and save. Pages CMS commits changes directly to GitHub.
 
-## Video links
-
-You can normally paste only the public video URL into `videoLink` and leave `videoEmbed` empty.
-
-- English YouTube: `https://www.youtube.com/watch?v=VIDEO_ID`
-- Chinese Bilibili: `https://www.bilibili.com/video/BVxxxxxxxxxx`
-
-The website automatically creates the embedded player. Use a full Bilibili BV link rather than a `b23.tv` short link.
-
-## Adding a project
-
-Copy one complete project object into both language files. Keep the same `id` in English and Chinese, then translate the visible text and use the appropriate platform-specific links.
-
-See `中文修改指南.md` for detailed instructions.
+See `PAGES-CMS-使用说明.txt` for Chinese instructions.

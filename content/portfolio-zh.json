@@ -1,0 +1,664 @@
+{
+  "site": {
+    "name": "祁睿",
+    "eyebrow": "作品集",
+    "title": "玩法策划／游戏设计",
+    "subtitle": "玩法系统、关卡体验、数值调优、模块化原型与引擎内迭代。",
+    "intro": "我以玩法与玩家体验为核心，通过 Unreal Blueprint、快速原型、引擎内测试和跨职能协作推进设计落地。我能够阅读和理解项目代码，并使用 AI 辅助工作流进行调试、工具制作和原型验证。",
+    "email": "markqirui@gmail.com",
+    "github": "https://github.com/RuiQiqq",
+    "linkedin": "https://www.linkedin.com/in/rui-qi-9b58b8222/",
+    "resumeUrl": "/assets/resume/Rui_Qi_Resume_ZH.pdf",
+    "demoReelEmbed": "",
+    "demoReelLink": "#",
+    "demoReelCoverImage": "",
+    "demoReelPlatform": "Bilibili"
+  },
+  "snapshot": [
+    {
+      "label": "方向",
+      "value": "玩法设计 · 系统设计 · 关卡体验"
+    },
+    {
+      "label": "引擎",
+      "value": "Unreal Engine · Godot · Unity"
+    },
+    {
+      "label": "优势",
+      "value": "Blueprint 原型 · 模块化 · 快速迭代"
+    }
+  ],
+  "focusAreas": [
+    {
+      "title": "玩法与系统设计",
+      "text": "设计玩家行为、玩法规则、反馈循环和可测试机制，并将抽象设计目标整理为可验证的游戏内容。"
+    },
+    {
+      "title": "关卡、遭遇与数值调优",
+      "text": "通过玩家路线、敌人压力、反应窗口、技能时机和数值参数调整整体体验节奏。"
+    },
+    {
+      "title": "Blueprint 原型与模块化架构",
+      "text": "能够阅读大部分项目代码，使用 Unreal Blueprint、接口、组件和数据驱动方式构建低耦合原型，并借助 AI 辅助开发流程排查问题。"
+    },
+    {
+      "title": "VFX、材质与基础建模",
+      "text": "制作玩法反馈特效、可由程序参数驱动的材质，并使用 Maya、Blender 完成基础模型与视觉验证。"
+    }
+  ],
+  "resumeSkills": [
+    {
+      "label": "游戏引擎",
+      "value": "Unreal Engine、Godot、Unity"
+    },
+    {
+      "label": "游戏设计",
+      "value": "玩法系统、战斗与 Boss 设计、关卡与遭遇、数值调优、玩家反馈"
+    },
+    {
+      "label": "原型与技术工作流",
+      "value": "Unreal Blueprint、模块化架构、接口与组件、数据驱动调试、AI 辅助开发、Python 基础"
+    },
+    {
+      "label": "视觉支持",
+      "value": "Niagara VFX、参数化材质、Maya、Blender、基础建模"
+    }
+  ],
+  "tags": {
+    "unreal": "Unreal Engine",
+    "godot": "Godot",
+    "unity": "Unity",
+    "blueprint": "蓝图",
+    "combat": "战斗设计",
+    "soulslike": "类魂",
+    "hitDetection": "命中检测",
+    "enemyReaction": "敌人反馈",
+    "projectile": "射弹系统",
+    "numericalDesign": "数值调优",
+    "gameplaySystem": "玩法系统",
+    "prototype": "原型",
+    "team": "团队项目",
+    "solo": "个人项目",
+    "iteration": "迭代",
+    "capstone": "毕业项目",
+    "commercial": "商业项目",
+    "levelDesign": "关卡设计",
+    "vfx": "VFX",
+    "bossDesign": "Boss 设计",
+    "telegraph": "攻击预警",
+    "decoupling": "模块化架构",
+    "animation": "动画重定向",
+    "material": "参数化材质",
+    "dataTool": "数据工具",
+    "aiWorkflow": "AI 辅助工作流",
+    "vr": "VR",
+    "puzzle": "解谜",
+    "modeling": "基础建模",
+    "conceptArt": "怪物设计",
+    "draft": "素材待补充"
+  },
+  "projects": [
+    {
+      "id": "third-person-soulslike",
+      "order": 1,
+      "featured": true,
+      "library": true,
+      "title": "第三人称类魂战斗原型",
+      "category": "Unreal Engine 5 · 100% Blueprint · 个人项目",
+      "role": "玩法与战斗设计／Blueprint 系统实现／动画重定向",
+      "summary": "一个完全使用 Unreal Blueprint 搭建的第三人称动作原型，围绕攻击与闪避流程、命中反馈、射弹行为、输入响应和数值调试展开，并通过接口、Actor Component 和基础类构建可扩展的模块化结构。",
+      "tools": "Unreal Engine 5、Blueprint、Animation Montage、AnimNotifyState、Blueprint Interface、Actor Component、Data Asset",
+      "tags": [
+        "unreal",
+        "blueprint",
+        "combat",
+        "soulslike",
+        "animation",
+        "hitDetection",
+        "enemyReaction",
+        "projectile",
+        "numericalDesign",
+        "decoupling",
+        "solo"
+      ],
+      "coverImage": "/assets/images/soulslike-video-cover-zh.jpg",
+      "videoEmbed": "https://player.bilibili.com/player.html?bvid=BV18sNQ61EdW&page=1&high_quality=1&danmaku=0&autoplay=0",
+      "videoLink": "https://www.bilibili.com/video/BV18sNQ61EdW/",
+      "videoFile": "",
+      "videoPlatform": "Bilibili",
+      "externalLinks": [],
+      "downloadLinks": [],
+      "detail": {
+        "overview": "这是一个完全使用 Unreal Blueprint 制作的第三人称动作原型，没有使用 C++。项目既用于验证攻击、闪避、命中与敌人反馈，也用于练习可维护的系统组织方式：通过 EnemyBase、ProjectileBase、Actor Component、Blueprint Interface 和组件标签减少模块间直接 Cast 与硬编码引用。",
+        "whatIBuilt": [
+          "实现轻攻击、重攻击、闪避、耐力、锁定、命中检测、伤害与敌人受击反馈。",
+          "实现射弹生成、碰撞、有效目标判断和销毁流程。",
+          "使用 AnimNotifyState 控制不同近战武器的有效判定帧，并对齐受击反馈与 UI 伤害飘字。",
+          "处理输入缓存与动画状态流转，减少高频战斗中的动作粘滞和状态冲突。",
+          "完成动画资源与骨骼重定向，并将动画、音效、VFX 和 UI 接入战斗事件。",
+          "使用可编辑参数、Data Asset 和可视化 Debug Trace 支持快速数值迭代。"
+        ],
+        "breakdown": [
+          {
+            "label": "模块化通信",
+            "text": "提取 EnemyBase 与 ProjectileBase，核心逻辑封装至 Actor Component，并通过 Blueprint Interface 与组件标签传递事件，降低直接引用。"
+          },
+          {
+            "label": "动画与判定",
+            "text": "使用 AnimNotifyState 精确控制 Active Frames，让碰撞检测、受击反馈和伤害显示与动画时间一致。"
+          },
+          {
+            "label": "输入与状态",
+            "text": "组织输入缓存和动画状态流转，避免攻击、闪避或受击之间出现不合理的状态冲突。"
+          },
+          {
+            "label": "数据驱动调试",
+            "text": "将伤害倍率、冷却和判定窗口暴露为可编辑参数，并通过 Draw Debug 逐帧校准攻击范围与无敌帧。"
+          }
+        ],
+        "challenges": [
+          "不同武器的攻击动画与有效判定帧需要精确匹配，否则会出现看似命中但没有伤害，或伤害先于画面发生的问题。",
+          "高频输入会暴露输入缓存、动画状态和战斗状态之间的冲突，需要反复测试优先级与重置条件。",
+          "随着系统增多，直接 Cast 和 Actor 引用会迅速增加维护成本，因此将模块化和低耦合作为架构目标。"
+        ],
+        "workflowNotes": "我使用 PIE 模式反复测试，并通过数据驱动参数与可视化调试快速调整伤害倍率、冷却、攻击判定窗口和闪避无敌帧。AI 工具用于辅助研究与排错，最终蓝图结构、实现与验证均在 Unreal Engine 中完成。"
+      },
+      "blueprintSections": [
+        {
+          "title": "战斗输入与状态流程",
+          "text": "展示攻击、闪避和输入缓存如何进入战斗状态流程，以及状态验证如何避免动作冲突。",
+          "image": "",
+          "imageLabel": "上传后替换：soulslike-input-state-blueprint.png",
+          "bullets": [
+            "输入入口",
+            "缓存窗口",
+            "状态优先级",
+            "动作结束与重置"
+          ]
+        },
+        {
+          "title": "攻击判定与 AnimNotifyState",
+          "text": "展示如何通过 AnimNotifyState 打开和关闭武器有效判定帧，并将命中、伤害、受击反馈和 UI 飘字对齐。",
+          "image": "",
+          "imageLabel": "上传后替换：soulslike-hit-damage-blueprint.png",
+          "bullets": [
+            "Active Frames",
+            "Trace 或碰撞检测",
+            "伤害应用",
+            "反馈同步"
+          ]
+        },
+        {
+          "title": "解耦式蓝图架构",
+          "text": "展示 EnemyBase、ProjectileBase、Actor Component、Blueprint Interface 与组件标签之间的通信关系。",
+          "image": "",
+          "imageLabel": "上传后替换：soulslike-decoupled-architecture.png",
+          "bullets": [
+            "通用基础类",
+            "组件职责",
+            "接口事件",
+            "减少直接 Cast"
+          ]
+        },
+        {
+          "title": "数据驱动数值调试",
+          "text": "展示 Data Asset 或暴露参数，以及 Box Trace Draw Debug 如何帮助逐帧校准伤害、范围、冷却与无敌帧。",
+          "image": "",
+          "imageLabel": "上传后替换：soulslike-numerical-tuning.png",
+          "bullets": [
+            "集中参数",
+            "PIE 调整",
+            "可视化判定",
+            "修改前后对比"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "punk-plush-panic",
+      "order": 2,
+      "featured": true,
+      "library": true,
+      "title": "Punk Plush Panic",
+      "category": "Capstone 毕业项目 · 2.5D 平台动作 · 团队项目",
+      "role": "战斗策划／关卡设计／VFX／系统设计",
+      "summary": "一款快节奏的 2.5D 平台动作游戏，玩家在三名角色之间切换并组合能力对抗敌人波次。我负责战斗与系统设计、关卡迭代、VFX，以及 Boss 攻击时机和可读性优化。",
+      "tools": "Unreal Engine、Blueprint、关卡设计、Boss 设计、VFX、试玩反馈、跨职能协作",
+      "tags": [
+        "unreal",
+        "blueprint",
+        "capstone",
+        "combat",
+        "levelDesign",
+        "vfx",
+        "gameplaySystem",
+        "bossDesign",
+        "telegraph",
+        "team"
+      ],
+      "coverImage": "/assets/images/punk-plush-panic-steam.png",
+      "videoEmbed": "https://player.bilibili.com/player.html?bvid=BV1tRMz67EBu&page=1&high_quality=1&danmaku=0&autoplay=0",
+      "videoLink": "https://www.bilibili.com/video/BV1tRMz67EBu/",
+      "videoFile": "",
+      "videoPlatform": "Bilibili",
+      "externalLinks": [
+        {
+          "label": "打开 Steam 商店页面",
+          "url": "https://store.steampowered.com/app/4343350/Punk_Plush_Panic/"
+        }
+      ],
+      "downloadLinks": [],
+      "detail": {
+        "overview": "Punk Plush Panic 是我的 Capstone 毕业项目，由跨专业团队共同完成。玩家需要在三名角色之间切换，并组合不同能力应对敌人波次。我的工作集中在战斗与系统设计、关卡和遭遇迭代、VFX 反馈、试玩反馈整理，以及与程序沟通 Boss 攻击可读性。",
+        "whatIBuilt": [
+          "参与玩法系统、战斗规则和关卡遭遇的制定与迭代。",
+          "设计并调整关卡空间、玩家路线、敌人压力和角色切换机会。",
+          "在制作时间不足时主动缩减部分关卡范围，帮助团队按期完成可交付版本。",
+          "收集试玩反馈、整理问题，并与团队讨论后推动可执行的修改方案。",
+          "调整 Boss 技能释放时机，并与程序沟通加入攻击前的地面指示器。",
+          "制作烟雾、风等场景特效，以及初版技能和 Buff 特效；部分早期效果在后续视觉迭代中被替换。"
+        ],
+        "breakdown": [
+          {
+            "label": "Boss 预警",
+            "text": "针对攻击预警不足的问题，调整释放时机并推动加入地面范围指示，让玩家有更清晰的反应窗口。"
+          },
+          {
+            "label": "关卡范围管理",
+            "text": "在时间受限时评估关卡优先级并削减低优先级内容，确保核心流程和团队交付。"
+          },
+          {
+            "label": "试玩与迭代",
+            "text": "收集玩家反馈、归类体验问题，与团队讨论成本和收益后推动修改。"
+          },
+          {
+            "label": "VFX 反馈",
+            "text": "制作环境和早期技能特效，为危险、能力和状态提供视觉反馈，也帮助后续团队明确表现需求。"
+          }
+        ],
+        "challenges": [
+          "Boss 攻击最初缺乏足够预警，玩家难以理解攻击范围和失败原因。",
+          "项目后期时间有限，需要在完整愿景与按期交付之间重新确定关卡范围。",
+          "部分早期 VFX 被后续版本替换，因此需要把原型价值表达为反馈验证与制作方向，而不是最终美术归属。"
+        ],
+        "workflowNotes": "我的工作包含发现玩家体验问题、提出设计方案、与程序和其他岗位沟通实现、收集试玩反馈并继续迭代。Boss 地面指示器和关卡范围削减分别展示了体验优化与制作管理两类设计判断。"
+      },
+      "blueprintSections": [
+        {
+          "title": "Boss 技能时机与地面预警",
+          "text": "放置 Boss 攻击修改前后的画面、技能时间轴和地面指示器截图，解释预警、范围和伤害发生之间的关系。",
+          "image": "",
+          "imageLabel": "上传后替换：punk-boss-telegraph-blueprint.png",
+          "bullets": [
+            "原始问题",
+            "技能时间调整",
+            "地面预警需求",
+            "试玩结果"
+          ]
+        },
+        {
+          "title": "关卡范围与按期交付",
+          "text": "展示被保留与删减的关卡内容，说明如何根据时间、核心体验和团队依赖重新确定范围。",
+          "image": "",
+          "imageLabel": "上传后替换：punk-level-scope-breakdown.png",
+          "bullets": [
+            "原始范围",
+            "优先级判断",
+            "削减内容",
+            "最终交付"
+          ]
+        },
+        {
+          "title": "试玩反馈与迭代",
+          "text": "展示试玩反馈记录、问题分类和最终采纳的修改，说明如何把主观反馈转化为可执行任务。",
+          "image": "",
+          "imageLabel": "上传后替换：punk-playtest-iteration.png",
+          "bullets": [
+            "反馈来源",
+            "问题归类",
+            "团队讨论",
+            "最终修改"
+          ]
+        },
+        {
+          "title": "VFX 作为玩法反馈",
+          "text": "展示烟雾、风、初版技能和 Buff 特效，并说明哪些效果用于环境氛围，哪些用于玩法可读性。",
+          "image": "",
+          "imageLabel": "上传后替换：punk-vfx-breakdown.png",
+          "bullets": [
+            "场景特效",
+            "技能原型",
+            "Buff 反馈",
+            "后续替换原因"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "breach-brew",
+      "order": 3,
+      "featured": false,
+      "library": true,
+      "title": "Breach Brew｜失压救援队",
+      "category": "商业项目 · Unreal Engine · 环境玩法系统",
+      "role": "技术设计／技术美术／玩法系统实现",
+      "summary": "设计并实现事件驱动的环境温度系统，让冷热状态动态影响玩法逻辑、材质参数和 Niagara VFX，并通过视觉反馈提高环境机制的可读性。",
+      "tools": "Unreal Engine、Blueprint、材质参数、Niagara、环境交互、跨职能协作",
+      "tags": [
+        "commercial",
+        "unreal",
+        "blueprint",
+        "gameplaySystem",
+        "material",
+        "vfx",
+        "decoupling"
+      ],
+      "coverImage": "",
+      "videoEmbed": "",
+      "videoLink": "#",
+      "videoPlatform": "Bilibili",
+      "externalLinks": [],
+      "downloadLinks": [],
+      "status": "等待补充项目素材",
+      "detail": {
+        "overview": "Breach Brew｜失压救援队是一项商业游戏项目。我参与设计和实现环境温度系统，使温度变化能够驱动玩法状态、材质表现和 Niagara 特效，并与技术美术和设计成员协作完成引擎内整合。",
+        "whatIBuilt": [
+          "使用 Blueprint 设计并实现事件驱动的温度系统。",
+          "为冷热过渡建立可由玩法参数驱动的材质控制。",
+          "将 Niagara VFX 接入温度和环境事件，提供清晰视觉反馈。",
+          "实现可交互环境机制，并根据玩法测试优化可读性。",
+          "与技术美术和设计成员协作，将玩法系统和视觉表现整合。"
+        ],
+        "breakdown": [
+          {
+            "label": "温度状态",
+            "text": "用统一状态和事件更新环境温度，而不是让每个对象独立运行复杂逻辑。"
+          },
+          {
+            "label": "材质驱动",
+            "text": "通过参数控制冷热表现，使同一材质可以平滑响应玩法数据。"
+          },
+          {
+            "label": "Niagara 反馈",
+            "text": "将粒子效果与环境事件绑定，让玩家能快速理解温度和危险变化。"
+          },
+          {
+            "label": "协作整合",
+            "text": "将系统接口与视觉需求明确分工，便于设计和技术美术分别迭代。"
+          }
+        ],
+        "challenges": [
+          "需要让玩法逻辑、材质和 VFX 使用一致的数据来源，避免视觉状态与实际系统不同步。",
+          "当前未上传可公开展示的项目图片和视频，因此此试装版使用素材占位区。"
+        ],
+        "workflowNotes": "该项目适合展示系统与视觉表现之间的连接。正式发布前应补充温度变化录屏、材质参数截图、Niagara 效果和系统流程图。"
+      },
+      "mediaGallery": [
+        {
+          "type": "placeholder",
+          "title": "温度系统演示",
+          "note": "建议上传：冷热状态切换的短视频或 GIF"
+        },
+        {
+          "type": "placeholder",
+          "title": "参数化材质",
+          "note": "建议上传：材质实例与冷热参数截图"
+        },
+        {
+          "type": "placeholder",
+          "title": "Niagara VFX",
+          "note": "建议上传：环境特效前后对比"
+        },
+        {
+          "type": "placeholder",
+          "title": "系统流程",
+          "note": "建议上传：温度事件与视觉反馈流程图"
+        }
+      ],
+      "blueprintSections": [
+        {
+          "title": "事件驱动温度系统",
+          "text": "展示温度数据如何更新房间、交互对象和视觉状态，并说明为什么使用低频或事件驱动方式。",
+          "image": "",
+          "imageLabel": "上传后替换：breach-brew-temperature-system.png",
+          "bullets": [
+            "温度数据",
+            "状态切换",
+            "事件广播",
+            "性能与扩展"
+          ]
+        },
+        {
+          "title": "材质与 Niagara 接入",
+          "text": "展示玩法数值如何驱动材质参数与 Niagara 效果，使视觉表现与系统状态保持一致。",
+          "image": "",
+          "imageLabel": "上传后替换：breach-brew-material-vfx.png",
+          "bullets": [
+            "参数范围",
+            "材质过渡",
+            "VFX 触发",
+            "可读性测试"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "the-e-book-data-pipeline",
+      "order": 4,
+      "featured": false,
+      "library": true,
+      "title": "源书行者｜The E Book",
+      "category": "商业项目 · Unity · 数值配置与数据工具",
+      "role": "数值配置／工作流设计／AI 辅助工具开发",
+      "summary": "维护复杂的玩法数值 Excel 配置，并重新设计表格结构和数据工作流；使用 AI 辅助开发转换工具，将策划友好的表格自动转换为 Unity 可识别的数据格式。",
+      "tools": "Excel、Unity、Python 基础、AI 辅助开发、数据验证",
+      "tags": [
+        "commercial",
+        "unity",
+        "numericalDesign",
+        "dataTool",
+        "aiWorkflow",
+        "gameplaySystem"
+      ],
+      "coverImage": "",
+      "videoEmbed": "",
+      "videoLink": "#",
+      "videoPlatform": "Bilibili",
+      "externalLinks": [],
+      "downloadLinks": [],
+      "status": "等待补充工具截图",
+      "detail": {
+        "overview": "在《源书行者》中，我负责维护玩法数值配置，并针对策划修改数据不便的问题重构 Excel 表格结构和工作流。随后借助 AI 辅助开发了转换工具，把设计人员使用的 Excel 数据自动转为 Unity 可直接读取的配置格式。",
+        "whatIBuilt": [
+          "制作并维护复杂的玩法数值 Excel 配置表。",
+          "重新设计表格结构，使策划更容易理解、填写和批量调整数据。",
+          "使用 AI 辅助工作流开发 Excel 到 Unity 配置格式的自动转换工具。",
+          "减少手动整理、复制和格式转换造成的时间成本与数据错误。",
+          "与策划协作验证新工作流是否满足实际数值迭代需求。"
+        ],
+        "breakdown": [
+          {
+            "label": "设计者友好输入",
+            "text": "让策划以易读的表格形式维护数值，而不是直接操作引擎内部格式。"
+          },
+          {
+            "label": "自动转换",
+            "text": "将 Excel 数据转换为 Unity 可读取的配置，降低重复手动工作。"
+          },
+          {
+            "label": "错误控制",
+            "text": "通过结构约束和验证减少字段遗漏、格式错误和版本不一致。"
+          },
+          {
+            "label": "迭代效率",
+            "text": "把数据改动和引擎验证之间的步骤缩短，支持更快的数值测试。"
+          }
+        ],
+        "challenges": [
+          "表格既要方便策划阅读，也必须保持足够严格的结构供工具稳定转换。",
+          "正式作品集需要隐藏商业敏感数据，只展示脱敏后的表结构、工具流程和示例输出。"
+        ],
+        "workflowNotes": "正式展示时建议使用虚构或脱敏数据制作前后对比：原始表格、重构后的表格、转换按钮或日志，以及 Unity 中成功读取的结果。"
+      },
+      "mediaGallery": [
+        {
+          "type": "placeholder",
+          "title": "Excel 配置表",
+          "note": "上传脱敏后的表格结构截图"
+        },
+        {
+          "type": "placeholder",
+          "title": "转换工具",
+          "note": "上传工具界面或运行日志"
+        },
+        {
+          "type": "placeholder",
+          "title": "Unity 数据结果",
+          "note": "上传转换后在 Unity 中读取的示例"
+        }
+      ]
+    },
+    {
+      "id": "maimed-maintenance",
+      "order": 5,
+      "featured": false,
+      "library": true,
+      "title": "Maimed Maintenance",
+      "category": "VR 密室逃脱原型 · Unreal Engine",
+      "role": "玩法蓝图／关卡设计／环境搭建／材质制作",
+      "summary": "一个 VR 密室逃脱原型。我完成了部分谜题、门逻辑、交互手感调整、环境搭建，以及玻璃、水等材质，用于验证沉浸式解谜和空间引导。",
+      "tools": "Unreal Engine、Blueprint、VR 交互、关卡搭建、材质",
+      "tags": [
+        "unreal",
+        "blueprint",
+        "vr",
+        "puzzle",
+        "levelDesign",
+        "material",
+        "prototype"
+      ],
+      "coverImage": "",
+      "videoEmbed": "https://player.bilibili.com/player.html?bvid=BV1d5MS6sEoc&page=1&high_quality=1&danmaku=0&autoplay=0",
+      "videoLink": "https://www.bilibili.com/video/BV1d5MS6sEoc/",
+      "videoPlatform": "Bilibili",
+      "externalLinks": [],
+      "downloadLinks": [],
+      "detail": {
+        "overview": "Maimed Maintenance 是一个 VR 密室逃脱原型，重点验证空间探索、谜题交互与环境沉浸感。我的贡献包括部分谜题实现、门逻辑、交互手感调整、场景搭建，以及玻璃和水等材质。",
+        "whatIBuilt": [
+          "实现部分解谜交互和门的状态逻辑。",
+          "根据 VR 操作体验调整交互距离、反馈和使用手感。",
+          "完成部分关卡与环境搭建。",
+          "制作并调整玻璃、水和其他环境材质。"
+        ],
+        "breakdown": [
+          {
+            "label": "谜题逻辑",
+            "text": "将谜题条件、交互结果和场景状态连接成可测试流程。"
+          },
+          {
+            "label": "门与状态",
+            "text": "处理门的条件判断、开关状态与交互反馈。"
+          },
+          {
+            "label": "VR 手感",
+            "text": "根据头显中的实际体验调整交互范围、反馈速度和物体操作。"
+          },
+          {
+            "label": "环境与材质",
+            "text": "通过场景搭建和玻璃、水等材质强化空间辨识与沉浸感。"
+          }
+        ],
+        "challenges": [
+          "VR 中在桌面端看似合理的距离和反馈，在头显内可能显得迟钝或不自然，因此必须实际佩戴设备测试。"
+        ],
+        "workflowNotes": "该项目适合用短视频展示谜题和门逻辑，再用截图补充材质与环境搭建。无需把每一个小机制单独拆成项目。"
+      },
+      "mediaGallery": [
+        {
+          "type": "placeholder",
+          "title": "谜题与门逻辑",
+          "note": "上传蓝图或游戏内演示截图"
+        },
+        {
+          "type": "placeholder",
+          "title": "VR 交互手感",
+          "note": "上传交互前后对比或测试说明"
+        },
+        {
+          "type": "placeholder",
+          "title": "玻璃与水材质",
+          "note": "上传材质球和场景内效果"
+        }
+      ]
+    },
+    {
+      "id": "visual-studies",
+      "order": 6,
+      "featured": false,
+      "library": true,
+      "title": "VFX、3D 模型与怪物设计练习",
+      "category": "其他作品 · Unity VFX · 基础建模 · 概念设计",
+      "role": "VFX／基础建模／视觉探索",
+      "summary": "将零散的 Unity VFX、基础 3D 模型和怪物概念设计集中为一个视觉作品画廊。每个条目都可以独立放图片或视频，不需要强行包装成完整游戏项目。",
+      "tools": "Unity、Maya、Blender、VFX 与材质工具",
+      "tags": [
+        "unity",
+        "vfx",
+        "modeling",
+        "conceptArt",
+        "draft"
+      ],
+      "coverImage": "",
+      "videoEmbed": "",
+      "videoLink": "#",
+      "videoPlatform": "Bilibili",
+      "externalLinks": [],
+      "downloadLinks": [],
+      "status": "试装占位：等待上传素材",
+      "detail": {
+        "overview": "这个页面用于集中展示较小的视觉作品。它不是一个单独的游戏项目，而是按 VFX、3D 模型和怪物设计分组的媒体画廊。上传素材后，每一组都可以包含多张图片和多个视频。",
+        "whatIBuilt": [
+          "Unity VFX 练习与效果演示。",
+          "基础 3D 模型、材质或引擎内呈现。",
+          "怪物设计原画与迭代草图。"
+        ],
+        "breakdown": [
+          {
+            "label": "VFX",
+            "text": "展示效果目标、制作过程、触发方式和最终画面。"
+          },
+          {
+            "label": "3D 模型",
+            "text": "展示模型、材质和引擎内效果，不需要为每个模型建立独立项目页。"
+          },
+          {
+            "label": "怪物设计",
+            "text": "展示草图、轮廓探索、最终设计和简短设计意图。"
+          }
+        ],
+        "challenges": [
+          "当前尚未上传图片和视频，因此试装版只显示三个素材区域。正式上线前再决定保留哪些质量最高的作品。"
+        ],
+        "workflowNotes": "多个视频不会挤在同一个播放器里。页面会以媒体卡片网格展示，每个视频都可独立点击原地播放，图片也能单独查看。"
+      },
+      "mediaGallery": [
+        {
+          "type": "placeholder",
+          "title": "Unity VFX",
+          "note": "可放多个视频、GIF 或效果前后对比"
+        },
+        {
+          "type": "placeholder",
+          "title": "3D 模型与材质",
+          "note": "可放正侧背视图、线框和引擎效果"
+        },
+        {
+          "type": "placeholder",
+          "title": "怪物设计原画",
+          "note": "可放草图、轮廓迭代和最终设计"
+        }
+      ]
+    }
+  ]
+}

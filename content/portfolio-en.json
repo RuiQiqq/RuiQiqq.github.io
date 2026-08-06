@@ -1,0 +1,664 @@
+{
+  "site": {
+    "name": "Rui Qi",
+    "eyebrow": "Portfolio",
+    "title": "Gameplay Designer",
+    "subtitle": "Gameplay systems, level experiences, tuning, modular prototyping, and in-engine iteration.",
+    "intro": "I focus on gameplay and player experience, using Unreal Blueprint, rapid prototyping, in-engine testing, and cross-disciplinary collaboration to move designs into playable form. I can read and understand project code and use AI-assisted workflows for debugging, tooling, and prototype development.",
+    "email": "markqirui@gmail.com",
+    "github": "https://github.com/RuiQiqq",
+    "linkedin": "https://www.linkedin.com/in/rui-qi-9b58b8222/",
+    "resumeUrl": "/assets/resume/Rui_Qi_Resume_EN.pdf",
+    "demoReelEmbed": "",
+    "demoReelLink": "#",
+    "demoReelCoverImage": "",
+    "demoReelPlatform": "YouTube"
+  },
+  "snapshot": [
+    {
+      "label": "Focus",
+      "value": "Gameplay · Systems · Level Experience"
+    },
+    {
+      "label": "Engines",
+      "value": "Unreal Engine · Godot · Unity"
+    },
+    {
+      "label": "Strength",
+      "value": "Blueprint Prototyping · Modular Iteration"
+    }
+  ],
+  "focusAreas": [
+    {
+      "title": "Gameplay & Systems Design",
+      "text": "Designing player actions, gameplay rules, feedback loops, and testable mechanics, then translating design goals into playable content."
+    },
+    {
+      "title": "Level, Encounter & Tuning",
+      "text": "Shaping player routes, enemy pressure, reaction windows, ability timing, and numerical parameters to control pacing and readability."
+    },
+    {
+      "title": "Blueprint Prototyping & Modular Architecture",
+      "text": "Reading project code, building low-coupling Blueprint prototypes with interfaces, components, and data-driven structures, and using AI-assisted workflows for debugging and tooling."
+    },
+    {
+      "title": "VFX, Materials & Foundational Modeling",
+      "text": "Creating gameplay feedback VFX, programmatically controlled materials, and foundational 3D assets in Maya and Blender for visual validation."
+    }
+  ],
+  "resumeSkills": [
+    {
+      "label": "Engines",
+      "value": "Unreal Engine, Godot, Unity"
+    },
+    {
+      "label": "Game Design",
+      "value": "Gameplay systems, combat and boss design, level and encounter design, numerical tuning, player feedback"
+    },
+    {
+      "label": "Prototyping & Technical Workflow",
+      "value": "Unreal Blueprint, modular architecture, interfaces and components, data-driven debugging, AI-assisted development, basic Python"
+    },
+    {
+      "label": "Visual Support",
+      "value": "Niagara VFX, parameter-driven materials, Maya, Blender, foundational modeling"
+    }
+  ],
+  "tags": {
+    "unreal": "Unreal Engine",
+    "godot": "Godot",
+    "unity": "Unity",
+    "blueprint": "Blueprint",
+    "combat": "Combat Design",
+    "soulslike": "Soulslike",
+    "hitDetection": "Hit Detection",
+    "enemyReaction": "Enemy Feedback",
+    "projectile": "Projectile System",
+    "numericalDesign": "Gameplay Tuning",
+    "gameplaySystem": "Gameplay Systems",
+    "prototype": "Prototype",
+    "team": "Team Project",
+    "solo": "Solo Project",
+    "iteration": "Iteration",
+    "capstone": "Capstone",
+    "commercial": "Commercial Project",
+    "levelDesign": "Level Design",
+    "vfx": "VFX",
+    "bossDesign": "Boss Design",
+    "telegraph": "Attack Telegraph",
+    "decoupling": "Modular Architecture",
+    "animation": "Animation Retargeting",
+    "material": "Parameter-Driven Materials",
+    "dataTool": "Data Tooling",
+    "aiWorkflow": "AI-Assisted Workflow",
+    "vr": "VR",
+    "puzzle": "Puzzle Design",
+    "modeling": "Foundational Modeling",
+    "conceptArt": "Creature Design",
+    "draft": "Assets Pending"
+  },
+  "projects": [
+    {
+      "id": "third-person-soulslike",
+      "order": 1,
+      "featured": true,
+      "library": true,
+      "title": "Third-Person Soulslike Combat Prototype",
+      "category": "Unreal Engine 5 · 100% Blueprint · Solo Project",
+      "role": "Gameplay & Combat Design / Blueprint Systems / Animation Retargeting",
+      "summary": "A third-person action prototype built entirely in Unreal Blueprint. It explores attack and dodge flow, hit feedback, projectile behavior, input response, and gameplay tuning while using interfaces, Actor Components, and base classes to create an extensible modular structure.",
+      "tools": "Unreal Engine 5, Blueprint, Animation Montage, AnimNotifyState, Blueprint Interface, Actor Component, Data Asset",
+      "tags": [
+        "unreal",
+        "blueprint",
+        "combat",
+        "soulslike",
+        "animation",
+        "hitDetection",
+        "enemyReaction",
+        "projectile",
+        "numericalDesign",
+        "decoupling",
+        "solo"
+      ],
+      "coverImage": "/assets/images/soulslike-video-cover-en.jpg",
+      "videoEmbed": "https://www.youtube.com/embed/IDIwe-tPvXk?autoplay=0&playsinline=1&rel=0",
+      "videoLink": "https://youtu.be/IDIwe-tPvXk",
+      "videoFile": "",
+      "videoPlatform": "YouTube",
+      "externalLinks": [],
+      "downloadLinks": [],
+      "detail": {
+        "overview": "This third-person action prototype was created entirely in Unreal Blueprint with no C++. It tests attack, dodge, hit detection, enemy feedback, and projectile behavior while practicing maintainable system organization through EnemyBase, ProjectileBase, Actor Components, Blueprint Interfaces, and component tags.",
+        "whatIBuilt": [
+          "Implemented light and heavy attacks, dodge, stamina, lock-on, hit detection, damage, and enemy reactions.",
+          "Implemented projectile spawning, collision, valid-target checks, and cleanup.",
+          "Used AnimNotifyState to control active hit frames for different melee weapons and align impacts with damage numbers and feedback.",
+          "Worked on input buffering and animation-state transitions to reduce sticky controls and state conflicts during rapid combat.",
+          "Retargeted animation assets and connected animation, audio, VFX, and UI to combat events.",
+          "Used exposed parameters, Data Assets, and visual debug traces to support rapid gameplay tuning."
+        ],
+        "breakdown": [
+          {
+            "label": "Modular Communication",
+            "text": "Extracted EnemyBase and ProjectileBase, moved reusable logic into Actor Components, and used Blueprint Interfaces and component tags to reduce direct references."
+          },
+          {
+            "label": "Animation & Hit Frames",
+            "text": "Used AnimNotifyState to define active frames so collision, damage, reaction, and UI feedback match the visible animation."
+          },
+          {
+            "label": "Input & State Flow",
+            "text": "Organized input buffering and animation-state transitions to reduce conflicts between attacks, dodges, and reactions."
+          },
+          {
+            "label": "Data-Driven Debugging",
+            "text": "Exposed damage, cooldown, and timing parameters and used Draw Debug traces to calibrate attack ranges and invulnerability frames."
+          }
+        ],
+        "challenges": [
+          "Weapon animation and active hit frames had to match precisely or the visual impact and actual damage would feel disconnected.",
+          "Rapid inputs exposed conflicts between buffering, animation states, and combat-state resets.",
+          "As the prototype expanded, direct casts and Actor references became expensive to maintain, making modularity and low coupling a design requirement."
+        ],
+        "workflowNotes": "I iterated in PIE with data-driven parameters and visual debugging for damage, cooldowns, attack windows, and dodge invulnerability. AI tools supported research and troubleshooting; the final Blueprint structure, implementation, and validation were completed in Unreal Engine."
+      },
+      "blueprintSections": [
+        {
+          "title": "Combat Input & State Flow",
+          "text": "Show how attack, dodge, and buffered inputs enter the combat-state flow and how validation prevents action conflicts.",
+          "image": "",
+          "imageLabel": "Add: soulslike-input-state-blueprint.png",
+          "bullets": [
+            "Input entry",
+            "Buffer window",
+            "State priority",
+            "Action reset"
+          ]
+        },
+        {
+          "title": "Hit Detection & AnimNotifyState",
+          "text": "Show how AnimNotifyState opens and closes active weapon frames and synchronizes hit detection, damage, reactions, and UI feedback.",
+          "image": "",
+          "imageLabel": "Add: soulslike-hit-damage-blueprint.png",
+          "bullets": [
+            "Active frames",
+            "Trace or collision",
+            "Damage application",
+            "Feedback synchronization"
+          ]
+        },
+        {
+          "title": "Decoupled Blueprint Architecture",
+          "text": "Show the communication between EnemyBase, ProjectileBase, Actor Components, Blueprint Interfaces, and component tags.",
+          "image": "",
+          "imageLabel": "Add: soulslike-decoupled-architecture.png",
+          "bullets": [
+            "Base classes",
+            "Component responsibilities",
+            "Interface events",
+            "Reduced direct casting"
+          ]
+        },
+        {
+          "title": "Data-Driven Tuning",
+          "text": "Show Data Assets or exposed parameters and how visual debug traces support frame-by-frame tuning of damage, range, cooldowns, and invulnerability.",
+          "image": "",
+          "imageLabel": "Add: soulslike-numerical-tuning.png",
+          "bullets": [
+            "Central parameters",
+            "PIE iteration",
+            "Visual hitboxes",
+            "Before and after"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "punk-plush-panic",
+      "order": 2,
+      "featured": true,
+      "library": true,
+      "title": "Punk Plush Panic",
+      "category": "Capstone · 2.5D Action Platformer · Team Project",
+      "role": "Combat Design / Level Design / VFX / Systems Design",
+      "summary": "A fast-paced 2.5D action platformer where players swap between three characters and combine their abilities against enemy waves. I contributed combat and systems design, level iteration, VFX, boss timing, and attack readability improvements.",
+      "tools": "Unreal Engine, Blueprint, Level Design, Boss Design, VFX, Playtest Feedback, Cross-Discipline Collaboration",
+      "tags": [
+        "unreal",
+        "blueprint",
+        "capstone",
+        "combat",
+        "levelDesign",
+        "vfx",
+        "gameplaySystem",
+        "bossDesign",
+        "telegraph",
+        "team"
+      ],
+      "coverImage": "/assets/images/punk-plush-panic-steam.png",
+      "videoEmbed": "https://www.youtube.com/embed/wHzgeE2Xnzc?autoplay=0&playsinline=1&rel=0",
+      "videoLink": "https://youtu.be/wHzgeE2Xnzc",
+      "videoFile": "",
+      "videoPlatform": "YouTube",
+      "externalLinks": [
+        {
+          "label": "View on Steam",
+          "url": "https://store.steampowered.com/app/4343350/Punk_Plush_Panic/"
+        }
+      ],
+      "downloadLinks": [],
+      "detail": {
+        "overview": "Punk Plush Panic is my capstone project, built by a multidisciplinary team. Players swap between three characters and combine their abilities against waves of enemies. My work focused on combat and systems design, level and encounter iteration, VFX feedback, playtest analysis, and communication with programmers around boss readability.",
+        "whatIBuilt": [
+          "Contributed to gameplay systems, combat rules, level spaces, and encounter iteration.",
+          "Adjusted player routes, enemy pressure, and opportunities for character swapping.",
+          "Reduced level scope late in production to protect the core experience and help the team ship on time.",
+          "Collected playtest feedback, organized issues, and helped the team select actionable changes.",
+          "Retuned boss ability timing and coordinated the addition of ground telegraphs with programmers.",
+          "Created smoke, wind, and early skill and buff VFX; some early effects were replaced during later visual iteration."
+        ],
+        "breakdown": [
+          {
+            "label": "Boss Telegraphing",
+            "text": "Retuned release timing and coordinated ground indicators so players could read attack range and react fairly."
+          },
+          {
+            "label": "Scope Management",
+            "text": "Evaluated level priorities and cut lower-value content when time became limited, protecting the core flow and team delivery."
+          },
+          {
+            "label": "Playtesting & Iteration",
+            "text": "Collected feedback, categorized experience problems, and discussed implementation cost and value with the team."
+          },
+          {
+            "label": "VFX Feedback",
+            "text": "Created environmental and early gameplay effects that communicated mood, abilities, and state changes while helping define later visual requirements."
+          }
+        ],
+        "challenges": [
+          "Boss attacks initially lacked enough warning for players to understand their range or failure state.",
+          "Late-production constraints required balancing the original level vision against a reliable delivery scope.",
+          "Some early VFX were later replaced, so their portfolio value is framed as feedback prototyping and direction-setting rather than final-art ownership."
+        ],
+        "workflowNotes": "My workflow combined identifying player-experience problems, proposing solutions, coordinating implementation, gathering playtest feedback, and iterating with the team. The boss telegraph and level-scope decisions demonstrate both experience design and production judgment."
+      },
+      "blueprintSections": [
+        {
+          "title": "Boss Timing & Ground Telegraph",
+          "text": "Show the boss attack before and after the change, including timing, warning area, and damage release.",
+          "image": "",
+          "imageLabel": "Add: punk-boss-telegraph-blueprint.png",
+          "bullets": [
+            "Original problem",
+            "Timing adjustment",
+            "Telegraph requirement",
+            "Playtest result"
+          ]
+        },
+        {
+          "title": "Level Scope & Delivery",
+          "text": "Show what content was retained or cut and explain how time, core experience, and team dependencies informed the decision.",
+          "image": "",
+          "imageLabel": "Add: punk-level-scope-breakdown.png",
+          "bullets": [
+            "Original scope",
+            "Priority criteria",
+            "Removed content",
+            "Final delivery"
+          ]
+        },
+        {
+          "title": "Playtest Feedback & Iteration",
+          "text": "Show feedback notes, issue grouping, and the changes the team adopted.",
+          "image": "",
+          "imageLabel": "Add: punk-playtest-iteration.png",
+          "bullets": [
+            "Feedback source",
+            "Issue categories",
+            "Team discussion",
+            "Final changes"
+          ]
+        },
+        {
+          "title": "VFX as Gameplay Feedback",
+          "text": "Show smoke, wind, early skill effects, and buff feedback, including which were environmental and which supported gameplay readability.",
+          "image": "",
+          "imageLabel": "Add: punk-vfx-breakdown.png",
+          "bullets": [
+            "Environmental VFX",
+            "Skill prototypes",
+            "Buff feedback",
+            "Why effects changed"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "breach-brew",
+      "order": 3,
+      "featured": false,
+      "library": true,
+      "title": "Breach Brew",
+      "category": "Commercial Project · Unreal Engine · Environmental Gameplay Systems",
+      "role": "Technical Design / Technical Art / Gameplay Systems Implementation",
+      "summary": "Designed and implemented an event-driven environmental temperature system that drives gameplay state, material parameters, and Niagara VFX while improving the readability of environmental mechanics.",
+      "tools": "Unreal Engine, Blueprint, Material Parameters, Niagara, Environmental Interaction, Cross-Discipline Collaboration",
+      "tags": [
+        "commercial",
+        "unreal",
+        "blueprint",
+        "gameplaySystem",
+        "material",
+        "vfx",
+        "decoupling"
+      ],
+      "coverImage": "",
+      "videoEmbed": "",
+      "videoLink": "#",
+      "videoPlatform": "YouTube",
+      "externalLinks": [],
+      "downloadLinks": [],
+      "status": "Project media pending",
+      "detail": {
+        "overview": "Breach Brew is a commercial game project where I contributed to an environmental temperature system that connects gameplay state, material response, and Niagara VFX. I collaborated with technical artists and designers to integrate the system in-engine.",
+        "whatIBuilt": [
+          "Designed and implemented an event-driven temperature system in Blueprint.",
+          "Created gameplay-responsive material parameters for heat and cold transitions.",
+          "Connected Niagara VFX to environmental and gameplay events.",
+          "Built interactive environmental mechanics and improved gameplay readability.",
+          "Collaborated with technical artists and designers to integrate systems and visual feedback."
+        ],
+        "breakdown": [
+          {
+            "label": "Temperature State",
+            "text": "Used shared state and events to update environmental temperature rather than running complex independent logic on every object."
+          },
+          {
+            "label": "Material Response",
+            "text": "Drove heat and cold transitions through parameters so visual state responds smoothly to gameplay data."
+          },
+          {
+            "label": "Niagara Feedback",
+            "text": "Connected VFX to environmental events so players can quickly read temperature and danger changes."
+          },
+          {
+            "label": "Cross-Discipline Integration",
+            "text": "Separated system interfaces and visual responsibilities so design and technical art could iterate independently."
+          }
+        ],
+        "challenges": [
+          "Gameplay logic, materials, and VFX needed one consistent data source to avoid visible state drifting from actual system state.",
+          "Public project images and video have not been uploaded yet, so this preview uses media placeholders."
+        ],
+        "workflowNotes": "The final page should include a temperature transition clip, material parameter screenshots, Niagara effects, and a system-flow diagram."
+      },
+      "mediaGallery": [
+        {
+          "type": "placeholder",
+          "title": "Temperature System Demo",
+          "note": "Add a short heat/cold transition video or GIF"
+        },
+        {
+          "type": "placeholder",
+          "title": "Parameter-Driven Material",
+          "note": "Add material-instance and parameter screenshots"
+        },
+        {
+          "type": "placeholder",
+          "title": "Niagara VFX",
+          "note": "Add environmental VFX before/after examples"
+        },
+        {
+          "type": "placeholder",
+          "title": "System Flow",
+          "note": "Add a diagram linking temperature events to visual feedback"
+        }
+      ],
+      "blueprintSections": [
+        {
+          "title": "Event-Driven Temperature System",
+          "text": "Show how temperature data updates rooms, interactable objects, and visual states, and why the system uses low-frequency or event-driven updates.",
+          "image": "",
+          "imageLabel": "Add: breach-brew-temperature-system.png",
+          "bullets": [
+            "Temperature data",
+            "State changes",
+            "Event broadcast",
+            "Performance and extensibility"
+          ]
+        },
+        {
+          "title": "Material & Niagara Integration",
+          "text": "Show how gameplay values drive material parameters and Niagara effects while keeping visual state synchronized with system state.",
+          "image": "",
+          "imageLabel": "Add: breach-brew-material-vfx.png",
+          "bullets": [
+            "Parameter range",
+            "Material transition",
+            "VFX trigger",
+            "Readability testing"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "the-e-book-data-pipeline",
+      "order": 4,
+      "featured": false,
+      "library": true,
+      "title": "The E Book",
+      "category": "Commercial Project · Unity · Gameplay Data & Tooling",
+      "role": "Gameplay Data Configuration / Workflow Design / AI-Assisted Tool Development",
+      "summary": "Maintained complex gameplay-balancing spreadsheets, redesigned the data workflow, and used AI-assisted development to create a utility that converts designer-friendly Excel sheets into Unity-ready configuration data.",
+      "tools": "Excel, Unity, Basic Python, AI-Assisted Development, Data Validation",
+      "tags": [
+        "commercial",
+        "unity",
+        "numericalDesign",
+        "dataTool",
+        "aiWorkflow",
+        "gameplaySystem"
+      ],
+      "coverImage": "",
+      "videoEmbed": "",
+      "videoLink": "#",
+      "videoPlatform": "YouTube",
+      "externalLinks": [],
+      "downloadLinks": [],
+      "status": "Tool screenshots pending",
+      "detail": {
+        "overview": "On The E Book, I maintained gameplay data configurations and restructured Excel sheets so designers could edit data more efficiently. I then used an AI-assisted workflow to develop a utility that converts the spreadsheets into a Unity-readable configuration format.",
+        "whatIBuilt": [
+          "Created and maintained complex gameplay-balancing spreadsheets.",
+          "Redesigned spreadsheet structure for clearer editing and batch tuning.",
+          "Developed an AI-assisted Excel-to-Unity conversion utility.",
+          "Reduced manual formatting work and data-entry errors.",
+          "Worked with designers to validate the workflow against real balancing needs."
+        ],
+        "breakdown": [
+          {
+            "label": "Designer-Friendly Input",
+            "text": "Allowed designers to work in readable spreadsheets instead of engine-facing data formats."
+          },
+          {
+            "label": "Automated Conversion",
+            "text": "Converted Excel data into a Unity-readable format and reduced repeated manual work."
+          },
+          {
+            "label": "Error Control",
+            "text": "Used structural constraints and validation to reduce missing fields and format mismatches."
+          },
+          {
+            "label": "Iteration Speed",
+            "text": "Shortened the path between data edits and in-engine testing."
+          }
+        ],
+        "challenges": [
+          "The spreadsheet had to remain readable for designers while structured enough for reliable automation.",
+          "Public portfolio assets must use anonymized or fictional data to avoid exposing commercial information."
+        ],
+        "workflowNotes": "The final page should compare an anonymized original spreadsheet, the redesigned layout, the conversion utility or logs, and a Unity-ready output example."
+      },
+      "mediaGallery": [
+        {
+          "type": "placeholder",
+          "title": "Excel Configuration",
+          "note": "Add an anonymized spreadsheet screenshot"
+        },
+        {
+          "type": "placeholder",
+          "title": "Conversion Utility",
+          "note": "Add the tool interface or execution log"
+        },
+        {
+          "type": "placeholder",
+          "title": "Unity Data Output",
+          "note": "Add an example of the converted data in Unity"
+        }
+      ]
+    },
+    {
+      "id": "maimed-maintenance",
+      "order": 5,
+      "featured": false,
+      "library": true,
+      "title": "Maimed Maintenance",
+      "category": "VR Escape Room Prototype · Unreal Engine",
+      "role": "Gameplay Blueprint / Level Design / Environment Assembly / Materials",
+      "summary": "A VR escape-room prototype featuring puzzle interactions, door logic, interaction-feel iteration, environment assembly, and glass and water materials.",
+      "tools": "Unreal Engine, Blueprint, VR Interaction, Level Assembly, Materials",
+      "tags": [
+        "unreal",
+        "blueprint",
+        "vr",
+        "puzzle",
+        "levelDesign",
+        "material",
+        "prototype"
+      ],
+      "coverImage": "",
+      "videoEmbed": "https://www.youtube.com/embed/zlGXhkDlefM?autoplay=0&playsinline=1&rel=0",
+      "videoLink": "https://youtu.be/zlGXhkDlefM",
+      "videoPlatform": "YouTube",
+      "externalLinks": [],
+      "downloadLinks": [],
+      "detail": {
+        "overview": "Maimed Maintenance is a VR escape-room prototype focused on spatial exploration, puzzle interaction, and environmental immersion. My contributions included part of the puzzle implementation, door logic, interaction-feel tuning, environment assembly, and glass and water materials.",
+        "whatIBuilt": [
+          "Implemented part of the puzzle interactions and door-state logic.",
+          "Adjusted interaction distance, response, and handling based on headset testing.",
+          "Built portions of the level and environment.",
+          "Created and tuned glass, water, and other environmental materials."
+        ],
+        "breakdown": [
+          {
+            "label": "Puzzle Logic",
+            "text": "Connected puzzle conditions, interaction results, and environment states into a testable flow."
+          },
+          {
+            "label": "Door & State Logic",
+            "text": "Handled conditions, open/closed states, and interaction feedback."
+          },
+          {
+            "label": "VR Interaction Feel",
+            "text": "Adjusted ranges, response speed, and object handling through in-headset testing."
+          },
+          {
+            "label": "Environment & Materials",
+            "text": "Used level assembly and glass and water materials to improve spatial readability and immersion."
+          }
+        ],
+        "challenges": [
+          "Distances and response that seem reasonable on a desktop can feel slow or unnatural in VR, requiring repeated headset testing."
+        ],
+        "workflowNotes": "A short video can communicate the puzzle and door logic, while still images can cover materials and environment assembly without creating separate projects for every small mechanic."
+      },
+      "mediaGallery": [
+        {
+          "type": "placeholder",
+          "title": "Puzzle & Door Logic",
+          "note": "Add a Blueprint or in-game demonstration"
+        },
+        {
+          "type": "placeholder",
+          "title": "VR Interaction Feel",
+          "note": "Add a before/after test or explanation"
+        },
+        {
+          "type": "placeholder",
+          "title": "Glass & Water Materials",
+          "note": "Add material and in-environment screenshots"
+        }
+      ]
+    },
+    {
+      "id": "visual-studies",
+      "order": 6,
+      "featured": false,
+      "library": true,
+      "title": "VFX, 3D Model & Creature Design Studies",
+      "category": "Other Work · Unity VFX · Foundational Modeling · Concept Design",
+      "role": "VFX / Foundational Modeling / Visual Exploration",
+      "summary": "A grouped gallery for smaller Unity VFX studies, foundational 3D models, and creature concept art. Each entry can contain its own images or videos without being presented as a full game project.",
+      "tools": "Unity, Maya, Blender, VFX and Material Tools",
+      "tags": [
+        "unity",
+        "vfx",
+        "modeling",
+        "conceptArt",
+        "draft"
+      ],
+      "coverImage": "",
+      "videoEmbed": "",
+      "videoLink": "#",
+      "videoPlatform": "YouTube",
+      "externalLinks": [],
+      "downloadLinks": [],
+      "status": "Preview placeholder — assets pending",
+      "detail": {
+        "overview": "This page groups smaller visual studies rather than presenting them as a single game project. The media gallery can contain multiple independent images and videos under VFX, 3D modeling, and creature design.",
+        "whatIBuilt": [
+          "Unity VFX studies and effect demonstrations.",
+          "Foundational 3D models, materials, and engine presentation.",
+          "Creature concept art and visual iteration sketches."
+        ],
+        "breakdown": [
+          {
+            "label": "VFX",
+            "text": "Show the visual goal, production process, trigger method, and final effect."
+          },
+          {
+            "label": "3D Models",
+            "text": "Show models, materials, wireframes, and engine presentation without creating a separate project for each asset."
+          },
+          {
+            "label": "Creature Design",
+            "text": "Show silhouettes, sketches, final design, and a concise design intention."
+          }
+        ],
+        "challenges": [
+          "Images and videos have not been uploaded yet, so this preview displays three media slots. Only the strongest pieces should remain in the public version."
+        ],
+        "workflowNotes": "Multiple videos appear as separate media cards. Each video can be clicked and played in place, while images remain independently viewable."
+      },
+      "mediaGallery": [
+        {
+          "type": "placeholder",
+          "title": "Unity VFX",
+          "note": "Supports multiple videos, GIFs, or before/after comparisons"
+        },
+        {
+          "type": "placeholder",
+          "title": "3D Models & Materials",
+          "note": "Supports turnarounds, wireframes, and engine renders"
+        },
+        {
+          "type": "placeholder",
+          "title": "Creature Concept Art",
+          "note": "Supports sketches, silhouette iterations, and final designs"
+        }
+      ]
+    }
+  ]
+}
