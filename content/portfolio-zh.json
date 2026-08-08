@@ -137,21 +137,15 @@
         "breakdown": [
           {
             "label": "模块化通信",
-            "text": "通过 EnemyBase 与 ProjectileBase 建立可复用的继承结构，并且把部分核心逻辑封装至 Actor Component，此外使用 Blueprint Interface 减少系统之间的直接类型依赖，使不同敌人和射弹能够在保留通用逻辑的同时扩展各自行为。",
-            "image": "/assets/images/base.png",
-            "imageAlt": "ProjectileBase"
+            "text": "通过 EnemyBase 与 ProjectileBase 建立可复用的继承结构，并且把部分核心逻辑封装至 Actor Component，此外使用 Blueprint Interface 减少系统之间的直接类型依赖，使不同敌人和射弹能够在保留通用逻辑的同时扩展各自行为。"
           },
           {
             "label": "动画蓝图状态同步",
-            "text": "在 Animation Blueprint 初始化时获取并缓存角色引用，避免在每帧更新动画时重复 Cast。随后通过缓存的 Character Ref 读取移动、空中状态和战斗状态等数据，并同步到 AnimBP 变量中，用于驱动动画状态机与战斗动画切换。",
-            "image": "/assets/images/ref.png",
-            "imageAlt": "动画蓝图状态同步"
+            "text": "在 Animation Blueprint 初始化时获取并缓存角色引用，避免在每帧更新动画时重复 Cast。随后通过缓存的 Character Ref 读取移动、空中状态和战斗状态等数据，并同步到 AnimBP 变量中，用于驱动动画状态机与战斗动画切换。"
           },
           {
             "label": "动画与判定",
-            "text": "使用 AnimNotifyState 定义 Combo Window，在攻击动画的指定时间段开放连招输入；玩家在窗口内提前按下下一次攻击时，系统会缓存输入，并在当前攻击结束或满足切换条件后衔接下一段攻击，从而提高连招响应性，同时避免任意时刻切换攻击造成动画和状态冲突。",
-            "image": "/assets/images/cwindow.png",
-            "imageAlt": "Combo Window"
+            "text": "使用 AnimNotifyState 定义 Combo Window，在攻击动画的指定时间段开放连招输入；玩家在窗口内提前按下下一次攻击时，系统会缓存输入，并在当前攻击结束或满足切换条件后衔接下一段攻击，从而提高连招响应性，同时避免任意时刻切换攻击造成动画和状态冲突。"
           },
           {
             "label": "数据驱动调试",
@@ -198,7 +192,7 @@
         }
       ],
       "detail": {
-        "overview": "Punk Plush Panic 是我的 Capstone 毕业项目，由团队共同完成。玩家需要在三名角色之间切换，并组合不同能力应对敌人波次。我的工作集中在战斗与系统设计、关卡和遭遇迭代、VFX 反馈、试玩反馈整理，以及与程序沟通 Boss 攻击可读性。",
+        "overview": "Punk Plush Panic 是我的毕业项目，由学生团队共同完成。玩家需要在三名角色之间切换，并组合不同能力应对敌人波次。我的工作集中在战斗与系统设计、关卡和遭遇迭代、VFX 反馈、试玩反馈整理，以及与程序沟通 Boss 攻击可读性。",
         "whatIBuilt": [
           "参与玩法机制、关卡遭遇与战斗体验迭代，并在 Unity 中实现和验证部分可玩机制。",
           "设计并迭代关卡空间、玩家路线与遭遇节奏，根据试玩结果调整敌人压力和角色切换机会。",
@@ -214,35 +208,31 @@
           },
           {
             "label": "可配置传送门机制",
-            "text": "在 Unity 中实现可配置的传送门机制，使关卡设计阶段可以快速设置入口、出口与触发区域，并在不同场景中重复使用。",
-            "image": "/assets/images/portalppp.png",
-            "imageAlt": "Portal"
+            "text": "在 Unity 中实现可配置的传送门机制，使关卡设计阶段可以快速设置入口、出口与触发区域，并在不同场景中重复使用。"
           },
           {
             "label": "路径驱动的可调关卡陷阱",
-            "text": "制作基于可编辑路径的移动陷阱，使关卡设计人员能够直接调整运动路径、位置和行为参数，减少反复修改逻辑的成本并提高关卡测试效率。",
-            "image": "/assets/images/splinedropper.png",
-            "imageAlt": "Dropper spline"
+            "text": "制作基于可编辑路径的移动陷阱，使关卡设计人员能够直接调整运动路径、位置和行为参数，减少反复修改逻辑的成本并提高关卡测试效率。"
           },
           {
             "label": "吞吐式玩家陷阱｜Cut Feature",
-            "text": "原型化能够捕获玩家、暂时限制其移动，并在短暂延迟后将玩家重新释放的环境陷阱，用于制造关卡节奏变化和空间危险。该机制完成了可玩验证，后期为控制项目范围而被移除。",
-            "image": "/assets/images/maneater.png",
-            "imageAlt": "ManEater"
+            "text": "原型化能够捕获玩家、暂时限制其移动，并在短暂延迟后将玩家重新释放的环境陷阱，用于制造关卡节奏变化和空间危险。该机制完成了可玩验证，后期为控制项目范围而被移除。"
           },
           {
             "label": "关卡范围管理与交付",
-            "text": "根据开发后期的剩余工期和核心玩法优先级，主动缩减部分关卡与非核心机制，将团队资源集中到可交付内容，帮助项目按期完成。",
-            "image": "/assets/images/oldlevel2.png",
-            "imageAlt": "OldLevel2"
+            "text": "根据开发后期的剩余工期和核心玩法优先级，主动缩减部分关卡与非核心机制，将团队资源集中到可交付内容，帮助项目按期完成。"
           },
           {
             "label": "试玩反馈与迭代",
-            "text": "收集并整理试玩反馈，将玩家遇到的节奏、可读性和关卡问题转化为具体修改项，并与团队讨论优先级后推动可执行的调整。"
+            "text": "使用Google Doc收集并整理试玩反馈，将玩家遇到的节奏、可读性和关卡问题转化为具体修改项，并与团队讨论优先级后推动可执行的调整。"
           },
           {
             "label": "VFX 与环境反馈",
             "text": "制作烟雾、环境风、初版技能与 Buff 等视觉效果，用于强化环境氛围和玩法反馈；部分早期效果随后根据视觉方向和项目范围被替换或移除。"
+          },
+          {
+            "label": "技能设计与平衡",
+            "text": "使用Excel对于玩家数值进行计算，并且设计了三种反应来提供流畅的割草体验"
           }
         ],
         "challenges": [
@@ -256,9 +246,9 @@
     {
       "id": "breach-brew",
       "order": 3,
-      "featured": false,
+      "featured": true,
       "library": true,
-      "status": "等待补充项目素材",
+      "status": "开发中",
       "title": "Breach Brew｜失压救援队",
       "category": "商业项目 · Unreal Engine · 环境玩法系统",
       "role": "技术设计／技术美术／玩法系统实现",
