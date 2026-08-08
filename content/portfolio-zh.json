@@ -290,7 +290,12 @@
             "text": "使用 Actor Component 统一驱动设备灯光与火花状态，可直接挂载到不同设备并复用。",
             "media": [
               {
-                "type": "image"
+                "type": "image",
+                "src": "/assets/images/powercomp01.png"
+              },
+              {
+                "type": "image",
+                "src": "/assets/images/powercomp02.png"
               }
             ]
           },
