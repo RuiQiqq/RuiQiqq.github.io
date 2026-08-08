@@ -522,23 +522,6 @@ function mediaGallerySectionHtml(project) {
   </section>`;
 }
 
-function getSystemSections(project) {
-  if (Array.isArray(project?.systemSections)) return project.systemSections;
-  // Backward compatibility with older content files.
-  if (Array.isArray(project?.blueprintSections)) return project.blueprintSections;
-  return [];
-}
-
-function hasBlueprintSections(project) {
-  return getSystemSections(project).length > 0;
-}
-
-function blueprintBreakdownButtonHtml(project, buttonClass = "button secondary") {
-  if (!hasBlueprintSections(project)) return "";
-  const label = safeText(project.breakdownButtonLabel, TEXT.blueprintBreakdown);
-  return `<a class="${buttonClass}" href="${localizedUrl(`system-breakdown.html?id=${encodeURIComponent(project.id)}`)}">${escapeHtml(label)}</a>`;
-}
-
 function projectExtraLinksHtml(project) {
   const externalLinks = (project.externalLinks || [])
     .filter(link => isRealLink(link.url))
@@ -566,8 +549,6 @@ function featuredProjectCard(project) {
         </div>
         <div class="project-actions">
           <a class="button primary" href="${localizedUrl(`project-detail.html?id=${encodeURIComponent(project.id)}`)}">${TEXT.projectBreakdown}</a>
-          ${blueprintBreakdownButtonHtml(project)}
-          ${isRealLink(project.videoLink) ? `<a class="button secondary" href="${escapeHtml(project.videoLink)}" target="_blank" rel="noreferrer">${TEXT.openVideo}</a>` : ""}
           ${projectExtraLinksHtml(project)}
         </div>
       </div>
@@ -778,8 +759,6 @@ function renderDetailPage() {
           <p>${escapeHtml(project.summary)}</p>
           ${tagsHtml(project.tags)}
           <div class="project-actions detail-hero-actions">
-            ${isRealLink(project.videoLink) ? `<a class="button primary" href="${escapeHtml(project.videoLink)}" target="_blank" rel="noreferrer">${TEXT.openVideo}</a>` : ""}
-            ${blueprintBreakdownButtonHtml(project)}
             ${projectExtraLinksHtml(project)}
           </div>
         </div>
@@ -797,7 +776,7 @@ function renderDetailPage() {
     </section>
     <section class="detail-section container"><h2>${TEXT.whatIBuilt}</h2><ul>${(detail.whatIBuilt || []).map(item => `<li>${escapeHtml(item)}</li>`).join("")}</ul></section>
     ${mediaGallerySectionHtml(project)}
-    <section class="detail-section container"><h2>${TEXT.systemBreakdown}</h2><div class="breakdown-grid">${(detail.breakdown || []).map(item => `<article class="breakdown-card">${item.image ? `<div class="breakdown-card-media"><img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.imageAlt || item.label || project.title)}" loading="lazy"></div>` : ""}<div class="breakdown-card-copy"><h3>${escapeHtml(item.label)}</h3><p>${escapeHtml(item.text)}</p></div></article>`).join("")}</div></section>
+    <section class="detail-section container"><h2>${TEXT.systemBreakdown}</h2><div class="breakdown-grid">${(detail.breakdown || []).map(item => `<article class="breakdown-card">${item.image ? `<a class="breakdown-card-media" href="${escapeHtml(item.image)}" target="_blank" rel="noreferrer" aria-label="${escapeHtml(item.imageAlt || item.label || project.title)}"><img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.imageAlt || item.label || project.title)}" loading="lazy"></a>` : ""}<div class="breakdown-card-copy"><h3>${escapeHtml(item.label)}</h3><p>${escapeHtml(item.text)}</p>${(item.bullets || []).length ? `<ul>${item.bullets.map(point => `<li>${escapeHtml(point)}</li>`).join("")}</ul>` : ""}</div></article>`).join("")}</div></section>
     <section class="detail-section container"><h2>${TEXT.challenges}</h2><ul>${(detail.challenges || []).map(item => `<li>${escapeHtml(item)}</li>`).join("")}</ul></section>
     <section class="detail-section container"><h2>${TEXT.workflowNotes}</h2><p>${escapeHtml(safeText(detail.workflowNotes))}</p></section>`;
   bindInlineVideoPreviews();

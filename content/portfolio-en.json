@@ -143,25 +143,49 @@
             "label": "Modular Communication",
             "text": "Extracted EnemyBase and ProjectileBase, moved reusable logic into Actor Components, and used Blueprint Interfaces and component tags to reduce direct references.",
             "image": "",
-            "imageAlt": ""
+            "imageAlt": "",
+            "bullets": [
+              "Base classes",
+              "Component responsibilities",
+              "Interface events",
+              "Reduced direct casting"
+            ]
           },
           {
             "label": "Animation & Hit Frames",
             "text": "Used AnimNotifyState to define active frames so collision, damage, reaction, and UI feedback match the visible animation.",
             "image": "",
-            "imageAlt": ""
+            "imageAlt": "",
+            "bullets": [
+              "Active frames",
+              "Trace or collision",
+              "Damage application",
+              "Feedback synchronization"
+            ]
           },
           {
             "label": "Input & State Flow",
             "text": "Organized input buffering and animation-state transitions to reduce conflicts between attacks, dodges, and reactions.",
             "image": "",
-            "imageAlt": ""
+            "imageAlt": "",
+            "bullets": [
+              "Input entry",
+              "Buffer window",
+              "State priority",
+              "Action reset"
+            ]
           },
           {
             "label": "Data-Driven Debugging",
             "text": "Exposed damage, cooldown, and timing parameters and used Draw Debug traces to calibrate attack ranges and invulnerability frames.",
             "image": "",
-            "imageAlt": ""
+            "imageAlt": "",
+            "bullets": [
+              "Central parameters",
+              "PIE iteration",
+              "Visual hitboxes",
+              "Before and after"
+            ]
           }
         ],
         "challenges": [
@@ -170,61 +194,7 @@
           "As the prototype expanded, direct casts and Actor references became expensive to maintain, making modularity and low coupling a design requirement."
         ],
         "workflowNotes": "I iterated in PIE with data-driven parameters and visual debugging for damage, cooldowns, attack windows, and dodge invulnerability. AI tools supported research and troubleshooting; the final Blueprint structure, implementation, and validation were completed in Unreal Engine."
-      },
-      "systemSections": [
-        {
-          "title": "Combat Input & State Flow",
-          "text": "Show how attack, dodge, and buffered inputs enter the combat-state flow and how validation prevents action conflicts.",
-          "image": "",
-          "imageLabel": "Add: soulslike-input-state-blueprint.png",
-          "bullets": [
-            "Input entry",
-            "Buffer window",
-            "State priority",
-            "Action reset"
-          ]
-        },
-        {
-          "title": "Hit Detection & AnimNotifyState",
-          "text": "Show how AnimNotifyState opens and closes active weapon frames and synchronizes hit detection, damage, reactions, and UI feedback.",
-          "image": "",
-          "imageLabel": "Add: soulslike-hit-damage-blueprint.png",
-          "bullets": [
-            "Active frames",
-            "Trace or collision",
-            "Damage application",
-            "Feedback synchronization"
-          ]
-        },
-        {
-          "title": "Decoupled Blueprint Architecture",
-          "text": "Show the communication between EnemyBase, ProjectileBase, Actor Components, Blueprint Interfaces, and component tags.",
-          "image": "",
-          "imageLabel": "Add: soulslike-decoupled-architecture.png",
-          "bullets": [
-            "Base classes",
-            "Component responsibilities",
-            "Interface events",
-            "Reduced direct casting"
-          ]
-        },
-        {
-          "title": "Data-Driven Tuning",
-          "text": "Show Data Assets or exposed parameters and how visual debug traces support frame-by-frame tuning of damage, range, cooldowns, and invulnerability.",
-          "image": "",
-          "imageLabel": "Add: soulslike-numerical-tuning.png",
-          "bullets": [
-            "Central parameters",
-            "PIE iteration",
-            "Visual hitboxes",
-            "Before and after"
-          ]
-        }
-      ],
-      "breakdownButtonLabel": "Combat Systems & Blueprint Breakdown",
-      "breakdownPageKicker": "Combat Prototype Breakdown",
-      "breakdownPageTitle": "Combat Systems, Blueprint Architecture & Tuning",
-      "breakdownPageIntro": "A closer look at combat flow, animation-driven hit windows, modular communication, tuning, and Blueprint implementation. Every title, description, and image remains editable in Pages CMS."
+      }
     },
     {
       "id": "punk-plush-panic",
@@ -274,25 +244,49 @@
             "label": "Boss Telegraphing",
             "text": "Retuned release timing and coordinated ground indicators so players could read attack range and react fairly.",
             "image": "",
-            "imageAlt": ""
+            "imageAlt": "",
+            "bullets": [
+              "Original problem",
+              "Timing adjustment",
+              "Telegraph requirement",
+              "Playtest result"
+            ]
           },
           {
             "label": "Scope Management",
             "text": "Evaluated level priorities and cut lower-value content when time became limited, protecting the core flow and team delivery.",
             "image": "",
-            "imageAlt": ""
+            "imageAlt": "",
+            "bullets": [
+              "Original scope",
+              "Priority criteria",
+              "Removed content",
+              "Final delivery"
+            ]
           },
           {
             "label": "Playtesting & Iteration",
             "text": "Collected feedback, categorized experience problems, and discussed implementation cost and value with the team.",
             "image": "",
-            "imageAlt": ""
+            "imageAlt": "",
+            "bullets": [
+              "Feedback source",
+              "Issue categories",
+              "Team discussion",
+              "Final changes"
+            ]
           },
           {
             "label": "VFX Feedback",
             "text": "Created environmental and early gameplay effects that communicated mood, abilities, and state changes while helping define later visual requirements.",
             "image": "",
-            "imageAlt": ""
+            "imageAlt": "",
+            "bullets": [
+              "Environmental VFX",
+              "Skill prototypes",
+              "Buff feedback",
+              "Why effects changed"
+            ]
           }
         ],
         "challenges": [
@@ -301,61 +295,7 @@
           "Some early VFX were later replaced, so their portfolio value is framed as feedback prototyping and direction-setting rather than final-art ownership."
         ],
         "workflowNotes": "My workflow combined identifying player-experience problems, proposing solutions, coordinating implementation, gathering playtest feedback, and iterating with the team. The boss telegraph and level-scope decisions demonstrate both experience design and production judgment."
-      },
-      "systemSections": [
-        {
-          "title": "Boss Timing & Ground Telegraph",
-          "text": "Show the boss attack before and after the change, including timing, warning area, and damage release.",
-          "image": "",
-          "imageLabel": "Add: punk-boss-telegraph-blueprint.png",
-          "bullets": [
-            "Original problem",
-            "Timing adjustment",
-            "Telegraph requirement",
-            "Playtest result"
-          ]
-        },
-        {
-          "title": "Level Scope & Delivery",
-          "text": "Show what content was retained or cut and explain how time, core experience, and team dependencies informed the decision.",
-          "image": "",
-          "imageLabel": "Add: punk-level-scope-breakdown.png",
-          "bullets": [
-            "Original scope",
-            "Priority criteria",
-            "Removed content",
-            "Final delivery"
-          ]
-        },
-        {
-          "title": "Playtest Feedback & Iteration",
-          "text": "Show feedback notes, issue grouping, and the changes the team adopted.",
-          "image": "",
-          "imageLabel": "Add: punk-playtest-iteration.png",
-          "bullets": [
-            "Feedback source",
-            "Issue categories",
-            "Team discussion",
-            "Final changes"
-          ]
-        },
-        {
-          "title": "VFX as Gameplay Feedback",
-          "text": "Show smoke, wind, early skill effects, and buff feedback, including which were environmental and which supported gameplay readability.",
-          "image": "",
-          "imageLabel": "Add: punk-vfx-breakdown.png",
-          "bullets": [
-            "Environmental VFX",
-            "Skill prototypes",
-            "Buff feedback",
-            "Why effects changed"
-          ]
-        }
-      ],
-      "breakdownButtonLabel": "Systems, Level & Feedback Breakdown",
-      "breakdownPageKicker": "Capstone Breakdown",
-      "breakdownPageTitle": "Systems Design, Level Iteration & Player Feedback",
-      "breakdownPageIntro": "A closer look at boss telegraphs, scope decisions, playtest feedback, VFX, and cross-discipline collaboration. This page is no longer Blueprint-specific and can use Unity screenshots, diagrams, GIFs, spreadsheets, or document images."
+      }
     },
     {
       "id": "breach-brew",
@@ -397,13 +337,25 @@
             "label": "Temperature State",
             "text": "Used shared state and events to update environmental temperature rather than running complex independent logic on every object.",
             "image": "",
-            "imageAlt": ""
+            "imageAlt": "",
+            "bullets": [
+              "Temperature data",
+              "State changes",
+              "Event broadcast",
+              "Performance and extensibility"
+            ]
           },
           {
             "label": "Material Response",
             "text": "Drove heat and cold transitions through parameters so visual state responds smoothly to gameplay data.",
             "image": "",
-            "imageAlt": ""
+            "imageAlt": "",
+            "bullets": [
+              "Parameter range",
+              "Material transition",
+              "VFX trigger",
+              "Readability testing"
+            ]
           },
           {
             "label": "Niagara Feedback",
@@ -445,37 +397,7 @@
           "title": "System Flow",
           "note": "Add a diagram linking temperature events to visual feedback"
         }
-      ],
-      "systemSections": [
-        {
-          "title": "Event-Driven Temperature System",
-          "text": "Show how temperature data updates rooms, interactable objects, and visual states, and why the system uses low-frequency or event-driven updates.",
-          "image": "",
-          "imageLabel": "Add: breach-brew-temperature-system.png",
-          "bullets": [
-            "Temperature data",
-            "State changes",
-            "Event broadcast",
-            "Performance and extensibility"
-          ]
-        },
-        {
-          "title": "Material & Niagara Integration",
-          "text": "Show how gameplay values drive material parameters and Niagara effects while keeping visual state synchronized with system state.",
-          "image": "",
-          "imageLabel": "Add: breach-brew-material-vfx.png",
-          "bullets": [
-            "Parameter range",
-            "Material transition",
-            "VFX trigger",
-            "Readability testing"
-          ]
-        }
-      ],
-      "breakdownButtonLabel": "System / Design Breakdown",
-      "breakdownPageKicker": "Project Breakdown",
-      "breakdownPageTitle": "System & Design Breakdown",
-      "breakdownPageIntro": "A flexible space for system screenshots, diagrams, Blueprints, level layouts, GIFs, visual results, and design reasoning."
+      ]
     },
     {
       "id": "the-e-book-data-pipeline",
@@ -559,11 +481,7 @@
           "title": "Unity Data Output",
           "note": "Add an example of the converted data in Unity"
         }
-      ],
-      "breakdownButtonLabel": "System / Design Breakdown",
-      "breakdownPageKicker": "Project Breakdown",
-      "breakdownPageTitle": "System & Design Breakdown",
-      "breakdownPageIntro": "A flexible space for system screenshots, diagrams, Blueprints, level layouts, GIFs, visual results, and design reasoning."
+      ]
     },
     {
       "id": "maimed-maintenance",
@@ -645,11 +563,7 @@
           "title": "Glass & Water Materials",
           "note": "Add material and in-environment screenshots"
         }
-      ],
-      "breakdownButtonLabel": "System / Design Breakdown",
-      "breakdownPageKicker": "Project Breakdown",
-      "breakdownPageTitle": "System & Design Breakdown",
-      "breakdownPageIntro": "A flexible space for system screenshots, diagrams, Blueprints, level layouts, GIFs, visual results, and design reasoning."
+      ]
     },
     {
       "id": "visual-studies",
@@ -723,11 +637,7 @@
           "title": "Creature Concept Art",
           "note": "Supports sketches, silhouette iterations, and final designs"
         }
-      ],
-      "breakdownButtonLabel": "System / Design Breakdown",
-      "breakdownPageKicker": "Project Breakdown",
-      "breakdownPageTitle": "System & Design Breakdown",
-      "breakdownPageIntro": "A flexible space for system screenshots, diagrams, Blueprints, level layouts, GIFs, visual results, and design reasoning."
+      ]
     }
   ]
 }

@@ -620,8 +620,9 @@ h1, h2, h3 {
 .breakdown-card p { color: var(--muted); margin-top: 8px; font-size: 15px; }
 .breakdown-card { overflow: hidden; padding: 0; }
 .breakdown-card-copy { padding: 20px; }
-.breakdown-card-media { aspect-ratio: 16 / 9; overflow: hidden; border-bottom: 1px solid var(--line); background: var(--bg); }
-.breakdown-card-media img { width: 100%; height: 100%; display: block; object-fit: cover; }
+.breakdown-card-media { aspect-ratio: 16 / 9; overflow: hidden; border-bottom: 1px solid var(--line); background: #09091a; display: grid; place-items: center; padding: 10px; }
+.breakdown-card-media img { width: 100%; height: 100%; display: block; object-fit: contain; }
+.breakdown-card-copy ul { margin: 12px 0 0 18px; color: var(--muted); display: grid; gap: 6px; }
 
 @media (max-width: 980px) {
   .hero, .featured-card, .two-col, .resume-layout, .contact-strip, .project-detail-grid { grid-template-columns: 1fr; }

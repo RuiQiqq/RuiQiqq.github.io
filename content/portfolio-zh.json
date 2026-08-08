@@ -137,15 +137,21 @@
         "breakdown": [
           {
             "label": "模块化通信",
-            "text": "通过 EnemyBase 与 ProjectileBase 建立可复用的继承结构，并且把部分核心逻辑封装至 Actor Component，此外使用 Blueprint Interface 减少系统之间的直接类型依赖，使不同敌人和射弹能够在保留通用逻辑的同时扩展各自行为。"
+            "text": "通过 EnemyBase 与 ProjectileBase 建立可复用的继承结构，并且把部分核心逻辑封装至 Actor Component，此外使用 Blueprint Interface 减少系统之间的直接类型依赖，使不同敌人和射弹能够在保留通用逻辑的同时扩展各自行为。",
+            "image": "/assets/images/base.png",
+            "imageAlt": "ProjectileBase"
           },
           {
             "label": "动画蓝图状态同步",
-            "text": "在 Animation Blueprint 初始化时获取并缓存角色引用，避免在每帧更新动画时重复 Cast。随后通过缓存的 Character Ref 读取移动、空中状态和战斗状态等数据，并同步到 AnimBP 变量中，用于驱动动画状态机与战斗动画切换。"
+            "text": "在 Animation Blueprint 初始化时获取并缓存角色引用，避免在每帧更新动画时重复 Cast。随后通过缓存的 Character Ref 读取移动、空中状态和战斗状态等数据，并同步到 AnimBP 变量中，用于驱动动画状态机与战斗动画切换。",
+            "image": "/assets/images/ref.png",
+            "imageAlt": "动画蓝图状态同步"
           },
           {
             "label": "动画与判定",
-            "text": "使用 AnimNotifyState 定义 Combo Window，在攻击动画的指定时间段开放连招输入；玩家在窗口内提前按下下一次攻击时，系统会缓存输入，并在当前攻击结束或满足切换条件后衔接下一段攻击，从而提高连招响应性，同时避免任意时刻切换攻击造成动画和状态冲突。"
+            "text": "使用 AnimNotifyState 定义 Combo Window，在攻击动画的指定时间段开放连招输入；玩家在窗口内提前按下下一次攻击时，系统会缓存输入，并在当前攻击结束或满足切换条件后衔接下一段攻击，从而提高连招响应性，同时避免任意时刻切换攻击造成动画和状态冲突。",
+            "image": "/assets/images/cwindow.png",
+            "imageAlt": "Combo Window"
           },
           {
             "label": "数据驱动调试",
@@ -158,21 +164,7 @@
           "早期部分逻辑依赖直接 Cast 和具体 Actor 引用；随着系统扩展，逐步改用 Base Class、Blueprint Interface 等方式减少具体类型依赖，提高新增敌人和射弹时的扩展性。"
         ],
         "workflowNotes": "我使用 PIE 模式反复测试，并通过数据驱动参数与可视化调试快速调整伤害倍率、冷却、攻击判定窗口和闪避无敌帧。AI 工具用于辅助研究与排错，最终蓝图结构、实现与验证均在 Unreal Engine 中完成。"
-      },
-      "blueprintSections": [
-        {
-          "title": "Combo Window",
-          "image": "/assets/images/cwindow.png"
-        },
-        {
-          "title": "动画蓝图状态同步",
-          "image": "/assets/images/ref.png"
-        },
-        {
-          "title": "ProjectileBase",
-          "image": "/assets/images/base.png"
-        }
-      ]
+      }
     },
     {
       "id": "punk-plush-panic",
@@ -222,19 +214,27 @@
           },
           {
             "label": "可配置传送门机制",
-            "text": "在 Unity 中实现可配置的传送门机制，使关卡设计阶段可以快速设置入口、出口与触发区域，并在不同场景中重复使用。"
+            "text": "在 Unity 中实现可配置的传送门机制，使关卡设计阶段可以快速设置入口、出口与触发区域，并在不同场景中重复使用。",
+            "image": "/assets/images/portalppp.png",
+            "imageAlt": "Portal"
           },
           {
             "label": "路径驱动的可调关卡陷阱",
-            "text": "制作基于可编辑路径的移动陷阱，使关卡设计人员能够直接调整运动路径、位置和行为参数，减少反复修改逻辑的成本并提高关卡测试效率。"
+            "text": "制作基于可编辑路径的移动陷阱，使关卡设计人员能够直接调整运动路径、位置和行为参数，减少反复修改逻辑的成本并提高关卡测试效率。",
+            "image": "/assets/images/splinedropper.png",
+            "imageAlt": "Dropper spline"
           },
           {
             "label": "吞吐式玩家陷阱｜Cut Feature",
-            "text": "原型化能够捕获玩家、暂时限制其移动，并在短暂延迟后将玩家重新释放的环境陷阱，用于制造关卡节奏变化和空间危险。该机制完成了可玩验证，后期为控制项目范围而被移除。"
+            "text": "原型化能够捕获玩家、暂时限制其移动，并在短暂延迟后将玩家重新释放的环境陷阱，用于制造关卡节奏变化和空间危险。该机制完成了可玩验证，后期为控制项目范围而被移除。",
+            "image": "/assets/images/maneater.png",
+            "imageAlt": "ManEater"
           },
           {
             "label": "关卡范围管理与交付",
-            "text": "根据开发后期的剩余工期和核心玩法优先级，主动缩减部分关卡与非核心机制，将团队资源集中到可交付内容，帮助项目按期完成。"
+            "text": "根据开发后期的剩余工期和核心玩法优先级，主动缩减部分关卡与非核心机制，将团队资源集中到可交付内容，帮助项目按期完成。",
+            "image": "/assets/images/oldlevel2.png",
+            "imageAlt": "OldLevel2"
           },
           {
             "label": "试玩反馈与迭代",
@@ -251,25 +251,7 @@
           "在 Boss 和关卡测试中发现，单纯修改数值并不能解决所有体验问题。攻击时机、视觉提示、空间位置和玩家预期需要一起考虑，因此后续更倾向于从数值、视觉和关卡环境多个层面共同解决可读性问题。"
         ],
         "workflowNotes": "先通过可玩原型和试玩确认问题，再决定是修改数值、机制、视觉反馈还是关卡结构。对于团队项目，我也会根据剩余时间和核心体验判断功能是否值得继续投入。"
-      },
-      "blueprintSections": [
-        {
-          "title": "Portal",
-          "image": "/assets/images/portalppp.png"
-        },
-        {
-          "title": "ManEater",
-          "image": "/assets/images/maneater.png"
-        },
-        {
-          "title": "Dropper spline",
-          "image": "/assets/images/splinedropper.png"
-        },
-        {
-          "title": "OldLevel2",
-          "image": "/assets/images/oldlevel2.png"
-        }
-      ]
+      }
     },
     {
       "id": "breach-brew",

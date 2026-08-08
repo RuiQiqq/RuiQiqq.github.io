@@ -3,40 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>System Breakdown | Rui Qi</title>
-  <meta name="description" content="Blueprint and gameplay system breakdown." />
-  <link rel="preconnect" href="https://www.youtube.com">
-  <link rel="preconnect" href="https://i.ytimg.com">
-  <link rel="preconnect" href="https://player.bilibili.com">
-  <link rel="dns-prefetch" href="//www.youtube.com">
-  <link rel="dns-prefetch" href="//player.bilibili.com">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/website-look.css?v=16" />
-  <script defer src="assets/js/content-loader.js?v=16"></script>
+  <title>Redirecting…</title>
+  <script>
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get("id");
+      const lang = params.get("lang");
+      const next = new URL("project-detail.html", window.location.href);
+      if (id) next.searchParams.set("id", id);
+      if (lang) next.searchParams.set("lang", lang);
+      window.location.replace(next.toString());
+    })();
+  </script>
 </head>
-<body data-page="system">
-  <header class="site-header">
-    <a class="wordmark" href="index.html#top">Rui Qi</a>
-    <div class="header-actions">
-      <nav class="nav-links" aria-label="Main navigation">
-        <a class="nav-link framed project-pill" href="index.html#featured" data-i18n="navProjects">Projects</a>
-        <a class="nav-link framed" href="index.html#resume" data-i18n="navResume">Resume</a>
-        <a class="nav-link highlight" href="index.html#contact" data-i18n="navContact">Contact</a>
-      </nav>
-      <div class="language-switch" aria-label="Language switcher">
-        <button type="button" data-language-choice="en">EN</button>
-        <button type="button" data-language-choice="zh">中文</button>
-      </div>
-    </div>
-  </header>
-
-  <main id="system-breakdown-root"></main>
-
-  <footer class="site-footer container">
-    <span>© <span id="year"></span> <span data-site-name>Rui Qi</span></span>
-    <span><a href="index.html#featured" data-i18n="backProjects">Back to projects</a></span>
-  </footer>
-</body>
+<body></body>
 </html>
