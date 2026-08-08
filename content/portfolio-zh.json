@@ -466,6 +466,7 @@
         "conceptArt",
         "draft"
       ],
+      "coverImage": "/assets/images/VFXs GIF/vfx012portal.gif",
       "videoLink": "#",
       "videoPlatform": "Bilibili",
       "detail": {
@@ -478,11 +479,67 @@
         "breakdown": [
           {
             "label": "VFX",
-            "text": "展示效果目标、制作过程、触发方式和最终画面。"
+            "text": "展示效果目标、制作过程、触发方式和最终画面。",
+            "media": [
+              {
+                "type": "image",
+                "src": "/assets/images/VFXs GIF/vfx008island.gif"
+              },
+              {
+                "type": "image",
+                "src": "/assets/images/VFXs GIF/vfx009slashburst-compressed.gif"
+              },
+              {
+                "type": "image",
+                "src": "/assets/images/VFXs GIF/vfx007acid.gif"
+              },
+              {
+                "type": "image",
+                "src": "/assets/images/VFXs GIF/vfx004explosion.gif"
+              },
+              {
+                "type": "image",
+                "src": "/assets/images/VFXs GIF/vfx003electrground.gif"
+              },
+              {
+                "type": "image",
+                "src": "/assets/images/VFXs GIF/vfx002electr.gif"
+              },
+              {
+                "type": "image",
+                "src": "/assets/images/VFXs GIF/vfx005spaceship.gif"
+              },
+              {
+                "type": "image",
+                "src": "/assets/images/VFXs GIF/vfx011gernade.gif"
+              },
+              {
+                "type": "image",
+                "src": "/assets/images/VFXs GIF/vfx006storm.gif"
+              },
+              {
+                "type": "image",
+                "src": "/assets/images/VFXs GIF/vfx0013lightnings.gif"
+              },
+              {
+                "type": "image",
+                "src": "/assets/images/VFXs GIF/vfx010campfire.gif"
+              },
+              {
+                "type": "image",
+                "src": "/assets/images/VFXs GIF/vfx001spark.gif"
+              }
+            ]
           },
           {
             "label": "3D 模型",
-            "text": "展示模型、材质和引擎内效果，不需要为每个模型建立独立项目页。"
+            "text": "展示模型、材质和引擎内效果，不需要为每个模型建立独立项目页。",
+            "media": [
+              {
+                "type": "image",
+                "src": "/assets/images/foamgunmodel-2.png"
+              }
+            ]
           },
           {
             "label": "怪物设计",
