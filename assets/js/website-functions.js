@@ -232,7 +232,6 @@ function buildChineseData() {
     merged.videoPlatform = chinese?.videoPlatform ?? "Bilibili";
     merged.externalLinks = chinese?.externalLinks ?? [];
     merged.downloadLinks = chinese?.downloadLinks ?? [];
-    merged.mediaGallery = chinese?.mediaGallery ?? [];
     merged.status = chinese?.status ?? "";
     return merged;
   });
@@ -475,53 +474,6 @@ function bindInlineVideoPreviews() {
 }
 
 
-function galleryPreviewHtml(item, project) {
-  const type = item?.type || "placeholder";
-  const title = safeText(item?.title, TEXT.mediaGallery);
-  const note = safeText(item?.note);
-
-  if (type === "image" && item.src) {
-    return `<article class="media-gallery-card">
-      <img class="media-gallery-image" src="${escapeHtml(item.src)}" alt="${escapeHtml(item.alt || title)}" loading="lazy">
-      <div class="media-gallery-copy"><h3>${escapeHtml(title)}</h3>${note ? `<p>${escapeHtml(note)}</p>` : ""}</div>
-    </article>`;
-  }
-
-  if (type === "video") {
-    const embedUrl = automaticEmbedUrl(item.embed, item.link);
-    const poster = item.poster || project.coverImage || "";
-    if (embedUrl) {
-      const posterHtml = poster
-        ? `<img class="inline-video-backdrop" src="${escapeHtml(poster)}" alt="" aria-hidden="true"><img class="inline-video-poster" src="${escapeHtml(poster)}" alt="${escapeHtml(title)}" loading="lazy">`
-        : `<div class="gallery-video-placeholder"><span>▶</span></div>`;
-      return `<article class="media-gallery-card media-gallery-card--video">
-        <div class="inline-video-preview gallery-inline-video" data-inline-video-preview data-embed-url="${escapeHtml(embedUrl)}" data-video-title="${escapeHtml(title)}">
-          <div class="inline-video-frame">
-            ${posterHtml}
-            <button class="inline-video-play" type="button" data-inline-video-play aria-label="${escapeHtml(TEXT.playHere)}: ${escapeHtml(title)}">
-              <span class="inline-video-play-icon">▶</span><span class="inline-video-play-label">${escapeHtml(TEXT.playHere)}</span>
-            </button>
-          </div>
-        </div>
-        <div class="media-gallery-copy"><h3>${escapeHtml(title)}</h3>${note ? `<p>${escapeHtml(note)}</p>` : ""}${isRealLink(item.link) ? `<a href="${escapeHtml(item.link)}" target="_blank" rel="noreferrer">${escapeHtml(TEXT.openVideo)} ↗</a>` : ""}</div>
-      </article>`;
-    }
-  }
-
-  return `<article class="media-gallery-card media-gallery-card--placeholder">
-    <div class="media-gallery-placeholder"><span>＋</span><strong>${escapeHtml(title)}</strong><p>${escapeHtml(note || TEXT.assetsPending)}</p></div>
-  </article>`;
-}
-
-function mediaGallerySectionHtml(project) {
-  const items = Array.isArray(project?.mediaGallery) ? project.mediaGallery : [];
-  if (!items.length) return "";
-  return `<section class="detail-section container media-gallery-section">
-    <div class="media-gallery-heading"><div><p class="section-kicker">${escapeHtml(TEXT.mediaGallery)}</p><h2>${escapeHtml(TEXT.mediaGallery)}</h2></div><p>${escapeHtml(TEXT.mediaGalleryIntro)}</p></div>
-    <div class="media-gallery-grid">${items.map(item => galleryPreviewHtml(item, project)).join("")}</div>
-  </section>`;
-}
-
 function projectExtraLinksHtml(project) {
   const externalLinks = (project.externalLinks || [])
     .filter(link => isRealLink(link.url))
@@ -755,6 +707,15 @@ function breakdownMediaItemHtml(media, project, itemLabel) {
   }
 
   if (type === "video") {
+    if (isRealLink(media.file)) {
+      const posterAttr = isRealLink(media.poster) ? ` poster="${escapeHtml(media.poster)}"` : "";
+      return `<figure class="breakdown-media-item breakdown-media-item--video">
+        <video class="breakdown-local-video" controls muted loop playsinline preload="metadata"${posterAttr}>
+          <source src="${escapeHtml(media.file)}">
+        </video>
+        ${note ? `<figcaption>${escapeHtml(note)}</figcaption>` : ""}
+      </figure>`;
+    }
     const embedUrl = automaticEmbedUrl(media.embed, media.link);
     const poster = media.poster || "";
     if (embedUrl) {
@@ -796,7 +757,7 @@ function systemBreakdownSectionHtml(project, detail) {
 
   items.forEach(item => {
     const media = normalizedBreakdownMedia(item);
-    if (media.some(m => (m.type === "image" && isRealLink(m.src)) || (m.type === "video" && automaticEmbedUrl(m.embed, m.link)))) {
+    if (media.some(m => (m.type === "image" && isRealLink(m.src)) || (m.type === "video" && (isRealLink(m.file) || automaticEmbedUrl(m.embed, m.link))))) {
       richItems.push({ item, media });
     } else {
       textOnlyItems.push(item);
@@ -919,50 +880,6 @@ function renderDetailPage() {
   updatePageMetadata(`${project.title} | ${safeText(DATA.site?.name, "Rui Qi")}`, project.summary);
 }
 
-function renderSystemBreakdownPage() {
-  const root = $("#system-breakdown-root");
-  if (!root) return;
-  const id = new URLSearchParams(window.location.search).get("id");
-  const project = projects.find(p => p.id === id) || (id ? null : projects[0]);
-  if (!project || !hasBlueprintSections(project)) {
-    root.innerHTML = `<section class="page-hero container"><h1>${TEXT.projectNotFound}</h1><p>${TEXT.projectNotFoundText}</p></section>`;
-    updatePageMetadata(`${TEXT.projectNotFound} | ${safeText(DATA.site?.name, "Rui Qi")}`, TEXT.projectNotFoundText);
-    return;
-  }
-  const sections = getSystemSections(project);
-  const pageKicker = safeText(project.breakdownPageKicker, TEXT.systemPageKicker);
-  const pageTitle = safeText(project.breakdownPageTitle, TEXT.systemPageTitle);
-  const pageIntro = safeText(project.breakdownPageIntro, TEXT.systemPageIntro);
-  root.innerHTML = `
-    <section class="page-hero container system-page-hero">
-      <p class="eyebrow">${escapeHtml(pageKicker)}</p>
-      <h1>${escapeHtml(project.title)}</h1>
-      <h2>${escapeHtml(pageTitle)}</h2>
-      <p>${escapeHtml(pageIntro)}</p>
-      <div class="hero-actions">
-        <a class="button secondary" href="${localizedUrl(`project-detail.html?id=${encodeURIComponent(project.id)}`)}">${TEXT.backProject}</a>
-        ${isRealLink(project.videoLink) ? `<a class="button primary" href="${escapeHtml(project.videoLink)}" target="_blank" rel="noreferrer">${TEXT.openVideo}</a>` : ""}
-      </div>
-    </section>
-    <section class="section container system-section-list">
-      ${sections.map((section, index) => `
-        <article class="system-explainer">
-          <div class="system-copy">
-            <span class="system-index">${String(index + 1).padStart(2, "0")}</span>
-            <h2>${escapeHtml(section.title)}</h2>
-            <p>${escapeHtml(section.text)}</p>
-            ${(section.bullets || []).length ? `<ul>${section.bullets.map(item => `<li>${escapeHtml(item)}</li>`).join("")}</ul>` : ""}
-          </div>
-          <div class="system-image-wrap">
-            ${section.image
-              ? `<img class="system-image" src="${escapeHtml(section.image)}" alt="${escapeHtml(section.imageAlt || section.title)}">`
-              : `<div class="system-image-placeholder"><strong>${TEXT.imagePlaceholder}</strong><span>${escapeHtml(section.imageLabel || "")}</span></div>`}
-          </div>
-        </article>`).join("")}
-    </section>`;
-  updatePageMetadata(`${safeText(project.breakdownPageTitle, TEXT.systemPageTitle)} | ${project.title}`, project.summary);
-}
-
 function renderContactPage() {
   const site = DATA.site || {};
   if ($("#resume-contact-name")) $("#resume-contact-name").textContent = safeText(site.name, "Rui Qi");
@@ -1002,7 +919,6 @@ function init() {
   if (page === "home") renderHome();
   if (page === "projects") renderProjectsPage();
   if (page === "detail") renderDetailPage();
-  if (page === "system") renderSystemBreakdownPage();
   if (page === "contact") renderContactPage();
   if (page === "resume") renderResumeViewer();
   localizeInternalLinks();

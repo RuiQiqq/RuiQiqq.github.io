@@ -1,0 +1,248 @@
+﻿media:
+  - name: images
+    label: 图片／GIF
+    input: assets/images
+    output: /assets/images
+    extensions: [png, jpg, jpeg, webp, gif]
+    rename: safe
+  - name: videos
+    label: 本地短视频
+    input: assets/videos
+    output: /assets/videos
+    extensions: [mp4, webm, mov]
+    rename: safe
+  - name: downloads
+    label: PDF 与下载文件
+    input: assets/downloads
+    output: /assets/downloads
+    extensions: [pdf, zip, doc, docx, ppt, pptx]
+    rename: safe
+  - name: resumes
+    label: 简历 PDF
+    input: assets/resume
+    output: /assets/resume
+    extensions: [pdf]
+    rename: safe
+
+settings:
+  content:
+    merge: true
+  commit:
+    identity: user
+    templates:
+      create: "新增 {name}（Pages CMS）"
+      update: "更新 {name}（Pages CMS）"
+      delete: "删除 {name}（Pages CMS）"
+      rename: "重命名 {oldPath} 为 {newPath}（Pages CMS）"
+
+components:
+  site_settings:
+    type: object
+    label: 网站基本信息
+    fields:
+      - { name: name, label: 姓名, type: string, required: true }
+      - { name: eyebrow, label: 姓名上方小标题, type: string }
+      - { name: title, label: 首页求职标题, type: string, required: true }
+      - { name: subtitle, label: 首页一句话方向, type: text }
+      - { name: intro, label: 首页个人介绍, type: text }
+      - { name: email, label: 邮箱, type: string }
+      - { name: github, label: GitHub 链接, type: string }
+      - { name: linkedin, label: LinkedIn 链接, type: string }
+      - name: resumeUrl
+        label: 简历 PDF
+        type: file
+        options: { media: resumes, extensions: [pdf] }
+      - { name: demoReelEmbed, label: 作品混剪嵌入链接, type: string }
+      - { name: demoReelLink, label: 作品混剪外部链接, type: string }
+      - name: demoReelCoverImage
+        label: 作品混剪封面
+        type: image
+        options: { media: images }
+      - name: demoReelPlatform
+        label: 视频平台
+        type: select
+        options: { values: [YouTube, Bilibili, Local] }
+
+  label_value:
+    type: object
+    fields:
+      - { name: label, label: 标签, type: string }
+      - { name: value, label: 内容, type: text }
+
+  title_text:
+    type: object
+    fields:
+      - { name: title, label: 标题, type: string }
+      - { name: text, label: 说明, type: text }
+
+  link_item:
+    type: object
+    fields:
+      - { name: label, label: 按钮文字, type: string }
+      - { name: url, label: 链接, type: string }
+
+  download_item:
+    type: object
+    fields:
+      - { name: label, label: 下载按钮文字, type: string }
+      - name: url
+        label: 上传或选择文件
+        type: file
+        options: { media: downloads, extensions: [pdf, zip, doc, docx, ppt, pptx] }
+
+  breakdown_media_item:
+    type: object
+    fields:
+      - name: type
+        label: 类型
+        type: select
+        required: true
+        options:
+          values:
+            - { name: image, label: 图片／GIF }
+            - { name: video, label: 视频 }
+      - name: src
+        label: 图片／GIF
+        type: image
+        options: { media: images }
+      - name: file
+        label: 本地视频（可选）
+        type: file
+        options: { media: videos, extensions: [mp4, webm, mov] }
+      - { name: link, label: YouTube／Bilibili 链接（可选）, type: string }
+      - name: poster
+        label: 视频封面（可选）
+        type: image
+        options: { media: images }
+      - { name: alt, label: 媒体说明／替代文字（可选）, type: string }
+      - { name: note, label: 媒体补充说明（可选）, type: text }
+
+  breakdown_item:
+    type: object
+    fields:
+      - { name: label, label: 小标题, type: string, required: true }
+      - { name: text, label: 说明, type: text }
+      - name: media
+        label: 配图／GIF／视频（可添加多个）
+        component: breakdown_media_item
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{type} · {alt}"
+      - name: bullets
+        label: 补充要点（可选）
+        type: string
+        list: true
+
+  project:
+    type: object
+    fields:
+      - name: id
+        label: 项目 ID
+        type: string
+        required: true
+        description: 只能用英文小写、数字和横杠；创建后尽量不要修改。
+        pattern:
+          regex: "^[a-z0-9-]+$"
+          message: "只能使用英文小写、数字和横杠。"
+      - { name: order, label: 显示顺序, type: number, required: true }
+      - { name: featured, label: 首页重点展示, type: boolean, default: false }
+      - { name: library, label: 在项目库显示, type: boolean, default: true }
+      - { name: status, label: 项目状态, type: string }
+      - { name: title, label: 项目名称, type: string, required: true }
+      - { name: category, label: 项目分类, type: string }
+      - { name: role, label: 我的职责, type: text }
+      - { name: summary, label: 首页简短介绍, type: text }
+      - { name: tools, label: 工具与技术, type: text }
+      - { name: tags, label: 标签, type: string, list: true }
+      - name: coverImage
+        label: 项目封面
+        type: image
+        options: { media: images }
+      - { name: videoLink, label: 主视频普通链接, type: string }
+      - { name: videoEmbed, label: 主视频嵌入链接（通常留空）, type: string }
+      - name: videoFile
+        label: 本地主视频（可选）
+        type: file
+        options: { media: videos, extensions: [mp4, webm, mov] }
+      - name: videoPlatform
+        label: 主视频平台
+        type: select
+        options: { values: [YouTube, Bilibili, Local] }
+      - name: externalLinks
+        label: 外部链接按钮
+        component: link_item
+        list:
+          collapsible: { collapsed: true, summary: "{label}" }
+      - name: downloadLinks
+        label: 下载文件
+        component: download_item
+        list:
+          collapsible: { collapsed: true, summary: "{label}" }
+      - name: detail
+        label: 项目详情页
+        type: object
+        fields:
+          - { name: overview, label: 项目概述, type: text }
+          - { name: whatIBuilt, label: 我的具体工作, type: text, list: true }
+          - name: breakdown
+            label: 系统／设计拆解
+            component: breakdown_item
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{label}"
+          - { name: challenges, label: 关键挑战与复盘, type: text, list: true }
+          - { name: workflowNotes, label: 工作流程说明, type: text }
+
+content:
+  - name: portfolio_content
+    label: 作品集内容
+    type: group
+    items:
+      - name: portfolio_zh
+        label: 中文网站内容
+        type: file
+        path: content/portfolio-zh.json
+        format: json
+        fields:
+          - { name: site, label: 网站基本信息, component: site_settings }
+          - name: snapshot
+            label: 首页快速信息
+            component: label_value
+            list: { collapsible: { collapsed: true, summary: "{label}: {value}" } }
+          - name: focusAreas
+            label: 首页主要能力
+            component: title_text
+            list: { collapsible: { collapsed: true, summary: "{title}" } }
+          - name: resumeSkills
+            label: 简历与技能区
+            component: label_value
+            list: { collapsible: { collapsed: true, summary: "{label}" } }
+          - name: projects
+            label: 项目（点击加号可新增）
+            component: project
+            list: { collapsible: { collapsed: true, summary: "#{order} · {title}" } }
+      - name: portfolio_en
+        label: English Website Content
+        type: file
+        path: content/portfolio-en.json
+        format: json
+        fields:
+          - { name: site, label: Site Settings, component: site_settings }
+          - name: snapshot
+            label: Quick Facts
+            component: label_value
+            list: { collapsible: { collapsed: true, summary: "{label}: {value}" } }
+          - name: focusAreas
+            label: Main Skills
+            component: title_text
+            list: { collapsible: { collapsed: true, summary: "{title}" } }
+          - name: resumeSkills
+            label: Resume & Skills
+            component: label_value
+            list: { collapsible: { collapsed: true, summary: "{label}" } }
+          - name: projects
+            label: Projects
+            component: project
+            list: { collapsible: { collapsed: true, summary: "#{order} · {title}" } }

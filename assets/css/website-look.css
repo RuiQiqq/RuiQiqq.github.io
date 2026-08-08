@@ -1124,3 +1124,17 @@ h1, h2, h3 {
   .breakdown-case-copy h3 { font-size: 20px; }
   .breakdown-media-zoom { min-height: 160px; }
 }
+
+/* v20 unified system/design breakdown */
+.breakdown-local-video {
+  display: block;
+  width: 100%;
+  max-height: 620px;
+  background: #070715;
+  object-fit: contain;
+}
+.breakdown-case-media.is-many { align-items: start; }
+.breakdown-case-media.is-many .breakdown-media-item:first-child:nth-last-child(3) { grid-column: span 2; }
+@media (max-width: 760px) {
+  .breakdown-case-media.is-many .breakdown-media-item:first-child:nth-last-child(3) { grid-column: auto; }
+}

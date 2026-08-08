@@ -141,41 +141,57 @@
         "breakdown": [
           {
             "label": "Modular Communication",
-            "text": "Built reusable EnemyBase and ProjectileBase inheritance structures and used Blueprint Interfaces where appropriate to reduce direct dependencies on specific classes.",
+            "text": "Extracted EnemyBase and ProjectileBase, moved reusable logic into Actor Components, and used Blueprint Interfaces and component tags to reduce direct references.",
+            "bullets": [
+              "Base classes",
+              "Component responsibilities",
+              "Interface events",
+              "Reduced direct casting"
+            ],
             "media": [
               {
                 "type": "image",
                 "src": "/assets/images/base.png",
-                "alt": "Enemy and projectile base-class structure"
+                "alt": "Modular Communication"
               }
             ]
           },
           {
-            "label": "Animation Blueprint State Sync",
-            "text": "Cached the owning character reference during Animation Blueprint initialization, avoiding repeated casts during per-frame updates while synchronizing movement and combat state data.",
-            "media": [
-              {
-                "type": "image",
-                "src": "/assets/images/ref.png",
-                "alt": "Animation Blueprint cached character reference and state synchronization"
-              }
-            ]
-          },
-          {
-            "label": "Combo Windows & Input Buffering",
-            "text": "Used AnimNotifyState to define Combo Windows. Inputs made during valid windows are buffered and consumed when transition conditions are met, improving responsiveness while keeping animation transitions controlled.",
+            "label": "Animation & Hit Frames",
+            "text": "Used AnimNotifyState to define active frames so collision, damage, reaction, and UI feedback match the visible animation.",
+            "bullets": [
+              "Active frames",
+              "Trace or collision",
+              "Damage application",
+              "Feedback synchronization"
+            ],
             "media": [
               {
                 "type": "image",
                 "src": "/assets/images/cwindow.png",
-                "alt": "AnimNotifyState combo window and buffered input flow"
+                "alt": "Animation & Hit Frames"
               }
             ]
           },
           {
+            "label": "Input & State Flow",
+            "text": "Organized input buffering and animation-state transitions to reduce conflicts between attacks, dodges, and reactions.",
+            "bullets": [
+              "Input entry",
+              "Buffer window",
+              "State priority",
+              "Action reset"
+            ]
+          },
+          {
             "label": "Data-Driven Debugging",
-            "text": "Exposed damage multipliers, cooldowns, and hit windows as editable parameters and used Draw Debug to visually tune attack range and invulnerability timing.",
-            "media": []
+            "text": "Exposed damage, cooldown, and timing parameters and used Draw Debug traces to calibrate attack ranges and invulnerability frames.",
+            "bullets": [
+              "Central parameters",
+              "PIE iteration",
+              "Visual hitboxes",
+              "Before and after"
+            ]
           }
         ],
         "challenges": [
@@ -231,68 +247,51 @@
         ],
         "breakdown": [
           {
-            "label": "Boss Telegraphing & Reaction Window",
-            "text": "Adjusted Boss ability timing and worked with programming to add ground indicators before attacks, improving readability and giving players a clearer reaction window.",
-            "media": []
-          },
-          {
-            "label": "Configurable Portal Mechanic",
-            "text": "Implemented a configurable portal mechanic so entrance, exit, and trigger behavior could be reused and adjusted during level iteration.",
-            "media": [
-              {
-                "type": "image",
-                "src": "/assets/images/portalppp.png",
-                "alt": "Configurable portal mechanic in Unity"
-              }
+            "label": "Boss Telegraphing",
+            "text": "Retuned release timing and coordinated ground indicators so players could read attack range and react fairly.",
+            "bullets": [
+              "Original problem",
+              "Timing adjustment",
+              "Telegraph requirement",
+              "Playtest result"
             ]
           },
           {
-            "label": "Path-Driven Adjustable Trap",
-            "text": "Built an adjustable moving trap driven by an editable path so level designers could quickly tune its route and placement during testing.",
-            "media": [
-              {
-                "type": "image",
-                "src": "/assets/images/splinedropper.png",
-                "alt": "Adjustable path-driven trap"
-              }
-            ]
-          },
-          {
-            "label": "Player-Eating Trap · Cut Feature",
-            "text": "Prototyped an environmental trap that captures the player, temporarily restricts movement, and releases them after a delay. The playable feature was later cut during scope reduction.",
-            "media": [
-              {
-                "type": "image",
-                "src": "/assets/images/maneater.png",
-                "alt": "Player-eating environmental trap prototype"
-              }
-            ]
-          },
-          {
-            "label": "Scope Management & Delivery",
-            "text": "Reduced portions of the level and non-core mechanics late in production so the team could focus on the core experience and deliver on schedule.",
+            "label": "Scope Management",
+            "text": "Evaluated level priorities and cut lower-value content when time became limited, protecting the core flow and team delivery.",
+            "bullets": [
+              "Original scope",
+              "Priority criteria",
+              "Removed content",
+              "Final delivery"
+            ],
             "media": [
               {
                 "type": "image",
                 "src": "/assets/images/oldlevel2.png",
-                "alt": "Earlier level layout before scope reduction"
+                "alt": "Scope Management"
               }
             ]
           },
           {
             "label": "Playtesting & Iteration",
-            "text": "Collected playtest feedback, turned readability and pacing issues into concrete changes, and discussed priorities with the team before implementation.",
-            "media": []
+            "text": "Collected feedback, categorized experience problems, and discussed implementation cost and value with the team.",
+            "bullets": [
+              "Feedback source",
+              "Issue categories",
+              "Team discussion",
+              "Final changes"
+            ]
           },
           {
-            "label": "VFX & Environmental Feedback",
-            "text": "Created smoke, wind, early skill effects, and Buff VFX to support environmental atmosphere and gameplay feedback; some early work was later replaced during visual iteration.",
-            "media": []
-          },
-          {
-            "label": "Combat Tuning & Ability Design",
-            "text": "Contributed to combat and encounter iteration by tuning timing, readability, and player response around abilities and hazards.",
-            "media": []
+            "label": "VFX Feedback",
+            "text": "Created environmental and early gameplay effects that communicated mood, abilities, and state changes while helping define later visual requirements.",
+            "bullets": [
+              "Environmental VFX",
+              "Skill prototypes",
+              "Buff feedback",
+              "Why effects changed"
+            ]
           }
         ],
         "challenges": [
@@ -340,30 +339,39 @@
         ],
         "breakdown": [
           {
-            "label": "Parameterized Frost Material",
-            "text": "Used a shared parameter to control frost coverage in real time, leaving a clear interface for later gameplay-temperature data to drive the material.",
-            "media": []
+            "label": "Temperature State",
+            "text": "Used shared state and events to update environmental temperature rather than running complex independent logic on every object.",
+            "bullets": [
+              "Temperature data",
+              "State changes",
+              "Event broadcast",
+              "Performance and extensibility"
+            ]
           },
           {
-            "label": "Reusable Power Visual Component",
-            "text": "Used an Actor Component to drive device lighting and spark states so the same power behavior can be attached to different actors and reused.",
+            "label": "Material Response",
+            "text": "Drove heat and cold transitions through parameters so visual state responds smoothly to gameplay data.",
+            "bullets": [
+              "Parameter range",
+              "Material transition",
+              "VFX trigger",
+              "Readability testing"
+            ]
+          },
+          {
+            "label": "Niagara Feedback",
+            "text": "Connected VFX to environmental events so players can quickly read temperature and danger changes."
+          },
+          {
+            "label": "Cross-Discipline Integration",
+            "text": "Separated system interfaces and visual responsibilities so design and technical art could iterate independently.",
             "media": [
               {
                 "type": "image",
                 "src": "/assets/images/powercomp01.png",
-                "alt": "Reusable power Actor Component"
+                "alt": "Cross-Discipline Integration"
               }
             ]
-          },
-          {
-            "label": "Parameterized Niagara VFX",
-            "text": "Built controllable wind and spark Niagara effects with exposed direction, strength, and other parameters that can be driven from Blueprint.",
-            "media": []
-          },
-          {
-            "label": "Bubble Gun Prototype",
-            "text": "Implemented an early bubble-projectile prototype covering hit behavior, surface attachment, and volume growth as a foundation for later breach-covering rules.",
-            "media": []
           }
         ],
         "challenges": [
@@ -410,31 +418,19 @@
         "breakdown": [
           {
             "label": "Designer-Friendly Input",
-            "text": "Allowed designers to work in readable spreadsheets instead of engine-facing data formats.",
-            "image": "",
-            "imageAlt": "",
-            "media": []
+            "text": "Allowed designers to work in readable spreadsheets instead of engine-facing data formats."
           },
           {
             "label": "Automated Conversion",
-            "text": "Converted Excel data into a Unity-readable format and reduced repeated manual work.",
-            "image": "",
-            "imageAlt": "",
-            "media": []
+            "text": "Converted Excel data into a Unity-readable format and reduced repeated manual work."
           },
           {
             "label": "Error Control",
-            "text": "Used structural constraints and validation to reduce missing fields and format mismatches.",
-            "image": "",
-            "imageAlt": "",
-            "media": []
+            "text": "Used structural constraints and validation to reduce missing fields and format mismatches."
           },
           {
             "label": "Iteration Speed",
-            "text": "Shortened the path between data edits and in-engine testing.",
-            "image": "",
-            "imageAlt": "",
-            "media": []
+            "text": "Shortened the path between data edits and in-engine testing."
           }
         ],
         "challenges": [
@@ -480,31 +476,19 @@
         "breakdown": [
           {
             "label": "Puzzle Logic",
-            "text": "Connected puzzle conditions, interaction results, and environment states into a testable flow.",
-            "image": "",
-            "imageAlt": "",
-            "media": []
+            "text": "Connected puzzle conditions, interaction results, and environment states into a testable flow."
           },
           {
             "label": "Door & State Logic",
-            "text": "Handled conditions, open/closed states, and interaction feedback.",
-            "image": "",
-            "imageAlt": "",
-            "media": []
+            "text": "Handled conditions, open/closed states, and interaction feedback."
           },
           {
             "label": "VR Interaction Feel",
-            "text": "Adjusted ranges, response speed, and object handling through in-headset testing.",
-            "image": "",
-            "imageAlt": "",
-            "media": []
+            "text": "Adjusted ranges, response speed, and object handling through in-headset testing."
           },
           {
             "label": "Environment & Materials",
-            "text": "Used level assembly and glass and water materials to improve spatial readability and immersion.",
-            "image": "",
-            "imageAlt": "",
-            "media": []
+            "text": "Used level assembly and glass and water materials to improve spatial readability and immersion."
           }
         ],
         "challenges": [
@@ -547,24 +531,15 @@
         "breakdown": [
           {
             "label": "VFX",
-            "text": "Show the visual goal, production process, trigger method, and final effect.",
-            "image": "",
-            "imageAlt": "",
-            "media": []
+            "text": "Show the visual goal, production process, trigger method, and final effect."
           },
           {
             "label": "3D Models",
-            "text": "Show models, materials, wireframes, and engine presentation without creating a separate project for each asset.",
-            "image": "",
-            "imageAlt": "",
-            "media": []
+            "text": "Show models, materials, wireframes, and engine presentation without creating a separate project for each asset."
           },
           {
             "label": "Creature Design",
-            "text": "Show silhouettes, sketches, final design, and a concise design intention.",
-            "image": "",
-            "imageAlt": "",
-            "media": []
+            "text": "Show silhouettes, sketches, final design, and a concise design intention."
           }
         ],
         "challenges": [

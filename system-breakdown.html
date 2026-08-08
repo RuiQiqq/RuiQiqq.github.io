@@ -1,20 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Redirecting…</title>
-  <script>
-    (function () {
-      const params = new URLSearchParams(window.location.search);
-      const id = params.get("id");
-      const lang = params.get("lang");
-      const next = new URL("project-detail.html", window.location.href);
-      if (id) next.searchParams.set("id", id);
-      if (lang) next.searchParams.set("lang", lang);
-      window.location.replace(next.toString());
-    })();
-  </script>
-</head>
-<body></body>
-</html>
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="robots" content="noindex"><title>Redirecting…</title></head>
+<body><script>
+const p=new URLSearchParams(location.search);
+const id=p.get('id'); const lang=p.get('lang');
+let u='project-detail.html'; const q=new URLSearchParams(); if(id)q.set('id',id); if(lang)q.set('lang',lang); if([...q].length)u+='?'+q.toString();
+location.replace(u);
+</script></body></html>
