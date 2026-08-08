@@ -301,7 +301,17 @@
           },
           {
             "label": "参数化 Niagara VFX",
-            "text": "制作可实时控制方向与强度的气流 Niagara，以及损坏带电设备的火花反馈，并通过 Blueprint 参数驱动。"
+            "text": "制作可实时控制方向与强度的气流 Niagara，以及损坏带电设备的火花反馈，并通过 Blueprint 参数驱动。",
+            "media": [
+              {
+                "type": "image",
+                "src": "/assets/images/wind01-1.png"
+              },
+              {
+                "type": "image",
+                "src": "/assets/images/wind02.png"
+              }
+            ]
           },
           {
             "label": "泡沫枪原型",
