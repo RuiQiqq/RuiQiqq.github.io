@@ -10,8 +10,7 @@
     "linkedin": "https://www.linkedin.com/in/rui-qi-9b58b8222/",
     "resumeUrl": "/assets/resume/Rui_Qi_Resume_ZH.pdf",
     "demoReelLink": "#",
-    "demoReelPlatform": "Bilibili",
-    "demoReelCoverImage": "/assets/images/bbg7r.png"
+    "demoReelPlatform": "Bilibili"
   },
   "snapshot": [
     {
@@ -138,36 +137,15 @@
         "breakdown": [
           {
             "label": "模块化通信",
-            "text": "通过 EnemyBase 与 ProjectileBase 建立可复用的继承结构，并且把部分核心逻辑封装至 Actor Component，此外使用 Blueprint Interface 减少系统之间的直接类型依赖，使不同敌人和射弹能够在保留通用逻辑的同时扩展各自行为。",
-            "media": [
-              {
-                "type": "image",
-                "src": "/assets/images/base.png",
-                "alt": "模块化通信"
-              }
-            ]
+            "text": "通过 EnemyBase 与 ProjectileBase 建立可复用的继承结构，并且把部分核心逻辑封装至 Actor Component，此外使用 Blueprint Interface 减少系统之间的直接类型依赖，使不同敌人和射弹能够在保留通用逻辑的同时扩展各自行为。"
           },
           {
             "label": "动画蓝图状态同步",
-            "text": "在 Animation Blueprint 初始化时获取并缓存角色引用，避免在每帧更新动画时重复 Cast。随后通过缓存的 Character Ref 读取移动、空中状态和战斗状态等数据，并同步到 AnimBP 变量中，用于驱动动画状态机与战斗动画切换。",
-            "media": [
-              {
-                "type": "image",
-                "src": "/assets/images/ref.png",
-                "alt": "动画蓝图状态同步"
-              }
-            ]
+            "text": "在 Animation Blueprint 初始化时获取并缓存角色引用，避免在每帧更新动画时重复 Cast。随后通过缓存的 Character Ref 读取移动、空中状态和战斗状态等数据，并同步到 AnimBP 变量中，用于驱动动画状态机与战斗动画切换。"
           },
           {
             "label": "动画与判定",
-            "text": "使用 AnimNotifyState 定义 Combo Window，在攻击动画的指定时间段开放连招输入；玩家在窗口内提前按下下一次攻击时，系统会缓存输入，并在当前攻击结束或满足切换条件后衔接下一段攻击，从而提高连招响应性，同时避免任意时刻切换攻击造成动画和状态冲突。",
-            "media": [
-              {
-                "type": "image",
-                "src": "/assets/images/cwindow.png",
-                "alt": "动画与判定"
-              }
-            ]
+            "text": "使用 AnimNotifyState 定义 Combo Window，在攻击动画的指定时间段开放连招输入；玩家在窗口内提前按下下一次攻击时，系统会缓存输入，并在当前攻击结束或满足切换条件后衔接下一段攻击，从而提高连招响应性，同时避免任意时刻切换攻击造成动画和状态冲突。"
           },
           {
             "label": "数据驱动调试",
@@ -230,47 +208,19 @@
           },
           {
             "label": "可配置传送门机制",
-            "text": "在 Unity 中实现可配置的传送门机制，使关卡设计阶段可以快速设置入口、出口与触发区域，并在不同场景中重复使用。",
-            "media": [
-              {
-                "type": "image",
-                "src": "/assets/images/portalppp.png",
-                "alt": "可配置传送门机制"
-              }
-            ]
+            "text": "在 Unity 中实现可配置的传送门机制，使关卡设计阶段可以快速设置入口、出口与触发区域，并在不同场景中重复使用。"
           },
           {
             "label": "路径驱动的可调关卡陷阱",
-            "text": "制作基于可编辑路径的移动陷阱，使关卡设计人员能够直接调整运动路径、位置和行为参数，减少反复修改逻辑的成本并提高关卡测试效率。",
-            "media": [
-              {
-                "type": "image",
-                "src": "/assets/images/splinedropper.png",
-                "alt": "路径驱动的可调关卡陷阱"
-              }
-            ]
+            "text": "制作基于可编辑路径的移动陷阱，使关卡设计人员能够直接调整运动路径、位置和行为参数，减少反复修改逻辑的成本并提高关卡测试效率。"
           },
           {
             "label": "吞吐式玩家陷阱｜Cut Feature",
-            "text": "原型化能够捕获玩家、暂时限制其移动，并在短暂延迟后将玩家重新释放的环境陷阱，用于制造关卡节奏变化和空间危险。该机制完成了可玩验证，后期为控制项目范围而被移除。",
-            "media": [
-              {
-                "type": "image",
-                "src": "/assets/images/maneater.png",
-                "alt": "吞吐式玩家陷阱｜Cut Feature"
-              }
-            ]
+            "text": "原型化能够捕获玩家、暂时限制其移动，并在短暂延迟后将玩家重新释放的环境陷阱，用于制造关卡节奏变化和空间危险。该机制完成了可玩验证，后期为控制项目范围而被移除。"
           },
           {
             "label": "关卡范围管理与交付",
-            "text": "根据开发后期的剩余工期和核心玩法优先级，主动缩减部分关卡与非核心机制，将团队资源集中到可交付内容，帮助项目按期完成。",
-            "media": [
-              {
-                "type": "image",
-                "src": "/assets/images/oldlevel2.png",
-                "alt": "关卡范围管理与交付"
-              }
-            ]
+            "text": "根据开发后期的剩余工期和核心玩法优先级，主动缩减部分关卡与非核心机制，将团队资源集中到可交付内容，帮助项目按期完成。"
           },
           {
             "label": "试玩反馈与迭代",
@@ -331,14 +281,7 @@
           },
           {
             "label": "可复用电力视觉组件",
-            "text": "使用 Actor Component 统一驱动设备灯光与火花状态，可直接挂载到不同设备并复用。",
-            "media": [
-              {
-                "type": "image",
-                "src": "/assets/images/powercomp01.png",
-                "alt": "可复用电力视觉组件"
-              }
-            ]
+            "text": "使用 Actor Component 统一驱动设备灯光与火花状态，可直接挂载到不同设备并复用。"
           },
           {
             "label": "参数化 Niagara VFX",
