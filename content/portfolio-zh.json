@@ -277,11 +277,22 @@
         "breakdown": [
           {
             "label": "参数化结霜材质",
-            "text": "使用统一参数控制霜层覆盖，可实时调节结霜程度，为后续接入温度 Gameplay 数据预留接口。"
+            "text": "使用统一参数控制霜层覆盖，可实时调节结霜程度，为后续接入温度 Gameplay 数据预留接口。",
+            "media": [
+              {
+                "type": "image",
+                "src": "/assets/images/mat01frozen-compressed.gif"
+              }
+            ]
           },
           {
             "label": "可复用电力视觉组件",
-            "text": "使用 Actor Component 统一驱动设备灯光与火花状态，可直接挂载到不同设备并复用。"
+            "text": "使用 Actor Component 统一驱动设备灯光与火花状态，可直接挂载到不同设备并复用。",
+            "media": [
+              {
+                "type": "image"
+              }
+            ]
           },
           {
             "label": "参数化 Niagara VFX",
