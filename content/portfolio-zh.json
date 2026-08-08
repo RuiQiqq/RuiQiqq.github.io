@@ -358,6 +358,7 @@
         "aiWorkflow",
         "gameplaySystem"
       ],
+      "coverImage": "/assets/images/eb.png",
       "videoLink": "#",
       "videoPlatform": "Bilibili",
       "detail": {
@@ -372,7 +373,21 @@
         "breakdown": [
           {
             "label": "设计者友好输入",
-            "text": "让策划以易读的表格形式维护数值，而不是直接操作引擎内部格式。"
+            "text": "让策划以易读的表格形式维护数值，而不是直接操作引擎内部格式。",
+            "media": [
+              {
+                "type": "image",
+                "src": "/assets/images/eb1.png"
+              },
+              {
+                "type": "image",
+                "src": "/assets/images/eb2.png"
+              },
+              {
+                "type": "image",
+                "src": "/assets/images/eb3.png"
+              }
+            ]
           },
           {
             "label": "自动转换",
@@ -413,6 +428,7 @@
         "material",
         "prototype"
       ],
+      "coverImage": "/assets/images/mm.png",
       "videoLink": "https://www.bilibili.com/video/BV1d5MS6sEoc/",
       "videoEmbed": "https://player.bilibili.com/player.html?bvid=BV1d5MS6sEoc&page=1&high_quality=1&danmaku=0&autoplay=0",
       "videoPlatform": "Bilibili",
@@ -479,7 +495,7 @@
         "breakdown": [
           {
             "label": "VFX",
-            "text": "展示效果目标、制作过程、触发方式和最终画面。",
+            "text": "2024",
             "media": [
               {
                 "type": "image",
@@ -537,8 +553,10 @@
             "media": [
               {
                 "type": "image",
-                "src": "/assets/images/foamgunmodel-2.png"
-              }
+                "src": "/assets/images/foamgunmodel-2.png",
+                "note": "2025 Blender"
+              },
+              {}
             ]
           },
           {
@@ -547,7 +565,8 @@
             "media": [
               {
                 "type": "image",
-                "src": "/assets/images/017finalcreatureruiqi.jpg"
+                "src": "/assets/images/017finalcreatureruiqi.jpg",
+                "note": "2024"
               }
             ]
           }
