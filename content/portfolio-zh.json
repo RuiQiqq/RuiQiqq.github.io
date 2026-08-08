@@ -315,7 +315,21 @@
           },
           {
             "label": "泡沫枪原型",
-            "text": "实现泡沫投射物命中、表面附着与体积增长流程，为后续破口覆盖和封堵规则提供基础。仍在开发中..."
+            "text": "实现泡沫投射物命中、表面附着与体积增长流程，为后续破口覆盖和封堵规则提供基础。仍在开发中...",
+            "media": [
+              {
+                "type": "image",
+                "src": "/assets/images/foamproject01.png"
+              },
+              {
+                "type": "image",
+                "src": "/assets/images/foamgun01.png"
+              },
+              {
+                "type": "image",
+                "src": "/assets/images/foamgunmodel-1.png"
+              }
+            ]
           }
         ],
         "challenges": [
