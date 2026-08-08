@@ -739,6 +739,80 @@ function renderProjectsPage() {
   updatePageMetadata(`${TEXT.projectsPageTitle} | ${safeText(DATA.site?.name, "Rui Qi")}`, TEXT.projectsPageText);
 }
 
+function systemBreakdownSectionHtml(project, detail) {
+  const items = Array.isArray(detail.breakdown) ? detail.breakdown : [];
+  if (!items.length) return "";
+
+  const withMedia = items.filter(item => isRealLink(item.image));
+  const textOnly = items.filter(item => !isRealLink(item.image));
+
+  const mediaCards = withMedia.map(item => `
+    <article class="breakdown-card">
+      <button class="breakdown-card-media" type="button" data-lightbox-src="${escapeHtml(item.image)}" data-lightbox-alt="${escapeHtml(item.imageAlt || item.label || project.title)}" aria-label="${escapeHtml(item.imageAlt || item.label || project.title)}">
+        <img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.imageAlt || item.label || project.title)}" loading="lazy">
+      </button>
+      <div class="breakdown-card-copy">
+        <h3>${escapeHtml(item.label)}</h3>
+        <p>${escapeHtml(item.text)}</p>
+        ${(item.bullets || []).length ? `<ul>${item.bullets.map(point => `<li>${escapeHtml(point)}</li>`).join("")}</ul>` : ""}
+      </div>
+    </article>`).join("");
+
+  const noteCards = textOnly.map(item => `
+    <article class="breakdown-note-card">
+      <h3>${escapeHtml(item.label)}</h3>
+      <p>${escapeHtml(item.text)}</p>
+      ${(item.bullets || []).length ? `<ul>${item.bullets.map(point => `<li>${escapeHtml(point)}</li>`).join("")}</ul>` : ""}
+    </article>`).join("");
+
+  return `<section class="detail-section container"><h2>${TEXT.systemBreakdown}</h2>${mediaCards ? `<div class="breakdown-grid">${mediaCards}</div>` : ""}${noteCards ? `<div class="breakdown-notes-grid">${noteCards}</div>` : ""}</section>`;
+}
+
+function bindBreakdownLightbox() {
+  const buttons = document.querySelectorAll("[data-lightbox-src]");
+  if (!buttons.length) return;
+
+  let lightbox = document.querySelector(".media-lightbox");
+  if (!lightbox) {
+    lightbox = document.createElement("div");
+    lightbox.className = "media-lightbox";
+    lightbox.hidden = true;
+    lightbox.setAttribute("role", "dialog");
+    lightbox.setAttribute("aria-modal", "true");
+    lightbox.innerHTML = `<button class="media-lightbox-close" type="button" aria-label="Close">×</button><div class="media-lightbox-inner"><img alt=""><div class="media-lightbox-caption"></div></div>`;
+    document.body.appendChild(lightbox);
+  }
+
+  const img = lightbox.querySelector("img");
+  const caption = lightbox.querySelector(".media-lightbox-caption");
+  const closeButton = lightbox.querySelector(".media-lightbox-close");
+
+  const close = () => {
+    lightbox.hidden = true;
+    document.body.style.overflow = "";
+    img.removeAttribute("src");
+  };
+
+  buttons.forEach(button => {
+    button.addEventListener("click", () => {
+      img.src = button.dataset.lightboxSrc;
+      img.alt = button.dataset.lightboxAlt || "";
+      caption.textContent = button.dataset.lightboxAlt || "";
+      lightbox.hidden = false;
+      document.body.style.overflow = "hidden";
+      closeButton.focus();
+    });
+  });
+
+  closeButton.addEventListener("click", close);
+  lightbox.addEventListener("click", event => {
+    if (event.target === lightbox) close();
+  });
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && !lightbox.hidden) close();
+  });
+}
+
 function renderDetailPage() {
   const root = $("#project-detail-root");
   if (!root) return;
@@ -776,10 +850,11 @@ function renderDetailPage() {
     </section>
     <section class="detail-section container"><h2>${TEXT.whatIBuilt}</h2><ul>${(detail.whatIBuilt || []).map(item => `<li>${escapeHtml(item)}</li>`).join("")}</ul></section>
     ${mediaGallerySectionHtml(project)}
-    <section class="detail-section container"><h2>${TEXT.systemBreakdown}</h2><div class="breakdown-grid">${(detail.breakdown || []).map(item => `<article class="breakdown-card">${item.image ? `<a class="breakdown-card-media" href="${escapeHtml(item.image)}" target="_blank" rel="noreferrer" aria-label="${escapeHtml(item.imageAlt || item.label || project.title)}"><img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.imageAlt || item.label || project.title)}" loading="lazy"></a>` : ""}<div class="breakdown-card-copy"><h3>${escapeHtml(item.label)}</h3><p>${escapeHtml(item.text)}</p>${(item.bullets || []).length ? `<ul>${item.bullets.map(point => `<li>${escapeHtml(point)}</li>`).join("")}</ul>` : ""}</div></article>`).join("")}</div></section>
+    ${systemBreakdownSectionHtml(project, detail)}
     <section class="detail-section container"><h2>${TEXT.challenges}</h2><ul>${(detail.challenges || []).map(item => `<li>${escapeHtml(item)}</li>`).join("")}</ul></section>
     <section class="detail-section container"><h2>${TEXT.workflowNotes}</h2><p>${escapeHtml(safeText(detail.workflowNotes))}</p></section>`;
   bindInlineVideoPreviews();
+  bindBreakdownLightbox();
   updatePageMetadata(`${project.title} | ${safeText(DATA.site?.name, "Rui Qi")}`, project.summary);
 }
 
