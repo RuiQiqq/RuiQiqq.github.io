@@ -739,33 +739,95 @@ function renderProjectsPage() {
   updatePageMetadata(`${TEXT.projectsPageTitle} | ${safeText(DATA.site?.name, "Rui Qi")}`, TEXT.projectsPageText);
 }
 
+function breakdownMediaItemHtml(media, project, itemLabel) {
+  if (!media || typeof media !== "object") return "";
+  const type = media.type || (media.src ? "image" : "video");
+  const alt = safeText(media.alt, itemLabel || project.title);
+  const note = safeText(media.note);
+
+  if (type === "image" && isRealLink(media.src)) {
+    return `<figure class="breakdown-media-item breakdown-media-item--image">
+      <button class="breakdown-media-zoom" type="button" data-lightbox-src="${escapeHtml(media.src)}" data-lightbox-alt="${escapeHtml(alt)}" aria-label="${escapeHtml(alt)}">
+        <img src="${escapeHtml(media.src)}" alt="${escapeHtml(alt)}" loading="lazy">
+      </button>
+      ${note ? `<figcaption>${escapeHtml(note)}</figcaption>` : ""}
+    </figure>`;
+  }
+
+  if (type === "video") {
+    const embedUrl = automaticEmbedUrl(media.embed, media.link);
+    const poster = media.poster || "";
+    if (embedUrl) {
+      const posterHtml = isRealLink(poster)
+        ? `<img class="inline-video-backdrop" src="${escapeHtml(poster)}" alt="" aria-hidden="true"><img class="inline-video-poster" src="${escapeHtml(poster)}" alt="${escapeHtml(alt)}" loading="lazy">`
+        : `<div class="gallery-video-placeholder"><span>▶</span></div>`;
+      return `<figure class="breakdown-media-item breakdown-media-item--video">
+        <div class="inline-video-preview breakdown-inline-video" data-inline-video-preview data-embed-url="${escapeHtml(embedUrl)}" data-video-title="${escapeHtml(alt)}">
+          <div class="inline-video-frame">
+            ${posterHtml}
+            <button class="inline-video-play" type="button" data-inline-video-play aria-label="${escapeHtml(TEXT.playHere)}: ${escapeHtml(alt)}">
+              <span class="inline-video-play-icon">▶</span><span class="inline-video-play-label">${escapeHtml(TEXT.playHere)}</span>
+            </button>
+          </div>
+        </div>
+        ${note ? `<figcaption>${escapeHtml(note)}</figcaption>` : ""}
+      </figure>`;
+    }
+  }
+
+  return "";
+}
+
+function normalizedBreakdownMedia(item) {
+  const media = Array.isArray(item?.media) ? item.media.filter(Boolean) : [];
+  // Backward compatibility for older single-image data.
+  if (!media.length && isRealLink(item?.image)) {
+    media.push({ type: "image", src: item.image, alt: item.imageAlt || item.label || "" });
+  }
+  return media;
+}
+
 function systemBreakdownSectionHtml(project, detail) {
   const items = Array.isArray(detail.breakdown) ? detail.breakdown : [];
   if (!items.length) return "";
 
-  const withMedia = items.filter(item => isRealLink(item.image));
-  const textOnly = items.filter(item => !isRealLink(item.image));
+  const richItems = [];
+  const textOnlyItems = [];
 
-  const mediaCards = withMedia.map(item => `
-    <article class="breakdown-card">
-      <button class="breakdown-card-media" type="button" data-lightbox-src="${escapeHtml(item.image)}" data-lightbox-alt="${escapeHtml(item.imageAlt || item.label || project.title)}" aria-label="${escapeHtml(item.imageAlt || item.label || project.title)}">
-        <img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.imageAlt || item.label || project.title)}" loading="lazy">
-      </button>
-      <div class="breakdown-card-copy">
+  items.forEach(item => {
+    const media = normalizedBreakdownMedia(item);
+    if (media.some(m => (m.type === "image" && isRealLink(m.src)) || (m.type === "video" && automaticEmbedUrl(m.embed, m.link)))) {
+      richItems.push({ item, media });
+    } else {
+      textOnlyItems.push(item);
+    }
+  });
+
+  const richHtml = richItems.map(({ item, media }) => {
+    const renderedMedia = media.map(m => breakdownMediaItemHtml(m, project, item.label)).filter(Boolean);
+    const mediaClass = renderedMedia.length === 1 ? "is-single" : renderedMedia.length === 2 ? "is-two" : "is-many";
+    return `<article class="breakdown-case">
+      <div class="breakdown-case-copy">
         <h3>${escapeHtml(item.label)}</h3>
-        <p>${escapeHtml(item.text)}</p>
+        ${item.text ? `<p>${escapeHtml(item.text)}</p>` : ""}
         ${(item.bullets || []).length ? `<ul>${item.bullets.map(point => `<li>${escapeHtml(point)}</li>`).join("")}</ul>` : ""}
       </div>
-    </article>`).join("");
+      ${renderedMedia.length ? `<div class="breakdown-case-media ${mediaClass}">${renderedMedia.join("")}</div>` : ""}
+    </article>`;
+  }).join("");
 
-  const noteCards = textOnly.map(item => `
+  const notesHtml = textOnlyItems.map(item => `
     <article class="breakdown-note-card">
       <h3>${escapeHtml(item.label)}</h3>
-      <p>${escapeHtml(item.text)}</p>
+      ${item.text ? `<p>${escapeHtml(item.text)}</p>` : ""}
       ${(item.bullets || []).length ? `<ul>${item.bullets.map(point => `<li>${escapeHtml(point)}</li>`).join("")}</ul>` : ""}
     </article>`).join("");
 
-  return `<section class="detail-section container"><h2>${TEXT.systemBreakdown}</h2>${mediaCards ? `<div class="breakdown-grid">${mediaCards}</div>` : ""}${noteCards ? `<div class="breakdown-notes-grid">${noteCards}</div>` : ""}</section>`;
+  return `<section class="detail-section container system-breakdown-section">
+    <h2>${TEXT.systemBreakdown}</h2>
+    ${richHtml ? `<div class="breakdown-case-list">${richHtml}</div>` : ""}
+    ${notesHtml ? `<div class="breakdown-notes-grid">${notesHtml}</div>` : ""}
+  </section>`;
 }
 
 function bindBreakdownLightbox() {
@@ -849,7 +911,6 @@ function renderDetailPage() {
       </div>
     </section>
     <section class="detail-section container"><h2>${TEXT.whatIBuilt}</h2><ul>${(detail.whatIBuilt || []).map(item => `<li>${escapeHtml(item)}</li>`).join("")}</ul></section>
-    ${mediaGallerySectionHtml(project)}
     ${systemBreakdownSectionHtml(project, detail)}
     <section class="detail-section container"><h2>${TEXT.challenges}</h2><ul>${(detail.challenges || []).map(item => `<li>${escapeHtml(item)}</li>`).join("")}</ul></section>
     <section class="detail-section container"><h2>${TEXT.workflowNotes}</h2><p>${escapeHtml(safeText(detail.workflowNotes))}</p></section>`;
