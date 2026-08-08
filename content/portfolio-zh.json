@@ -10,7 +10,8 @@
     "linkedin": "https://www.linkedin.com/in/rui-qi-9b58b8222/",
     "resumeUrl": "/assets/resume/Rui_Qi_Resume_ZH.pdf",
     "demoReelLink": "#",
-    "demoReelPlatform": "Bilibili"
+    "demoReelPlatform": "Bilibili",
+    "demoReelCoverImage": "/assets/images/bbg7r.png"
   },
   "snapshot": [
     {
@@ -263,7 +264,7 @@
         "vfx",
         "decoupling"
       ],
-      "videoLink": "#",
+      "coverImage": "/assets/images/bbg7r.png",
       "videoPlatform": "Bilibili",
       "detail": {
         "overview": "Breach Brew｜失压救援队是一项商业游戏项目。我参与设计和实现环境温度系统，使温度变化能够驱动玩法状态、材质表现和 Niagara 特效，并与技术美术和设计成员协作完成引擎内整合。",
@@ -276,38 +277,38 @@
         ],
         "breakdown": [
           {
-            "label": "温度状态",
-            "text": "用统一状态和事件更新环境温度，而不是让每个对象独立运行复杂逻辑。"
+            "label": "参数化结霜材质",
+            "text": "使用统一参数控制霜层覆盖，可实时调节结霜程度，为后续接入温度 Gameplay 数据预留接口。"
           },
           {
-            "label": "材质驱动",
-            "text": "通过参数控制冷热表现，使同一材质可以平滑响应玩法数据。"
+            "label": "可复用电力视觉组件",
+            "text": "使用 Actor Component 统一驱动设备灯光与火花状态，可直接挂载到不同设备并复用。"
           },
           {
-            "label": "Niagara 反馈",
-            "text": "将粒子效果与环境事件绑定，让玩家能快速理解温度和危险变化。"
+            "label": "参数化 Niagara VFX",
+            "text": "制作可实时控制方向与强度的气流 Niagara，以及损坏带电设备的火花反馈，并通过 Blueprint 参数驱动。"
           },
           {
-            "label": "协作整合",
-            "text": "将系统接口与视觉需求明确分工，便于设计和技术美术分别迭代。"
+            "label": "泡沫枪原型",
+            "text": "实现泡沫投射物命中、表面附着与体积增长流程，为后续破口覆盖和封堵规则提供基础。仍在开发中..."
           }
         ],
         "challenges": [
           "需要让玩法逻辑、材质和 VFX 使用一致的数据来源，避免视觉状态与实际系统不同步。",
-          "当前未上传可公开展示的项目图片和视频，因此此试装版使用素材占位区。"
+          "需要提前制定画风不然后期很多材质都要重做"
         ],
-        "workflowNotes": "该项目适合展示系统与视觉表现之间的连接。正式发布前应补充温度变化录屏、材质参数截图、Niagara 效果和系统流程图。"
+        "workflowNotes": "我的工作流程以快速原型和参数化为核心：先将玩法需求拆解为可控制的数据，再通过 Blueprint、Actor Component、材质和 Niagara 实现，并尽量暴露关键参数供后续调试和复用。当前实现包括数据驱动的结霜材质、可调 Spark / Wind Niagara、可重复挂载的电力 Component，以及 Bubble Gun 原型。"
       },
       "mediaGallery": [
         {
-          "type": "placeholder",
-          "title": "温度系统演示",
+          "type": "image",
+          "title": "参数化结霜材质",
           "note": "建议上传：冷热状态切换的短视频或 GIF"
         },
         {
           "type": "placeholder",
-          "title": "参数化材质",
-          "note": "建议上传：材质实例与冷热参数截图"
+          "title": "可复用电力视觉组件",
+          "src": "/assets/images/powercomp01.png"
         },
         {
           "type": "placeholder",
