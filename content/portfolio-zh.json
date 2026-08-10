@@ -589,6 +589,17 @@
           "url": "https://markqirui.itch.io/tutu-rabbit"
         }
       ]
+    },
+    {
+      "id": "metal-heart",
+      "order": 8,
+      "featured": false,
+      "library": true,
+      "title": "Metal Heart",
+      "category": "CG",
+      "role": "面捕，场景搭建，剪辑，部分动作动画，以及材质光照",
+      "tools": "Unreal",
+      "videoLink": "https://www.youtube.com/watch?v=Q8sYkVAtMbU"
     }
   ]
 }
