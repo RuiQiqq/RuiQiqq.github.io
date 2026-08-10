@@ -103,7 +103,7 @@
       "library": true,
       "status": "已停止开发",
       "title": "第三人称类魂战斗原型",
-      "category": "Unreal Engine 5 · 100% Blueprint · 个人项目",
+      "category": "2025 · Unreal Engine 5 · 100% Blueprint · 个人项目",
       "role": "玩法与战斗设计／Blueprint 系统实现／动画重定向",
       "summary": "一个完全使用 Unreal Blueprint 搭建的第三人称动作原型，围绕攻击与闪避流程、命中反馈、射弹行为、输入响应和数值调试展开，并通过接口、Actor Component 和基础类构建可扩展的模块化结构。",
       "tools": "Unreal Engine 5、Blueprint、Animation Montage、AnimNotifyState、Blueprint Interface、Actor Component、Data Asset",
