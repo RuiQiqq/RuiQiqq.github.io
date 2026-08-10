@@ -468,11 +468,10 @@
       "order": 6,
       "featured": false,
       "library": true,
-      "status": "试装占位：等待上传素材",
       "title": "VFX、3D 模型与怪物设计练习",
       "category": "其他作品 · Unity VFX · 基础建模 · 概念设计",
       "role": "VFX／基础建模／视觉探索",
-      "summary": "将零散的 Unity VFX、基础 3D 模型和怪物概念设计集中为一个视觉作品画廊。每个条目都可以独立放图片或视频，不需要强行包装成完整游戏项目。",
+      "summary": "零散的 Unity VFX、基础 3D 模型和怪物概念设计集中为一个视觉作品画廊。",
       "tools": "Unity、Maya、Blender、VFX 与材质工具",
       "tags": [
         "unity",
