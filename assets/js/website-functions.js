@@ -656,13 +656,13 @@ function renderHome() {
   );
   if ($("#home-reel")) $("#home-reel").innerHTML = demoReelHtml(site);
   if ($("#featured-projects")) {
-    // One project area only: anything checked as featured in Pages CMS appears here.
-    // Compact cards keep the homepage scannable even when more projects are enabled.
-    $("#featured-projects").innerHTML = projects.filter(p => p.featured).map(libraryProjectCard).join("");
+    $("#featured-projects").innerHTML = projects.filter(p => p.featured).map(featuredProjectCard).join("");
+    bindInlineVideoPreviews();
   }
   if ($("#focus-areas")) {
     $("#focus-areas").innerHTML = (DATA.focusAreas || []).map(area => `<article class="focus-card"><h3>${escapeHtml(area.title)}</h3><p>${escapeHtml(area.text)}</p></article>`).join("");
   }
+  if ($("#library-preview-grid")) $("#library-preview-grid").innerHTML = projects.filter(p => !p.featured).map(libraryProjectCard).join("");
   renderContactLinks();
   updatePageMetadata(`${safeText(site.name, "Rui Qi")} | ${safeText(site.title, TEXT.footerRole)}`, safeText(site.subtitle));
 }
