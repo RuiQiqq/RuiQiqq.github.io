@@ -2,11 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Projects</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Projects | Rui Qi</title>
   <script>
-    const q = new URLSearchParams(location.search);
-    const lang = q.get("lang");
+    const lang = new URLSearchParams(location.search).get("lang");
     location.replace(`index.html${lang ? `?lang=${encodeURIComponent(lang)}` : ""}#library-preview`);
   </script>
 </head>
