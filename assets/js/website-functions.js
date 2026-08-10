@@ -507,16 +507,74 @@ function featuredProjectCard(project) {
     </article>`;
 }
 
+function projectVisibleStatus(project) {
+  const status = safeText(project?.status).trim();
+  if (!status) return "";
+  const normalized = status.toLowerCase();
+  const pendingPatterns = [
+    "素材待补充", "等待上传素材", "待上传素材", "试装占位", "占位",
+    "assets pending", "asset pending", "placeholder", "waiting for assets"
+  ];
+  return pendingPatterns.some(pattern => normalized.includes(pattern.toLowerCase())) ? "" : status;
+}
+
+function youtubeVideoId(project) {
+  const candidates = [project?.videoLink, project?.videoEmbed].filter(isRealLink);
+  for (const candidate of candidates) {
+    try {
+      const url = new URL(candidate);
+      const host = url.hostname.replace(/^www\./, "");
+      if (host === "youtu.be") {
+        const id = url.pathname.split("/").filter(Boolean)[0];
+        if (id) return id;
+      }
+      if (host.endsWith("youtube.com") || host.endsWith("youtube-nocookie.com")) {
+        const parts = url.pathname.split("/").filter(Boolean);
+        const id = url.searchParams.get("v") || ((["embed", "shorts", "live"].includes(parts[0])) ? parts[1] : "");
+        if (id) return id;
+      }
+    } catch (error) {}
+  }
+  return "";
+}
+
+function libraryMediaHtml(project) {
+  if (isRealLink(project.coverImage)) {
+    return `<div class="library-card-media"><img src="${escapeHtml(project.coverImage)}" alt="${escapeHtml(project.title)}" loading="lazy"></div>`;
+  }
+
+  const youtubeId = youtubeVideoId(project);
+  if (youtubeId) {
+    return `<div class="library-card-media library-card-media--video-fallback">
+      <img src="https://i.ytimg.com/vi/${escapeHtml(youtubeId)}/hqdefault.jpg" alt="${escapeHtml(project.title)} video thumbnail" loading="lazy">
+      <span class="library-video-source">YouTube</span>
+    </div>`;
+  }
+
+  const embedUrl = automaticEmbedUrl(project.videoEmbed, project.videoLink);
+  if (embedUrl) {
+    return `<div class="library-card-media library-card-media--video-fallback library-card-media--embed">
+      <iframe src="${escapeHtml(withAutoplayDisabled(embedUrl))}" title="${escapeHtml(project.title)} video preview" loading="lazy" scrolling="no" tabindex="-1" aria-hidden="true" allow="fullscreen; picture-in-picture"></iframe>
+      <span class="library-video-source">${escapeHtml(project.videoPlatform || TEXT.video)}</span>
+    </div>`;
+  }
+
+  if (isRealLink(project.videoFile)) {
+    return `<div class="library-card-media library-card-media--video-fallback"><video src="${escapeHtml(project.videoFile)}" muted playsinline preload="metadata"></video></div>`;
+  }
+
+  return "";
+}
+
 function libraryProjectCard(project) {
-  const media = project.coverImage
-    ? `<div class="library-card-media"><img src="${escapeHtml(project.coverImage)}" alt="${escapeHtml(project.title)}" loading="lazy"></div>`
-    : `<div class="library-card-media library-card-media--placeholder"><span>${escapeHtml(project.status || TEXT.assetsPending)}</span></div>`;
+  const media = libraryMediaHtml(project);
+  const visibleStatus = projectVisibleStatus(project);
   return `
-    <article class="library-card library-card--with-media" data-tags="${escapeHtml((project.tags || []).join(" "))}">
+    <article class="library-card${media ? " library-card--with-media" : " library-card--text-only"}" data-tags="${escapeHtml((project.tags || []).join(" "))}">
       ${media}
       <div class="library-card-content">
         <div>
-          <div class="project-meta-row"><div class="project-meta">${escapeHtml(safeText(project.category))}</div>${project.status ? `<span class="project-status">${escapeHtml(project.status)}</span>` : ""}</div>
+          <div class="project-meta-row"><div class="project-meta">${escapeHtml(safeText(project.category))}</div>${visibleStatus ? `<span class="project-status">${escapeHtml(visibleStatus)}</span>` : ""}</div>
           <h3>${escapeHtml(safeText(project.title))}</h3>
           <p>${escapeHtml(safeText(project.summary))}</p>
           ${tagsHtml(project.tags)}
@@ -654,13 +712,16 @@ function renderHome() {
     $("#resume-preview-panel"),
     [$("#home-resume-button"), $("#resume-download-main")].filter(Boolean)
   );
-  if ($("#home-reel")) $("#home-reel").innerHTML = demoReelHtml(site);
+  if ($("#hero-capabilities")) {
+    $("#hero-capabilities").innerHTML = (DATA.focusAreas || []).map(area => `
+      <article class="hero-capability-card">
+        <h4>${escapeHtml(area.title)}</h4>
+        <p>${escapeHtml(area.text)}</p>
+      </article>`).join("");
+  }
   if ($("#featured-projects")) {
     $("#featured-projects").innerHTML = projects.filter(p => p.featured).map(featuredProjectCard).join("");
     bindInlineVideoPreviews();
-  }
-  if ($("#focus-areas")) {
-    $("#focus-areas").innerHTML = (DATA.focusAreas || []).map(area => `<article class="focus-card"><h3>${escapeHtml(area.title)}</h3><p>${escapeHtml(area.text)}</p></article>`).join("");
   }
   if ($("#library-preview-grid")) $("#library-preview-grid").innerHTML = projects.filter(p => p.library && !p.featured).map(libraryProjectCard).join("");
   renderContactLinks();

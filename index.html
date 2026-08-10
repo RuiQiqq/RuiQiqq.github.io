@@ -8,8 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/website-look.css?v=25" />
-  <script defer src="assets/js/content-loader.js?v=25"></script>
+  <link rel="stylesheet" href="assets/css/website-look.css?v=26" />
+  <script defer src="assets/js/content-loader.js?v=26"></script>
 </head>
 <body data-page="home">
   <header class="site-header">
@@ -40,7 +40,14 @@
           <a class="button secondary" id="home-resume-button" href="#" target="_blank" rel="noreferrer" data-i18n="downloadResume">Download Resume</a>
         </div>
       </div>
-      <aside class="hero-reel-card" id="home-reel" aria-label="Demo reel and portfolio snapshot"></aside>
+      <aside class="hero-capability-panel" aria-label="Capabilities">
+        <div class="hero-capability-heading">
+          <p class="section-kicker" data-i18n="focusKicker">Design Focus</p>
+          <h3 data-i18n="focusTitle">What I Do</h3>
+          <p data-i18n="focusIntro">A quick overview of the design and implementation work I can take on.</p>
+        </div>
+        <div class="hero-capability-grid" id="hero-capabilities"></div>
+      </aside>
     </section>
 
     <section class="section container" id="featured">
@@ -52,17 +59,6 @@
         <p data-i18n="featuredIntro">Selected projects that best represent my gameplay systems, prototyping, and technical design work.</p>
       </div>
       <div class="featured-list" id="featured-projects"></div>
-    </section>
-
-    <section class="section container soft-panel" id="focus">
-      <div class="section-heading two-col">
-        <div>
-          <p class="section-kicker" data-i18n="focusKicker">Technical Design Focus</p>
-          <h2 data-i18n="focusTitle">What I Build</h2>
-        </div>
-        <p data-i18n="focusIntro">Clear categories help interviewers understand my direction quickly without reading every project page.</p>
-      </div>
-      <div class="focus-grid" id="focus-areas"></div>
     </section>
 
     <section class="section container" id="library-preview">
