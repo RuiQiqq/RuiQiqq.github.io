@@ -626,7 +626,11 @@
               }
             ]
           }
-        ]
+        ],
+        "challenges": [
+          "N/A"
+        ],
+        "workflowNotes": "N/A"
       }
     },
     {
