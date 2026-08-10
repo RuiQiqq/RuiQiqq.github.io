@@ -662,7 +662,7 @@ function renderHome() {
   if ($("#focus-areas")) {
     $("#focus-areas").innerHTML = (DATA.focusAreas || []).map(area => `<article class="focus-card"><h3>${escapeHtml(area.title)}</h3><p>${escapeHtml(area.text)}</p></article>`).join("");
   }
-  if ($("#library-preview-grid")) $("#library-preview-grid").innerHTML = projects.map(libraryProjectCard).join("");
+  if ($("#library-preview-grid")) $("#library-preview-grid").innerHTML = projects.filter(p => p.library && !p.featured).map(libraryProjectCard).join("");
   renderContactLinks();
   updatePageMetadata(`${safeText(site.name, "Rui Qi")} | ${safeText(site.title, TEXT.footerRole)}`, safeText(site.subtitle));
 }
