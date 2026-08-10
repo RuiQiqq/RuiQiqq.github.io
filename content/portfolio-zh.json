@@ -657,7 +657,10 @@
       "role": "面捕，场景搭建，剪辑，部分动作动画，以及材质光照",
       "tools": "Unreal",
       "coverImage": "/assets/images/mh.png",
-      "videoLink": "https://youtu.be/H5-4IZRVoaQ"
+      "videoLink": "https://youtu.be/H5-4IZRVoaQ",
+      "detail": {
+        "workflowNotes": "我收集各组员的资产，并且拍摄分镜，剪辑视频，并且在必要的时候进行面捕"
+      }
     },
     {
       "id": "level-design",
