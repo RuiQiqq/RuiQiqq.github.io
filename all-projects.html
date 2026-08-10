@@ -1,46 +1,14 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Projects | Rui Qi</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/website-look.css?v=20" />
-  <script defer src="assets/js/content-loader.js?v=20"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projects</title>
+  <script>
+    const q = new URLSearchParams(location.search);
+    const lang = q.get("lang");
+    location.replace(`index.html${lang ? `?lang=${encodeURIComponent(lang)}` : ""}#featured`);
+  </script>
 </head>
-<body data-page="projects">
-  <header class="site-header">
-    <a class="wordmark" href="index.html#top">Rui Qi</a>
-    <div class="header-actions">
-      <nav class="nav-links" aria-label="Main navigation">
-        <a class="nav-link framed project-pill" href="index.html#featured" data-i18n="navProjects">Projects</a>
-        <a class="nav-link framed" href="index.html#resume" data-i18n="navResume">Resume</a>
-        <a class="nav-link highlight" href="index.html#contact" data-i18n="navContact">Contact</a>
-      </nav>
-      <div class="language-switch" aria-label="Language switcher">
-        <button type="button" data-language-choice="en">EN</button>
-        <button type="button" data-language-choice="zh">中文</button>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <section class="page-hero container">
-      <p class="eyebrow" data-i18n="projectsPageKicker">Project Library</p>
-      <h1 data-i18n="projectsPageTitle">All Projects</h1>
-      <p data-i18n="projectsPageText">Combat systems, numerical design, playable prototypes, and technical design work collected in one place.</p>
-    </section>
-    <section class="section container">
-      <div class="filter-bar" id="tag-filter"></div>
-      <div class="library-grid" id="all-projects-grid"></div>
-    </section>
-  </main>
-
-  <footer class="site-footer container">
-    <span>© <span id="year"></span> <span data-site-name>Rui Qi</span></span>
-    <span><a href="index.html#top" data-i18n="backHome">Back to home</a></span>
-  </footer>
-</body>
+<body></body>
 </html>
