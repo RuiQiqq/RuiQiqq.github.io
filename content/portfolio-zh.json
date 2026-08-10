@@ -344,7 +344,6 @@
       "order": 4,
       "featured": false,
       "library": true,
-      "status": "等待补充工具截图",
       "title": "源书行者｜The E Book",
       "category": "商业项目 · Unity · 数值配置与数据工具",
       "role": "数值配置／工作流设计／AI 辅助工具开发",
@@ -415,7 +414,7 @@
       "featured": false,
       "library": true,
       "title": "Maimed Maintenance",
-      "category": "VR 密室逃脱原型 · Unreal Engine",
+      "category": "2024 · VR 密室逃脱原型 · Unreal Engine",
       "role": "玩法蓝图／关卡设计／环境搭建／材质制作",
       "summary": "一个 VR 密室逃脱原型。我完成了部分谜题、门逻辑、交互手感调整、环境搭建，以及玻璃、水等材质，用于验证沉浸式解谜和空间引导。",
       "tools": "Unreal Engine、Blueprint、VR 交互、关卡搭建、材质",
@@ -572,6 +571,24 @@
           }
         ]
       }
+    },
+    {
+      "id": "tutu-rabbit",
+      "order": 7,
+      "featured": false,
+      "library": true,
+      "status": "2024 · 学校项目 · Godot · 关卡设计搭建",
+      "title": "Tutu Rabbit",
+      "category": "跑酷游戏",
+      "role": "关卡设计，难度调整，关卡搭建",
+      "tools": "Godot",
+      "coverImage": "/assets/images/2026080615032462.png",
+      "externalLinks": [
+        {
+          "label": "https://markqirui.itch.io/tutu-rabbit",
+          "url": "https://markqirui.itch.io/tutu-rabbit"
+        }
+      ]
     }
   ]
 }
