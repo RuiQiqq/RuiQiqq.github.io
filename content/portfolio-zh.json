@@ -615,6 +615,16 @@
       "tools": "Unreal",
       "coverImage": "/assets/images/mh.png",
       "videoLink": "https://youtu.be/H5-4IZRVoaQ"
+    },
+    {
+      "id": "level-design",
+      "order": 9,
+      "featured": false,
+      "library": true,
+      "title": "2D横版箱庭 关卡设计",
+      "category": "2025",
+      "videoLink": "https://www.bilibili.com/video/BV1FMuW6tEbe/",
+      "videoPlatform": "Bilibili"
     }
   ]
 }
