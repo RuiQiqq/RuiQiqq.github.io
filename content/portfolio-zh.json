@@ -555,7 +555,22 @@
                 "src": "/assets/images/foamgunmodel-2.png",
                 "note": "2025 Blender"
               },
-              {}
+              {
+                "type": "image",
+                "src": "/assets/images/uv.png"
+              },
+              {
+                "type": "image",
+                "src": "/assets/images/ue5.png"
+              },
+              {
+                "type": "image",
+                "src": "/assets/images/zbrush.png"
+              },
+              {
+                "type": "image",
+                "src": "/assets/images/file.png"
+              }
             ]
           },
           {
