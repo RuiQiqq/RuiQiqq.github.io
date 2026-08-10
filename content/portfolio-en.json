@@ -8,10 +8,8 @@
     "email": "markqirui@gmail.com",
     "github": "https://github.com/RuiQiqq",
     "linkedin": "https://www.linkedin.com/in/rui-qi-9b58b8222/",
-    "resumeUrl": "/assets/resume/Rui_Qi_Resume_EN.pdf",
-    "demoReelEmbed": "",
+    "resumeUrl": "/assets/resume/ruiqiresumeen.pdf",
     "demoReelLink": "#",
-    "demoReelCoverImage": "",
     "demoReelPlatform": "YouTube"
   },
   "snapshot": [
@@ -122,12 +120,9 @@
         "solo"
       ],
       "coverImage": "/assets/images/soulslike-video-cover-en.jpg",
-      "videoEmbed": "https://www.youtube.com/embed/IDIwe-tPvXk?autoplay=0&playsinline=1&rel=0",
       "videoLink": "https://youtu.be/IDIwe-tPvXk",
-      "videoFile": "",
+      "videoEmbed": "https://www.youtube.com/embed/IDIwe-tPvXk?autoplay=0&playsinline=1&rel=0",
       "videoPlatform": "YouTube",
-      "externalLinks": [],
-      "downloadLinks": [],
       "detail": {
         "overview": "This third-person action prototype was created entirely in Unreal Blueprint with no C++. It tests attack, dodge, hit detection, enemy feedback, and projectile behavior while practicing maintainable system organization through EnemyBase, ProjectileBase, Actor Components, Blueprint Interfaces, and component tags.",
         "whatIBuilt": [
@@ -142,35 +137,35 @@
           {
             "label": "Modular Communication",
             "text": "Extracted EnemyBase and ProjectileBase, moved reusable logic into Actor Components, and used Blueprint Interfaces and component tags to reduce direct references.",
-            "bullets": [
-              "Base classes",
-              "Component responsibilities",
-              "Interface events",
-              "Reduced direct casting"
-            ],
             "media": [
               {
                 "type": "image",
                 "src": "/assets/images/base.png",
                 "alt": "Modular Communication"
               }
+            ],
+            "bullets": [
+              "Base classes",
+              "Component responsibilities",
+              "Interface events",
+              "Reduced direct casting"
             ]
           },
           {
             "label": "Animation & Hit Frames",
             "text": "Used AnimNotifyState to define active frames so collision, damage, reaction, and UI feedback match the visible animation.",
-            "bullets": [
-              "Active frames",
-              "Trace or collision",
-              "Damage application",
-              "Feedback synchronization"
-            ],
             "media": [
               {
                 "type": "image",
                 "src": "/assets/images/cwindow.png",
                 "alt": "Animation & Hit Frames"
               }
+            ],
+            "bullets": [
+              "Active frames",
+              "Trace or collision",
+              "Damage application",
+              "Feedback synchronization"
             ]
           },
           {
@@ -224,9 +219,8 @@
         "team"
       ],
       "coverImage": "/assets/images/punk-plush-panic-steam.png",
-      "videoEmbed": "https://www.youtube.com/embed/wHzgeE2Xnzc?autoplay=0&playsinline=1&rel=0",
       "videoLink": "https://youtu.be/wHzgeE2Xnzc",
-      "videoFile": "",
+      "videoEmbed": "https://www.youtube.com/embed/wHzgeE2Xnzc?autoplay=0&playsinline=1&rel=0",
       "videoPlatform": "YouTube",
       "externalLinks": [
         {
@@ -234,7 +228,6 @@
           "url": "https://store.steampowered.com/app/4343350/Punk_Plush_Panic/"
         }
       ],
-      "downloadLinks": [],
       "detail": {
         "overview": "Punk Plush Panic is my capstone project, built by a multidisciplinary team. Players swap between three characters and combine their abilities against waves of enemies. My work focused on combat and systems design, level and encounter iteration, VFX feedback, playtest analysis, and communication with programmers around boss readability.",
         "whatIBuilt": [
@@ -259,18 +252,18 @@
           {
             "label": "Scope Management",
             "text": "Evaluated level priorities and cut lower-value content when time became limited, protecting the core flow and team delivery.",
-            "bullets": [
-              "Original scope",
-              "Priority criteria",
-              "Removed content",
-              "Final delivery"
-            ],
             "media": [
               {
                 "type": "image",
                 "src": "/assets/images/oldlevel2.png",
                 "alt": "Scope Management"
               }
+            ],
+            "bullets": [
+              "Original scope",
+              "Priority criteria",
+              "Removed content",
+              "Final delivery"
             ]
           },
           {
@@ -307,6 +300,7 @@
       "order": 3,
       "featured": false,
       "library": true,
+      "status": "Project media pending",
       "title": "Breach Brew",
       "category": "Commercial Project · Unreal Engine · Environmental Gameplay Systems",
       "role": "Technical Design / Technical Art / Gameplay Systems Implementation",
@@ -321,13 +315,8 @@
         "vfx",
         "decoupling"
       ],
-      "coverImage": "",
-      "videoEmbed": "",
       "videoLink": "#",
       "videoPlatform": "YouTube",
-      "externalLinks": [],
-      "downloadLinks": [],
-      "status": "Project media pending",
       "detail": {
         "overview": "Breach Brew is a commercial game project where I contributed to an environmental temperature system that connects gameplay state, material response, and Niagara VFX. I collaborated with technical artists and designers to integrate the system in-engine.",
         "whatIBuilt": [
@@ -386,6 +375,7 @@
       "order": 4,
       "featured": false,
       "library": true,
+      "status": "Tool screenshots pending",
       "title": "The E Book",
       "category": "Commercial Project · Unity · Gameplay Data & Tooling",
       "role": "Gameplay Data Configuration / Workflow Design / AI-Assisted Tool Development",
@@ -399,13 +389,8 @@
         "aiWorkflow",
         "gameplaySystem"
       ],
-      "coverImage": "",
-      "videoEmbed": "",
       "videoLink": "#",
       "videoPlatform": "YouTube",
-      "externalLinks": [],
-      "downloadLinks": [],
-      "status": "Tool screenshots pending",
       "detail": {
         "overview": "On The E Book, I maintained gameplay data configurations and restructured Excel sheets so designers could edit data more efficiently. I then used an AI-assisted workflow to develop a utility that converts the spreadsheets into a Unity-readable configuration format.",
         "whatIBuilt": [
@@ -459,12 +444,9 @@
         "material",
         "prototype"
       ],
-      "coverImage": "",
-      "videoEmbed": "https://www.youtube.com/embed/zlGXhkDlefM?autoplay=0&playsinline=1&rel=0",
       "videoLink": "https://youtu.be/zlGXhkDlefM",
+      "videoEmbed": "https://www.youtube.com/embed/zlGXhkDlefM?autoplay=0&playsinline=1&rel=0",
       "videoPlatform": "YouTube",
-      "externalLinks": [],
-      "downloadLinks": [],
       "detail": {
         "overview": "Maimed Maintenance is a VR escape-room prototype focused on spatial exploration, puzzle interaction, and environmental immersion. My contributions included part of the puzzle implementation, door logic, interaction-feel tuning, environment assembly, and glass and water materials.",
         "whatIBuilt": [
@@ -502,6 +484,7 @@
       "order": 6,
       "featured": false,
       "library": true,
+      "status": "Preview placeholder — assets pending",
       "title": "VFX, 3D Model & Creature Design Studies",
       "category": "Other Work · Unity VFX · Foundational Modeling · Concept Design",
       "role": "VFX / Foundational Modeling / Visual Exploration",
@@ -514,13 +497,8 @@
         "conceptArt",
         "draft"
       ],
-      "coverImage": "",
-      "videoEmbed": "",
       "videoLink": "#",
       "videoPlatform": "YouTube",
-      "externalLinks": [],
-      "downloadLinks": [],
-      "status": "Preview placeholder — assets pending",
       "detail": {
         "overview": "This page groups smaller visual studies rather than presenting them as a single game project. The media gallery can contain multiple independent images and videos under VFX, 3D modeling, and creature design.",
         "whatIBuilt": [
