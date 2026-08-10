@@ -625,6 +625,14 @@
       "category": "2025",
       "videoLink": "https://www.bilibili.com/video/BV1FMuW6tEbe/",
       "videoPlatform": "Bilibili"
+    },
+    {
+      "id": "titanfall-level",
+      "order": 0,
+      "featured": false,
+      "library": true,
+      "title": "泰坦陨落 时空跳跃关卡设计",
+      "videoLink": "https://www.bilibili.com/video/BV1Liup6JEXJ"
     }
   ]
 }
