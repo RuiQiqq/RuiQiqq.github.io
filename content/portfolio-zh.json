@@ -137,15 +137,33 @@
         "breakdown": [
           {
             "label": "模块化通信",
-            "text": "通过 EnemyBase 与 ProjectileBase 建立可复用的继承结构，并且把部分核心逻辑封装至 Actor Component，此外使用 Blueprint Interface 减少系统之间的直接类型依赖，使不同敌人和射弹能够在保留通用逻辑的同时扩展各自行为。"
+            "text": "通过 EnemyBase 与 ProjectileBase 建立可复用的继承结构，并且把部分核心逻辑封装至 Actor Component，此外使用 Blueprint Interface 减少系统之间的直接类型依赖，使不同敌人和射弹能够在保留通用逻辑的同时扩展各自行为。",
+            "media": [
+              {
+                "type": "image",
+                "src": "/assets/images/base.png"
+              }
+            ]
           },
           {
             "label": "动画蓝图状态同步",
-            "text": "在 Animation Blueprint 初始化时获取并缓存角色引用，避免在每帧更新动画时重复 Cast。随后通过缓存的 Character Ref 读取移动、空中状态和战斗状态等数据，并同步到 AnimBP 变量中，用于驱动动画状态机与战斗动画切换。"
+            "text": "在 Animation Blueprint 初始化时获取并缓存角色引用，避免在每帧更新动画时重复 Cast。随后通过缓存的 Character Ref 读取移动、空中状态和战斗状态等数据，并同步到 AnimBP 变量中，用于驱动动画状态机与战斗动画切换。",
+            "media": [
+              {
+                "type": "image",
+                "src": "/assets/images/ref.png"
+              }
+            ]
           },
           {
             "label": "动画与判定",
-            "text": "使用 AnimNotifyState 定义 Combo Window，在攻击动画的指定时间段开放连招输入；玩家在窗口内提前按下下一次攻击时，系统会缓存输入，并在当前攻击结束或满足切换条件后衔接下一段攻击，从而提高连招响应性，同时避免任意时刻切换攻击造成动画和状态冲突。"
+            "text": "使用 AnimNotifyState 定义 Combo Window，在攻击动画的指定时间段开放连招输入；玩家在窗口内提前按下下一次攻击时，系统会缓存输入，并在当前攻击结束或满足切换条件后衔接下一段攻击，从而提高连招响应性，同时避免任意时刻切换攻击造成动画和状态冲突。",
+            "media": [
+              {
+                "type": "image",
+                "src": "/assets/images/cwindow-1.png"
+              }
+            ]
           },
           {
             "label": "数据驱动调试",
