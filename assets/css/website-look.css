@@ -1267,3 +1267,14 @@ h1, h2, h3 {
   .hero-capability-panel { padding: 20px; }
   .hero-intro { font-size: 17px; }
 }
+
+/* v27: optional-content cleanup */
+.featured-card--text-only {
+  grid-template-columns: 1fr;
+}
+.project-detail-grid--single {
+  grid-template-columns: 1fr;
+}
+.project-detail-grid--single .detail-title {
+  max-width: 980px;
+}

@@ -211,49 +211,9 @@ const EN_DATA = window.PORTFOLIO_EN || {};
 const ZH_DATA = window.PORTFOLIO_ZH || {};
 
 function buildChineseData() {
-  const zhProjectsById = new Map((ZH_DATA.projects || []).map(project => [project.id, project]));
-  const englishProjectsById = new Map((EN_DATA.projects || []).map(project => [project.id, project]));
-  const orderedIds = [
-    ...(EN_DATA.projects || []).map(project => project.id),
-    ...(ZH_DATA.projects || []).map(project => project.id).filter(id => !englishProjectsById.has(id))
-  ];
-  const mergedProjects = orderedIds.map(id => {
-    const english = englishProjectsById.get(id) || {};
-    const chinese = zhProjectsById.get(id);
-    const merged = {
-      ...english,
-      ...(chinese || {}),
-      detail: { ...(english.detail || {}), ...((chinese && chinese.detail) || {}) }
-    };
-    // Never inherit English/YouTube media into the Chinese version.
-    merged.videoEmbed = chinese?.videoEmbed ?? "";
-    merged.videoLink = chinese?.videoLink ?? "#";
-    merged.videoFile = chinese?.videoFile ?? "";
-    merged.videoPlatform = chinese?.videoPlatform ?? "Bilibili";
-    merged.externalLinks = chinese?.externalLinks ?? [];
-    merged.downloadLinks = chinese?.downloadLinks ?? [];
-    merged.status = chinese?.status ?? "";
-    return merged;
-  });
-  const zhSite = ZH_DATA.site || {};
-  return {
-    ...EN_DATA,
-    ...ZH_DATA,
-    site: {
-      ...(EN_DATA.site || {}),
-      ...zhSite,
-      resumeUrl: zhSite.resumeUrl || "assets/resume/Rui_Qi_Resume_ZH.pdf",
-      demoReelEmbed: zhSite.demoReelEmbed ?? "",
-      demoReelLink: zhSite.demoReelLink ?? "#",
-      demoReelCoverImage: zhSite.demoReelCoverImage ?? "",
-      demoReelPlatform: zhSite.demoReelPlatform || "Bilibili"
-    },
-    tags: { ...(EN_DATA.tags || {}), ...(ZH_DATA.tags || {}) },
-    snapshot: ZH_DATA.snapshot || EN_DATA.snapshot || [],
-    focusAreas: ZH_DATA.focusAreas || EN_DATA.focusAreas || [],
-    resumeSkills: ZH_DATA.resumeSkills || EN_DATA.resumeSkills || [],
-    projects: mergedProjects
-  };
+  // Chinese content is authoritative and never inherits English fields.
+  // This prevents translated/English content from appearing in Chinese when a Chinese field is intentionally left blank.
+  return ZH_DATA;
 }
 
 const DATA = CURRENT_LANGUAGE === "zh" ? buildChineseData() : EN_DATA;
@@ -343,7 +303,29 @@ function updatePageMetadata(title, description) {
 }
 
 function tagsHtml(tags = []) {
-  return `<div class="tag-row">${tags.map(tag => `<span class="tag">${escapeHtml(tagLabel(tag))}</span>`).join("")}</div>`;
+  const visibleTags = (tags || []).filter(tag => tag && tag !== "draft");
+  if (!visibleTags.length) return "";
+  return `<div class="tag-row">${visibleTags.map(tag => `<span class="tag">${escapeHtml(tagLabel(tag))}</span>`).join("")}</div>`;
+}
+
+function meaningfulText(value) {
+  const text = safeText(value).trim();
+  if (!text) return "";
+  const normalized = text.toLowerCase();
+  if (["n/a", "na", "none", "not applicable", "未填写", "待填写"].includes(normalized)) return "";
+  return text;
+}
+
+function meaningfulList(items = []) {
+  return (items || []).map(meaningfulText).filter(Boolean);
+}
+
+function hasProjectMedia(project) {
+  return Boolean(
+    automaticEmbedUrl(project?.videoEmbed, project?.videoLink) ||
+    isRealLink(project?.videoFile) ||
+    isRealLink(project?.coverImage)
+  );
 }
 
 function withAutoplayDisabled(embedUrl) {
@@ -417,13 +399,13 @@ function automaticEmbedUrl(explicitEmbed, normalLink) {
 function mediaHtml(project) {
   const embedUrl = automaticEmbedUrl(project.videoEmbed, project.videoLink);
   if (embedUrl) return embeddedMediaHtml(embedUrl, `${project.title} ${project.videoPlatform || TEXT.video}`);
-  if (project.videoFile) {
+  if (isRealLink(project.videoFile)) {
     return `<div class="video-box"><video controls preload="metadata" src="${escapeHtml(project.videoFile)}"></video></div>`;
   }
-  if (project.coverImage) {
+  if (isRealLink(project.coverImage)) {
     return `<img class="cover-image" src="${escapeHtml(project.coverImage)}" alt="${escapeHtml(project.title)}">`;
   }
-  return `<div class="cover-placeholder"><span>${escapeHtml(project.category || TEXT.projectBreakdown)}</span></div>`;
+  return "";
 }
 
 function featuredMediaHtml(project) {
@@ -485,18 +467,25 @@ function projectExtraLinksHtml(project) {
 }
 
 function featuredProjectCard(project) {
+  const hasMedia = hasProjectMedia(project);
+  const summary = meaningfulText(project.summary);
+  const role = meaningfulText(project.role);
+  const tools = meaningfulText(project.tools);
+  const category = meaningfulText(project.category);
+  const status = projectVisibleStatus(project);
+  const detailRows = [
+    role ? `<div><strong>${TEXT.role}</strong><span>${escapeHtml(role)}</span></div>` : "",
+    tools ? `<div><strong>${TEXT.tools}</strong><span>${escapeHtml(tools)}</span></div>` : ""
+  ].filter(Boolean).join("");
   return `
-    <article class="featured-card">
-      <div class="project-media${automaticEmbedUrl(project.videoEmbed, project.videoLink) && project.coverImage ? " project-media--preview" : ""}">${featuredMediaHtml(project)}</div>
+    <article class="featured-card${hasMedia ? "" : " featured-card--text-only"}">
+      ${hasMedia ? `<div class="project-media${automaticEmbedUrl(project.videoEmbed, project.videoLink) && project.coverImage ? " project-media--preview" : ""}">${featuredMediaHtml(project)}</div>` : ""}
       <div class="project-body">
         <div>
-          <div class="project-meta-row"><div class="project-meta">${escapeHtml(safeText(project.category))}</div>${project.status ? `<span class="project-status">${escapeHtml(project.status)}</span>` : ""}</div>
+          <div class="project-meta-row">${category ? `<div class="project-meta">${escapeHtml(category)}</div>` : ""}${status ? `<span class="project-status">${escapeHtml(status)}</span>` : ""}</div>
           <h3>${escapeHtml(safeText(project.title))}</h3>
-          <p class="project-summary">${escapeHtml(safeText(project.summary))}</p>
-          <div class="detail-list">
-            <div><strong>${TEXT.role}</strong><span>${escapeHtml(safeText(project.role))}</span></div>
-            <div><strong>${TEXT.tools}</strong><span>${escapeHtml(safeText(project.tools))}</span></div>
-          </div>
+          ${summary ? `<p class="project-summary">${escapeHtml(summary)}</p>` : ""}
+          ${detailRows ? `<div class="detail-list">${detailRows}</div>` : ""}
           ${tagsHtml(project.tags)}
         </div>
         <div class="project-actions">
@@ -569,14 +558,16 @@ function libraryMediaHtml(project) {
 function libraryProjectCard(project) {
   const media = libraryMediaHtml(project);
   const visibleStatus = projectVisibleStatus(project);
+  const category = meaningfulText(project.category);
+  const summary = meaningfulText(project.summary);
   return `
     <article class="library-card${media ? " library-card--with-media" : " library-card--text-only"}" data-tags="${escapeHtml((project.tags || []).join(" "))}">
       ${media}
       <div class="library-card-content">
         <div>
-          <div class="project-meta-row"><div class="project-meta">${escapeHtml(safeText(project.category))}</div>${visibleStatus ? `<span class="project-status">${escapeHtml(visibleStatus)}</span>` : ""}</div>
+          ${(category || visibleStatus) ? `<div class="project-meta-row">${category ? `<div class="project-meta">${escapeHtml(category)}</div>` : ""}${visibleStatus ? `<span class="project-status">${escapeHtml(visibleStatus)}</span>` : ""}</div>` : ""}
           <h3>${escapeHtml(safeText(project.title))}</h3>
-          <p>${escapeHtml(safeText(project.summary))}</p>
+          ${summary ? `<p>${escapeHtml(summary)}</p>` : ""}
           ${tagsHtml(project.tags)}
         </div>
         <div class="project-actions">
@@ -608,21 +599,12 @@ function demoReelHtml(site) {
       <div class="snapshot-mini">${snapshotRows}</div>`;
   }
 
-  const cover = site.demoReelCoverImage
-    ? `<img class="cover-image" src="${escapeHtml(site.demoReelCoverImage)}" alt="${escapeHtml(TEXT.demoReel)}">`
-    : `<div class="video-placeholder"><div><div class="play-circle">▶</div><div class="placeholder-kicker">${TEXT.futureMontage}</div><div class="placeholder-title">${TEXT.montageTypes}</div><p class="placeholder-note">${TEXT.youtubeNote}</p></div></div>`;
+  if (isRealLink(site.demoReelCoverImage)) {
+    return `<img class="cover-image" src="${escapeHtml(site.demoReelCoverImage)}" alt="${escapeHtml(TEXT.demoReel)}"><div class="snapshot-mini">${snapshotRows}</div>`;
+  }
 
-  return `
-    <div class="reel-header">
-      <div>
-        <p class="section-kicker">${TEXT.demoReel}</p>
-        <h3>${TEXT.montageSlot}</h3>
-        <p>${TEXT.montageSlotText}</p>
-      </div>
-      <span class="reel-status">${TEXT.placeholder}</span>
-    </div>
-    <div class="video-box">${cover}</div>
-    <div class="snapshot-mini">${snapshotRows}</div>`;
+  // No "video not uploaded" / placeholder state. If there is no reel, only show existing snapshot data.
+  return snapshotRows ? `<div class="snapshot-mini">${snapshotRows}</div>` : "";
 }
 
 const resumeAvailabilityCache = new Map();
@@ -907,38 +889,49 @@ function renderDetailPage() {
     updatePageMetadata(`${TEXT.projectNotFound} | ${safeText(DATA.site?.name, "Rui Qi")}`, TEXT.projectNotFoundText);
     return;
   }
+
   const detail = project.detail || {};
+  const summary = meaningfulText(project.summary);
+  const overview = meaningfulText(detail.overview) || summary;
+  const whatIBuilt = meaningfulList(detail.whatIBuilt);
+  const challenges = meaningfulList(detail.challenges);
+  const workflow = meaningfulText(detail.workflowNotes);
+  const role = meaningfulText(project.role);
+  const tools = meaningfulText(project.tools);
+  const category = meaningfulText(project.category);
+  const detailRows = [
+    role ? `<div><strong>${TEXT.role}</strong><span>${escapeHtml(role)}</span></div>` : "",
+    tools ? `<div><strong>${TEXT.tools}</strong><span>${escapeHtml(tools)}</span></div>` : "",
+    category ? `<div><strong>${TEXT.category}</strong><span>${escapeHtml(category)}</span></div>` : ""
+  ].filter(Boolean).join("");
+  const hasMedia = hasProjectMedia(project);
+
   root.innerHTML = `
     <section class="project-detail-hero container">
-      <div class="project-detail-grid">
+      <div class="project-detail-grid${hasMedia ? "" : " project-detail-grid--single"}">
         <div class="detail-title">
           <p class="eyebrow">${TEXT.projectBreakdown}</p>
           <h1>${escapeHtml(project.title)}</h1>
-          <p>${escapeHtml(project.summary)}</p>
+          ${summary ? `<p>${escapeHtml(summary)}</p>` : ""}
           ${tagsHtml(project.tags)}
           <div class="project-actions detail-hero-actions">
             ${projectExtraLinksHtml(project)}
           </div>
         </div>
-        <div class="snapshot-card">${mediaHtml(project)}</div>
+        ${hasMedia ? `<div class="snapshot-card">${mediaHtml(project)}</div>` : ""}
       </div>
     </section>
-    <section class="detail-section container">
-      <h2>${TEXT.overview}</h2>
-      <p>${escapeHtml(safeText(detail.overview, project.summary))}</p>
-      <div class="detail-list" style="margin-top: 22px;">
-        <div><strong>${TEXT.role}</strong><span>${escapeHtml(project.role)}</span></div>
-        <div><strong>${TEXT.tools}</strong><span>${escapeHtml(project.tools)}</span></div>
-        <div><strong>${TEXT.category}</strong><span>${escapeHtml(project.category)}</span></div>
-      </div>
-    </section>
-    <section class="detail-section container"><h2>${TEXT.whatIBuilt}</h2><ul>${(detail.whatIBuilt || []).map(item => `<li>${escapeHtml(item)}</li>`).join("")}</ul></section>
+    ${(overview || detailRows) ? `<section class="detail-section container">
+      ${overview ? `<h2>${TEXT.overview}</h2><p>${escapeHtml(overview)}</p>` : ""}
+      ${detailRows ? `<div class="detail-list"${overview ? ' style="margin-top: 22px;"' : ""}>${detailRows}</div>` : ""}
+    </section>` : ""}
+    ${whatIBuilt.length ? `<section class="detail-section container"><h2>${TEXT.whatIBuilt}</h2><ul>${whatIBuilt.map(item => `<li>${escapeHtml(item)}</li>`).join("")}</ul></section>` : ""}
     ${systemBreakdownSectionHtml(project, detail)}
-    <section class="detail-section container"><h2>${TEXT.challenges}</h2><ul>${(detail.challenges || []).map(item => `<li>${escapeHtml(item)}</li>`).join("")}</ul></section>
-    <section class="detail-section container"><h2>${TEXT.workflowNotes}</h2><p>${escapeHtml(safeText(detail.workflowNotes))}</p></section>`;
+    ${challenges.length ? `<section class="detail-section container"><h2>${TEXT.challenges}</h2><ul>${challenges.map(item => `<li>${escapeHtml(item)}</li>`).join("")}</ul></section>` : ""}
+    ${workflow ? `<section class="detail-section container"><h2>${TEXT.workflowNotes}</h2><p>${escapeHtml(workflow)}</p></section>` : ""}`;
   bindInlineVideoPreviews();
   bindBreakdownLightbox();
-  updatePageMetadata(`${project.title} | ${safeText(DATA.site?.name, "Rui Qi")}`, project.summary);
+  updatePageMetadata(`${project.title} | ${safeText(DATA.site?.name, "Rui Qi")}`, summary || overview || category);
 }
 
 function renderContactPage() {
