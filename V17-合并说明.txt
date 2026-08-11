@@ -1,9 +1,0 @@
-V17 更新：
-1. 已将独立“蓝图／系统拆解”并入每个项目详情页的“系统／设计拆解”。
-2. Pages CMS 的每个系统拆解条目现在可直接上传配图或 GIF。
-3. 已迁移当前中文版图片：
-   - 类魂：Combo Window → 动画与判定；动画蓝图状态同步 → 同名模块；ProjectileBase → 模块化通信。
-   - Punk Plush Panic：Portal → 可配置传送门；ManEater → 吞吐陷阱；Dropper spline → 路径陷阱；OldLevel2 → 关卡范围管理。
-4. 已移除项目卡／详情页上的“打开 Bilibili/YouTube 视频”和独立拆解按钮。页面内播放器仍保留。
-5. 旧 system-breakdown.html 会自动跳转到对应项目详情页，避免旧链接失效。
-6. 系统拆解图片改为完整显示（object-fit: contain），点击可查看原图。
