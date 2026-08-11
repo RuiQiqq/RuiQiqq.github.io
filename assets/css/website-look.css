@@ -1278,3 +1278,17 @@ h1, h2, h3 {
 .project-detail-grid--single .detail-title {
   max-width: 980px;
 }
+
+
+/* v29: resume preview network fallback + browser-language default */
+.resume-fallback {
+  line-height: 1.65;
+  background: rgba(255,255,255,0.018);
+}
+.resume-fallback strong {
+  color: var(--text);
+}
+.lang-zh .resume-fallback {
+  border-top-color: rgba(209, 11, 112, 0.34);
+  background: rgba(209, 11, 112, 0.055);
+}

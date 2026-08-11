@@ -28,9 +28,9 @@ const UI = {
     resumeText: "The PDF is displayed here for quick review. You can also open it in a separate page or download it directly.",
     downloadPdf: "Download PDF",
     openResumePage: "Open Resume Page",
-    resumeFallback: "If the preview does not load, use the Download PDF button. Upload the English resume as <strong>assets/resume/Rui_Qi_Resume_EN.pdf</strong>.",
+    resumeFallback: "<strong>Preview blank?</strong> Some browsers or networks may not render an embedded PDF reliably. Please use the Download PDF button to open the file directly.",
     resumeMissingTitle: "Resume PDF not uploaded yet",
-    resumeMissingText: "Upload the English resume to assets/resume/Rui_Qi_Resume_EN.pdf. The preview and download buttons will become available automatically.",
+    resumeMissingText: "The configured resume file could not be found. Please check the PDF path in the site content settings.",
     resumeUnavailable: "Resume Not Uploaded",
     contactKicker: "Contact",
     contactTitle: "Interested in systems, prototypes, or gameplay feel?",
@@ -94,7 +94,7 @@ const UI = {
     skills: "Skills",
     relevantFocus: "Relevant focus.",
     resumeDownloadTitle: "Download PDF.",
-    resumeDownloadText: "Upload the English resume to <code>assets/resume/Rui_Qi_Resume_EN.pdf</code>, then this button will open it.",
+    resumeDownloadText: "Open or download the English resume PDF directly.",
     reachMe: "Reach me here.",
     professionalLinks: "Only include professional links. Daily personal social media is better left out unless it shows game development work.",
     projects: "Projects"
@@ -120,9 +120,9 @@ const UI = {
     resumeText: "网页会直接展示中文 PDF，招聘者也可以在独立页面打开或下载。",
     downloadPdf: "下载中文 PDF",
     openResumePage: "打开简历页面",
-    resumeFallback: "如果预览无法加载，请使用下载按钮。请将中文简历上传为 <strong>assets/resume/Rui_Qi_Resume_ZH.pdf</strong>。",
+    resumeFallback: "<strong>中国大陆访问提示：</strong>如果 PDF 预览为空白，可能是 GitHub Pages 的 PDF 内嵌资源在当前网络下加载不稳定。请直接点击“下载中文 PDF”打开文件。",
     resumeMissingTitle: "中文简历尚未上传",
-    resumeMissingText: "请将中文简历上传到 assets/resume/Rui_Qi_Resume_ZH.pdf。上传后，预览窗口和下载按钮会自动启用。",
+    resumeMissingText: "当前配置的中文简历文件未找到，请检查网站内容设置中的 PDF 路径。",
     resumeUnavailable: "中文简历尚未上传",
     contactKicker: "联系方式",
     contactTitle: "欢迎交流玩法系统、原型设计与游戏体验。",
@@ -186,7 +186,7 @@ const UI = {
     skills: "技能",
     relevantFocus: "相关能力",
     resumeDownloadTitle: "下载中文 PDF",
-    resumeDownloadText: "请将中文简历上传到 <code>assets/resume/Rui_Qi_Resume_ZH.pdf</code>，此按钮会自动打开该文件。",
+    resumeDownloadText: "直接打开或下载中文简历 PDF。",
     reachMe: "通过以下方式联系我",
     professionalLinks: "建议只保留职业相关链接；除非能够展示游戏开发内容，否则无需加入日常个人社交账号。",
     projects: "项目"
@@ -203,7 +203,14 @@ function getCurrentLanguage() {
     const saved = localStorage.getItem(LANGUAGE_KEY);
     if (saved === "en" || saved === "zh") return saved;
   } catch (error) {}
-  return "en";
+
+  // First visit: follow the visitor's browser language.
+  // Chinese-language browsers open the Chinese site; all others default to English.
+  const browserLanguages = Array.isArray(navigator.languages) && navigator.languages.length
+    ? navigator.languages
+    : [navigator.language || ""];
+  const prefersChinese = browserLanguages.some(language => String(language).toLowerCase().startsWith("zh"));
+  return prefersChinese ? "zh" : "en";
 }
 
 const CURRENT_LANGUAGE = getCurrentLanguage();
@@ -244,8 +251,14 @@ function localizedUrl(url) {
   const query = queryIndex >= 0 ? beforeHash.slice(queryIndex + 1) : "";
   if (!path) path = window.location.pathname.split("/").pop() || "index.html";
   const params = new URLSearchParams(query);
-  params.set("lang", CURRENT_LANGUAGE);
-  return `${path}?${params.toString()}${hash}`;
+  const explicitLanguage = new URLSearchParams(window.location.search).get("lang");
+  if (explicitLanguage === "en" || explicitLanguage === "zh") {
+    params.set("lang", CURRENT_LANGUAGE);
+  } else {
+    params.delete("lang");
+  }
+  const queryString = params.toString();
+  return `${path}${queryString ? `?${queryString}` : ""}${hash}`;
 }
 
 function setLanguage(language) {
@@ -257,11 +270,6 @@ function setLanguage(language) {
 }
 
 function applyLanguageControls() {
-  if (!new URLSearchParams(window.location.search).has("lang")) {
-    const visibleUrl = new URL(window.location.href);
-    visibleUrl.searchParams.set("lang", CURRENT_LANGUAGE);
-    window.history.replaceState({}, "", visibleUrl.toString());
-  }
   document.documentElement.lang = CURRENT_LANGUAGE === "zh" ? "zh-CN" : "en";
   document.body.classList.toggle("lang-zh", CURRENT_LANGUAGE === "zh");
   document.querySelectorAll("[data-language-choice]").forEach(button => {
@@ -613,8 +621,14 @@ async function resumeFileExists(url) {
   if (!isRealLink(url)) return false;
   if (resumeAvailabilityCache.has(url)) return resumeAvailabilityCache.get(url);
   const request = fetch(url, { method: "HEAD", cache: "no-store" })
-    .then(response => response.ok)
-    .catch(() => false);
+    .then(response => {
+      // Only a definite 404/410 means the file is missing. Network failures,
+      // proxy interference, or unsupported HEAD requests should not disable
+      // a valid resume link, especially for visitors on restrictive networks.
+      if (response.status === 404 || response.status === 410) return false;
+      return true;
+    })
+    .catch(() => true);
   resumeAvailabilityCache.set(url, request);
   return request;
 }
