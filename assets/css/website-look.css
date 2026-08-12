@@ -2045,3 +2045,18 @@ h1, h2, h3 {
   .home-game-preview { grid-template-columns: 1fr; }
   .home-game-preview-link { min-height: 66px; }
 }
+
+
+/* v45: manual-only homepage game highlights + user-editable highlight title. */
+.home-game-highlight-title {
+  margin: -2px 2px 2px;
+  padding: 8px 10px;
+  border-left: 3px solid var(--pink);
+  border-radius: 7px;
+  background: rgba(199, 37, 96, .08);
+  color: #f1dbe6;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.home-game-highlight-title[hidden] { display: none !important; }

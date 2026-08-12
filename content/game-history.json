@@ -9,44 +9,54 @@
     "steamNoteZh": "Steam 主页用于核对公开的游戏库与游玩时长；本页也包含非 Steam 游戏，因此两边不会完全一致。",
     "steamNoteEn": "My public Steam profile can be used to verify library and playtime data. This page also includes non-Steam titles, so the two lists are not expected to match exactly.",
     "homePreviewLimit": 6,
-    "steamImportRequested": false
+    "steamImportRequested": false,
+    "homeHighlightTitle": ""
   },
   "manualGames": [
     {
       "name": "Minecraft",
-      "playtimeHours": 8000
+      "playtimeHours": 8000,
+      "homeFeatured": true
     },
     {
       "name": "崩坏2",
-      "playtimeHours": 300
+      "playtimeHours": 300,
+      "homeFeatured": true
     },
     {
       "name": "崩坏3",
-      "playtimeHours": 500
+      "playtimeHours": 500,
+      "homeFeatured": true
     },
     {
       "name": "原神",
-      "playtimeHours": 100
+      "playtimeHours": 100,
+      "homeFeatured": true
     },
     {
       "name": "炉石传说",
-      "playtimeHours": 1500
+      "playtimeHours": 1500,
+      "homeFeatured": true
     },
     {
       "name": "王者荣耀",
-      "playtimeHours": 1000
+      "playtimeHours": 1000,
+      "homeFeatured": true
     },
     {
       "name": "PUBG mobile",
-      "playtimeHours": 500
+      "playtimeHours": 500,
+      "homeFeatured": true
     },
     {
       "name": "使命召唤 16",
-      "playtimeHours": 300
+      "playtimeHours": 300,
+      "homeFeatured": true
     },
     {
       "name": "赛尔号",
-      "playtimeHours": 500
+      "playtimeHours": 500,
+      "homeFeatured": true
     },
     {
       "name": "星际公民",
@@ -54,11 +64,13 @@
     },
     {
       "name": "生存战争",
-      "playtimeHours": 200
+      "playtimeHours": 200,
+      "homeFeatured": true
     },
     {
       "name": "Roblox",
-      "playtimeHours": 200
+      "playtimeHours": 200,
+      "homeFeatured": true
     },
     {
       "name": "元气骑士",
@@ -79,7 +91,8 @@
       "perfect": true,
       "featured": false,
       "hidden": false,
-      "steamAppId": 730
+      "steamAppId": 730,
+      "homeFeatured": true
     },
     {
       "name": "Plants vs. Zombies: Game of the Year",
@@ -90,7 +103,8 @@
       "perfect": true,
       "featured": false,
       "hidden": false,
-      "steamAppId": 3590
+      "steamAppId": 3590,
+      "homeFeatured": true
     },
     {
       "name": "Garry's Mod",
@@ -131,7 +145,8 @@
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 105600
+      "steamAppId": 105600,
+      "homeFeatured": true
     },
     {
       "name": "Project Zomboid",
@@ -567,7 +582,8 @@
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 367520
+      "steamAppId": 367520,
+      "homeFeatured": true
     },
     {
       "name": "DARK SOULS™ III",
@@ -578,7 +594,8 @@
       "perfect": true,
       "featured": false,
       "hidden": false,
-      "steamAppId": 374320
+      "steamAppId": 374320,
+      "homeFeatured": true
     },
     {
       "name": "Undertale",
@@ -607,7 +624,8 @@
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 413150
+      "steamAppId": 413150,
+      "homeFeatured": true
     },
     {
       "name": "Resident Evil 7 Biohazard",
@@ -808,7 +826,8 @@
       "perfect": true,
       "featured": false,
       "hidden": false,
-      "steamAppId": 570940
+      "steamAppId": 570940,
+      "homeFeatured": true
     },
     {
       "name": "Hell Girls",
@@ -850,7 +869,8 @@
       "perfect": false,
       "featured": true,
       "hidden": false,
-      "steamAppId": 582010
+      "steamAppId": 582010,
+      "homeFeatured": true
     },
     {
       "name": "Dead Cells",
@@ -1142,7 +1162,8 @@
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 758190
+      "steamAppId": 758190,
+      "homeFeatured": true
     },
     {
       "name": "Your Diary +",
@@ -1213,7 +1234,8 @@
       "perfect": true,
       "featured": false,
       "hidden": false,
-      "steamAppId": 814380
+      "steamAppId": 814380,
+      "homeFeatured": true
     },
     {
       "name": "Green Hell",
@@ -1561,7 +1583,8 @@
       "perfect": true,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1172470
+      "steamAppId": 1172470,
+      "homeFeatured": true
     },
     {
       "name": "Red Dead Redemption 2",
@@ -1651,7 +1674,8 @@
       "perfect": true,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1245620
+      "steamAppId": 1245620,
+      "homeFeatured": true
     },
     {
       "name": "Party Animals",
@@ -1709,7 +1733,8 @@
       "perfect": false,
       "featured": true,
       "hidden": false,
-      "steamAppId": 1325200
+      "steamAppId": 1325200,
+      "homeFeatured": true
     },
     {
       "name": "Sons Of The Forest",
@@ -1728,7 +1753,8 @@
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1329410
+      "steamAppId": 1329410,
+      "homeFeatured": true
     },
     {
       "name": "Dyson Sphere Program",
@@ -1815,7 +1841,8 @@
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1454400
+      "steamAppId": 1454400,
+      "homeFeatured": true
     },
     {
       "name": "鬼谷八荒 Tale of Immortal",
@@ -1941,7 +1968,8 @@
       "perfect": false,
       "featured": true,
       "hidden": false,
-      "steamAppId": 1794680
+      "steamAppId": 1794680,
+      "homeFeatured": true
     },
     {
       "name": "Mirror 2: Project X",
@@ -1962,7 +1990,8 @@
       "perfect": true,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1847240
+      "steamAppId": 1847240,
+      "homeFeatured": true
     },
     {
       "name": "DAVE THE DIVER",
@@ -2003,7 +2032,8 @@
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1938090
+      "steamAppId": 1938090,
+      "homeFeatured": true
     },
     {
       "name": "Brotato",
@@ -2036,7 +2066,8 @@
       "perfect": true,
       "featured": true,
       "hidden": false,
-      "steamAppId": 1948280
+      "steamAppId": 1948280,
+      "homeFeatured": true
     },
     {
       "name": "Lethal Company",
@@ -2123,7 +2154,8 @@
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 2357570
+      "steamAppId": 2357570,
+      "homeFeatured": true
     },
     {
       "name": "Black Myth: Wukong",
@@ -2134,7 +2166,8 @@
       "perfect": true,
       "featured": false,
       "hidden": false,
-      "steamAppId": 2358720
+      "steamAppId": 2358720,
+      "homeFeatured": true
     },
     {
       "name": "Delta Force",
@@ -2165,7 +2198,8 @@
       "perfect": true,
       "featured": false,
       "hidden": false,
-      "steamAppId": 2622380
+      "steamAppId": 2622380,
+      "homeFeatured": true
     },
     {
       "name": "SNOWBREAK",
