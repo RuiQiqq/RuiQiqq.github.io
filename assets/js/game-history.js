@@ -1,5 +1,5 @@
 (() => {
-  const VERSION = "43";
+  const VERSION = "46";
   const MIN_VISIBLE_HOURS = 3;
   const LANGUAGE_KEY = "ruiqi-portfolio-language";
   const $ = (selector) => document.querySelector(selector);
@@ -27,7 +27,7 @@
       backPortfolio: "Back to Portfolio", all: "All", perfect: "100% Achievements",
       statusPlaying: "Playing", statusCompleted: "Completed", statusMultiple: "Multiple Playthroughs", statusMainComplete: "Main Story Complete", statusSampled: "Sampled", statusUnfinished: "Unfinished", statusUnknown: "—",
       sortFeatured: "Highlighted first", sortHours: "Playtime ↓", sortCompletion: "Completion ↓", sortName: "Name A–Z",
-      statGames: "Games", statHours: "Known hours", statCompleted: "Completed", statPerfect: "100% games",
+      statGames: "Games played", statHours: "Known hours", statCompleted: "Completed", statPerfect: "100% games",
       nonSteam: "Non-Steam", unknownPlatform: "—", noAchievements: "—", designNote: "Design note",
       playthrough: "playthrough", playthroughs: "playthroughs",
       emptyTitle: "No matching games", emptyText: "Try another filter, or add/import games from Pages CMS."
@@ -45,7 +45,7 @@
       backPortfolio: "返回作品集", all: "全部", perfect: "100% 全成就",
       statusPlaying: "持续游玩", statusCompleted: "通关", statusMultiple: "多周目通关", statusMainComplete: "主线完成", statusSampled: "试玩／短期体验", statusUnfinished: "未通关", statusUnknown: "—",
       sortFeatured: "重点优先", sortHours: "游玩时长 ↓", sortCompletion: "完成度 ↓", sortName: "名称 A–Z",
-      statGames: "游戏记录", statHours: "已知总时长", statCompleted: "已通关", statPerfect: "全成就",
+      statGames: "游戏数量", statHours: "已知总时长", statCompleted: "已通关", statPerfect: "全成就",
       nonSteam: "非 Steam", unknownPlatform: "—", noAchievements: "—", designNote: "设计观察",
       playthrough: "周目", playthroughs: "周目",
       emptyTitle: "没有符合条件的游戏", emptyText: "可以换一个筛选条件，或在 Pages CMS 中添加／导入游戏。"
@@ -200,15 +200,20 @@
     const settings = DATA.settings || {};
     $("#games-intro").textContent = lang === "zh" ? meaningful(settings.introZh) : meaningful(settings.introEn);
     $("#games-source-note").textContent = lang === "zh" ? meaningful(settings.steamNoteZh) : meaningful(settings.steamNoteEn);
+
+    const customTitle = meaningful(settings.homeHighlightTitle);
+    const customTitleNode = $("#games-highlight-title");
+    if (customTitleNode) {
+      customTitleNode.textContent = customTitle;
+      customTitleNode.hidden = !customTitle;
+    }
     const url = meaningful(settings.steamProfileUrl);
     $("#games-source-actions").innerHTML = url ? `<a class="button secondary" href="${escapeHtml(url)}" target="_blank" rel="noreferrer">${escapeHtml(T.steamProfile)}</a>` : "";
 
     const totalHours = allGames.reduce((sum, game) => sum + num(game.playtimeHours), 0);
     const stats = [
-      [allGames.length, T.statGames],
-      [totalHours ? `${Math.round(totalHours).toLocaleString()}h` : "—", T.statHours],
-      [allGames.filter(completed).length, T.statCompleted],
-      [allGames.filter(isPerfect).length, T.statPerfect]
+      ["280+", T.statGames],
+      [totalHours ? `${Math.round(totalHours).toLocaleString()}h` : "—", T.statHours]
     ];
     $("#games-stats").innerHTML = stats.map(([value, label]) => `<div class="game-stat"><strong>${escapeHtml(value)}</strong><span>${escapeHtml(label)}</span></div>`).join("");
   }

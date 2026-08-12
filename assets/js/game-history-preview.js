@@ -1,5 +1,5 @@
 (() => {
-  const VERSION = "45";
+  const VERSION = "46";
   const MIN_VISIBLE_HOURS = 3;
   const LANGUAGE_KEY = "ruiqi-portfolio-language";
   const $ = (selector) => document.querySelector(selector);
@@ -28,16 +28,16 @@
     kicker: "游戏经历", title: "游戏经历",
     intro: "右侧只展示我手动选择的重点游戏，可包含 Steam、主机、手机与其他平台。点击下方按钮可查看完整全平台记录。",
     viewMain: "查看全平台完整游戏经历 →", viewSub: "Steam · Switch · PlayStation · 手机 · 其他平台",
-    hours: "Steam 小时", perfect: "Steam 全成就", empty: "请在 Pages CMS 的游戏条目中勾选「首页重点游戏经历显示」。",
+    games: "游戏数量", hours: "已知总时长", empty: "请在 Pages CMS 的游戏条目中勾选「首页重点游戏经历显示」。",
     previewTitle: "重点游戏", previewNote: "仅显示你手动勾选的游戏",
-    steamOnlyNote: "下方数字仅统计 Steam；右侧重点游戏可包含所有平台。"
+    steamOnlyNote: "游戏数量使用 280+ 展示；总时长来自你当前记录的全平台数据。"
   } : {
     kicker: "Game History", title: "Game History",
     intro: "The games on the right are selected manually and can come from Steam, console, mobile, or other platforms. Use the button below for the complete all-platform record.",
     viewMain: "View Full All-Platform Game History →", viewSub: "Steam · Switch · PlayStation · Mobile · Other Platforms",
-    hours: "Steam hours", perfect: "Steam perfect games", empty: "Select \"Show in homepage highlights\" on the game entries in Pages CMS.",
+    games: "Games", hours: "Known hours", empty: "Select \"Show in homepage highlights\" on the game entries in Pages CMS.",
     previewTitle: "Featured Games", previewNote: "Only games you manually select are shown",
-    steamOnlyNote: "The numbers below are Steam-only; featured games on the right may come from any platform."
+    steamOnlyNote: "Game count is shown as 280+; total hours come from the current all-platform records."
   };
 
   function normalize(data, nameMap) {
@@ -133,13 +133,11 @@
       const settings = data.settings || {};
       const threshold = Math.max(0, num(settings.highlightHours) || 100);
       const statsGames = games.filter(game => num(game.playtimeHours) >= MIN_VISIBLE_HOURS);
-      const steamGames = statsGames.filter(game => game._source === "steam");
-      const totalHours = steamGames.reduce((sum, game) => sum + num(game.playtimeHours), 0);
-      const perfectCount = steamGames.filter(perfect).length;
+      const totalHours = statsGames.reduce((sum, game) => sum + num(game.playtimeHours), 0);
 
-      $("#home-game-preview-stats").innerHTML = steamGames.length ? `
-        <span><strong>${Math.round(totalHours).toLocaleString()}</strong> ${T.hours}</span>
-        ${perfectCount ? `<span><strong>${perfectCount}</strong> ${T.perfect}</span>` : ""}` : "";
+      $("#home-game-preview-stats").innerHTML = `
+        <span><strong>280+</strong> ${escapeHtml(T.games)}</span>
+        <span><strong>${totalHours ? Math.round(totalHours).toLocaleString() : "—"}h</strong> ${escapeHtml(T.hours)}</span>`;
 
       const customTitle = text(settings.homeHighlightTitle);
       const customTitleNode = $("#home-game-highlight-title");
