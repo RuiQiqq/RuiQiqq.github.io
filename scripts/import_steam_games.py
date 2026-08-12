@@ -434,7 +434,6 @@ def main() -> int:
             "status": "",
             "perfect": bool(steam.get("perfect", False)),
             "featured": False,
-            "homeFeatured": False,
             "hidden": False,
             "steamAppId": appid,
         }

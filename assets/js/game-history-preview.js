@@ -1,5 +1,5 @@
 (() => {
-  const VERSION = "46";
+  const VERSION = "47";
   const MIN_VISIBLE_HOURS = 3;
   const LANGUAGE_KEY = "ruiqi-portfolio-language";
   const $ = (selector) => document.querySelector(selector);
@@ -26,18 +26,18 @@
   const lang = language();
   const T = lang === "zh" ? {
     kicker: "游戏经历", title: "游戏经历",
-    intro: "右侧只展示我手动选择的重点游戏，可包含 Steam、主机、手机与其他平台。点击下方按钮可查看完整全平台记录。",
+    intro: "右侧展示我手动标记或高投入、全成就的重点游戏，包含 Steam、主机、手机与其他平台。点击下方按钮可查看完整全平台记录。",
     viewMain: "查看全平台完整游戏经历 →", viewSub: "Steam · Switch · PlayStation · 手机 · 其他平台",
-    games: "游戏数量", hours: "已知总时长", empty: "请在 Pages CMS 的游戏条目中勾选「首页重点游戏经历显示」。",
-    previewTitle: "重点游戏", previewNote: "仅显示你手动勾选的游戏",
-    steamOnlyNote: "游戏数量使用 280+ 展示；总时长来自你当前记录的全平台数据。"
+    games: "游戏数量", hours: "已知总时长", empty: "添加或导入游戏后，这里会自动显示重点游戏。",
+    previewTitle: "重点游戏", previewNote: "按原规则自动展示 · 可对单个游戏勾选“不在首页显示”",
+    steamOnlyNote: "游戏数量固定显示 280+；总时长按当前全平台记录自动计算。"
   } : {
     kicker: "Game History", title: "Game History",
-    intro: "The games on the right are selected manually and can come from Steam, console, mobile, or other platforms. Use the button below for the complete all-platform record.",
+    intro: "Featured games on the right can come from Steam, console, mobile, or other platforms. Use the button below for the complete all-platform record.",
     viewMain: "View Full All-Platform Game History →", viewSub: "Steam · Switch · PlayStation · Mobile · Other Platforms",
-    games: "Games", hours: "Known hours", empty: "Select \"Show in homepage highlights\" on the game entries in Pages CMS.",
-    previewTitle: "Featured Games", previewNote: "Only games you manually select are shown",
-    steamOnlyNote: "Game count is shown as 280+; total hours come from the current all-platform records."
+    games: "Games", hours: "Known hours", empty: "Featured games will appear here after you add or import them.",
+    previewTitle: "Featured Games", previewNote: "Original automatic ranking · opt out per game when needed",
+    steamOnlyNote: "Game count is shown as 280+; total hours are calculated from the current all-platform record."
   };
 
   function normalize(data, nameMap) {
@@ -56,7 +56,7 @@
     return [
       ...manual.map((game, index) => withNames(game, "manual", `m-${index}`)),
       ...steam.map((game, index) => withNames(game, "steam", `s-${game.steamAppId ?? index}`))
-    ].filter(game => game && text(game.name) && !game.hidden);
+    ].filter(game => game && text(game.name) && !game.hidden && num(game.playtimeHours) >= MIN_VISIBLE_HOURS);
   }
 
   function perfect(game) {
@@ -101,6 +101,15 @@
     return (game.featured ? 1e9 : 0) + num(game.playtimeHours) * 1000 + (perfect(game) ? 75000 : 0) + (num(game.playtimeHours) >= threshold ? 25000 : 0);
   }
 
+  function experienceTitle(data) {
+    const settings = data && typeof data.settings === "object" ? data.settings : {};
+    return text(data?.experienceTitle) || text(settings.experienceTitle) || text(settings.homeHighlightTitle);
+  }
+
+  function allowedOnHome(game) {
+    return game.hideFromHome !== true;
+  }
+
   async function init() {
     const root = $("#game-history-preview");
     if (!root) return;
@@ -132,24 +141,26 @@
       const games = normalize(data, nameMap);
       const settings = data.settings || {};
       const threshold = Math.max(0, num(settings.highlightHours) || 100);
-      const statsGames = games.filter(game => num(game.playtimeHours) >= MIN_VISIBLE_HOURS);
-      const totalHours = statsGames.reduce((sum, game) => sum + num(game.playtimeHours), 0);
+      const configuredLimit = num(settings.homePreviewLimit);
+      const limit = Math.min(60, Math.max(33, configuredLimit || 33));
+      const totalHours = games.reduce((sum, game) => sum + num(game.playtimeHours), 0);
 
       $("#home-game-preview-stats").innerHTML = `
-        <span><strong>280+</strong> ${escapeHtml(T.games)}</span>
-        <span><strong>${totalHours ? Math.round(totalHours).toLocaleString() : "—"}h</strong> ${escapeHtml(T.hours)}</span>`;
+        <span><strong>280+</strong> ${T.games}</span>
+        <span><strong>${totalHours ? Math.round(totalHours).toLocaleString() : "—"}h</strong> ${T.hours}</span>`;
 
-      const customTitle = text(settings.homeHighlightTitle);
-      const customTitleNode = $("#home-game-highlight-title");
-      if (customTitleNode) {
-        customTitleNode.textContent = customTitle;
-        customTitleNode.hidden = !customTitle;
+      const titleNode = $("#home-game-experience-title");
+      const customTitle = experienceTitle(data);
+      if (titleNode) {
+        titleNode.textContent = customTitle;
+        titleNode.hidden = !customTitle;
       }
 
       const selected = games
-        .filter(game => game.homeFeatured === true)
+        .filter(allowedOnHome)
         .slice()
-        .sort((a, b) => score(b, threshold) - score(a, threshold) || currentName(a).localeCompare(currentName(b)));
+        .sort((a, b) => score(b, threshold) - score(a, threshold) || currentName(a).localeCompare(currentName(b)))
+        .slice(0, limit);
 
       const list = $("#home-game-preview-games");
       if (!selected.length) {

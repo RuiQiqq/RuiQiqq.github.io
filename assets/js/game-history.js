@@ -1,5 +1,5 @@
 (() => {
-  const VERSION = "46";
+  const VERSION = "47";
   const MIN_VISIBLE_HOURS = 3;
   const LANGUAGE_KEY = "ruiqi-portfolio-language";
   const $ = (selector) => document.querySelector(selector);
@@ -27,7 +27,7 @@
       backPortfolio: "Back to Portfolio", all: "All", perfect: "100% Achievements",
       statusPlaying: "Playing", statusCompleted: "Completed", statusMultiple: "Multiple Playthroughs", statusMainComplete: "Main Story Complete", statusSampled: "Sampled", statusUnfinished: "Unfinished", statusUnknown: "—",
       sortFeatured: "Highlighted first", sortHours: "Playtime ↓", sortCompletion: "Completion ↓", sortName: "Name A–Z",
-      statGames: "Games played", statHours: "Known hours", statCompleted: "Completed", statPerfect: "100% games",
+      statGames: "Games", statHours: "Known hours", statCompleted: "Completed", statPerfect: "100% games",
       nonSteam: "Non-Steam", unknownPlatform: "—", noAchievements: "—", designNote: "Design note",
       playthrough: "playthrough", playthroughs: "playthroughs",
       emptyTitle: "No matching games", emptyText: "Try another filter, or add/import games from Pages CMS."
@@ -198,15 +198,14 @@
 
   function renderHero() {
     const settings = DATA.settings || {};
+    const customTitle = meaningful(DATA.experienceTitle) || meaningful(settings.experienceTitle) || meaningful(settings.homeHighlightTitle);
+    const titleNode = $("#games-experience-title");
+    if (titleNode) {
+      titleNode.textContent = customTitle;
+      titleNode.hidden = !customTitle;
+    }
     $("#games-intro").textContent = lang === "zh" ? meaningful(settings.introZh) : meaningful(settings.introEn);
     $("#games-source-note").textContent = lang === "zh" ? meaningful(settings.steamNoteZh) : meaningful(settings.steamNoteEn);
-
-    const customTitle = meaningful(settings.homeHighlightTitle);
-    const customTitleNode = $("#games-highlight-title");
-    if (customTitleNode) {
-      customTitleNode.textContent = customTitle;
-      customTitleNode.hidden = !customTitle;
-    }
     const url = meaningful(settings.steamProfileUrl);
     $("#games-source-actions").innerHTML = url ? `<a class="button secondary" href="${escapeHtml(url)}" target="_blank" rel="noreferrer">${escapeHtml(T.steamProfile)}</a>` : "";
 
