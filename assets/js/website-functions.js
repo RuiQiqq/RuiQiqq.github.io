@@ -1004,6 +1004,43 @@ function setYear() {
   document.querySelectorAll("#year").forEach(element => { element.textContent = new Date().getFullYear(); });
 }
 
+function setupSectionAwareNavigation() {
+  const links = Array.from(document.querySelectorAll(".nav-link[data-nav-section]"));
+  if (!links.length) return;
+  const page = document.body.dataset.page;
+  const header = document.querySelector(".site-header");
+
+  function setCurrent(name) {
+    links.forEach(link => link.classList.toggle("is-current", Boolean(name) && link.dataset.navSection === name));
+  }
+
+  function update() {
+    const offset = (header?.offsetHeight || 76) + 120;
+    const y = window.scrollY + offset;
+    if (page === "home") {
+      const featured = document.getElementById("featured");
+      const resume = document.getElementById("resume");
+      const contact = document.getElementById("contact");
+      if (contact && y >= contact.offsetTop) return setCurrent("contact");
+      if (resume && y >= resume.offsetTop) return setCurrent("resume");
+      if (featured && y >= featured.offsetTop) return setCurrent("projects");
+      return setCurrent("");
+    }
+    if (page === "contact") {
+      const resume = document.getElementById("resume");
+      const contact = document.getElementById("contact");
+      if (contact && y >= contact.offsetTop) return setCurrent("contact");
+      if (resume && y >= resume.offsetTop) return setCurrent("resume");
+      return setCurrent("");
+    }
+  }
+
+  update();
+  window.addEventListener("scroll", update, { passive: true });
+  window.addEventListener("resize", update);
+  window.addEventListener("hashchange", () => requestAnimationFrame(update));
+}
+
 function init() {
   applyLanguageControls();
   applyStaticTranslations();
@@ -1015,6 +1052,7 @@ function init() {
   if (page === "contact") renderContactPage();
   if (page === "resume") renderResumeViewer();
   localizeInternalLinks();
+  setupSectionAwareNavigation();
 }
 
 init();

@@ -8,18 +8,18 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/website-look.css?v=31" />
-  <script defer src="assets/js/content-loader.js?v=31"></script>
+  <link rel="stylesheet" href="assets/css/website-look.css?v=37" />
+  <script defer src="assets/js/content-loader.js?v=37"></script>
+  <script defer src="assets/js/game-history-preview.js?v=37"></script>
 </head>
 <body data-page="home">
   <header class="site-header">
     <a class="wordmark" href="#top">Rui Qi</a>
     <div class="header-actions">
       <nav class="nav-links" aria-label="Main navigation">
-        <a class="nav-link framed project-pill" href="#featured" data-i18n="navProjects">Projects</a>
-        <a class="nav-link framed" href="game-history.html" data-i18n="navGames">Games Played</a>
-        <a class="nav-link framed" href="#resume" data-i18n="navResume">Resume</a>
-        <a class="nav-link highlight" href="#contact" data-i18n="navContact">Contact</a>
+        <a class="nav-link framed" href="#featured" data-nav-section="projects" data-i18n="navProjects">Projects</a>
+        <a class="nav-link framed" href="#resume" data-nav-section="resume" data-i18n="navResume">Resume</a>
+        <a class="nav-link framed" href="#contact" data-nav-section="contact" data-i18n="navContact">Contact</a>
       </nav>
       <div class="language-switch" aria-label="Language switcher">
         <button type="button" data-language-choice="en">EN</button>
@@ -49,6 +49,18 @@
         </div>
         <div class="hero-capability-grid" id="hero-capabilities"></div>
       </aside>
+    </section>
+
+
+    <section class="home-game-preview container" id="game-history-preview">
+      <div class="home-game-preview-copy">
+        <p class="section-kicker" id="home-game-kicker">Game History</p>
+        <h2 id="home-game-title">Games Played</h2>
+        <p id="home-game-intro">A compact look at games I have spent meaningful time with, including high-playtime and 100% achievement titles.</p>
+        <div class="home-game-preview-stats" id="home-game-preview-stats"></div>
+        <a class="button secondary home-game-preview-link" id="home-game-preview-link" href="game-history.html">View Full Game History</a>
+      </div>
+      <div class="home-game-preview-games" id="home-game-preview-games"></div>
     </section>
 
     <section class="section container" id="featured">
