@@ -1954,8 +1954,8 @@
     },
     {
       "name": "Game Dev Story",
-      "nameZh": "游戏发展国++",
       "playtimeHours": 11.4,
+      "status": "completed",
       "achievementsUnlocked": 6,
       "achievementsTotal": 6,
       "perfect": true,
