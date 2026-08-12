@@ -40,7 +40,8 @@
       "hidden": false,
       "steamAppId": 3590,
       "achievementsUnlocked": 21,
-      "achievementsTotal": 21
+      "achievementsTotal": 21,
+      "nameZh": "植物大战僵尸：年度版"
     },
     {
       "name": "Garry's Mod",
@@ -109,7 +110,8 @@
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 108600
+      "steamAppId": 108600,
+      "nameZh": "僵尸毁灭工程"
     },
     {
       "name": "Castle Crashers",
@@ -149,7 +151,8 @@
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 220200
+      "steamAppId": 220200,
+      "nameZh": "坎巴拉太空计划"
     },
     {
       "name": "Reus",
@@ -343,7 +346,8 @@
       "hidden": false,
       "steamAppId": 264710,
       "achievementsUnlocked": 1,
-      "achievementsTotal": 17
+      "achievementsTotal": 17,
+      "nameZh": "深海迷航"
     },
     {
       "name": "Goat Simulator",
@@ -497,7 +501,8 @@
       "hidden": false,
       "steamAppId": 289070,
       "achievementsUnlocked": 27,
-      "achievementsTotal": 320
+      "achievementsTotal": 320,
+      "nameZh": "文明 VI"
     },
     {
       "name": "Brawlhalla",
@@ -525,7 +530,8 @@
       "hidden": false,
       "steamAppId": 292030,
       "achievementsUnlocked": 3,
-      "achievementsTotal": 78
+      "achievementsTotal": 78,
+      "nameZh": "巫师 3：狂猎"
     },
     {
       "name": "RimWorld",
@@ -537,7 +543,8 @@
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 294100
+      "steamAppId": 294100,
+      "nameZh": "环世界"
     },
     {
       "name": "Unturned",
@@ -605,7 +612,8 @@
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 322330
+      "steamAppId": 322330,
+      "nameZh": "饥荒联机版"
     },
     {
       "name": "Dark Deception",
@@ -701,7 +709,8 @@
       "hidden": false,
       "steamAppId": 367520,
       "achievementsUnlocked": 56,
-      "achievementsTotal": 63
+      "achievementsTotal": 63,
+      "nameZh": "空洞骑士"
     },
     {
       "name": "DARK SOULS™ III",
@@ -825,7 +834,8 @@
       "hidden": false,
       "steamAppId": 431960,
       "achievementsUnlocked": 11,
-      "achievementsTotal": 17
+      "achievementsTotal": 17,
+      "nameZh": "Wallpaper Engine（壁纸引擎）"
     },
     {
       "name": "Slime Rancher",
@@ -993,7 +1003,8 @@
       "hidden": false,
       "steamAppId": 504230,
       "achievementsUnlocked": 4,
-      "achievementsTotal": 32
+      "achievementsTotal": 32,
+      "nameZh": "蔚蓝"
     },
     {
       "name": "Totally Accurate Battle Simulator",
@@ -1007,7 +1018,8 @@
       "hidden": false,
       "steamAppId": 508440,
       "achievementsUnlocked": 17,
-      "achievementsTotal": 64
+      "achievementsTotal": 64,
+      "nameZh": "全面战争模拟器"
     },
     {
       "name": "Warhammer: Vermintide 2",
@@ -1121,7 +1133,8 @@
       "hidden": false,
       "steamAppId": 588650,
       "achievementsUnlocked": 15,
-      "achievementsTotal": 121
+      "achievementsTotal": 121,
+      "nameZh": "死亡细胞"
     },
     {
       "name": "Graveyard Keeper",
@@ -1303,7 +1316,8 @@
       "hidden": false,
       "steamAppId": 646570,
       "achievementsUnlocked": 18,
-      "achievementsTotal": 46
+      "achievementsTotal": 46,
+      "nameZh": "杀戮尖塔"
     },
     {
       "name": "Return of the Obra Dinn",
@@ -2128,7 +2142,8 @@
       "hidden": false,
       "steamAppId": 1174180,
       "achievementsUnlocked": 9,
-      "achievementsTotal": 51
+      "achievementsTotal": 51,
+      "nameZh": "荒野大镖客：救赎 2"
     },
     {
       "name": "War of the Three Kingdoms",
@@ -2347,7 +2362,8 @@
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1329410
+      "steamAppId": 1329410,
+      "nameZh": "雀魂麻将"
     },
     {
       "name": "Dyson Sphere Program",
@@ -2483,7 +2499,8 @@
       "hidden": false,
       "steamAppId": 1454400,
       "achievementsUnlocked": 556,
-      "achievementsTotal": 637
+      "achievementsTotal": 637,
+      "nameZh": "Cookie Clicker（饼干点击器）"
     },
     {
       "name": "鬼谷八荒 Tale of Immortal",
@@ -2659,7 +2676,8 @@
       "hidden": false,
       "steamAppId": 1794680,
       "achievementsUnlocked": 201,
-      "achievementsTotal": 243
+      "achievementsTotal": 243,
+      "nameZh": "吸血鬼幸存者"
     },
     {
       "name": "Mirror 2: Project X",
@@ -2687,7 +2705,8 @@
       "hidden": false,
       "steamAppId": 1847240,
       "achievementsUnlocked": 6,
-      "achievementsTotal": 6
+      "achievementsTotal": 6,
+      "nameZh": "游戏发展国++"
     },
     {
       "name": "Mirror News Center",
@@ -2769,7 +2788,8 @@
       "hidden": false,
       "steamAppId": 1938090,
       "achievementsUnlocked": 1,
-      "achievementsTotal": 157
+      "achievementsTotal": 157,
+      "nameZh": "使命召唤"
     },
     {
       "name": "Brotato",
@@ -2783,7 +2803,8 @@
       "hidden": false,
       "steamAppId": 1942280,
       "achievementsUnlocked": 83,
-      "achievementsTotal": 179
+      "achievementsTotal": 179,
+      "nameZh": "土豆兄弟"
     },
     {
       "name": "Escape the Backrooms",
@@ -2918,7 +2939,8 @@
       "hidden": false,
       "steamAppId": 2109460,
       "achievementsUnlocked": 32,
-      "achievementsTotal": 32
+      "achievementsTotal": 32,
+      "nameZh": "乡村狂想曲"
     },
     {
       "name": "Overwatch®",
@@ -2932,7 +2954,8 @@
       "hidden": false,
       "steamAppId": 2357570,
       "achievementsUnlocked": 73,
-      "achievementsTotal": 164
+      "achievementsTotal": 164,
+      "nameZh": "守望先锋"
     },
     {
       "name": "Black Myth: Wukong",
