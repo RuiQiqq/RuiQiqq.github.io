@@ -2,15 +2,13 @@
   "site": {
     "name": "Rui Qi",
     "eyebrow": "Portfolio",
-    "title": "Gameplay Designer / Game Designer",
+    "title": "Gameplay & Systems Designer",
     "subtitle": "Gameplay systems, level experience, numerical tuning, modular prototyping, and in-engine iteration.",
     "intro": "I focus on gameplay and player experience, using Unreal Blueprint, rapid prototyping, in-engine testing, and cross-functional collaboration to move designs into playable form. I can review parts of project code and use AI-assisted workflows for debugging, tool development, and prototype validation.",
     "email": "markqirui@gmail.com",
     "github": "https://github.com/RuiQiqq",
     "linkedin": "https://www.linkedin.com/in/rui-qi-9b58b8222/",
-    "resumeUrl": "/assets/resume/ruiqiresumeen.pdf",
-    "demoReelLink": "",
-    "demoReelPlatform": ""
+    "resumeUrl": "/assets/resume/ruiqiresumeen.pdf"
   },
   "snapshot": [
     {
@@ -307,7 +305,6 @@
         "decoupling"
       ],
       "coverImage": "/assets/images/bbg7r.png",
-      "videoPlatform": "",
       "detail": {
         "overview": "Breach Brew is a commercial game project. I contributed to the design and implementation of an environmental temperature system so temperature changes can drive gameplay states, material behavior, and Niagara effects, while collaborating with technical art and design teammates on in-engine integration.",
         "whatIBuilt": [
@@ -380,9 +377,7 @@
           "The visual direction needs to be established early; otherwise, many materials may need to be rebuilt later."
         ],
         "workflowNotes": "My workflow centers on rapid prototyping and parameterization: I first break gameplay requirements into controllable data, then implement them through Blueprint, Actor Components, materials, and Niagara while exposing key parameters for later tuning and reuse. Current implementations include a data-driven frost material, adjustable Spark / Wind Niagara, a reusable power Component, and a Bubble Gun prototype."
-      },
-      "videoLink": "",
-      "videoEmbed": ""
+      }
     },
     {
       "id": "the-e-book-data-pipeline",
@@ -403,8 +398,6 @@
         "gameplaySystem"
       ],
       "coverImage": "/assets/images/eb.png",
-      "videoLink": "",
-      "videoPlatform": "",
       "detail": {
         "overview": "On The E Book, I maintained gameplay numerical configurations and restructured the Excel workflow when designers found data editing cumbersome. I then used an AI-assisted workflow to develop a conversion tool that automatically turns designer-facing Excel data into configuration files Unity can read directly.",
         "whatIBuilt": [
@@ -451,8 +444,7 @@
           "Public portfolio material needs to hide commercially sensitive data and show only sanitized table structures, tool flows, and sample output."
         ],
         "workflowNotes": "For a public portfolio presentation, use fictional or sanitized data to show before-and-after comparisons: the original spreadsheet, the restructured version, the conversion button or logs, and the successful result loaded in Unity."
-      },
-      "videoEmbed": ""
+      }
     },
     {
       "id": "maimed-maintenance",
@@ -527,8 +519,6 @@
         "draft"
       ],
       "coverImage": "/assets/images/VFXs GIF/vfx012portal.gif",
-      "videoLink": "",
-      "videoPlatform": "",
       "detail": {
         "overview": "This page collects smaller visual studies. It is not a standalone game project; the work is grouped as VFX, 3D modeling, and creature design.",
         "whatIBuilt": [
@@ -629,10 +619,8 @@
               }
             ]
           }
-        ],
-        "workflowNotes": ""
-      },
-      "videoEmbed": ""
+        ]
+      }
     },
     {
       "id": "tutu-rabbit",
@@ -649,10 +637,7 @@
           "label": "Play on itch.io",
           "url": "https://markqirui.itch.io/tutu-rabbit"
         }
-      ],
-      "videoLink": "",
-      "videoEmbed": "",
-      "videoPlatform": ""
+      ]
     },
     {
       "id": "metal-heart",
@@ -665,11 +650,11 @@
       "tools": "Unreal",
       "coverImage": "/assets/images/mh.png",
       "videoLink": "https://youtu.be/H5-4IZRVoaQ",
+      "videoEmbed": "https://www.youtube.com/embed/H5-4IZRVoaQ?autoplay=0&playsinline=1&rel=0",
+      "videoPlatform": "YouTube",
       "detail": {
         "workflowNotes": "I collected assets from team members, captured storyboarded shots, edited the video, and performed facial motion capture when needed."
-      },
-      "videoPlatform": "YouTube",
-      "videoEmbed": "https://www.youtube.com/embed/H5-4IZRVoaQ?autoplay=0&playsinline=1&rel=0"
+      }
     },
     {
       "id": "level-design",
