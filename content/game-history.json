@@ -844,10 +844,11 @@
       "name": "Monster Hunter: World",
       "nameZh": "怪物猎人：世界",
       "playtimeHours": 25.5,
+      "status": "playing",
       "achievementsUnlocked": 16,
       "achievementsTotal": 100,
       "perfect": false,
-      "featured": false,
+      "featured": true,
       "hidden": false,
       "steamAppId": 582010
     },
