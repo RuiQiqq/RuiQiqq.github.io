@@ -1863,3 +1863,92 @@ h1, h2, h3 {
   .game-featured-grid,
   .home-game-preview-games { grid-template-columns: 1fr; }
 }
+
+
+/* v41: homepage is explicitly a Steam-only breadth preview; full page remains all-platform. */
+.home-game-preview {
+  grid-template-columns: minmax(255px, .56fr) minmax(0, 1.44fr);
+  gap: 28px;
+  align-items: stretch;
+}
+.home-game-preview-copy {
+  padding: 22px;
+  border-left-color: #2e6ee8;
+}
+.home-game-preview-copy .section-kicker {
+  color: var(--pink-soft);
+  letter-spacing: .04em;
+}
+.home-game-steam-only-note {
+  margin: 10px 0 0 !important;
+  color: #8fa5cf !important;
+  font-size: 12px;
+  line-height: 1.5 !important;
+}
+.home-game-preview-browser {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.home-game-preview-browser-head {
+  min-height: 34px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0 2px;
+}
+.home-game-preview-browser-head strong {
+  color: #c9d9ff;
+  font-family: var(--font-heading);
+  font-size: 13px;
+  letter-spacing: .04em;
+}
+.home-game-preview-browser-head span {
+  color: var(--muted);
+  font-size: 11px;
+  text-align: right;
+}
+.home-game-preview-games {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 7px 9px;
+  align-content: start;
+}
+.home-game-mini-card {
+  min-height: 34px;
+  padding: 6px 9px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  border-left: 2px solid rgba(112,167,255,.82);
+  background: rgba(18,20,43,.74);
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+}
+.home-game-mini-card.is-perfect {
+  border-left-color: var(--pink);
+  background: rgba(27,20,48,.78);
+}
+.home-game-mini-card h3 {
+  font-size: 11.5px;
+  line-height: 1.2;
+}
+.home-game-mini-card > strong {
+  font-size: 10.5px;
+  color: #8fc5ff;
+}
+.home-game-mini-card.is-perfect > strong { color: var(--pink-soft); }
+
+@media (max-width: 1080px) {
+  .home-game-preview { grid-template-columns: minmax(240px, .7fr) minmax(0, 1.3fr); }
+  .home-game-preview-games { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 780px) {
+  .home-game-preview { grid-template-columns: 1fr; }
+  .home-game-preview-browser-head { align-items: flex-start; flex-direction: column; gap: 3px; }
+  .home-game-preview-browser-head span { text-align: left; }
+  .home-game-preview-games { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 500px) {
+  .home-game-preview-games { grid-template-columns: 1fr; }
+}

@@ -1,5 +1,5 @@
 (() => {
-  const VERSION = "40";
+  const VERSION = "41";
   const MIN_VISIBLE_HOURS = 3;
   const LANGUAGE_KEY = "ruiqi-portfolio-language";
   const $ = (selector) => document.querySelector(selector);
@@ -37,12 +37,12 @@
       kicker: "游戏经历", title: "玩过的游戏",
       steamProfile: "查看 Steam 主页",
       featuredKicker: "重点游戏经历", featuredTitle: "高时长与全成就游戏",
-      featuredIntro: "高时长、100% 全成就和手动重点游戏会自动集中展示在这里。",
+      featuredIntro: "高时长、全成就和手动重点游戏会自动集中展示在这里。",
       allKicker: "完整记录", allTitle: "全部游戏记录",
       allIntro: "可以搜索、筛选和排序完整记录。Steam 导入后会保存成本地数据，因此时长、状态和展示内容都可以继续修改。",
       searchLabel: "搜索", searchPlaceholder: "搜索游戏", statusLabel: "状态", platformLabel: "平台", sortLabel: "排序",
       colGame: "游戏", colPlatform: "平台", colTime: "时长", colStatus: "完成情况", colAchievements: "成就",
-      backPortfolio: "返回作品集", all: "全部", perfect: "100% 全成就",
+      backPortfolio: "返回作品集", all: "全部", perfect: "全成就",
       statusPlaying: "持续游玩", statusCompleted: "通关", statusMultiple: "多周目通关", statusMainComplete: "主线完成", statusSampled: "试玩／短期体验", statusUnfinished: "未通关", statusUnknown: "—",
       sortFeatured: "重点优先", sortHours: "游玩时长 ↓", sortCompletion: "完成度 ↓", sortName: "名称 A–Z",
       statGames: "游戏记录", statHours: "已知总时长", statCompleted: "已通关", statPerfect: "全成就",
@@ -286,7 +286,7 @@
     empty.hidden = true;
     list.innerHTML = games.map(game => {
       const badges = [];
-      if (isPerfect(game)) badges.push(`<span class="game-perfect-inline">100%</span>`);
+      if (isPerfect(game)) badges.push(`<span class="game-perfect-inline">${escapeHtml(lang === "zh" ? "全成就" : "100%")}</span>`);
       const playthroughs = playthroughText(game);
       return `<article class="game-row${highlighted(game) ? " is-highlighted" : ""}${isPerfect(game) ? " is-perfect" : ""}">
         <div class="game-row-name" title="${escapeHtml(currentName(game))}"><strong>${escapeHtml(currentName(game))}</strong></div>

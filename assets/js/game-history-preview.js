@@ -1,5 +1,5 @@
 (() => {
-  const VERSION = "40";
+  const VERSION = "41";
   const MIN_VISIBLE_HOURS = 3;
   const LANGUAGE_KEY = "ruiqi-portfolio-language";
   const $ = (selector) => document.querySelector(selector);
@@ -25,15 +25,15 @@
 
   const lang = language();
   const T = lang === "zh" ? {
-    kicker: "游戏经历", title: "玩过的游戏",
-    intro: "这里快速预览我投入时间较多、全成就或具有代表性的游戏经历。完整页面包含更多游戏、时长与完成情况。",
-    view: "查看完整游戏经历", games: "款游戏", hours: "小时", perfect: "全成就", empty: "Steam 游戏导入或手动记录后，这里会自动显示代表性游戏。",
-    nonSteam: "非 Steam"
+    kicker: "游戏经历 · STEAM", title: "Steam 游戏经历",
+    intro: "这里集中展示我的 Steam 游玩记录，用高时长、全成就和手动重点游戏快速体现游玩广度与深度。主机、手游及其他平台不计入这里，点击下方可查看全平台完整记录。",
+    view: "查看全平台完整游戏经历", games: "款 Steam 游戏（≥3h）", hours: "Steam 小时", perfect: "全成就", empty: "Steam 游戏导入后，这里会自动显示代表性游戏。",
+    previewTitle: "STEAM · 代表游戏预览", previewNote: "优先：手动重点 / 全成就 / 高时长", steamOnlyNote: "这里只统计 Steam；主机、手游和其他平台时长未计入。"
   } : {
-    kicker: "Game History", title: "Games Played",
-    intro: "A quick preview of games I have spent significant time with, completed at 100%, or chosen as representative play experience.",
-    view: "View Full Game History", games: "games", hours: "hours", perfect: "100%", empty: "Representative games will appear here automatically after Steam import or manual entry.",
-    nonSteam: "Non-Steam"
+    kicker: "Game History · STEAM", title: "Steam Play History",
+    intro: "This section highlights my Steam play history through high-playtime, 100%-achievement, and manually pinned titles. Console, mobile, and other platforms are excluded here; the full page combines all platforms.",
+    view: "View Full All-Platform Game History", games: "Steam games (≥3h)", hours: "Steam hours", perfect: "100% games", empty: "Representative Steam games will appear here automatically after import.",
+    previewTitle: "STEAM · Representative Games", previewNote: "Priority: pinned / 100% / high playtime", steamOnlyNote: "Steam only; console, mobile, and other-platform playtime is not included here."
   };
 
   function normalize(data, nameMap) {
@@ -76,6 +76,12 @@
     $("#home-game-kicker").textContent = T.kicker;
     $("#home-game-title").textContent = T.title;
     $("#home-game-intro").textContent = T.intro;
+    const sourceTitle = $("#home-game-preview-source-title");
+    const sourceNote = $("#home-game-preview-source-note");
+    const steamOnlyNote = $("#home-game-steam-only-note");
+    if (sourceTitle) sourceTitle.textContent = T.previewTitle;
+    if (sourceNote) sourceNote.textContent = T.previewNote;
+    if (steamOnlyNote) steamOnlyNote.textContent = T.steamOnlyNote;
     const link = $("#home-game-preview-link");
     link.textContent = T.view;
     link.href = `game-history.html${new URLSearchParams(location.search).get("lang") ? `?lang=${lang}` : ""}`;
@@ -93,18 +99,20 @@
         nameMap = mapping && typeof mapping.names === "object" ? mapping.names : {};
       }
       const games = normalize(data, nameMap);
+      const steamGames = games.filter(game => game._source === "steam");
       const settings = data.settings || {};
       const threshold = Math.max(0, num(settings.highlightHours) || 100);
-      const limit = Math.max(1, Math.min(8, num(settings.homePreviewLimit) || 6));
-      const totalHours = games.reduce((sum, game) => sum + num(game.playtimeHours), 0);
-      const perfectCount = games.filter(perfect).length;
+      const configuredLimit = num(settings.homePreviewLimit);
+      const limit = configuredLimit >= 20 ? Math.min(36, configuredLimit) : 24;
+      const totalHours = steamGames.reduce((sum, game) => sum + num(game.playtimeHours), 0);
+      const perfectCount = steamGames.filter(perfect).length;
 
-      $("#home-game-preview-stats").innerHTML = games.length ? `
-        <span><strong>${games.length}</strong> ${T.games}</span>
+      $("#home-game-preview-stats").innerHTML = steamGames.length ? `
+        <span><strong>${steamGames.length}</strong> ${T.games}</span>
         <span><strong>${Math.round(totalHours).toLocaleString()}</strong> ${T.hours}</span>
         ${perfectCount ? `<span><strong>${perfectCount}</strong> ${T.perfect}</span>` : ""}` : "";
 
-      const selected = games
+      const selected = steamGames
         .slice()
         .sort((a, b) => score(b, threshold) - score(a, threshold) || currentName(a).localeCompare(currentName(b)))
         .slice(0, limit);
@@ -115,12 +123,11 @@
         return;
       }
       list.innerHTML = selected.map(game => {
-        const platform = game._source === "steam" ? "Steam" : T.nonSteam;
-        const badge = perfect(game) ? `<span class="home-game-perfect">100%</span>` : "";
-        return `<article class="home-game-mini-card${perfect(game) ? " is-perfect" : ""}">
-          <div class="home-game-mini-top"><span>${escapeHtml(platform)}</span>${badge}</div>
+        const perfectLabel = perfect(game) ? (lang === "zh" ? "全成就" : "100%") : "";
+        const meta = [formatHours(game.playtimeHours), perfectLabel].filter(Boolean).join(" · ");
+        return `<article class="home-game-mini-card${perfect(game) ? " is-perfect" : ""}" title="${escapeHtml(currentName(game))}">
           <h3>${escapeHtml(currentName(game))}</h3>
-          <strong>${escapeHtml(formatHours(game.playtimeHours))}</strong>
+          <strong>${escapeHtml(meta)}</strong>
         </article>`;
       }).join("");
     } catch (error) {
