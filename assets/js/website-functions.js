@@ -741,9 +741,10 @@ async function renderHomeGameHistoryBridge() {
     const response = await fetch("content/game-history.json", { cache: "no-store" });
     if (!response.ok) return;
     const data = await response.json();
-    const games = Array.isArray(data.games)
-      ? data.games.filter(game => game && game.hidden !== true && (meaningfulText(game.name) || meaningfulText(game.nameZh)))
-      : [];
+    const importedGames = Array.isArray(data.games) ? data.games : [];
+    const manualGames = Array.isArray(data.manualGames) ? data.manualGames : [];
+    const games = [...importedGames, ...manualGames]
+      .filter(game => game && game.hidden !== true && (meaningfulText(game.name) || meaningfulText(game.nameEn) || meaningfulText(game.nameZh)));
     if (!games.length) return;
     const knownHours = games.reduce((total, game) => total + (Number(game.playtimeHours) || 0), 0);
     const completed = games.filter(game => game.perfect === true || ["completed", "multiple", "main_complete"].includes(game.status)).length;
