@@ -1,0 +1,23 @@
+游戏经历页面的数据位于：content/game-history.json
+
+推荐维护方式：
+1. Steam 游戏不要一个个手填。
+   把 Steam 个人主页保持“Game details / 游戏详情”为 Public，然后把 Steam 主页链接发给 ChatGPT。
+   可以批量整理游戏名与公开游玩时长，再一次性写入 game-history.json。
+
+2. 100% 全成就：
+   - 有成就数量时填写 achievementsUnlocked / achievementsTotal；
+   - 不想填数字时，直接勾选“100% 全成就（手动标记）”。
+   页面会自动把全成就游戏放入重点区域。
+
+3. 高时长游戏：
+   页面设置中的 highlightHours 默认为 100 小时。
+   达到阈值的游戏会自动进入重点区域，不需要逐个勾选。
+
+4. 非 Steam 游戏：
+   在 Pages CMS → 游戏经历 / Games Played → 游戏记录 中手动添加。
+   只需要填写游戏名、平台、时长（如果知道）和完成状态；其他字段都可以留空。
+
+5. 中英文共用同一份游戏数据：
+   游戏名、平台、时长、完成度与成就是共享的。
+   只有设计观察分别使用 designNoteZh / designNoteEn。

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Games Played | Rui Qi</title>
+  <meta name="description" content="Rui Qi's game history: playtime, completion status, achievements, and selected design observations." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/website-look.css?v=31" />
+  <script defer src="assets/js/game-history.js?v=31"></script>
+</head>
+<body data-page="games">
+  <header class="site-header">
+    <a class="wordmark" href="index.html#top">Rui Qi</a>
+    <div class="header-actions">
+      <nav class="nav-links" aria-label="Main navigation">
+        <a class="nav-link framed project-pill" href="index.html#featured" data-game-i18n="navProjects">Projects</a>
+        <a class="nav-link framed is-current" href="game-history.html" data-game-i18n="navGames">Games Played</a>
+        <a class="nav-link framed" href="index.html#resume" data-game-i18n="navResume">Resume</a>
+        <a class="nav-link highlight" href="index.html#contact" data-game-i18n="navContact">Contact</a>
+      </nav>
+      <div class="language-switch" aria-label="Language switcher">
+        <button type="button" data-language-choice="en">EN</button>
+        <button type="button" data-language-choice="zh">中文</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="games-hero container">
+      <div class="games-hero-copy">
+        <p class="eyebrow" data-game-i18n="kicker">Game History</p>
+        <h1 data-game-i18n="title">Games Played</h1>
+        <p class="games-lead" id="games-intro"></p>
+        <div class="hero-actions games-source-actions" id="games-source-actions"></div>
+        <p class="games-source-note" id="games-source-note"></p>
+      </div>
+      <div class="games-stats" id="games-stats"></div>
+    </section>
+
+    <section class="section container" id="games-featured-section" hidden>
+      <div class="section-heading two-col">
+        <div>
+          <p class="section-kicker" data-game-i18n="featuredKicker">Highlighted Play History</p>
+          <h2 data-game-i18n="featuredTitle">High-playtime & 100% games</h2>
+        </div>
+        <p data-game-i18n="featuredIntro">Games are highlighted automatically when they pass the playtime threshold or reach 100% achievements. You can also pin a game manually.</p>
+      </div>
+      <div class="game-featured-grid" id="game-featured-grid"></div>
+    </section>
+
+    <section class="section container" id="all-games-section">
+      <div class="section-heading two-col">
+        <div>
+          <p class="section-kicker" data-game-i18n="allKicker">Full Record</p>
+          <h2 data-game-i18n="allTitle">All listed games</h2>
+        </div>
+        <p data-game-i18n="allIntro">Search, filter, and sort a large game history without turning the page into hundreds of oversized cards.</p>
+      </div>
+
+      <div class="game-toolbar" id="game-toolbar">
+        <label class="game-control game-search-control">
+          <span data-game-i18n="searchLabel">Search</span>
+          <input id="game-search" type="search" autocomplete="off" data-game-placeholder="searchPlaceholder" placeholder="Search games" />
+        </label>
+        <label class="game-control">
+          <span data-game-i18n="statusLabel">Status</span>
+          <select id="game-status-filter"></select>
+        </label>
+        <label class="game-control">
+          <span data-game-i18n="platformLabel">Platform</span>
+          <select id="game-platform-filter"></select>
+        </label>
+        <label class="game-control">
+          <span data-game-i18n="sortLabel">Sort</span>
+          <select id="game-sort"></select>
+        </label>
+      </div>
+
+      <div class="game-list-head" aria-hidden="true">
+        <span data-game-i18n="colGame">Game</span>
+        <span data-game-i18n="colPlatform">Platform</span>
+        <span data-game-i18n="colTime">Playtime</span>
+        <span data-game-i18n="colStatus">Completion</span>
+        <span data-game-i18n="colAchievements">Achievements</span>
+      </div>
+      <div class="game-list" id="game-list"></div>
+      <div class="game-empty" id="game-empty" hidden></div>
+    </section>
+  </main>
+
+  <footer class="site-footer container">
+    <span>© <span id="year"></span> Rui Qi</span>
+    <a href="index.html#featured" data-game-i18n="backPortfolio">Back to Portfolio</a>
+  </footer>
+</body>
+</html>

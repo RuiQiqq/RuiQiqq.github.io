@@ -9,6 +9,7 @@ const LANGUAGE_KEY = "ruiqi-portfolio-language";
 const UI = {
   en: {
     navProjects: "Projects",
+    navGames: "Games Played",
     navResume: "Resume",
     navContact: "Contact",
     viewProjects: "View Projects",
@@ -29,6 +30,8 @@ const UI = {
     downloadPdf: "Download PDF",
     openResumePage: "Open Resume Page",
     resumeFallback: "<strong>Preview blank?</strong> Some browsers or networks may not render an embedded PDF reliably. Please use the Download PDF button to open the file directly.",
+    resumeWechatTitle: "WeChat browser: PDF preview disabled",
+    resumeWechatText: "To prevent WeChat from automatically downloading the resume when the page opens, the PDF is not loaded automatically here. Please use the Download PDF button when you want to open it.",
     resumeMissingTitle: "Resume PDF not uploaded yet",
     resumeMissingText: "The configured resume file could not be found. Please check the PDF path in the site content settings.",
     resumeUnavailable: "Resume Not Uploaded",
@@ -101,6 +104,7 @@ const UI = {
   },
   zh: {
     navProjects: "项目",
+    navGames: "游戏经历",
     navResume: "简历",
     navContact: "联系",
     viewProjects: "查看项目",
@@ -121,6 +125,8 @@ const UI = {
     downloadPdf: "下载中文 PDF",
     openResumePage: "打开简历页面",
     resumeFallback: "<strong>中国大陆访问提示：</strong>如果 PDF 预览为空白，可能是 GitHub Pages 的 PDF 内嵌资源在当前网络下加载不稳定。请直接点击“下载中文 PDF”打开文件。",
+    resumeWechatTitle: "微信内置浏览器：已关闭自动 PDF 预览",
+    resumeWechatText: "为避免微信打开网站时自动触发简历下载，微信内不会自动载入 PDF。需要查看时，请主动点击页面上的“下载中文 PDF”按钮。",
     resumeMissingTitle: "中文简历尚未上传",
     resumeMissingText: "当前配置的中文简历文件未找到，请检查网站内容设置中的 PDF 路径。",
     resumeUnavailable: "中文简历尚未上传",
@@ -615,6 +621,11 @@ function demoReelHtml(site) {
   return snapshotRows ? `<div class="snapshot-mini">${snapshotRows}</div>` : "";
 }
 
+function isWeChatBrowser() {
+  const ua = String(navigator.userAgent || "");
+  return /MicroMessenger|wxwork/i.test(ua);
+}
+
 const resumeAvailabilityCache = new Map();
 
 async function resumeFileExists(url) {
@@ -653,6 +664,20 @@ async function configureResumeAssets(url, frame, panel, buttons = []) {
   const available = await resumeFileExists(url);
   buttons.forEach(button => setResumeButtonState(button, url, available));
   if (!frame || !panel) return;
+
+  if (available && isWeChatBrowser()) {
+    // WeChat's built-in browser may treat an embedded PDF request as a file
+    // download. Never assign the PDF URL to an iframe in WeChat; only load
+    // it after the visitor explicitly taps a resume button.
+    frame.removeAttribute("src");
+    panel.innerHTML = `
+      <div class="resume-missing">
+        <strong>${escapeHtml(TEXT.resumeWechatTitle)}</strong>
+        <p>${escapeHtml(TEXT.resumeWechatText)}</p>
+      </div>`;
+    return;
+  }
+
   if (available) {
     frame.src = url;
     return;
