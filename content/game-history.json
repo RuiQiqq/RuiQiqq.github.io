@@ -2039,10 +2039,11 @@
       "name": "Stacklands",
       "nameZh": "堆叠大陆",
       "playtimeHours": 33.9,
+      "status": "completed",
       "achievementsUnlocked": 36,
       "achievementsTotal": 36,
       "perfect": true,
-      "featured": false,
+      "featured": true,
       "hidden": false,
       "steamAppId": 1948280
     },
@@ -2095,6 +2096,7 @@
     {
       "name": "BALL x PIT",
       "playtimeHours": 35.1,
+      "status": "completed",
       "achievementsUnlocked": 41,
       "achievementsTotal": 63,
       "perfect": false,
