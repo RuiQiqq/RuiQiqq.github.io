@@ -1,5 +1,5 @@
 (() => {
-  const VERSION = "37";
+  const VERSION = "38";
   const LANGUAGE_KEY = "ruiqi-portfolio-language";
   const $ = (selector) => document.querySelector(selector);
   const num = (value) => Number.isFinite(Number(value)) ? Number(value) : 0;

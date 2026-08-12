@@ -1,4 +1,4 @@
-# CMS CONFIG VERSION: GAME-HISTORY-V37
+# CMS CONFIG VERSION: GAME-HISTORY-V38
 media:
 - name: images
   label: 图片／GIF
@@ -314,12 +314,12 @@ components:
     - name: steamProfileUrl
       label: Steam 主页链接
       type: string
-      description: 填写公开 Steam 主页。保存后，GitHub Actions 会在首次导入时抓取一次并写入本地 JSON。
+      description: 填写公开 Steam 主页。保存后，GitHub Actions 会通过 Steam Web API 首次导入一次并写入本地 JSON；之后网站只读取本地数据。
     - name: steamImportRequested
       label: 重新同步一次 Steam
       type: boolean
       default: false
-      description: 平时不要勾。需要再次抓取 Steam 新游戏时勾选并保存；已有本地修改不会被覆盖。
+      description: 平时不要勾。需要主动更新 Steam 游戏库时才勾选并保存；已有本地时长、状态、全成就和备注不会被覆盖。
     - name: highlightHours
       label: 自动重点展示时长阈值（小时）
       type: number

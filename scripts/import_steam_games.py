@@ -1,23 +1,18 @@
 #!/usr/bin/env python3
-"""Import a public Steam library once, then keep a local editable snapshot.
+"""Import a Steam library through the official Steam Web API and keep a local editable snapshot.
 
-Data flow:
-- CMS writes only content/game-history.json.
-- This script fetches Steam only on first import, profile change, explicit refresh,
-  or workflow_dispatch force.
-- Imported entries are written to `steamGames` and become local data.
-- Existing local edits (hours, status, names, perfect, hidden, notes) are never
-  overwritten on later refreshes.
-- If an imported Steam entry is deleted in CMS, its App ID is recorded in
-  content/steam-import-state.json so later refreshes do not resurrect it.
-- `manualGames` is never touched.
-
-The importer first tries Steam Community's public XML games list. If that is
-unavailable and a STEAM_WEB_API_KEY repository secret exists, it falls back to
-Steam's official Web API GetOwnedGames endpoint.
+Key behavior:
+- Requires GitHub Actions secret: STEAM_WEB_API_KEY.
+- Uses ResolveVanityURL + GetOwnedGames; no Steam Community XML scraping.
+- Imports only titles with recorded playtime (> 0 minutes), because this page is a play-history record.
+- For newly imported games that expose community stats, it also attempts to read achievement counts.
+- Existing local edits are authoritative: hours/status/perfect/notes are never overwritten on refresh.
+- Deleted Steam entries are remembered in content/steam-import-state.json and stay deleted.
+- manualGames is never touched.
 """
 from __future__ import annotations
 
+import concurrent.futures
 import json
 import os
 import re
@@ -25,31 +20,45 @@ import sys
 import urllib.error
 import urllib.parse
 import urllib.request
-import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_PATH = ROOT / "content" / "game-history.json"
 STATE_PATH = ROOT / "content" / "steam-import-state.json"
-USER_AGENT = "RuiQi-Portfolio-SteamSnapshot/2.0"
+USER_AGENT = "RuiQi-Portfolio-SteamSnapshot/3.0"
+API_BASE = "https://api.steampowered.com"
 
 
 def now_iso() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat()
 
 
-def request_bytes(url: str, timeout: int = 35) -> bytes:
+def request_json(url: str, timeout: int = 30) -> dict:
     req = urllib.request.Request(
         url,
         headers={
             "User-Agent": USER_AGENT,
-            "Accept": "application/json, application/xml, text/xml, text/html;q=0.8, */*;q=0.5",
+            "Accept": "application/json",
             "Accept-Language": "en-US,en;q=0.8",
         },
     )
-    with urllib.request.urlopen(req, timeout=timeout) as response:
-        return response.read()
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as response:
+            payload = response.read()
+    except urllib.error.HTTPError as exc:
+        raise RuntimeError(f"Steam Web API returned HTTP {exc.code} for {urllib.parse.urlsplit(url).path}") from exc
+    except urllib.error.URLError as exc:
+        raise RuntimeError(f"Could not connect to Steam Web API: {exc.reason}") from exc
+
+    try:
+        value = json.loads(payload.decode("utf-8"))
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+        preview = payload[:160].decode("utf-8", "replace")
+        raise RuntimeError(f"Steam Web API did not return valid JSON: {preview}") from exc
+    if not isinstance(value, dict):
+        raise RuntimeError("Steam Web API returned an unexpected response shape.")
+    return value
 
 
 def normalize_profile_url(raw: str) -> str:
@@ -68,65 +77,24 @@ def normalize_profile_url(raw: str) -> str:
     return f"https://steamcommunity.com{path}/"
 
 
-def parse_hours(value: str | None) -> float:
-    if not value:
-        return 0.0
-    cleaned = str(value).replace(",", "").strip()
-    try:
-        return round(float(cleaned), 1)
-    except ValueError:
-        return 0.0
-
-
-def fetch_via_public_xml(profile_url: str) -> list[dict]:
-    # `tab=all` makes intent explicit; xml=1 returns the compact public library feed.
-    url = profile_url.rstrip("/") + "/games?tab=all&xml=1"
-    payload = request_bytes(url)
-    try:
-        root = ET.fromstring(payload)
-    except ET.ParseError as exc:
-        preview = payload[:180].decode("utf-8", "replace")
-        raise RuntimeError(f"Steam Community 未返回可解析 XML：{preview}") from exc
-
-    error_text = (root.findtext("error") or "").strip()
-    if error_text:
-        raise RuntimeError(error_text)
-
-    games: list[dict] = []
-    for node in root.findall(".//game"):
-        app_text = (node.findtext("appID") or "").strip()
-        name = (node.findtext("name") or "").strip()
-        if not app_text.isdigit() or not name:
-            continue
-        games.append(
-            {
-                "steamAppId": int(app_text),
-                "name": name,
-                "playtimeHours": parse_hours(node.findtext("hoursOnRecord")),
-            }
-        )
-    if not games:
-        raise RuntimeError("Steam Community 返回了空游戏库。请确认个人资料与“游戏详情 / Game details”均为公开。")
-    return games
-
-
 def steamid_from_profile(profile_url: str, api_key: str) -> str:
-    path = urllib.parse.urlsplit(profile_url).path.strip("/").split("/")
-    if len(path) >= 2 and path[0] == "profiles" and path[1].isdigit():
-        return path[1]
-    if len(path) >= 2 and path[0] == "id":
-        vanity = path[1]
-        qs = urllib.parse.urlencode({"key": api_key, "vanityurl": vanity})
-        payload = json.loads(request_bytes(f"https://api.steampowered.com/ISteamUser/ResolveVanityURL/v1/?{qs}"))
-        response = payload.get("response", {})
+    parts = urllib.parse.urlsplit(profile_url).path.strip("/").split("/")
+    if len(parts) >= 2 and parts[0].lower() == "profiles" and parts[1].isdigit():
+        return parts[1]
+    if len(parts) >= 2 and parts[0].lower() == "id":
+        vanity = parts[1]
+        qs = urllib.parse.urlencode({"key": api_key, "vanityurl": vanity, "url_type": 1})
+        payload = request_json(f"{API_BASE}/ISteamUser/ResolveVanityURL/v1/?{qs}")
+        response = payload.get("response") or {}
         steamid = str(response.get("steamid") or "")
         if response.get("success") != 1 or not steamid.isdigit():
-            raise RuntimeError("Steam Web API 无法解析该自定义主页 ID。")
+            message = str(response.get("message") or "Steam Web API 无法解析该自定义主页 ID。")
+            raise RuntimeError(message)
         return steamid
     raise RuntimeError("无法从 Steam 主页解析 SteamID。")
 
 
-def fetch_via_web_api(profile_url: str, api_key: str) -> list[dict]:
+def fetch_owned_games(profile_url: str, api_key: str) -> tuple[str, list[dict]]:
     steamid = steamid_from_profile(profile_url, api_key)
     qs = urllib.parse.urlencode(
         {
@@ -137,45 +105,83 @@ def fetch_via_web_api(profile_url: str, api_key: str) -> list[dict]:
             "format": "json",
         }
     )
-    payload = json.loads(request_bytes(f"https://api.steampowered.com/IPlayerService/GetOwnedGames/v1/?{qs}"))
-    raw_games = payload.get("response", {}).get("games", []) or []
-    games = []
+    payload = request_json(f"{API_BASE}/IPlayerService/GetOwnedGames/v1/?{qs}")
+    response = payload.get("response") or {}
+    raw_games = response.get("games") or []
+    if not isinstance(raw_games, list):
+        raw_games = []
+
+    games: list[dict] = []
     for item in raw_games:
+        if not isinstance(item, dict):
+            continue
         try:
             appid = int(item.get("appid"))
+            minutes = int(item.get("playtime_forever") or 0)
         except (TypeError, ValueError):
             continue
         name = str(item.get("name") or "").strip()
-        if not name:
+        # The portfolio is a record of games actually played, not every license in the account.
+        if not name or minutes <= 0:
             continue
         games.append(
             {
                 "steamAppId": appid,
                 "name": name,
-                "playtimeHours": round(float(item.get("playtime_forever") or 0) / 60.0, 1),
+                "playtimeHours": round(minutes / 60.0, 1),
+                "hasCommunityStats": bool(item.get("has_community_visible_stats")),
             }
         )
+
     if not games:
-        raise RuntimeError("Steam Web API 没有返回游戏。请确认 Game details 为 Public。")
-    return games
+        raise RuntimeError(
+            "Steam Web API 没有返回任何有游玩时长的游戏。请确认 Steam 的 Game details / 游戏详情为 Public。"
+        )
+    return steamid, games
 
 
-def fetch_games(profile_url: str) -> tuple[list[dict], str]:
-    xml_error = None
+def fetch_achievement_summary(steamid: str, appid: int, api_key: str) -> tuple[int, int] | None:
+    qs = urllib.parse.urlencode({"key": api_key, "steamid": steamid, "appid": appid, "l": "english"})
     try:
-        return fetch_via_public_xml(profile_url), "Steam Community XML"
-    except Exception as exc:  # fallback is intentional
-        xml_error = exc
+        payload = request_json(f"{API_BASE}/ISteamUserStats/GetPlayerAchievements/v1/?{qs}", timeout=15)
+    except Exception:
+        return None
+    playerstats = payload.get("playerstats") or {}
+    if playerstats.get("success") is not True:
+        return None
+    achievements = playerstats.get("achievements") or []
+    if not isinstance(achievements, list) or not achievements:
+        return None
+    total = len(achievements)
+    unlocked = sum(1 for achievement in achievements if isinstance(achievement, dict) and int(achievement.get("achieved") or 0) == 1)
+    return unlocked, total
 
-    api_key = os.environ.get("STEAM_WEB_API_KEY", "").strip()
-    if api_key:
-        try:
-            return fetch_via_web_api(profile_url, api_key), "Steam Web API"
-        except Exception as api_exc:
-            raise RuntimeError(f"公开 XML 导入失败：{xml_error}；Web API 也失败：{api_exc}") from api_exc
-    raise RuntimeError(
-        f"公开 Steam 游戏列表导入失败：{xml_error}。请确认 Steam 个人资料和 Game details 都是 Public。"
-    )
+
+def enrich_new_games_with_achievements(games: list[dict], steamid: str, api_key: str) -> int:
+    candidates = [game for game in games if game.get("hasCommunityStats")]
+    if not candidates:
+        return 0
+
+    def worker(game: dict):
+        return game, fetch_achievement_summary(steamid, int(game["steamAppId"]), api_key)
+
+    enriched = 0
+    # A small pool keeps first import practical without flooding the API.
+    with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
+        futures = [executor.submit(worker, game) for game in candidates]
+        for future in concurrent.futures.as_completed(futures):
+            try:
+                game, summary = future.result()
+            except Exception:
+                continue
+            if not summary:
+                continue
+            unlocked, total = summary
+            game["achievementsUnlocked"] = unlocked
+            game["achievementsTotal"] = total
+            game["perfect"] = total > 0 and unlocked >= total
+            enriched += 1
+    return enriched
 
 
 def load_json(path: Path, fallback: dict) -> dict:
@@ -185,6 +191,10 @@ def load_json(path: Path, fallback: dict) -> dict:
     if not isinstance(value, dict):
         raise ValueError(f"{path.name} 顶层必须是对象。")
     return value
+
+
+def write_json(path: Path, value: dict) -> None:
+    path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
 def int_or_none(value):
@@ -198,7 +208,7 @@ def main() -> int:
     data = load_json(DATA_PATH, {"settings": {}, "manualGames": [], "steamGames": []})
     settings = data.setdefault("settings", {})
     data.setdefault("manualGames", [])
-    steam_games_local = [g for g in data.setdefault("steamGames", []) if isinstance(g, dict)]
+    steam_games_local = [game for game in data.setdefault("steamGames", []) if isinstance(game, dict)]
 
     raw_profile = settings.get("steamProfileUrl", "")
     if not str(raw_profile).strip():
@@ -210,17 +220,28 @@ def main() -> int:
         print(f"::error::{exc}")
         return 1
 
+    api_key = os.environ.get("STEAM_WEB_API_KEY", "").strip()
+    if not api_key:
+        print("::error::未找到 GitHub Actions Secret：STEAM_WEB_API_KEY。请在仓库 Settings → Secrets and variables → Actions 中添加。")
+        return 1
+
     state = load_json(
         STATE_PATH,
-        {"profileUrl": "", "lastSteamAppIds": [], "excludedSteamAppIds": [], "importedAt": ""},
+        {
+            "profileUrl": "",
+            "steamId": "",
+            "lastSteamAppIds": [],
+            "excludedSteamAppIds": [],
+            "importedAt": "",
+        },
     )
     previous_profile = str(state.get("profileUrl") or "")
-    last_ids = {int(x) for x in state.get("lastSteamAppIds", []) if str(x).isdigit()}
-    excluded = {int(x) for x in state.get("excludedSteamAppIds", []) if str(x).isdigit()}
+    last_ids = {int(value) for value in state.get("lastSteamAppIds", []) if str(value).isdigit()}
+    excluded = {int(value) for value in state.get("excludedSteamAppIds", []) if str(value).isdigit()}
     current_by_id = {
-        int_or_none(g.get("steamAppId")): g
-        for g in steam_games_local
-        if int_or_none(g.get("steamAppId")) is not None
+        int_or_none(game.get("steamAppId")): game
+        for game in steam_games_local
+        if int_or_none(game.get("steamAppId")) is not None
     }
 
     profile_changed = bool(previous_profile and previous_profile != profile_url)
@@ -228,39 +249,51 @@ def main() -> int:
         last_ids.clear()
         excluded.clear()
     elif previous_profile == profile_url and last_ids:
-        # Entries missing from the local editable list were intentionally deleted.
+        # If an imported entry is missing from the editable CMS list, the user deleted it.
         excluded.update(last_ids - set(current_by_id))
 
     requested = bool(settings.get("steamImportRequested"))
     force = os.environ.get("FORCE_STEAM_IMPORT", "").strip().lower() in {"1", "true", "yes"}
     first_import = not previous_profile or profile_changed or not last_ids
+
     if not (first_import or requested or force):
-        print("已有 Steam 本地快照；普通 CMS 保存不会重新抓取。")
+        # Persist deletion tombstones even on an ordinary CMS save, without touching Steam.
+        previous_excluded = {int(value) for value in state.get("excludedSteamAppIds", []) if str(value).isdigit()}
+        if excluded != previous_excluded:
+            state["schemaVersion"] = "STEAM-IMPORT-STATE-V38"
+            state["excludedSteamAppIds"] = sorted(excluded)
+            write_json(STATE_PATH, state)
+            print(f"记录了 {len(excluded)} 个已删除 Steam 条目；未访问 Steam。")
+        else:
+            print("已有 Steam 本地快照；普通 CMS 保存不会重新访问 Steam。")
         return 0
 
     try:
-        fetched, source_name = fetch_games(profile_url)
+        steamid, fetched = fetch_owned_games(profile_url, api_key)
     except Exception as exc:
         print(f"::error::{exc}")
         return 1
 
+    fetched_ids = [int(game["steamAppId"]) for game in fetched]
+    new_candidates = [game for game in fetched if int(game["steamAppId"]) not in excluded and int(game["steamAppId"]) not in current_by_id]
+    achievement_enriched = enrich_new_games_with_achievements(new_candidates, steamid, api_key)
+
     added = 0
-    fetched_ids: list[int] = []
-    for steam in fetched:
+    for steam in new_candidates:
         appid = int(steam["steamAppId"])
-        fetched_ids.append(appid)
-        if appid in excluded or appid in current_by_id:
-            continue
         item = {
             "name": steam["name"],
             "playtimeHours": steam["playtimeHours"],
             "platforms": ["Steam"],
             "status": "",
-            "perfect": False,
+            "perfect": bool(steam.get("perfect", False)),
             "featured": False,
             "hidden": False,
             "steamAppId": appid,
         }
+        if steam.get("achievementsTotal"):
+            item["achievementsUnlocked"] = int(steam.get("achievementsUnlocked") or 0)
+            item["achievementsTotal"] = int(steam["achievementsTotal"])
         steam_games_local.append(item)
         current_by_id[appid] = item
         added += 1
@@ -268,20 +301,25 @@ def main() -> int:
     settings["steamProfileUrl"] = profile_url
     settings["steamImportRequested"] = False
     data["steamGames"] = steam_games_local
-    data["schemaVersion"] = "GAME-HISTORY-V37"
-    DATA_PATH.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    data["schemaVersion"] = "GAME-HISTORY-V38"
+    write_json(DATA_PATH, data)
 
     state = {
-        "schemaVersion": "STEAM-IMPORT-STATE-V37",
+        "schemaVersion": "STEAM-IMPORT-STATE-V38",
         "profileUrl": profile_url,
+        "steamId": steamid,
         "lastSteamAppIds": sorted(set(fetched_ids)),
         "excludedSteamAppIds": sorted(excluded),
         "importedAt": now_iso(),
-        "source": source_name,
-        "fetchedCount": len(fetched_ids),
+        "source": "Steam Web API",
+        "fetchedPlayedCount": len(fetched_ids),
+        "achievementEnrichedNewGames": achievement_enriched,
     }
-    STATE_PATH.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"Steam 快照完成：来源 {source_name}；读取 {len(fetched_ids)} 条；新增 {added} 条；本地编辑未覆盖。")
+    write_json(STATE_PATH, state)
+    print(
+        f"Steam 本地快照完成：读取 {len(fetched_ids)} 款有游玩时长的游戏；新增 {added} 款；"
+        f"自动读取 {achievement_enriched} 款新游戏的成就信息；已有本地编辑未覆盖。"
+    )
     return 0
 
 

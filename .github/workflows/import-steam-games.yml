@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
     inputs:
       force:
-        description: "Force a one-time Steam refresh (keeps local edits)"
+        description: "Force one Steam refresh (keeps local edits)"
         required: false
         default: true
         type: boolean
@@ -21,45 +21,25 @@ jobs:
   import:
     if: github.event_name == 'workflow_dispatch' || github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.12"
 
-      - name: Remove obsolete legacy helper files
-        shell: bash
-        run: |
-          rm -rf PREVIEW
-          rm -f \
-            EDIT-ME-Chinese.js \
-            EDIT-ME-English.js \
-            GAME-HISTORY-IMPORT-说明.txt \
-            'PAGES-CMS-CONFIG-#U53ef#U590d#U5236.txt' \
-            'PAGES-CMS-CONFIG-可复制.txt' \
-            assets/downloads/PUT-DOWNLOADABLE-FILES-HERE.txt \
-            assets/images/PUT-PROJECT-IMAGES-HERE.txt \
-            assets/images/PUT_PROJECT_IMAGES_HERE.txt \
-            'assets/resume/#U8bf7#U628a#U4e2d#U6587#U7b80#U5386#U653e#U5728#U8fd9#U91cc.txt' \
-            assets/resume/PUT-ENGLISH-RESUME-HERE.txt \
-            assets/resume/PUT-YOUR-RESUME-PDF-HERE.txt \
-            assets/resume/PUT_RESUME_PDF_HERE.txt \
-            assets/videos/PUT-LOCAL-VIDEOS-HERE.txt
-
-      - name: Import public Steam library to local JSON snapshot
-        id: steam_import
-        continue-on-error: true
+      - name: Import Steam library to local JSON snapshot
         env:
           FORCE_STEAM_IMPORT: ${{ github.event_name == 'workflow_dispatch' && inputs.force && 'true' || 'false' }}
           STEAM_WEB_API_KEY: ${{ secrets.STEAM_WEB_API_KEY }}
         run: python scripts/import_steam_games.py
 
-      - name: Commit cleanup and imported snapshot
+      - name: Commit local snapshot changes
         shell: bash
         run: |
           if git diff --quiet; then
@@ -68,12 +48,6 @@ jobs:
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git commit -m "Update game history snapshot and clean legacy helpers"
+          git add content/game-history.json content/steam-import-state.json
+          git commit -m "Update local Steam game history snapshot"
           git push
-
-      - name: Report Steam import failure
-        if: steps.steam_import.outcome == 'failure'
-        run: |
-          echo "Steam import failed. Repository cleanup/config updates were still preserved."
-          exit 1
