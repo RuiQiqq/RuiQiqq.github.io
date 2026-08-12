@@ -27,11 +27,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DATA_PATH = ROOT / "content" / "game-history.json"
 STATE_PATH = ROOT / "content" / "steam-import-state.json"
+NAME_MAP_PATH = ROOT / "content" / "game-name-map.json"
 USER_AGENT = "RuiQi-Portfolio-SteamSnapshot/4.0"
 API_BASE = "https://api.steampowered.com"
 STORE_APPDETAILS = "https://store.steampowered.com/api/appdetails"
 MIN_IMPORT_HOURS = 3.0
-ZH_BACKFILL_VERSION = "ZH-NAMES-V40"
+ZH_BACKFILL_VERSION = "ZH-NAMES-V44"
 
 # Fallbacks for titles whose Steam store name remains English even in Simplified Chinese.
 KNOWN_ZH_NAMES = {
@@ -56,6 +57,28 @@ KNOWN_ZH_NAMES = {
     "Stardew Valley": "星露谷物语",
     "Terraria": "泰拉瑞亚",
 }
+
+
+def load_shared_name_map() -> dict[str, str]:
+    try:
+        value = json.loads(NAME_MAP_PATH.read_text(encoding="utf-8"))
+        names = value.get("names") if isinstance(value, dict) else {}
+        if not isinstance(names, dict):
+            return {}
+        result = {}
+        for key, item in names.items():
+            if isinstance(item, dict):
+                zh = str(item.get("zh") or "").strip()
+            else:
+                zh = ""
+            if zh:
+                result[str(key).strip()] = zh
+        return result
+    except Exception:
+        return {}
+
+
+SHARED_ZH_NAMES = load_shared_name_map()
 
 
 
@@ -264,6 +287,8 @@ def fetch_store_zh_names(appids: list[int]) -> dict[int, str]:
 
 def best_zh_name(english_name: str, store_name: str = "") -> str:
     english_name = str(english_name or "").strip()
+    if english_name in SHARED_ZH_NAMES:
+        return SHARED_ZH_NAMES[english_name]
     if english_name in KNOWN_ZH_NAMES:
         return KNOWN_ZH_NAMES[english_name]
     store_name = str(store_name or "").strip()

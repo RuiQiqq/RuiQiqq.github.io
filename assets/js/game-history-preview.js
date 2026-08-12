@@ -1,5 +1,5 @@
 (() => {
-  const VERSION = "43";
+  const VERSION = "44";
   const MIN_VISIBLE_HOURS = 3;
   const LANGUAGE_KEY = "ruiqi-portfolio-language";
   const $ = (selector) => document.querySelector(selector);
@@ -25,30 +25,37 @@
 
   const lang = language();
   const T = lang === "zh" ? {
-    kicker: "游戏经历 · STEAM", title: "Steam 游戏记录",
-    intro: "首页这里只展示我的 Steam 游戏记录；完整的主机、手机与其他平台游戏统一放在全平台游戏经历中。",
-    viewMain: "查看全平台完整游戏经历 →", viewSub: "Steam · 主机 · 手机 · 其他平台",
-    hours: "Steam 小时", perfect: "全成就", empty: "Steam 游戏导入后，这里会自动显示代表性游戏。",
-    previewTitle: "STEAM · 游戏预览", previewNote: "首页仅 Steam · 全平台记录请点击左侧按钮",
-    steamOnlyNote: "本区统计与时长仅来自 Steam；其他平台不计入这里。"
+    kicker: "游戏经历", title: "游戏经历",
+    intro: "右侧展示我手动标记或高投入、全成就的重点游戏，包含 Steam、主机、手机与其他平台。点击下方按钮可查看完整全平台记录。",
+    viewMain: "查看全平台完整游戏经历 →", viewSub: "Steam · Switch · PlayStation · 手机 · 其他平台",
+    hours: "Steam 小时", perfect: "Steam 全成就", empty: "添加或导入游戏后，这里会自动显示重点游戏。",
+    previewTitle: "重点游戏", previewNote: "手动重点优先 · 其余按时长 / 全成就自动补足",
+    steamOnlyNote: "下方数字仅统计 Steam；右侧重点游戏可包含所有平台。"
   } : {
-    kicker: "Game History · STEAM", title: "Steam Play History",
-    intro: "This homepage section shows Steam only. Console, mobile, and other platform titles are collected on the full all-platform game history page.",
-    viewMain: "View Full All-Platform Game History →", viewSub: "Steam · Console · Mobile · Other Platforms",
-    hours: "Steam hours", perfect: "100%", empty: "Representative Steam games will appear here automatically after import.",
-    previewTitle: "STEAM · Game Preview", previewNote: "Steam only · use the left button for the complete all-platform record",
-    steamOnlyNote: "Stats and playtime in this section are Steam-only; other platforms are excluded."
+    kicker: "Game History", title: "Game History",
+    intro: "Featured games on the right can come from Steam, console, mobile, or other platforms. Use the button below for the complete all-platform record.",
+    viewMain: "View Full All-Platform Game History →", viewSub: "Steam · Switch · PlayStation · Mobile · Other Platforms",
+    hours: "Steam hours", perfect: "Steam perfect games", empty: "Featured games will appear here after you add or import them.",
+    previewTitle: "Featured Games", previewNote: "Pinned first · then high playtime / completion",
+    steamOnlyNote: "The numbers below are Steam-only; featured games on the right may come from any platform."
   };
 
   function normalize(data, nameMap) {
     const manual = Array.isArray(data.manualGames) ? data.manualGames : [];
     const steam = Array.isArray(data.steamGames) ? data.steamGames : (Array.isArray(data.games) ? data.games : []);
+    const withNames = (game, source, key) => {
+      const mapped = nameMap[text(game.name)] || {};
+      return {
+        ...game,
+        nameEn: text(game.nameEn) || text(mapped.en),
+        nameZh: text(game.nameZh) || text(mapped.zh),
+        _source: source,
+        _key: key
+      };
+    };
     return [
-      ...manual.map((game, index) => {
-        const mapped = nameMap[text(game.name)] || {};
-        return { ...game, nameEn: text(game.nameEn) || text(mapped.en), nameZh: text(game.nameZh) || text(mapped.zh), _source: "manual", _key: `m-${index}` };
-      }),
-      ...steam.map((game, index) => ({ ...game, _source: "steam", _key: `s-${game.steamAppId ?? index}` }))
+      ...manual.map((game, index) => withNames(game, "manual", `m-${index}`)),
+      ...steam.map((game, index) => withNames(game, "steam", `s-${game.steamAppId ?? index}`))
     ].filter(game => game && text(game.name) && !game.hidden && num(game.playtimeHours) >= MIN_VISIBLE_HOURS);
   }
 
@@ -62,6 +69,26 @@
     if (lang === "zh" && text(game.nameZh)) return text(game.nameZh);
     if (lang === "en" && text(game.nameEn)) return text(game.nameEn);
     return text(game.name) || text(game.nameZh) || "Untitled";
+  }
+
+  function platformLabel(game) {
+    if (game._source === "steam") return "Steam";
+    const platform = text(game.platform);
+    if (!platform) return lang === "zh" ? "其他平台" : "Other";
+    if (lang === "zh" && platform === "Mobile") return "手机";
+    if (lang === "zh" && platform === "PC / Other") return "PC / 其他";
+    return platform;
+  }
+
+  function statusLabel(game) {
+    const labels = lang === "zh" ? {
+      completed: "通关", multiple: "多周目通关", main_complete: "主线完成",
+      playing: "持续游玩", unfinished: "未通关", sampled: "试玩"
+    } : {
+      completed: "Completed", multiple: "Multiple clears", main_complete: "Main story complete",
+      playing: "Ongoing", unfinished: "Not completed", sampled: "Sampled"
+    };
+    return labels[text(game.status)] || "";
   }
 
   function formatHours(value) {
@@ -114,7 +141,7 @@
       $("#home-game-preview-stats").innerHTML = steamGames.length ? `
         <span><strong>${Math.round(totalHours).toLocaleString()}</strong> ${T.hours}</span>
         ${perfectCount ? `<span><strong>${perfectCount}</strong> ${T.perfect}</span>` : ""}` : "";
-      const selected = steamGames
+      const selected = games
         .slice()
         .sort((a, b) => score(b, threshold) - score(a, threshold) || currentName(a).localeCompare(currentName(b)))
         .slice(0, limit);
@@ -126,7 +153,8 @@
       }
       list.innerHTML = selected.map(game => {
         const perfectLabel = perfect(game) ? (lang === "zh" ? "全成就" : "100%") : "";
-        const meta = [formatHours(game.playtimeHours), perfectLabel].filter(Boolean).join(" · ");
+        const status = statusLabel(game);
+        const meta = [platformLabel(game), formatHours(game.playtimeHours), perfectLabel || status].filter(Boolean).join(" · ");
         return `<article class="home-game-mini-card${perfect(game) ? " is-perfect" : ""}" title="${escapeHtml(currentName(game))}">
           <h3>${escapeHtml(currentName(game))}</h3>
           <strong>${escapeHtml(meta)}</strong>
