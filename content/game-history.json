@@ -14,67 +14,83 @@
   "manualGames": [
     {
       "name": "Minecraft",
-      "playtimeHours": 8000
+      "playtimeHours": 8000,
+      "hideFromHome": false
     },
     {
       "name": "崩坏2",
-      "playtimeHours": 300
+      "playtimeHours": 300,
+      "hideFromHome": false
     },
     {
       "name": "崩坏3",
-      "playtimeHours": 500
+      "playtimeHours": 500,
+      "hideFromHome": false
     },
     {
       "name": "原神",
-      "playtimeHours": 100
+      "playtimeHours": 100,
+      "hideFromHome": false
     },
     {
       "name": "炉石传说",
-      "playtimeHours": 1500
+      "playtimeHours": 1500,
+      "hideFromHome": false
     },
     {
       "name": "王者荣耀",
-      "playtimeHours": 1000
+      "playtimeHours": 1000,
+      "hideFromHome": false
     },
     {
       "name": "PUBG mobile",
-      "playtimeHours": 500
+      "playtimeHours": 500,
+      "hideFromHome": false
     },
     {
       "name": "使命召唤 16",
-      "playtimeHours": 300
+      "playtimeHours": 300,
+      "hideFromHome": false
     },
     {
       "name": "赛尔号",
-      "playtimeHours": 500
+      "playtimeHours": 500,
+      "hideFromHome": false
     },
     {
       "name": "星际公民",
-      "playtimeHours": 50
+      "playtimeHours": 50,
+      "hideFromHome": false
     },
     {
       "name": "生存战争",
-      "playtimeHours": 200
+      "playtimeHours": 200,
+      "hideFromHome": false
     },
     {
       "name": "Roblox",
-      "playtimeHours": 200
+      "playtimeHours": 200,
+      "hideFromHome": false
     },
     {
       "name": "元气骑士",
-      "playtimeHours": 80
+      "playtimeHours": 80,
+      "hideFromHome": false
     },
     {
       "name": "永劫无间",
-      "playtimeHours": 60
+      "playtimeHours": 60,
+      "hideFromHome": false
     },
     {
       "name": "英雄联盟",
-      "playtimeHours": 50
+      "playtimeHours": 50,
+      "hideFromHome": false
     },
     {
       "name": "愤怒的小鸟-全关卡三星完美通关",
-      "playtimeHours": 300
+      "playtimeHours": 300,
+      "hideFromHome": false
     }
   ],
   "steamGames": [
@@ -86,6 +102,7 @@
       "achievementsTotal": 1,
       "perfect": true,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 730
     },
@@ -97,6 +114,7 @@
       "achievementsTotal": 21,
       "perfect": true,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 3590
     },
@@ -107,6 +125,7 @@
       "achievementsTotal": 29,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 4000
     },
@@ -117,6 +136,7 @@
       "achievementsTotal": 8,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 22000
     },
@@ -127,6 +147,7 @@
       "achievementsTotal": 50,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 50300
     },
@@ -138,6 +159,7 @@
       "achievementsTotal": 137,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 105600
     },
@@ -147,6 +169,7 @@
       "playtimeHours": 14.7,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 108600
     },
@@ -157,6 +180,7 @@
       "achievementsTotal": 12,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 204360
     },
@@ -167,6 +191,7 @@
       "achievementsTotal": 51,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 211820
     },
@@ -176,6 +201,7 @@
       "playtimeHours": 1.7,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 220200
     },
@@ -186,6 +212,7 @@
       "achievementsTotal": 123,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 222730
     },
@@ -196,6 +223,7 @@
       "achievementsTotal": 29,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 223850
     },
@@ -206,6 +234,7 @@
       "achievementsTotal": 106,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 227300
     },
@@ -216,6 +245,7 @@
       "achievementsTotal": 193,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 230410
     },
@@ -226,6 +256,7 @@
       "achievementsTotal": 18,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 233450
     },
@@ -236,6 +267,7 @@
       "achievementsTotal": 91,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 236390
     },
@@ -244,6 +276,7 @@
       "playtimeHours": 0.4,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 238070
     },
@@ -254,6 +287,7 @@
       "achievementsTotal": 78,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 239140
     },
@@ -264,6 +298,7 @@
       "achievementsTotal": 45,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 242760
     },
@@ -274,6 +309,7 @@
       "achievementsTotal": 61,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 247080
     },
@@ -284,6 +320,7 @@
       "achievementsTotal": 641,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 250900
     },
@@ -294,6 +331,7 @@
       "achievementsTotal": 43,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 251570
     },
@@ -304,6 +342,7 @@
       "achievementsTotal": 56,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 259810
     },
@@ -315,6 +354,7 @@
       "achievementsTotal": 17,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 264710
     },
@@ -325,6 +365,7 @@
       "achievementsTotal": 127,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 265930
     },
@@ -335,6 +376,7 @@
       "achievementsTotal": 42,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 268910
     },
@@ -345,6 +387,7 @@
       "achievementsTotal": 77,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 271590
     },
@@ -355,6 +398,7 @@
       "achievementsTotal": 15,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 274520
     },
@@ -365,6 +409,7 @@
       "achievementsTotal": 27,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 275850
     },
@@ -375,6 +420,7 @@
       "achievementsTotal": 59,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 282070
     },
@@ -385,6 +431,7 @@
       "achievementsTotal": 359,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 282800
     },
@@ -395,6 +442,7 @@
       "achievementsTotal": 37,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 283640
     },
@@ -405,6 +453,7 @@
       "achievementsTotal": 26,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 286160
     },
@@ -415,6 +464,7 @@
       "achievementsTotal": 49,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 286690
     },
@@ -426,6 +476,7 @@
       "achievementsTotal": 320,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 289070
     },
@@ -436,6 +487,7 @@
       "achievementsTotal": 65,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 291550
     },
@@ -447,6 +499,7 @@
       "achievementsTotal": 78,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 292030
     },
@@ -456,6 +509,7 @@
       "playtimeHours": 0.8,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 294100
     },
@@ -466,6 +520,7 @@
       "achievementsTotal": 95,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 304930
     },
@@ -476,6 +531,7 @@
       "achievementsTotal": 87,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 305620
     },
@@ -486,6 +542,7 @@
       "achievementsTotal": 47,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 312520
     },
@@ -496,6 +553,7 @@
       "achievementsTotal": 31,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 313340
     },
@@ -505,6 +563,7 @@
       "playtimeHours": 52.2,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 322330
     },
@@ -515,6 +574,7 @@
       "achievementsTotal": 40,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 332950
     },
@@ -525,6 +585,7 @@
       "achievementsTotal": 38,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 335300
     },
@@ -535,6 +596,7 @@
       "achievementsTotal": 54,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 346010
     },
@@ -545,6 +607,7 @@
       "achievementsTotal": 48,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 359550
     },
@@ -553,6 +616,7 @@
       "playtimeHours": 1.9,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 365670
     },
@@ -563,6 +627,7 @@
       "achievementsTotal": 22,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 367450
     },
@@ -574,6 +639,7 @@
       "achievementsTotal": 63,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 367520
     },
@@ -585,6 +651,7 @@
       "achievementsTotal": 43,
       "perfect": true,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 374320
     },
@@ -593,6 +660,7 @@
       "playtimeHours": 0.7,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 391540
     },
@@ -603,6 +671,7 @@
       "achievementsTotal": 293,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 394360
     },
@@ -614,6 +683,7 @@
       "achievementsTotal": 49,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 413150
     },
@@ -624,6 +694,7 @@
       "achievementsTotal": 58,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 418370
     },
@@ -634,6 +705,7 @@
       "achievementsTotal": 29,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 421040
     },
@@ -644,6 +716,7 @@
       "achievementsTotal": 22,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 424840
     },
@@ -652,6 +725,7 @@
       "playtimeHours": 35.9,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 431730
     },
@@ -662,6 +736,7 @@
       "achievementsTotal": 57,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 433340
     },
@@ -672,6 +747,7 @@
       "achievementsTotal": 12,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 435790
     },
@@ -682,6 +758,7 @@
       "achievementsTotal": 29,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 437920
     },
@@ -692,6 +769,7 @@
       "achievementsTotal": 18,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 441380
     },
@@ -702,6 +780,7 @@
       "achievementsTotal": 51,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 457140
     },
@@ -712,6 +791,7 @@
       "achievementsTotal": 41,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 460920
     },
@@ -722,6 +802,7 @@
       "achievementsTotal": 57,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 460930
     },
@@ -732,6 +813,7 @@
       "achievementsTotal": 42,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 465760
     },
@@ -742,6 +824,7 @@
       "achievementsTotal": 12,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 470220
     },
@@ -752,6 +835,7 @@
       "achievementsTotal": 151,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 477160
     },
@@ -762,6 +846,7 @@
       "achievementsTotal": 32,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 493340
     },
@@ -773,6 +858,7 @@
       "achievementsTotal": 32,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 504230
     },
@@ -784,6 +870,7 @@
       "achievementsTotal": 64,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 508440
     },
@@ -794,6 +881,7 @@
       "achievementsTotal": 26,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 552500
     },
@@ -804,6 +892,7 @@
       "achievementsTotal": 41,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 559650
     },
@@ -815,6 +904,7 @@
       "achievementsTotal": 41,
       "perfect": true,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 570940
     },
@@ -825,6 +915,7 @@
       "achievementsTotal": 92,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 575550
     },
@@ -835,6 +926,7 @@
       "achievementsTotal": 26,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 576130
     },
@@ -845,6 +937,7 @@
       "achievementsTotal": 37,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 578080
     },
@@ -857,6 +950,7 @@
       "achievementsTotal": 100,
       "perfect": false,
       "featured": true,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 582010
     },
@@ -868,6 +962,7 @@
       "achievementsTotal": 121,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 588650
     },
@@ -878,6 +973,7 @@
       "achievementsTotal": 125,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 599140
     },
@@ -888,6 +984,7 @@
       "achievementsTotal": 55,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 601150
     },
@@ -898,6 +995,7 @@
       "achievementsTotal": 76,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 602960
     },
@@ -908,6 +1006,7 @@
       "achievementsTotal": 67,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 606150
     },
@@ -918,6 +1017,7 @@
       "achievementsTotal": 91,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 611790
     },
@@ -928,6 +1028,7 @@
       "achievementsTotal": 96,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 613100
     },
@@ -938,6 +1039,7 @@
       "achievementsTotal": 109,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 618140
     },
@@ -948,6 +1050,7 @@
       "achievementsTotal": 46,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 635730
     },
@@ -958,6 +1061,7 @@
       "achievementsTotal": 14,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 638230
     },
@@ -968,6 +1072,7 @@
       "achievementsTotal": 58,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 641990
     },
@@ -978,6 +1083,7 @@
       "achievementsTotal": 114,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 644560
     },
@@ -988,6 +1094,7 @@
       "achievementsTotal": 44,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 646270
     },
@@ -999,6 +1106,7 @@
       "achievementsTotal": 46,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 646570
     },
@@ -1009,6 +1117,7 @@
       "achievementsTotal": 16,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 653530
     },
@@ -1019,6 +1128,7 @@
       "achievementsTotal": 72,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 657200
     },
@@ -1029,6 +1139,7 @@
       "achievementsTotal": 91,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 666140
     },
@@ -1039,6 +1150,7 @@
       "achievementsTotal": 56,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 673950
     },
@@ -1049,6 +1161,7 @@
       "achievementsTotal": 28,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 674940
     },
@@ -1059,6 +1172,7 @@
       "achievementsTotal": 43,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 678960
     },
@@ -1069,6 +1183,7 @@
       "achievementsTotal": 195,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 686810
     },
@@ -1079,6 +1194,7 @@
       "achievementsTotal": 32,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 698540
     },
@@ -1089,6 +1205,7 @@
       "achievementsTotal": 46,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 701160
     },
@@ -1099,6 +1216,7 @@
       "achievementsTotal": 33,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 704850
     },
@@ -1109,6 +1227,7 @@
       "achievementsTotal": 100,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 714010
     },
@@ -1119,6 +1238,7 @@
       "achievementsTotal": 83,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 718670
     },
@@ -1129,6 +1249,7 @@
       "achievementsTotal": 103,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 751780
     },
@@ -1139,6 +1260,7 @@
       "achievementsTotal": 31,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 753640
     },
@@ -1149,6 +1271,7 @@
       "achievementsTotal": 70,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 758190
     },
@@ -1159,6 +1282,7 @@
       "achievementsTotal": 8,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 761700
     },
@@ -1169,6 +1293,7 @@
       "achievementsTotal": 39,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 774171
     },
@@ -1179,6 +1304,7 @@
       "achievementsTotal": 45,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 774361
     },
@@ -1189,6 +1315,7 @@
       "achievementsTotal": 78,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 774861
     },
@@ -1199,6 +1326,7 @@
       "achievementsTotal": 35,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 788100
     },
@@ -1209,6 +1337,7 @@
       "achievementsTotal": 93,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 812140
     },
@@ -1220,6 +1349,7 @@
       "achievementsTotal": 34,
       "perfect": true,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 814380
     },
@@ -1230,6 +1360,7 @@
       "achievementsTotal": 68,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 815370
     },
@@ -1238,6 +1369,7 @@
       "playtimeHours": 2.6,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 823130
     },
@@ -1248,6 +1380,7 @@
       "achievementsTotal": 25,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 837470
     },
@@ -1258,6 +1391,7 @@
       "achievementsTotal": 64,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 850190
     },
@@ -1268,6 +1402,7 @@
       "achievementsTotal": 37,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 851890
     },
@@ -1278,6 +1413,7 @@
       "achievementsTotal": 31,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 880940
     },
@@ -1288,6 +1424,7 @@
       "achievementsTotal": 14,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 881100
     },
@@ -1298,6 +1435,7 @@
       "achievementsTotal": 7,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 924140
     },
@@ -1308,6 +1446,7 @@
       "achievementsTotal": 93,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 924970
     },
@@ -1318,6 +1457,7 @@
       "achievementsTotal": 27,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 937170
     },
@@ -1328,6 +1468,7 @@
       "achievementsTotal": 12,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 942970
     },
@@ -1336,6 +1477,7 @@
       "playtimeHours": 3.1,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 958260
     },
@@ -1346,6 +1488,7 @@
       "achievementsTotal": 39,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 972660
     },
@@ -1356,6 +1499,7 @@
       "achievementsTotal": 60,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 992300
     },
@@ -1366,6 +1510,7 @@
       "achievementsTotal": 60,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1012880
     },
@@ -1376,6 +1521,7 @@
       "achievementsTotal": 53,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1016920
     },
@@ -1384,6 +1530,7 @@
       "playtimeHours": 4,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1021770
     },
@@ -1394,6 +1541,7 @@
       "achievementsTotal": 37,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1057090
     },
@@ -1404,6 +1552,7 @@
       "achievementsTotal": 11,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1082430
     },
@@ -1415,6 +1564,7 @@
       "achievementsTotal": 54,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1086940
     },
@@ -1426,6 +1576,7 @@
       "achievementsTotal": 57,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1091500
     },
@@ -1436,6 +1587,7 @@
       "achievementsTotal": 40,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1092790
     },
@@ -1446,6 +1598,7 @@
       "achievementsTotal": 34,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1097150
     },
@@ -1456,6 +1609,7 @@
       "achievementsTotal": 104,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1101450
     },
@@ -1466,6 +1620,7 @@
       "achievementsTotal": 25,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1135690
     },
@@ -1476,6 +1631,7 @@
       "achievementsTotal": 55,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1139980
     },
@@ -1486,6 +1642,7 @@
       "achievementsTotal": 138,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1142710
     },
@@ -1496,6 +1653,7 @@
       "achievementsTotal": 66,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1144200
     },
@@ -1507,6 +1665,7 @@
       "achievementsTotal": 49,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1145360
     },
@@ -1517,6 +1676,7 @@
       "achievementsTotal": 49,
       "perfect": true,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1146630
     },
@@ -1527,6 +1687,7 @@
       "achievementsTotal": 95,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1147550
     },
@@ -1537,6 +1698,7 @@
       "achievementsTotal": 101,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1147560
     },
@@ -1547,6 +1709,7 @@
       "achievementsTotal": 75,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1153430
     },
@@ -1557,6 +1720,7 @@
       "achievementsTotal": 39,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1172380
     },
@@ -1568,6 +1732,7 @@
       "achievementsTotal": 12,
       "perfect": true,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1172470
     },
@@ -1579,6 +1744,7 @@
       "achievementsTotal": 51,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1174180
     },
@@ -1587,6 +1753,7 @@
       "playtimeHours": 0.4,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1180320
     },
@@ -1597,6 +1764,7 @@
       "achievementsTotal": 134,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1217060
     },
@@ -1607,6 +1775,7 @@
       "achievementsTotal": 14,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1222700
     },
@@ -1617,6 +1786,7 @@
       "achievementsTotal": 43,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1237950
     },
@@ -1627,6 +1797,7 @@
       "achievementsTotal": 50,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1237970
     },
@@ -1637,6 +1808,7 @@
       "achievementsTotal": 21,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1238810
     },
@@ -1647,6 +1819,7 @@
       "achievementsTotal": 50,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1238840
     },
@@ -1658,6 +1831,7 @@
       "achievementsTotal": 42,
       "perfect": true,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1245620
     },
@@ -1668,6 +1842,7 @@
       "achievementsTotal": 116,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1260320
     },
@@ -1676,6 +1851,7 @@
       "playtimeHours": 42.9,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1281930
     },
@@ -1686,6 +1862,7 @@
       "achievementsTotal": 46,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1284410
     },
@@ -1696,6 +1873,7 @@
       "achievementsTotal": 63,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1285190
     },
@@ -1706,6 +1884,7 @@
       "achievementsTotal": 178,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1293830
     },
@@ -1716,6 +1895,7 @@
       "achievementsTotal": 88,
       "perfect": false,
       "featured": true,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1325200
     },
@@ -1726,6 +1906,7 @@
       "achievementsTotal": 32,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1326470
     },
@@ -1735,6 +1916,7 @@
       "playtimeHours": 159.9,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1329410
     },
@@ -1745,6 +1927,7 @@
       "achievementsTotal": 128,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1366540
     },
@@ -1753,6 +1936,7 @@
       "playtimeHours": 30.4,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1371980
     },
@@ -1763,6 +1947,7 @@
       "achievementsTotal": 186,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1404850
     },
@@ -1773,6 +1958,7 @@
       "achievementsTotal": 60,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1407200
     },
@@ -1781,6 +1967,7 @@
       "playtimeHours": 0.9,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1422450
     },
@@ -1791,6 +1978,7 @@
       "achievementsTotal": 20,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1426210
     },
@@ -1801,6 +1989,7 @@
       "achievementsTotal": 11,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1449850
     },
@@ -1811,6 +2000,7 @@
       "achievementsTotal": 33,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1451940
     },
@@ -1822,6 +2012,7 @@
       "achievementsTotal": 637,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1454400
     },
@@ -1832,6 +2023,7 @@
       "achievementsTotal": 169,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1468810
     },
@@ -1842,6 +2034,7 @@
       "achievementsTotal": 29,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1483870
     },
@@ -1850,6 +2043,7 @@
       "playtimeHours": 0.1,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1545450
     },
@@ -1860,6 +2054,7 @@
       "achievementsTotal": 60,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1562430
     },
@@ -1870,6 +2065,7 @@
       "achievementsTotal": 38,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1568590
     },
@@ -1880,6 +2076,7 @@
       "achievementsTotal": 141,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1584090
     },
@@ -1888,6 +2085,7 @@
       "playtimeHours": 0.6,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1617400
     },
@@ -1896,6 +2094,7 @@
       "playtimeHours": 0.3,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1620690
     },
@@ -1906,6 +2105,7 @@
       "achievementsTotal": 55,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1621690
     },
@@ -1916,6 +2116,7 @@
       "achievementsTotal": 49,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1625450
     },
@@ -1926,6 +2127,7 @@
       "achievementsTotal": 234,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1669980
     },
@@ -1936,6 +2138,7 @@
       "achievementsTotal": 104,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1672970
     },
@@ -1948,6 +2151,7 @@
       "achievementsTotal": 243,
       "perfect": false,
       "featured": true,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1794680
     },
@@ -1958,6 +2162,7 @@
       "achievementsTotal": 1,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1832640
     },
@@ -1969,6 +2174,7 @@
       "achievementsTotal": 6,
       "perfect": true,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1847240
     },
@@ -1979,6 +2185,7 @@
       "achievementsTotal": 43,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1868140
     },
@@ -1989,6 +2196,7 @@
       "achievementsTotal": 6,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1921780
     },
@@ -1999,6 +2207,7 @@
       "achievementsTotal": 6,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1933990
     },
@@ -2010,6 +2219,7 @@
       "achievementsTotal": 157,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1938090
     },
@@ -2021,6 +2231,7 @@
       "achievementsTotal": 179,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1942280
     },
@@ -2031,6 +2242,7 @@
       "achievementsTotal": 34,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1943950
     },
@@ -2043,6 +2255,7 @@
       "achievementsTotal": 36,
       "perfect": true,
       "featured": true,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1948280
     },
@@ -2051,6 +2264,7 @@
       "playtimeHours": 15.1,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1966720
     },
@@ -2061,6 +2275,7 @@
       "achievementsTotal": 6,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1978100
     },
@@ -2071,6 +2286,7 @@
       "achievementsTotal": 30,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 1987080
     },
@@ -2079,6 +2295,7 @@
       "playtimeHours": 1,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 2016590
     },
@@ -2089,6 +2306,7 @@
       "achievementsTotal": 59,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 2060160
     },
@@ -2100,6 +2318,7 @@
       "achievementsTotal": 63,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 2062430
     },
@@ -2108,6 +2327,7 @@
       "playtimeHours": 0.9,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 2076040
     },
@@ -2119,6 +2339,7 @@
       "achievementsTotal": 32,
       "perfect": true,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 2109460
     },
@@ -2130,6 +2351,7 @@
       "achievementsTotal": 164,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 2357570
     },
@@ -2141,6 +2363,7 @@
       "achievementsTotal": 81,
       "perfect": true,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 2358720
     },
@@ -2151,6 +2374,7 @@
       "achievementsTotal": 53,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 2507950
     },
@@ -2161,6 +2385,7 @@
       "achievementsTotal": 16,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 2593370
     },
@@ -2172,6 +2397,7 @@
       "achievementsTotal": 37,
       "perfect": true,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 2622380
     },
@@ -2180,6 +2406,7 @@
       "playtimeHours": 0.4,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 2668080
     },
@@ -2190,6 +2417,7 @@
       "achievementsTotal": 52,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 2707930
     },
@@ -2200,6 +2428,7 @@
       "achievementsTotal": 49,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 2767030
     },
@@ -2208,6 +2437,7 @@
       "playtimeHours": 0.5,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 2802060
     },
@@ -2218,6 +2448,7 @@
       "achievementsTotal": 53,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 2807960
     },
@@ -2228,6 +2459,7 @@
       "achievementsTotal": 14,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 2870840
     },
@@ -2238,6 +2470,7 @@
       "achievementsTotal": 48,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 2881650
     },
@@ -2248,6 +2481,7 @@
       "achievementsTotal": 76,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 2923300
     },
@@ -2258,6 +2492,7 @@
       "achievementsTotal": 11,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 3008200
     },
@@ -2266,6 +2501,7 @@
       "playtimeHours": 2.2,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 3081410
     },
@@ -2276,6 +2512,7 @@
       "achievementsTotal": 15,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 3117820
     },
@@ -2286,6 +2523,7 @@
       "achievementsTotal": 55,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 3167020
     },
@@ -2296,6 +2534,7 @@
       "achievementsTotal": 55,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 3167550
     },
@@ -2306,6 +2545,7 @@
       "achievementsTotal": 77,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 3240220
     },
@@ -2316,6 +2556,7 @@
       "achievementsTotal": 148,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 3444020
     },
@@ -2326,6 +2567,7 @@
       "achievementsTotal": 64,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 3527290
     },
@@ -2336,8 +2578,10 @@
       "achievementsTotal": 65,
       "perfect": false,
       "featured": false,
+      "hideFromHome": false,
       "hidden": false,
       "steamAppId": 3755860
     }
-  ]
+  ],
+  "homeGameIntroZh": "Apex多赛季钻石大师，OW6v6宗师，炉石传说多赛季传说，CS优先16000+，MC资深玩家、博主。资深生存、类魂玩家以及成就党。"
 }
