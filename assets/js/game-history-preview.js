@@ -1,5 +1,6 @@
 (() => {
-  const VERSION = "38";
+  const VERSION = "40";
+  const MIN_VISIBLE_HOURS = 3;
   const LANGUAGE_KEY = "ruiqi-portfolio-language";
   const $ = (selector) => document.querySelector(selector);
   const num = (value) => Number.isFinite(Number(value)) ? Number(value) : 0;
@@ -44,7 +45,7 @@
         return { ...game, nameEn: text(game.nameEn) || text(mapped.en), nameZh: text(game.nameZh) || text(mapped.zh), _source: "manual", _key: `m-${index}` };
       }),
       ...steam.map((game, index) => ({ ...game, _source: "steam", _key: `s-${game.steamAppId ?? index}` }))
-    ].filter(game => game && text(game.name) && !game.hidden);
+    ].filter(game => game && text(game.name) && !game.hidden && num(game.playtimeHours) >= MIN_VISIBLE_HOURS);
   }
 
   function perfect(game) {

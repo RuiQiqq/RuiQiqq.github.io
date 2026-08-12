@@ -4,7 +4,8 @@
 Key behavior:
 - Requires GitHub Actions secret: STEAM_WEB_API_KEY.
 - Uses ResolveVanityURL + GetOwnedGames; no Steam Community XML scraping.
-- Imports only titles with recorded playtime (> 0 minutes), because this page is a play-history record.
+- Imports only titles with at least 3 hours of recorded playtime.
+- Best-effort backfills Simplified Chinese game names and stores them locally.
 - For newly imported games that expose community stats, it also attempts to read achievement counts.
 - Existing local edits are authoritative: hours/status/perfect/notes are never overwritten on refresh.
 - Deleted Steam entries are remembered in content/steam-import-state.json and stay deleted.
@@ -26,8 +27,36 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DATA_PATH = ROOT / "content" / "game-history.json"
 STATE_PATH = ROOT / "content" / "steam-import-state.json"
-USER_AGENT = "RuiQi-Portfolio-SteamSnapshot/3.0"
+USER_AGENT = "RuiQi-Portfolio-SteamSnapshot/4.0"
 API_BASE = "https://api.steampowered.com"
+STORE_APPDETAILS = "https://store.steampowered.com/api/appdetails"
+MIN_IMPORT_HOURS = 3.0
+ZH_BACKFILL_VERSION = "ZH-NAMES-V40"
+
+# Fallbacks for titles whose Steam store name remains English even in Simplified Chinese.
+KNOWN_ZH_NAMES = {
+    "Apex Legends": "Apex 英雄",
+    "Counter-Strike 2": "反恐精英 2",
+    "ELDEN RING": "艾尔登法环",
+    "DARK SOULS™ III": "黑暗之魂 III",
+    "DARK SOULS III": "黑暗之魂 III",
+    "DARK SOULS™: REMASTERED": "黑暗之魂：重制版",
+    "DARK SOULS: REMASTERED": "黑暗之魂：重制版",
+    "ELDEN RING NIGHTREIGN": "艾尔登法环 黑夜君临",
+    "Sekiro™: Shadows Die Twice": "只狼：影逝二度",
+    "Sekiro: Shadows Die Twice": "只狼：影逝二度",
+    "Black Myth: Wukong": "黑神话：悟空",
+    "Stacklands": "堆叠大陆",
+    "Cyberpunk 2077": "赛博朋克 2077",
+    "Baldur\'s Gate 3": "博德之门 3",
+    "Monster Hunter: World": "怪物猎人：世界",
+    "Monster Hunter Wilds": "怪物猎人：荒野",
+    "Hades": "哈迪斯",
+    "Hades II": "哈迪斯 II",
+    "Stardew Valley": "星露谷物语",
+    "Terraria": "泰拉瑞亚",
+}
+
 
 
 def now_iso() -> str:
@@ -121,8 +150,8 @@ def fetch_owned_games(profile_url: str, api_key: str) -> tuple[str, list[dict]]:
         except (TypeError, ValueError):
             continue
         name = str(item.get("name") or "").strip()
-        # The portfolio is a record of games actually played, not every license in the account.
-        if not name or minutes <= 0:
+        # The portfolio intentionally hides very short trials / accidental launches.
+        if not name or minutes < int(MIN_IMPORT_HOURS * 60):
             continue
         games.append(
             {
@@ -184,6 +213,83 @@ def enrich_new_games_with_achievements(games: list[dict], steamid: str, api_key:
     return enriched
 
 
+def contains_cjk(value: str) -> bool:
+    return any("\u3400" <= char <= "\u9fff" for char in str(value or ""))
+
+
+def fetch_store_zh_names(appids: list[int]) -> dict[int, str]:
+    """Best-effort Simplified Chinese store-title lookup.
+
+    This is deliberately non-fatal: if Steam Store metadata is unavailable or a title has no
+    localized store name, the portfolio keeps the English Steam name.
+    """
+    unique = sorted({int(appid) for appid in appids if int(appid) > 0})
+    if not unique:
+        return {}
+
+    result: dict[int, str] = {}
+    batches = [unique[index:index + 20] for index in range(0, len(unique), 20)]
+
+    def fetch_batch(batch: list[int]) -> dict[int, str]:
+        query = urllib.parse.urlencode(
+            {
+                "appids": ",".join(str(appid) for appid in batch),
+                "filters": "name",
+                "l": "schinese",
+                "cc": "CN",
+            }
+        )
+        try:
+            payload = request_json(f"{STORE_APPDETAILS}?{query}", timeout=20)
+        except Exception:
+            return {}
+        found: dict[int, str] = {}
+        for appid in batch:
+            entry = payload.get(str(appid)) or {}
+            data = entry.get("data") or {}
+            name = str(data.get("name") or "").strip()
+            if entry.get("success") and name:
+                found[appid] = name
+        return found
+
+    with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
+        futures = [executor.submit(fetch_batch, batch) for batch in batches]
+        for future in concurrent.futures.as_completed(futures):
+            try:
+                result.update(future.result())
+            except Exception:
+                continue
+    return result
+
+
+def best_zh_name(english_name: str, store_name: str = "") -> str:
+    english_name = str(english_name or "").strip()
+    if english_name in KNOWN_ZH_NAMES:
+        return KNOWN_ZH_NAMES[english_name]
+    store_name = str(store_name or "").strip()
+    if store_name and store_name != english_name and contains_cjk(store_name):
+        return store_name
+    return ""
+
+
+def backfill_zh_names(games: list[dict]) -> int:
+    candidates = [
+        game for game in games
+        if int_or_none(game.get("steamAppId")) is not None and not str(game.get("nameZh") or "").strip()
+    ]
+    if not candidates:
+        return 0
+    localized = fetch_store_zh_names([int(game["steamAppId"]) for game in candidates])
+    changed = 0
+    for game in candidates:
+        appid = int(game["steamAppId"])
+        zh = best_zh_name(str(game.get("name") or ""), localized.get(appid, ""))
+        if zh:
+            game["nameZh"] = zh
+            changed += 1
+    return changed
+
+
 def load_json(path: Path, fallback: dict) -> dict:
     if not path.exists():
         return dict(fallback)
@@ -235,6 +341,17 @@ def main() -> int:
             "importedAt": "",
         },
     )
+    # One-time localization migration for the already-imported local snapshot.
+    # It never changes hours, completion state, achievements, notes, or deletion state.
+    if state.get("zhNameBackfillVersion") != ZH_BACKFILL_VERSION:
+        localized_count = backfill_zh_names(steam_games_local)
+        state["zhNameBackfillVersion"] = ZH_BACKFILL_VERSION
+        if localized_count:
+            data["steamGames"] = steam_games_local
+            write_json(DATA_PATH, data)
+        write_json(STATE_PATH, state)
+        print(f"中文名称补全：为 {localized_count} 款本地 Steam 游戏写入中文名；其余继续使用英文名。")
+
     previous_profile = str(state.get("profileUrl") or "")
     last_ids = {int(value) for value in state.get("lastSteamAppIds", []) if str(value).isdigit()}
     excluded = {int(value) for value in state.get("excludedSteamAppIds", []) if str(value).isdigit()}
@@ -276,6 +393,9 @@ def main() -> int:
 
     fetched_ids = [int(game["steamAppId"]) for game in fetched]
     new_candidates = [game for game in fetched if int(game["steamAppId"]) not in excluded and int(game["steamAppId"]) not in current_by_id]
+    zh_names = fetch_store_zh_names([int(game["steamAppId"]) for game in new_candidates])
+    for game in new_candidates:
+        game["nameZh"] = best_zh_name(game.get("name", ""), zh_names.get(int(game["steamAppId"]), ""))
     achievement_enriched = enrich_new_games_with_achievements(new_candidates, steamid, api_key)
 
     added = 0
@@ -283,6 +403,7 @@ def main() -> int:
         appid = int(steam["steamAppId"])
         item = {
             "name": steam["name"],
+            "nameZh": steam.get("nameZh", ""),
             "playtimeHours": steam["playtimeHours"],
             "platforms": ["Steam"],
             "status": "",

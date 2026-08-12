@@ -1,5 +1,6 @@
 (() => {
-  const VERSION = "38";
+  const VERSION = "40";
+  const MIN_VISIBLE_HOURS = 3;
   const LANGUAGE_KEY = "ruiqi-portfolio-language";
   const $ = (selector) => document.querySelector(selector);
   const $$ = (selector) => Array.from(document.querySelectorAll(selector));
@@ -101,7 +102,7 @@
       platforms: item.platforms?.length ? item.platforms : ["Steam"],
       hidden: Boolean(item.hidden)
     }));
-    return [...manualNormalized, ...steamNormalized].filter(game => !game.hidden);
+    return [...manualNormalized, ...steamNormalized].filter(game => !game.hidden && num(game.playtimeHours) >= MIN_VISIBLE_HOURS);
   }
 
   function currentName(game) {
@@ -228,15 +229,12 @@
     if (!selected.length) { section.hidden = true; return; }
     section.hidden = false;
     $("#game-featured-grid").innerHTML = selected.map(game => {
-      const note = noteText(game);
-      const genres = genreText(game);
-      return `<article class="game-featured-card${isPerfect(game) ? " is-perfect" : ""}">
-        <div class="game-featured-topline"><span class="game-platform-chip">${escapeHtml(platformText(game))}</span><span class="game-featured-hours">${escapeHtml(formatHours(game.playtimeHours))}</span></div>
-        <h3>${escapeHtml(currentName(game))}</h3>
-        ${meaningful(game.nameZh) && lang === "en" ? `<p class="game-alt-name">${escapeHtml(game.nameZh)}</p>` : ""}
-        <div class="game-badges">${badgesHtml(game)}</div>
-        <div class="game-featured-meta"><span>${escapeHtml(statusText(game.status))}</span>${num(game.achievementsTotal) ? `<span>${escapeHtml(achievementText(game))}</span>` : ""}${genres ? `<span>${escapeHtml(genres)}</span>` : ""}</div>
-        ${note ? `<div class="game-design-note"><strong>${escapeHtml(T.designNote)}</strong><p>${escapeHtml(note)}</p></div>` : ""}
+      const status = statusText(game.status);
+      const perfect = isPerfect(game);
+      const meta = [formatHours(game.playtimeHours), perfect ? T.perfect : (status !== T.statusUnknown ? status : "")].filter(Boolean).join(" · ");
+      return `<article class="game-featured-line${perfect ? " is-perfect" : ""}" title="${escapeHtml(currentName(game))}">
+        <strong>${escapeHtml(currentName(game))}</strong>
+        <span>${escapeHtml(meta)}</span>
       </article>`;
     }).join("");
   }
@@ -287,15 +285,14 @@
     }
     empty.hidden = true;
     list.innerHTML = games.map(game => {
-      const genre = genreText(game);
-      const note = noteText(game);
       const badges = [];
       if (isPerfect(game)) badges.push(`<span class="game-perfect-inline">100%</span>`);
+      const playthroughs = playthroughText(game);
       return `<article class="game-row${highlighted(game) ? " is-highlighted" : ""}${isPerfect(game) ? " is-perfect" : ""}">
-        <div class="game-row-name"><strong>${escapeHtml(currentName(game))}</strong>${genre ? `<span class="game-row-genre">${escapeHtml(genre)}</span>` : ""}${note ? `<p>${escapeHtml(note)}</p>` : ""}</div>
+        <div class="game-row-name" title="${escapeHtml(currentName(game))}"><strong>${escapeHtml(currentName(game))}</strong></div>
         <div class="game-row-cell" data-label="${escapeHtml(T.colPlatform)}">${escapeHtml(platformText(game))}</div>
         <div class="game-row-cell game-row-hours" data-label="${escapeHtml(T.colTime)}">${escapeHtml(formatHours(game.playtimeHours))}</div>
-        <div class="game-row-cell" data-label="${escapeHtml(T.colStatus)}">${escapeHtml(statusText(game.status))}${playthroughText(game) ? `<small>${escapeHtml(playthroughText(game))}</small>` : ""}</div>
+        <div class="game-row-cell" data-label="${escapeHtml(T.colStatus)}">${escapeHtml(statusText(game.status))}${playthroughs ? ` · ${escapeHtml(playthroughs)}` : ""}</div>
         <div class="game-row-cell" data-label="${escapeHtml(T.colAchievements)}">${badges.join("")} ${escapeHtml(achievementText(game))}</div>
       </article>`;
     }).join("");
