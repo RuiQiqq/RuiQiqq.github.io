@@ -241,11 +241,6 @@ components:
       - { name: achievementsUnlocked, label: 已解锁成就数（可选）, type: number }
       - { name: achievementsTotal, label: 总成就数（可选）, type: number }
       - { name: perfect, label: 100% 全成就（手动标记）, type: boolean, default: false }
-      - name: hidden
-        label: 从网站隐藏／非游戏条目
-        type: boolean
-        default: false
-        description: Steam 批量导入后，如果遇到测试工具、软件或不想展示的条目，可以勾选隐藏；也可以直接在列表中删除该条目。
       - name: featured
         label: 手动重点展示
         type: boolean

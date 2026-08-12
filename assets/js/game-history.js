@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  const VERSION = "34";
+  const VERSION = "31";
   const LANGUAGE_KEY = "ruiqi-portfolio-language";
 
   const UI = {
@@ -147,8 +147,8 @@
   }
 
   function currentName(game) {
-    if (lang === "zh") return meaningful(game.nameZh) || meaningful(game.name) || meaningful(game.nameEn) || "Untitled";
-    return meaningful(game.nameEn) || meaningful(game.name) || meaningful(game.nameZh) || "Untitled";
+    if (lang === "zh" && meaningful(game.nameZh)) return game.nameZh;
+    return meaningful(game.name) || meaningful(game.nameZh) || "Untitled";
   }
 
   function statusText(status) {
@@ -381,7 +381,7 @@
     const sort = $("#game-sort").value;
 
     let games = allGames.filter(game => {
-      const haystack = [currentName(game), game.name, game.nameEn, game.nameZh, platformText(game), genreText(game), noteText(game)].join(" ").toLocaleLowerCase();
+      const haystack = [currentName(game), game.name, game.nameZh, platformText(game), genreText(game), noteText(game)].join(" ").toLocaleLowerCase();
       const platformValues = Array.isArray(game.platforms) ? game.platforms : [platformText(game)];
       return (!query || haystack.includes(query)) && statusMatches(game, status) && (platform === "all" || platformValues.some(value => String(value).trim() === platform));
     });
@@ -440,9 +440,7 @@
       console.error("Game history could not be loaded:", error);
       DATA = { settings: {}, games: [] };
     }
-    const importedGames = Array.isArray(DATA.games) ? DATA.games : [];
-    const manualGames = Array.isArray(DATA.manualGames) ? DATA.manualGames.map(game => ({ ...game, source: game?.source || "manual" })) : [];
-    allGames = [...importedGames, ...manualGames].filter(game => game && game.hidden !== true && (meaningful(game.name) || meaningful(game.nameEn) || meaningful(game.nameZh)));
+    allGames = Array.isArray(DATA.games) ? DATA.games.filter(game => game && (meaningful(game.name) || meaningful(game.nameZh))) : [];
     renderSource();
     renderStats();
     renderFeatured();

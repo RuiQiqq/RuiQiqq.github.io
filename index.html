@@ -8,17 +8,18 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/website-look.css?v=34" />
-  <script defer src="assets/js/content-loader.js?v=34"></script>
+  <link rel="stylesheet" href="assets/css/website-look.css?v=31" />
+  <script defer src="assets/js/content-loader.js?v=31"></script>
 </head>
 <body data-page="home">
   <header class="site-header">
     <a class="wordmark" href="#top">Rui Qi</a>
     <div class="header-actions">
       <nav class="nav-links" aria-label="Main navigation">
-        <a class="nav-link framed" href="#featured" data-i18n="navProjects" data-nav-target="featured">Projects</a>
-        <a class="nav-link framed" href="#resume" data-i18n="navResume" data-nav-target="resume">Resume</a>
-        <a class="nav-link framed" href="#contact" data-i18n="navContact" data-nav-target="contact">Contact</a>
+        <a class="nav-link framed project-pill" href="#featured" data-i18n="navProjects">Projects</a>
+        <a class="nav-link framed" href="game-history.html" data-i18n="navGames">Games Played</a>
+        <a class="nav-link framed" href="#resume" data-i18n="navResume">Resume</a>
+        <a class="nav-link highlight" href="#contact" data-i18n="navContact">Contact</a>
       </nav>
       <div class="language-switch" aria-label="Language switcher">
         <button type="button" data-language-choice="en">EN</button>
@@ -48,22 +49,6 @@
         </div>
         <div class="hero-capability-grid" id="hero-capabilities"></div>
       </aside>
-      <a class="home-games-bridge" href="game-history.html" id="home-games-bridge">
-        <div class="home-games-bridge-copy">
-          <p class="section-kicker" data-i18n="gamesBridgeKicker">Game History</p>
-          <h3 data-i18n="gamesBridgeTitle">Games Played</h3>
-          <p id="home-games-summary" data-i18n="gamesBridgeText">A compact record of playtime, completion, achievements, and selected design observations.</p>
-        </div>
-        <div class="home-games-bridge-side">
-          <div class="home-games-tags" aria-hidden="true">
-            <span data-i18n="gamesBridgeTagHours">High playtime</span>
-            <span data-i18n="gamesBridgeTagComplete">Completed</span>
-            <span data-i18n="gamesBridgeTagPerfect">100%</span>
-            <span data-i18n="gamesBridgeTagPlatforms">Steam + other platforms</span>
-          </div>
-          <span class="home-games-arrow" aria-hidden="true">→</span>
-        </div>
-      </a>
     </section>
 
     <section class="section container" id="featured">
