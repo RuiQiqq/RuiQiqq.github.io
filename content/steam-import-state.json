@@ -237,7 +237,12 @@
     3755860,
     4147820
   ],
-  "excludedSteamAppIds": [],
+  "excludedSteamAppIds": [
+    1366800,
+    1856540,
+    1859360,
+    4147820
+  ],
   "importedAt": "2026-08-12T11:28:23+00:00",
   "source": "Steam Web API",
   "fetchedPlayedCount": 233,
