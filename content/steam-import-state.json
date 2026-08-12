@@ -241,5 +241,6 @@
   "importedAt": "2026-08-12T11:28:23+00:00",
   "source": "Steam Web API",
   "fetchedPlayedCount": 233,
-  "achievementEnrichedNewGames": 207
+  "achievementEnrichedNewGames": 207,
+  "zhNameBackfillVersion": "ZH-NAMES-V40"
 }

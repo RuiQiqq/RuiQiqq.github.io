@@ -25,7 +25,8 @@
       "hidden": false,
       "steamAppId": 730,
       "achievementsUnlocked": 1,
-      "achievementsTotal": 1
+      "achievementsTotal": 1,
+      "nameZh": "反恐精英 2"
     },
     {
       "name": "Plants vs. Zombies: Game of the Year",
@@ -95,7 +96,8 @@
       "hidden": false,
       "steamAppId": 105600,
       "achievementsUnlocked": 116,
-      "achievementsTotal": 137
+      "achievementsTotal": 137,
+      "nameZh": "泰拉瑞亚"
     },
     {
       "name": "Project Zomboid",
@@ -713,7 +715,8 @@
       "hidden": false,
       "steamAppId": 374320,
       "achievementsUnlocked": 43,
-      "achievementsTotal": 43
+      "achievementsTotal": 43,
+      "nameZh": "黑暗之魂 III"
     },
     {
       "name": "Undertale",
@@ -753,7 +756,8 @@
       "hidden": false,
       "steamAppId": 413150,
       "achievementsUnlocked": 33,
-      "achievementsTotal": 49
+      "achievementsTotal": 49,
+      "nameZh": "星露谷物语"
     },
     {
       "name": "Resident Evil 7 Biohazard",
@@ -1045,7 +1049,8 @@
       "hidden": false,
       "steamAppId": 570940,
       "achievementsUnlocked": 41,
-      "achievementsTotal": 41
+      "achievementsTotal": 41,
+      "nameZh": "黑暗之魂：重制版"
     },
     {
       "name": "Hell Girls",
@@ -1101,7 +1106,8 @@
       "hidden": false,
       "steamAppId": 582010,
       "achievementsUnlocked": 16,
-      "achievementsTotal": 100
+      "achievementsTotal": 100,
+      "nameZh": "怪物猎人：世界"
     },
     {
       "name": "Dead Cells",
@@ -1605,7 +1611,8 @@
       "hidden": false,
       "steamAppId": 814380,
       "achievementsUnlocked": 34,
-      "achievementsTotal": 34
+      "achievementsTotal": 34,
+      "nameZh": "只狼：影逝二度"
     },
     {
       "name": "Green Hell",
@@ -1893,7 +1900,8 @@
       "hidden": false,
       "steamAppId": 1086940,
       "achievementsUnlocked": 8,
-      "achievementsTotal": 54
+      "achievementsTotal": 54,
+      "nameZh": "博德之门 3"
     },
     {
       "name": "Cyberpunk 2077",
@@ -1907,7 +1915,8 @@
       "hidden": false,
       "steamAppId": 1091500,
       "achievementsUnlocked": 17,
-      "achievementsTotal": 57
+      "achievementsTotal": 57,
+      "nameZh": "赛博朋克 2077"
     },
     {
       "name": "Inscryption",
@@ -2019,7 +2028,8 @@
       "hidden": false,
       "steamAppId": 1145360,
       "achievementsUnlocked": 0,
-      "achievementsTotal": 49
+      "achievementsTotal": 49,
+      "nameZh": "哈迪斯"
     },
     {
       "name": "Yokai's Secret",
@@ -2103,7 +2113,8 @@
       "hidden": false,
       "steamAppId": 1172470,
       "achievementsUnlocked": 12,
-      "achievementsTotal": 12
+      "achievementsTotal": 12,
+      "nameZh": "Apex 英雄"
     },
     {
       "name": "Red Dead Redemption 2",
@@ -2227,7 +2238,8 @@
       "hidden": false,
       "steamAppId": 1245620,
       "achievementsUnlocked": 42,
-      "achievementsTotal": 42
+      "achievementsTotal": 42,
+      "nameZh": "艾尔登法环"
     },
     {
       "name": "Party Animals",
@@ -2799,7 +2811,8 @@
       "hidden": false,
       "steamAppId": 1948280,
       "achievementsUnlocked": 36,
-      "achievementsTotal": 36
+      "achievementsTotal": 36,
+      "nameZh": "堆叠大陆"
     },
     {
       "name": "Lethal Company",
@@ -2933,7 +2946,8 @@
       "hidden": false,
       "steamAppId": 2358720,
       "achievementsUnlocked": 81,
-      "achievementsTotal": 81
+      "achievementsTotal": 81,
+      "nameZh": "黑神话：悟空"
     },
     {
       "name": "Delta Force",
@@ -2975,7 +2989,8 @@
       "hidden": false,
       "steamAppId": 2622380,
       "achievementsUnlocked": 37,
-      "achievementsTotal": 37
+      "achievementsTotal": 37,
+      "nameZh": "艾尔登法环 黑夜君临"
     },
     {
       "name": "SNOWBREAK",
