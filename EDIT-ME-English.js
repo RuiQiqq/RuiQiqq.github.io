@@ -1,1 +1,0 @@
-/* Legacy file kept only for compatibility. Edit English content through Pages CMS. */
