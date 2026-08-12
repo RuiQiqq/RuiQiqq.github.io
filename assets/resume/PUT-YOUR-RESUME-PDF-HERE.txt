@@ -1,7 +1,0 @@
-把你的简历 PDF 放在这里。
-
-推荐文件名：
-Rui_Qi_Resume.pdf
-
-然后在 EDIT-ME-content.js 里确认：
-resume: "assets/resume/Rui_Qi_Resume.pdf"
