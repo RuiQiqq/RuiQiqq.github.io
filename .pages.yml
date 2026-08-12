@@ -1,4 +1,5 @@
-# CMS CONFIG VERSION: GAME-HISTORY-V38
+# CMS CONFIG VERSION: GAME-HISTORY-V49
+# V49: homepage/full-page editable game experience copy exposed at the top of Pages CMS.
 media:
 - name: images
   label: 图片／GIF
@@ -334,11 +335,13 @@ components:
       type: number
       default: 6
     - name: introZh
-      label: 中文页面介绍
+      label: 完整页原说明（旧字段，通常不用改）
       type: text
+      description: 这是原有字段，仅作为新顶部字段留空时的完整页备用说明。你的“高投入 / 段位”文字请改最顶部带 ★ 的输入框。
     - name: introEn
-      label: English page intro
+      label: Original full-page intro (legacy fallback)
       type: text
+      description: Legacy fallback only. Edit the starred field at the top for the shared homepage/full-page text.
     - name: steamNoteZh
       label: 中文 Steam 说明
       type: text
@@ -357,6 +360,11 @@ components:
     - name: playtimeHours
       label: 游玩时长（小时）
       type: number
+    - name: hideFromHome
+      label: 不在首页重点游戏中显示
+      type: boolean
+      default: false
+      description: 默认不要勾。未勾选时继续按原来的自动规则参与首页重点展示；只有勾选后才从首页重点区排除，不影响完整游戏经历页。
   steam_game_item:
     type: object
     label: Steam 已导入游戏
@@ -405,6 +413,11 @@ components:
       label: 手动重点展示
       type: boolean
       default: false
+    - name: hideFromHome
+      label: 不在首页重点游戏中显示
+      type: boolean
+      default: false
+      description: 默认不要勾。未勾选时继续按原来的自动规则参与首页重点展示；只有勾选后才从首页重点区排除，不影响完整游戏经历页。
     - name: hidden
       label: 从网站隐藏／非游戏条目
       type: boolean
@@ -509,8 +522,16 @@ content:
     path: content/game-history.json
     format: json
     fields:
+    - name: homeGameIntroZh
+      label: ★ 你要改的文字：首页“右侧展示我高投入…”（中文）
+      type: text
+      description: 这个输入框就在游戏经历编辑页最顶部、①手动添加游戏上方。你可以写 Apex 大师、炉石传说传说段位等一整段经历。保存后会同时替换首页游戏经历卡片的介绍文字，以及完整游戏经历页顶部介绍。留空则继续使用原来的默认文字。
+    - name: homeGameIntroEn
+      label: ★ Same game experience text (English, optional)
+      type: text
+      description: Optional English version. It appears in the same places when the site language is English. Leave blank to keep the existing English default.
     - name: manualGames
-      label: ① 手动添加游戏（只填名字 + 时长）
+      label: ① 手动添加游戏（名字 + 时长；可单独取消首页展示）
       component: manual_game_item
       list:
         collapsible:
