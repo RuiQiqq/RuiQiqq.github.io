@@ -648,17 +648,6 @@
       "steamAppId": 431730
     },
     {
-      "name": "Wallpaper Engine",
-      "nameZh": "Wallpaper Engine（壁纸引擎）",
-      "playtimeHours": 387.3,
-      "achievementsUnlocked": 11,
-      "achievementsTotal": 17,
-      "perfect": false,
-      "featured": false,
-      "hidden": false,
-      "steamAppId": 431960
-    },
-    {
       "name": "Slime Rancher",
       "playtimeHours": 17.2,
       "achievementsUnlocked": 26,
@@ -1727,7 +1716,7 @@
       "achievementsUnlocked": 16,
       "achievementsTotal": 88,
       "perfect": false,
-      "featured": false,
+      "featured": true,
       "hidden": false,
       "steamAppId": 1325200
     },
@@ -1955,10 +1944,11 @@
       "name": "Vampire Survivors",
       "nameZh": "吸血鬼幸存者",
       "playtimeHours": 65.3,
+      "status": "completed",
       "achievementsUnlocked": 201,
       "achievementsTotal": 243,
       "perfect": false,
-      "featured": false,
+      "featured": true,
       "hidden": false,
       "steamAppId": 1794680
     },
