@@ -44,7 +44,30 @@
       "name": "使命召唤 16",
       "playtimeHours": 300
     },
-    {}
+    {
+      "name": "赛尔号",
+      "playtimeHours": 500
+    },
+    {
+      "name": "星际公民",
+      "playtimeHours": 50
+    },
+    {
+      "name": "生存战争",
+      "playtimeHours": 200
+    },
+    {
+      "name": "Roblox",
+      "playtimeHours": 200
+    },
+    {
+      "name": "元气骑士",
+      "playtimeHours": 80
+    },
+    {
+      "name": "永劫无间",
+      "playtimeHours": 60
+    }
   ],
   "steamGames": [
     {
