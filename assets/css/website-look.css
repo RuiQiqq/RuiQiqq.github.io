@@ -1952,3 +1952,24 @@ h1, h2, h3 {
 @media (max-width: 500px) {
   .home-game-preview-games { grid-template-columns: 1fr; }
 }
+
+
+/* v42: clearer Steam-only homepage preview + prominent all-platform CTA. */
+.home-game-all-platform-callout {
+  margin: 14px 0 0 !important;
+  padding: 11px 12px;
+  border: 1px solid rgba(232,93,158,.45);
+  border-left: 4px solid var(--pink);
+  border-radius: 10px;
+  background: rgba(159,31,73,.10);
+  color: #f3d9e7 !important;
+  font-size: 12.5px;
+  line-height: 1.55 !important;
+  font-weight: 700;
+}
+.home-game-preview-link {
+  width: 100%;
+  justify-content: center;
+  border-color: var(--pink) !important;
+  box-shadow: 0 10px 26px rgba(159,31,73,.18);
+}

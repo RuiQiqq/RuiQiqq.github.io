@@ -1,5 +1,5 @@
 (() => {
-  const VERSION = "41";
+  const VERSION = "42";
   const MIN_VISIBLE_HOURS = 3;
   const LANGUAGE_KEY = "ruiqi-portfolio-language";
   const $ = (selector) => document.querySelector(selector);
@@ -25,15 +25,19 @@
 
   const lang = language();
   const T = lang === "zh" ? {
-    kicker: "游戏经历 · STEAM", title: "Steam 游戏经历",
-    intro: "这里集中展示我的 Steam 游玩记录，用高时长、全成就和手动重点游戏快速体现游玩广度与深度。主机、手游及其他平台不计入这里，点击下方可查看全平台完整记录。",
-    view: "查看全平台完整游戏经历", games: "款 Steam 游戏（≥3h）", hours: "Steam 小时", perfect: "全成就", empty: "Steam 游戏导入后，这里会自动显示代表性游戏。",
-    previewTitle: "STEAM · 代表游戏预览", previewNote: "优先：手动重点 / 全成就 / 高时长", steamOnlyNote: "这里只统计 Steam；主机、手游和其他平台时长未计入。"
+    kicker: "游戏经历 · STEAM", title: "Steam 游戏记录",
+    intro: "这里直接预览我的 Steam 游玩记录，重点展示投入时间较多、全成就和手动重点游戏。右侧只是 Steam 预览，并不是我的全部游戏平台。",
+    view: "查看全平台所有游戏 →", hours: "Steam 小时", perfect: "全成就", empty: "Steam 游戏导入后，这里会自动显示代表性游戏。",
+    previewTitle: "STEAM · 更多游戏预览", previewNote: "这里只是 Steam；完整页包含主机 / 手机 / 非 Steam 游戏",
+    steamOnlyNote: "以下时长仅统计 Steam，不包含主机、手机及其他平台。",
+    allPlatformCallout: "👇 想看我玩过的全部平台游戏？点击下面按钮进入完整游戏经历：Steam + 主机 + 手机 + 其他平台。"
   } : {
     kicker: "Game History · STEAM", title: "Steam Play History",
-    intro: "This section highlights my Steam play history through high-playtime, 100%-achievement, and manually pinned titles. Console, mobile, and other platforms are excluded here; the full page combines all platforms.",
-    view: "View Full All-Platform Game History", games: "Steam games (≥3h)", hours: "Steam hours", perfect: "100% games", empty: "Representative Steam games will appear here automatically after import.",
-    previewTitle: "STEAM · Representative Games", previewNote: "Priority: pinned / 100% / high playtime", steamOnlyNote: "Steam only; console, mobile, and other-platform playtime is not included here."
+    intro: "A compact preview of my Steam play history, emphasizing high-playtime, 100%-achievement, and manually pinned titles. This is only the Steam portion of my overall game history.",
+    view: "View All-Platform Games →", hours: "Steam hours", perfect: "100%", empty: "Representative Steam games will appear here automatically after import.",
+    previewTitle: "STEAM · More Games", previewNote: "Steam preview only; the full page also includes console, mobile, and non-Steam games",
+    steamOnlyNote: "Playtime shown here is Steam-only and excludes console, mobile, and other platforms.",
+    allPlatformCallout: "👇 Want the complete list? Use the button below for my full game history across Steam + console + mobile + other platforms."
   };
 
   function normalize(data, nameMap) {
@@ -67,7 +71,7 @@
   }
 
   function score(game, threshold) {
-    return (game.featured ? 2e9 : 0) + (perfect(game) ? 1e9 : 0) + (num(game.playtimeHours) >= threshold ? 1e8 : 0) + num(game.playtimeHours) * 1000;
+    return (game.featured ? 1e9 : 0) + num(game.playtimeHours) * 1000 + (perfect(game) ? 75000 : 0) + (num(game.playtimeHours) >= threshold ? 25000 : 0);
   }
 
   async function init() {
@@ -103,14 +107,15 @@
       const settings = data.settings || {};
       const threshold = Math.max(0, num(settings.highlightHours) || 100);
       const configuredLimit = num(settings.homePreviewLimit);
-      const limit = configuredLimit >= 20 ? Math.min(36, configuredLimit) : 24;
+      const limit = configuredLimit >= 20 ? Math.min(48, configuredLimit) : 30;
       const totalHours = steamGames.reduce((sum, game) => sum + num(game.playtimeHours), 0);
       const perfectCount = steamGames.filter(perfect).length;
 
       $("#home-game-preview-stats").innerHTML = steamGames.length ? `
-        <span><strong>${steamGames.length}</strong> ${T.games}</span>
         <span><strong>${Math.round(totalHours).toLocaleString()}</strong> ${T.hours}</span>
         ${perfectCount ? `<span><strong>${perfectCount}</strong> ${T.perfect}</span>` : ""}` : "";
+      const callout = $("#home-game-all-platform-callout");
+      if (callout) callout.textContent = T.allPlatformCallout;
 
       const selected = steamGames
         .slice()
