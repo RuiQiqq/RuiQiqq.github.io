@@ -195,6 +195,74 @@ components:
           - { name: challenges, label: 关键挑战与复盘, type: text, list: true }
           - { name: workflowNotes, label: 工作流程说明, type: text }
 
+  game_history_settings:
+    type: object
+    label: 游戏经历页面设置
+    fields:
+      - { name: steamProfileUrl, label: Steam 主页链接, type: string }
+      - name: highlightHours
+        label: 自动重点展示时长阈值（小时）
+        type: number
+        default: 100
+        description: 达到这个时长的游戏会自动进入“重点游戏经历”。100% 全成就游戏也会自动进入。
+      - name: featuredLimit
+        label: 重点区域最多显示多少款
+        type: number
+        default: 18
+      - { name: introZh, label: 中文页面介绍, type: text }
+      - { name: introEn, label: English page intro, type: text }
+      - { name: steamNoteZh, label: 中文 Steam 说明, type: text }
+      - { name: steamNoteEn, label: English Steam note, type: text }
+
+  game_history_item:
+    type: object
+    label: 游戏记录
+    fields:
+      - { name: name, label: 游戏名称（英文／官方名）, type: string, required: true }
+      - { name: nameZh, label: 中文名称（可选）, type: string }
+      - name: platforms
+        label: 平台
+        type: string
+        list: true
+        description: 例如 Steam、PlayStation、Switch、Mobile、Epic。
+      - { name: playtimeHours, label: 游玩时长（小时）, type: number }
+      - name: status
+        label: 完成状态
+        type: select
+        options:
+          values:
+            - { name: playing, label: 持续游玩 }
+            - { name: completed, label: 通关 }
+            - { name: multiple, label: 多周目通关 }
+            - { name: main_complete, label: 主线完成 }
+            - { name: sampled, label: 试玩／短期体验 }
+            - { name: unfinished, label: 未通关 }
+      - { name: playthroughs, label: 通关／周目次数（可选）, type: number }
+      - { name: achievementsUnlocked, label: 已解锁成就数（可选）, type: number }
+      - { name: achievementsTotal, label: 总成就数（可选）, type: number }
+      - { name: perfect, label: 100% 全成就（手动标记）, type: boolean, default: false }
+      - name: hidden
+        label: 从网站隐藏／非游戏条目
+        type: boolean
+        default: false
+        description: Steam 批量导入后，如果遇到测试工具、软件或不想展示的条目，可以勾选隐藏；也可以直接在列表中删除该条目。
+      - name: featured
+        label: 手动重点展示
+        type: boolean
+        default: false
+        description: 不勾也没关系；高时长或 100% 全成就会自动重点展示。
+      - name: genres
+        label: 类型标签（可选）
+        type: string
+        list: true
+      - { name: designNoteZh, label: 中文设计观察（可选）, type: text }
+      - { name: designNoteEn, label: English design note (optional), type: text }
+      - { name: steamAppId, label: Steam App ID（批量导入时使用，可选）, type: number }
+      - name: coverImage
+        label: 自定义封面（可选，不需要每款都传）
+        type: image
+        options: { media: images }
+
 content:
   - name: portfolio_content
     label: 作品集内容
@@ -246,3 +314,18 @@ content:
             label: Projects
             component: project
             list: { collapsible: { collapsed: true, summary: "#{order} · {title}" } }
+      - name: game_history
+        label: 游戏经历 / Games Played
+        type: file
+        path: content/game-history.json
+        format: json
+        fields:
+          - { name: settings, label: 页面设置, component: game_history_settings }
+          - name: games
+            label: 游戏记录（Steam 可批量导入；非 Steam 可手动补充）
+            component: game_history_item
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{name} · {playtimeHours}h"
+
