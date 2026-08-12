@@ -11,240 +11,206 @@
     "homePreviewLimit": 6,
     "steamImportRequested": false
   },
-  "manualGames": [],
+  "manualGames": [
+    {
+      "name": "Minecraft",
+      "playtimeHours": 8000
+    },
+    {
+      "name": "崩坏2",
+      "playtimeHours": 300
+    },
+    {
+      "name": "崩坏3",
+      "playtimeHours": 500
+    },
+    {
+      "name": "原神",
+      "playtimeHours": 100
+    },
+    {
+      "name": "炉石传说",
+      "playtimeHours": 1500
+    },
+    {
+      "name": "王者荣耀",
+      "playtimeHours": 1000
+    },
+    {
+      "name": "PUBG mobile",
+      "playtimeHours": 500
+    },
+    {
+      "name": "使命召唤 16",
+      "playtimeHours": 300
+    },
+    {}
+  ],
   "steamGames": [
     {
       "name": "Counter-Strike 2",
+      "nameZh": "反恐精英 2",
       "playtimeHours": 1284.9,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 1,
+      "achievementsTotal": 1,
       "perfect": true,
       "featured": false,
       "hidden": false,
-      "steamAppId": 730,
-      "achievementsUnlocked": 1,
-      "achievementsTotal": 1,
-      "nameZh": "反恐精英 2"
+      "steamAppId": 730
     },
     {
       "name": "Plants vs. Zombies: Game of the Year",
+      "nameZh": "植物大战僵尸：年度版",
       "playtimeHours": 25.4,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 21,
+      "achievementsTotal": 21,
       "perfect": true,
       "featured": false,
       "hidden": false,
-      "steamAppId": 3590,
-      "achievementsUnlocked": 21,
-      "achievementsTotal": 21,
-      "nameZh": "植物大战僵尸：年度版"
+      "steamAppId": 3590
     },
     {
       "name": "Garry's Mod",
-      "playtimeHours": 0.0,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "playtimeHours": 0,
+      "achievementsUnlocked": 1,
+      "achievementsTotal": 29,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 4000,
-      "achievementsUnlocked": 1,
-      "achievementsTotal": 29
+      "steamAppId": 4000
     },
     {
       "name": "World of Goo",
       "playtimeHours": 0.4,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 8,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 22000,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 8
+      "steamAppId": 22000
     },
     {
       "name": "Spec Ops: The Line",
       "playtimeHours": 0.1,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 50,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 50300,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 50
+      "steamAppId": 50300
     },
     {
       "name": "Terraria",
-      "playtimeHours": 279.1,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "nameZh": "泰拉瑞亚",
+      "playtimeHours": 1279.1,
+      "achievementsUnlocked": 116,
+      "achievementsTotal": 137,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 105600,
-      "achievementsUnlocked": 116,
-      "achievementsTotal": 137,
-      "nameZh": "泰拉瑞亚"
+      "steamAppId": 105600
     },
     {
       "name": "Project Zomboid",
+      "nameZh": "僵尸毁灭工程",
       "playtimeHours": 14.7,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 108600,
-      "nameZh": "僵尸毁灭工程"
+      "steamAppId": 108600
     },
     {
       "name": "Castle Crashers",
       "playtimeHours": 0.6,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 12,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 204360,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 12
+      "steamAppId": 204360
     },
     {
       "name": "Starbound",
       "playtimeHours": 0.2,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 51,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 211820,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 51
+      "steamAppId": 211820
     },
     {
       "name": "Kerbal Space Program",
+      "nameZh": "坎巴拉太空计划",
       "playtimeHours": 1.7,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 220200,
-      "nameZh": "坎巴拉太空计划"
+      "steamAppId": 220200
     },
     {
       "name": "Reus",
       "playtimeHours": 0.5,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 2,
+      "achievementsTotal": 123,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 222730,
-      "achievementsUnlocked": 2,
-      "achievementsTotal": 123
+      "steamAppId": 222730
     },
     {
       "name": "3DMark",
       "playtimeHours": 8.5,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 4,
+      "achievementsTotal": 29,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 223850,
-      "achievementsUnlocked": 4,
-      "achievementsTotal": 29
+      "steamAppId": 223850
     },
     {
       "name": "Euro Truck Simulator 2",
       "playtimeHours": 0.3,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 106,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 227300,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 106
+      "steamAppId": 227300
     },
     {
       "name": "Warframe",
       "playtimeHours": 0.8,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 5,
+      "achievementsTotal": 193,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 230410,
-      "achievementsUnlocked": 5,
-      "achievementsTotal": 193
+      "steamAppId": 230410
     },
     {
       "name": "Prison Architect",
       "playtimeHours": 0.6,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 18,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 233450,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 18
+      "steamAppId": 233450
     },
     {
       "name": "War Thunder",
       "playtimeHours": 0.6,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 1,
+      "achievementsTotal": 91,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 236390,
-      "achievementsUnlocked": 1,
-      "achievementsTotal": 91
+      "steamAppId": 236390
     },
     {
       "name": "Shadow Warrior Classic (1997)",
       "playtimeHours": 0.4,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
       "perfect": false,
       "featured": false,
       "hidden": false,
@@ -253,431 +219,307 @@
     {
       "name": "Dying Light",
       "playtimeHours": 1.1,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 3,
+      "achievementsTotal": 78,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 239140,
-      "achievementsUnlocked": 3,
-      "achievementsTotal": 78
+      "steamAppId": 239140
     },
     {
       "name": "The Forest",
       "playtimeHours": 13.1,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 8,
+      "achievementsTotal": 45,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 242760,
-      "achievementsUnlocked": 8,
-      "achievementsTotal": 45
+      "steamAppId": 242760
     },
     {
       "name": "Crypt of the NecroDancer",
       "playtimeHours": 0.2,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 61,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 247080,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 61
+      "steamAppId": 247080
     },
     {
       "name": "The Binding of Isaac: Rebirth",
       "playtimeHours": 8.1,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 31,
+      "achievementsTotal": 641,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 250900,
-      "achievementsUnlocked": 31,
-      "achievementsTotal": 641
+      "steamAppId": 250900
     },
     {
       "name": "7 Days to Die",
       "playtimeHours": 0.7,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 5,
+      "achievementsTotal": 43,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 251570,
-      "achievementsUnlocked": 5,
-      "achievementsTotal": 43
+      "steamAppId": 251570
     },
     {
       "name": "Home Sheep Home: Farmageddon Party Edition",
-      "playtimeHours": 1.0,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "playtimeHours": 1,
+      "achievementsUnlocked": 13,
+      "achievementsTotal": 56,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 259810,
-      "achievementsUnlocked": 13,
-      "achievementsTotal": 56
+      "steamAppId": 259810
     },
     {
       "name": "Subnautica",
+      "nameZh": "深海迷航",
       "playtimeHours": 1.3,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 1,
+      "achievementsTotal": 17,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 264710,
-      "achievementsUnlocked": 1,
-      "achievementsTotal": 17,
-      "nameZh": "深海迷航"
+      "steamAppId": 264710
     },
     {
       "name": "Goat Simulator",
       "playtimeHours": 0.5,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 5,
+      "achievementsTotal": 127,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 265930,
-      "achievementsUnlocked": 5,
-      "achievementsTotal": 127
+      "steamAppId": 265930
     },
     {
       "name": "Cuphead",
       "playtimeHours": 2.5,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 5,
+      "achievementsTotal": 42,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 268910,
-      "achievementsUnlocked": 5,
-      "achievementsTotal": 42
+      "steamAppId": 268910
     },
     {
       "name": "Grand Theft Auto V Legacy",
       "playtimeHours": 28.7,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 6,
+      "achievementsTotal": 77,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 271590,
-      "achievementsUnlocked": 6,
-      "achievementsTotal": 77
+      "steamAppId": 271590
     },
     {
       "name": "Darkwood",
       "playtimeHours": 0.4,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 15,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 274520,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 15
+      "steamAppId": 274520
     },
     {
       "name": "No Man's Sky",
       "playtimeHours": 1.4,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 27,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 275850,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 27
+      "steamAppId": 275850
     },
     {
       "name": "This War of Mine",
       "playtimeHours": 5.2,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 14,
+      "achievementsTotal": 59,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 282070,
-      "achievementsUnlocked": 14,
-      "achievementsTotal": 59
+      "steamAppId": 282070
     },
     {
       "name": "100% Orange Juice",
       "playtimeHours": 0.1,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 1,
+      "achievementsTotal": 359,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 282800,
-      "achievementsUnlocked": 1,
-      "achievementsTotal": 359
+      "steamAppId": 282800
     },
     {
       "name": "Salt and Sanctuary",
       "playtimeHours": 0.6,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 2,
+      "achievementsTotal": 37,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 283640,
-      "achievementsUnlocked": 2,
-      "achievementsTotal": 37
+      "steamAppId": 283640
     },
     {
       "name": "Tabletop Simulator",
       "playtimeHours": 1.2,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 1,
+      "achievementsTotal": 26,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 286160,
-      "achievementsUnlocked": 1,
-      "achievementsTotal": 26
+      "steamAppId": 286160
     },
     {
       "name": "Metro 2033 Redux",
       "playtimeHours": 2.7,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 49,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 286690,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 49
+      "steamAppId": 286690
     },
     {
       "name": "Sid Meier's Civilization VI",
+      "nameZh": "文明 VI",
       "playtimeHours": 42.8,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 27,
+      "achievementsTotal": 320,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 289070,
-      "achievementsUnlocked": 27,
-      "achievementsTotal": 320,
-      "nameZh": "文明 VI"
+      "steamAppId": 289070
     },
     {
       "name": "Brawlhalla",
       "playtimeHours": 0.5,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 65,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 291550,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 65
+      "steamAppId": 291550
     },
     {
       "name": "The Witcher 3: Wild Hunt",
-      "playtimeHours": 20.0,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "nameZh": "巫师 3：狂猎",
+      "playtimeHours": 20,
+      "achievementsUnlocked": 3,
+      "achievementsTotal": 78,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 292030,
-      "achievementsUnlocked": 3,
-      "achievementsTotal": 78,
-      "nameZh": "巫师 3：狂猎"
+      "steamAppId": 292030
     },
     {
       "name": "RimWorld",
+      "nameZh": "环世界",
       "playtimeHours": 0.8,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 294100,
-      "nameZh": "环世界"
+      "steamAppId": 294100
     },
     {
       "name": "Unturned",
       "playtimeHours": 11.6,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 17,
+      "achievementsTotal": 95,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 304930,
-      "achievementsUnlocked": 17,
-      "achievementsTotal": 95
+      "steamAppId": 304930
     },
     {
       "name": "The Long Dark",
       "playtimeHours": 0.9,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 87,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 305620,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 87
+      "steamAppId": 305620
     },
     {
       "name": "Rain World",
       "playtimeHours": 0.9,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 47,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 312520,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 47
+      "steamAppId": 312520
     },
     {
       "name": "Mountain",
       "playtimeHours": 0.1,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 2,
+      "achievementsTotal": 31,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 313340,
-      "achievementsUnlocked": 2,
-      "achievementsTotal": 31
+      "steamAppId": 313340
     },
     {
       "name": "Don't Starve Together",
+      "nameZh": "饥荒联机版",
       "playtimeHours": 52.2,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 322330,
-      "nameZh": "饥荒联机版"
+      "steamAppId": 322330
     },
     {
       "name": "Dark Deception",
       "playtimeHours": 1.4,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 2,
+      "achievementsTotal": 40,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 332950,
-      "achievementsUnlocked": 2,
-      "achievementsTotal": 40
+      "steamAppId": 332950
     },
     {
       "name": "DARK SOULS™ II: Scholar of the First Sin",
       "playtimeHours": 21.3,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 7,
+      "achievementsTotal": 38,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 335300,
-      "achievementsUnlocked": 7,
-      "achievementsTotal": 38
+      "steamAppId": 335300
     },
     {
       "name": "Besiege",
-      "playtimeHours": 0.0,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "playtimeHours": 0,
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 54,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 346010,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 54
+      "steamAppId": 346010
     },
     {
       "name": "Tom Clancy's Rainbow Six Siege",
       "playtimeHours": 21.2,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 48,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 359550,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 48
+      "steamAppId": 359550
     },
     {
       "name": "Blender",
       "playtimeHours": 1.9,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
       "perfect": false,
       "featured": false,
       "hidden": false,
@@ -686,54 +528,38 @@
     {
       "name": "Poly Bridge",
       "playtimeHours": 0.5,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 1,
+      "achievementsTotal": 22,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 367450,
-      "achievementsUnlocked": 1,
-      "achievementsTotal": 22
+      "steamAppId": 367450
     },
     {
       "name": "Hollow Knight",
+      "nameZh": "空洞骑士",
       "playtimeHours": 89.4,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 56,
+      "achievementsTotal": 63,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 367520,
-      "achievementsUnlocked": 56,
-      "achievementsTotal": 63,
-      "nameZh": "空洞骑士"
+      "steamAppId": 367520
     },
     {
       "name": "DARK SOULS™ III",
-      "playtimeHours": 265.0,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "nameZh": "黑暗之魂 III",
+      "playtimeHours": 265,
+      "achievementsUnlocked": 43,
+      "achievementsTotal": 43,
       "perfect": true,
       "featured": false,
       "hidden": false,
-      "steamAppId": 374320,
-      "achievementsUnlocked": 43,
-      "achievementsTotal": 43,
-      "nameZh": "黑暗之魂 III"
+      "steamAppId": 374320
     },
     {
       "name": "Undertale",
       "playtimeHours": 0.7,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
       "perfect": false,
       "featured": false,
       "hidden": false,
@@ -741,82 +567,58 @@
     },
     {
       "name": "Hearts of Iron IV",
-      "playtimeHours": 1.0,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "playtimeHours": 1,
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 293,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 394360,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 293
+      "steamAppId": 394360
     },
     {
       "name": "Stardew Valley",
+      "nameZh": "星露谷物语",
       "playtimeHours": 286.4,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 33,
+      "achievementsTotal": 49,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 413150,
-      "achievementsUnlocked": 33,
-      "achievementsTotal": 49,
-      "nameZh": "星露谷物语"
+      "steamAppId": 413150
     },
     {
       "name": "Resident Evil 7 Biohazard",
       "playtimeHours": 1.7,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 8,
+      "achievementsTotal": 58,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 418370,
-      "achievementsUnlocked": 8,
-      "achievementsTotal": 58
+      "steamAppId": 418370
     },
     {
       "name": "Plantera",
-      "playtimeHours": 0.0,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "playtimeHours": 0,
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 29,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 421040,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 29
+      "steamAppId": 421040
     },
     {
       "name": "Little Nightmares",
       "playtimeHours": 1.8,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 1,
+      "achievementsTotal": 22,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 424840,
-      "achievementsUnlocked": 1,
-      "achievementsTotal": 22
+      "steamAppId": 424840
     },
     {
       "name": "Aseprite",
       "playtimeHours": 35.9,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
       "perfect": false,
       "featured": false,
       "hidden": false,
@@ -824,831 +626,595 @@
     },
     {
       "name": "Wallpaper Engine",
+      "nameZh": "Wallpaper Engine（壁纸引擎）",
       "playtimeHours": 387.3,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 11,
+      "achievementsTotal": 17,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 431960,
-      "achievementsUnlocked": 11,
-      "achievementsTotal": 17,
-      "nameZh": "Wallpaper Engine（壁纸引擎）"
+      "steamAppId": 431960
     },
     {
       "name": "Slime Rancher",
       "playtimeHours": 17.2,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 26,
+      "achievementsTotal": 57,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 433340,
-      "achievementsUnlocked": 26,
-      "achievementsTotal": 57
+      "steamAppId": 433340
     },
     {
       "name": "10 Second Ninja X",
       "playtimeHours": 0.2,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 12,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 435790,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 12
+      "steamAppId": 435790
     },
     {
       "name": "Tricky Towers",
       "playtimeHours": 2.7,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 3,
+      "achievementsTotal": 29,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 437920,
-      "achievementsUnlocked": 3,
-      "achievementsTotal": 29
+      "steamAppId": 437920
     },
     {
       "name": "PAC-MAN™ CHAMPIONSHIP EDITION 2",
       "playtimeHours": 0.5,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 2,
+      "achievementsTotal": 18,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 441380,
-      "achievementsUnlocked": 2,
-      "achievementsTotal": 18
+      "steamAppId": 441380
     },
     {
       "name": "Oxygen Not Included",
       "playtimeHours": 0.2,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 51,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 457140,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 51
+      "steamAppId": 457140
     },
     {
       "name": "Steep",
       "playtimeHours": 0.9,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 41,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 460920,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 41
+      "steamAppId": 460920
     },
     {
       "name": "Tom Clancy's Ghost Recon® Wildlands",
       "playtimeHours": 1.7,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 3,
+      "achievementsTotal": 57,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 460930,
-      "achievementsUnlocked": 3,
-      "achievementsTotal": 57
+      "steamAppId": 460930
     },
     {
       "name": "Scrap Garden",
       "playtimeHours": 0.1,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 2,
+      "achievementsTotal": 42,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 465760,
-      "achievementsUnlocked": 2,
-      "achievementsTotal": 42
+      "steamAppId": 465760
     },
     {
       "name": "UNO",
       "playtimeHours": 5.7,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 12,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 470220,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 12
+      "steamAppId": 470220
     },
     {
       "name": "Human Fall Flat",
       "playtimeHours": 0.4,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 3,
+      "achievementsTotal": 151,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 477160,
-      "achievementsUnlocked": 3,
-      "achievementsTotal": 151
+      "steamAppId": 477160
     },
     {
       "name": "Planet Coaster",
       "playtimeHours": 0.2,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 1,
+      "achievementsTotal": 32,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 493340,
-      "achievementsUnlocked": 1,
-      "achievementsTotal": 32
+      "steamAppId": 493340
     },
     {
       "name": "Celeste",
+      "nameZh": "蔚蓝",
       "playtimeHours": 5.6,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 4,
+      "achievementsTotal": 32,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 504230,
-      "achievementsUnlocked": 4,
-      "achievementsTotal": 32,
-      "nameZh": "蔚蓝"
+      "steamAppId": 504230
     },
     {
       "name": "Totally Accurate Battle Simulator",
+      "nameZh": "全面战争模拟器",
       "playtimeHours": 58.9,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 17,
+      "achievementsTotal": 64,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 508440,
-      "achievementsUnlocked": 17,
-      "achievementsTotal": 64,
-      "nameZh": "全面战争模拟器"
+      "steamAppId": 508440
     },
     {
       "name": "Warhammer: Vermintide 2",
       "playtimeHours": 0.3,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 26,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 552500,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 26
+      "steamAppId": 552500
     },
     {
       "name": "Witch It",
       "playtimeHours": 4.6,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 3,
+      "achievementsTotal": 41,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 559650,
-      "achievementsUnlocked": 3,
-      "achievementsTotal": 41
+      "steamAppId": 559650
     },
     {
       "name": "DARK SOULS™: REMASTERED",
+      "nameZh": "黑暗之魂：重制版",
       "playtimeHours": 59.8,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 41,
+      "achievementsTotal": 41,
       "perfect": true,
       "featured": false,
       "hidden": false,
-      "steamAppId": 570940,
-      "achievementsUnlocked": 41,
-      "achievementsTotal": 41,
-      "nameZh": "黑暗之魂：重制版"
+      "steamAppId": 570940
     },
     {
       "name": "Hell Girls",
       "playtimeHours": 2.7,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 56,
+      "achievementsTotal": 92,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 575550,
-      "achievementsUnlocked": 56,
-      "achievementsTotal": 92
+      "steamAppId": 575550
     },
     {
       "name": "State of Anarchy Complete: Master of Mayhem",
       "playtimeHours": 0.7,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 1,
+      "achievementsTotal": 26,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 576130,
-      "achievementsUnlocked": 1,
-      "achievementsTotal": 26
+      "steamAppId": 576130
     },
     {
       "name": "PUBG: BATTLEGROUNDS",
-      "playtimeHours": 21.0,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "playtimeHours": 21,
+      "achievementsUnlocked": 13,
+      "achievementsTotal": 37,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 578080,
-      "achievementsUnlocked": 13,
-      "achievementsTotal": 37
+      "steamAppId": 578080
     },
     {
       "name": "Monster Hunter: World",
+      "nameZh": "怪物猎人：世界",
       "playtimeHours": 25.5,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 16,
+      "achievementsTotal": 100,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 582010,
-      "achievementsUnlocked": 16,
-      "achievementsTotal": 100,
-      "nameZh": "怪物猎人：世界"
+      "steamAppId": 582010
     },
     {
       "name": "Dead Cells",
-      "playtimeHours": 4.0,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "nameZh": "死亡细胞",
+      "playtimeHours": 4,
+      "achievementsUnlocked": 15,
+      "achievementsTotal": 121,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 588650,
-      "achievementsUnlocked": 15,
-      "achievementsTotal": 121,
-      "nameZh": "死亡细胞"
+      "steamAppId": 588650
     },
     {
       "name": "Graveyard Keeper",
       "playtimeHours": 2.5,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 6,
+      "achievementsTotal": 125,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 599140,
-      "achievementsUnlocked": 6,
-      "achievementsTotal": 125
+      "steamAppId": 599140
     },
     {
       "name": "Devil May Cry 5",
       "playtimeHours": 0.8,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 1,
+      "achievementsTotal": 55,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 601150,
-      "achievementsUnlocked": 1,
-      "achievementsTotal": 55
+      "steamAppId": 601150
     },
     {
       "name": "Barotrauma",
       "playtimeHours": 0.5,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 76,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 602960,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 76
+      "steamAppId": 602960
     },
     {
       "name": "Moonlighter",
       "playtimeHours": 1.9,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 3,
+      "achievementsTotal": 67,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 606150,
-      "achievementsUnlocked": 3,
-      "achievementsTotal": 67
+      "steamAppId": 606150
     },
     {
       "name": "House Party",
       "playtimeHours": 3.8,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 1,
+      "achievementsTotal": 91,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 611790,
-      "achievementsUnlocked": 1,
-      "achievementsTotal": 91
+      "steamAppId": 611790
     },
     {
       "name": "House Flipper",
       "playtimeHours": 0.1,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 96,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 613100,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 96
+      "steamAppId": 613100
     },
     {
       "name": "Barro",
       "playtimeHours": 0.2,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 97,
+      "achievementsTotal": 109,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 618140,
-      "achievementsUnlocked": 97,
-      "achievementsTotal": 109
+      "steamAppId": 618140
     },
     {
       "name": "Dragonia",
-      "playtimeHours": 0.0,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "playtimeHours": 0,
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 46,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 635730,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 46
+      "steamAppId": 635730
     },
     {
       "name": "Journey",
       "playtimeHours": 1.1,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 14,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 638230,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 14
+      "steamAppId": 638230
     },
     {
       "name": "The Escapists 2",
       "playtimeHours": 1.7,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 4,
+      "achievementsTotal": 58,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 641990,
-      "achievementsUnlocked": 4,
-      "achievementsTotal": 58
+      "steamAppId": 641990
     },
     {
       "name": "Mirror",
       "playtimeHours": 3.5,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 36,
+      "achievementsTotal": 114,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 644560,
-      "achievementsUnlocked": 36,
-      "achievementsTotal": 114
+      "steamAppId": 644560
     },
     {
       "name": "60 Parsecs!",
       "playtimeHours": 0.9,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 7,
+      "achievementsTotal": 44,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 646270,
-      "achievementsUnlocked": 7,
-      "achievementsTotal": 44
+      "steamAppId": 646270
     },
     {
       "name": "Slay the Spire",
-      "playtimeHours": 15.0,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "nameZh": "杀戮尖塔",
+      "playtimeHours": 15,
+      "achievementsUnlocked": 18,
+      "achievementsTotal": 46,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 646570,
-      "achievementsUnlocked": 18,
-      "achievementsTotal": 46,
-      "nameZh": "杀戮尖塔"
+      "steamAppId": 646570
     },
     {
       "name": "Return of the Obra Dinn",
       "playtimeHours": 1.2,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 16,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 653530,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 16
+      "steamAppId": 653530
     },
     {
       "name": "Hand Simulator",
       "playtimeHours": 6.9,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 7,
+      "achievementsTotal": 72,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 657200,
-      "achievementsUnlocked": 7,
-      "achievementsTotal": 72
+      "steamAppId": 657200
     },
     {
       "name": "My Time at Portia",
       "playtimeHours": 10.6,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 9,
+      "achievementsTotal": 91,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 666140,
-      "achievementsUnlocked": 9,
-      "achievementsTotal": 91
+      "steamAppId": 666140
     },
     {
       "name": "Farm Together",
       "playtimeHours": 2.1,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 5,
+      "achievementsTotal": 56,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 673950,
-      "achievementsUnlocked": 5,
-      "achievementsTotal": 56
+      "steamAppId": 673950
     },
     {
       "name": "Stick Fight: The Game",
       "playtimeHours": 2.8,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 17,
+      "achievementsTotal": 28,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 674940,
-      "achievementsUnlocked": 17,
-      "achievementsTotal": 28
+      "steamAppId": 674940
     },
     {
       "name": "CODE VEIN",
       "playtimeHours": 3.2,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 3,
+      "achievementsTotal": 43,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 678960,
-      "achievementsUnlocked": 3,
-      "achievementsTotal": 43
+      "steamAppId": 678960
     },
     {
       "name": "Hell Let Loose",
       "playtimeHours": 7.7,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 19,
+      "achievementsTotal": 195,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 686810,
-      "achievementsUnlocked": 19,
-      "achievementsTotal": 195
+      "steamAppId": 686810
     },
     {
       "name": "Dungeon Warfare 2",
       "playtimeHours": 2.7,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 4,
+      "achievementsTotal": 32,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 698540,
-      "achievementsUnlocked": 4,
-      "achievementsTotal": 32
+      "steamAppId": 698540
     },
     {
       "name": "Kingdom Two Crowns",
       "playtimeHours": 19.1,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 19,
+      "achievementsTotal": 46,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 701160,
-      "achievementsUnlocked": 19,
-      "achievementsTotal": 46
+      "steamAppId": 701160
     },
     {
       "name": "Thief Simulator",
       "playtimeHours": 1.4,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 33,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 704850,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 33
+      "steamAppId": 704850
     },
     {
       "name": "Aimlabs",
       "playtimeHours": 5.8,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 9,
+      "achievementsTotal": 100,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 714010,
-      "achievementsUnlocked": 9,
-      "achievementsTotal": 100
+      "steamAppId": 714010
     },
     {
       "name": "Cultist Simulator",
       "playtimeHours": 0.8,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 1,
+      "achievementsTotal": 83,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 718670,
-      "achievementsUnlocked": 1,
-      "achievementsTotal": 83
+      "steamAppId": 718670
     },
     {
       "name": "Forager",
       "playtimeHours": 1.5,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 2,
+      "achievementsTotal": 103,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 751780,
-      "achievementsUnlocked": 2,
-      "achievementsTotal": 103
+      "steamAppId": 751780
     },
     {
       "name": "Outer Wilds",
       "playtimeHours": 4.6,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 4,
+      "achievementsTotal": 31,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 753640,
-      "achievementsUnlocked": 4,
-      "achievementsTotal": 31
+      "steamAppId": 753640
     },
     {
       "name": "Dragon Cliff 龙崖",
       "playtimeHours": 107.9,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 33,
+      "achievementsTotal": 70,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 758190,
-      "achievementsUnlocked": 33,
-      "achievementsTotal": 70
+      "steamAppId": 758190
     },
     {
       "name": "Your Diary +",
-      "playtimeHours": 0.0,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "playtimeHours": 0,
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 8,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 761700,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 8
+      "steamAppId": 761700
     },
     {
       "name": "Muse Dash",
       "playtimeHours": 5.4,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 4,
+      "achievementsTotal": 39,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 774171,
-      "achievementsUnlocked": 4,
-      "achievementsTotal": 39
+      "steamAppId": 774171
     },
     {
       "name": "Blasphemous",
       "playtimeHours": 0.4,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 1,
+      "achievementsTotal": 45,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 774361,
-      "achievementsUnlocked": 1,
-      "achievementsTotal": 45
+      "steamAppId": 774361
     },
     {
       "name": "Project Winter",
       "playtimeHours": 12.7,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 19,
+      "achievementsTotal": 78,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 774861,
-      "achievementsUnlocked": 19,
-      "achievementsTotal": 78
+      "steamAppId": 774861
     },
     {
       "name": "Neon Abyss",
       "playtimeHours": 4.5,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 9,
+      "achievementsTotal": 35,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 788100,
-      "achievementsUnlocked": 9,
-      "achievementsTotal": 35
+      "steamAppId": 788100
     },
     {
       "name": "Assassin's Creed Odyssey",
       "playtimeHours": 30.5,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 17,
+      "achievementsTotal": 93,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 812140,
-      "achievementsUnlocked": 17,
-      "achievementsTotal": 93
+      "steamAppId": 812140
     },
     {
       "name": "Sekiro™: Shadows Die Twice",
+      "nameZh": "只狼：影逝二度",
       "playtimeHours": 145.6,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 34,
+      "achievementsTotal": 34,
       "perfect": true,
       "featured": false,
       "hidden": false,
-      "steamAppId": 814380,
-      "achievementsUnlocked": 34,
-      "achievementsTotal": 34,
-      "nameZh": "只狼：影逝二度"
+      "steamAppId": 814380
     },
     {
       "name": "Green Hell",
       "playtimeHours": 3.4,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 9,
+      "achievementsTotal": 68,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 815370,
-      "achievementsUnlocked": 9,
-      "achievementsTotal": 68
+      "steamAppId": 815370
     },
     {
       "name": "Totally Accurate Battlegrounds",
       "playtimeHours": 2.6,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
       "perfect": false,
       "featured": false,
       "hidden": false,
@@ -1657,150 +1223,106 @@
     {
       "name": "KovaaK's",
       "playtimeHours": 7.2,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 1,
+      "achievementsTotal": 1,
       "perfect": true,
       "featured": false,
       "hidden": false,
-      "steamAppId": 824270,
-      "achievementsUnlocked": 1,
-      "achievementsTotal": 1
+      "steamAppId": 824270
     },
     {
       "name": "Untitled Goose Game",
-      "playtimeHours": 2.0,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "playtimeHours": 2,
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 25,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 837470,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 25
+      "steamAppId": 837470
     },
     {
       "name": "Goat Simulator 3",
       "playtimeHours": 0.7,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 2,
+      "achievementsTotal": 64,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 850190,
-      "achievementsUnlocked": 2,
-      "achievementsTotal": 64
+      "steamAppId": 850190
     },
     {
       "name": "Gal*Gun 2",
       "playtimeHours": 0.1,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 37,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 851890,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 37
+      "steamAppId": 851890
     },
     {
       "name": "Pummel Party",
       "playtimeHours": 12.3,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 8,
+      "achievementsTotal": 31,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 880940,
-      "achievementsUnlocked": 8,
-      "achievementsTotal": 31
+      "steamAppId": 880940
     },
     {
       "name": "Noita",
       "playtimeHours": 3.5,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 7,
+      "achievementsTotal": 14,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 881100,
-      "achievementsUnlocked": 7,
-      "achievementsTotal": 14
+      "steamAppId": 881100
     },
     {
       "name": "Hand Simulator: Survival",
       "playtimeHours": 0.2,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 7,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 924140,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 7
+      "steamAppId": 924140
     },
     {
       "name": "Back 4 Blood",
       "playtimeHours": 0.7,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 5,
+      "achievementsTotal": 93,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 924970,
-      "achievementsUnlocked": 5,
-      "achievementsTotal": 93
+      "steamAppId": 924970
     },
     {
       "name": "Otaku's Adventure",
       "playtimeHours": 0.6,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 2,
+      "achievementsTotal": 27,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 937170,
-      "achievementsUnlocked": 2,
-      "achievementsTotal": 27
+      "steamAppId": 937170
     },
     {
       "name": "Unheard - Voices of Crime",
       "playtimeHours": 0.6,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 1,
+      "achievementsTotal": 12,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 942970,
-      "achievementsUnlocked": 1,
-      "achievementsTotal": 12
+      "steamAppId": 942970
     },
     {
       "name": "DEAD OR ALIVE Xtreme Venus Vacation",
       "playtimeHours": 3.1,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
       "perfect": false,
       "featured": false,
       "hidden": false,
@@ -1809,66 +1331,46 @@
     {
       "name": "Spiritfarer®: Farewell Edition",
       "playtimeHours": 1.4,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 39,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 972660,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 39
+      "steamAppId": 972660
     },
     {
       "name": "嗜血印 Bloody Spell",
       "playtimeHours": 0.7,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 2,
+      "achievementsTotal": 60,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 992300,
-      "achievementsUnlocked": 2,
-      "achievementsTotal": 60
+      "steamAppId": 992300
     },
     {
       "name": "60 Seconds! Reatomized",
       "playtimeHours": 7.1,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 32,
+      "achievementsTotal": 60,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1012880,
-      "achievementsUnlocked": 32,
-      "achievementsTotal": 60
+      "steamAppId": 1012880
     },
     {
       "name": "Unrailed!",
       "playtimeHours": 1.4,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 3,
+      "achievementsTotal": 53,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1016920,
-      "achievementsUnlocked": 3,
-      "achievementsTotal": 53
+      "steamAppId": 1016920
     },
     {
       "name": "Wanba Warriors",
-      "playtimeHours": 4.0,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "playtimeHours": 4,
       "perfect": false,
       "featured": false,
       "hidden": false,
@@ -1877,281 +1379,201 @@
     {
       "name": "Ori and the Will of the Wisps",
       "playtimeHours": 0.9,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 1,
+      "achievementsTotal": 37,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1057090,
-      "achievementsUnlocked": 1,
-      "achievementsTotal": 37
+      "steamAppId": 1057090
     },
     {
       "name": "Before Your Eyes",
       "playtimeHours": 0.3,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 11,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1082430,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 11
+      "steamAppId": 1082430
     },
     {
       "name": "Baldur's Gate 3",
+      "nameZh": "博德之门 3",
       "playtimeHours": 24.4,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 8,
+      "achievementsTotal": 54,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1086940,
-      "achievementsUnlocked": 8,
-      "achievementsTotal": 54,
-      "nameZh": "博德之门 3"
+      "steamAppId": 1086940
     },
     {
       "name": "Cyberpunk 2077",
+      "nameZh": "赛博朋克 2077",
       "playtimeHours": 66.1,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 17,
+      "achievementsTotal": 57,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1091500,
-      "achievementsUnlocked": 17,
-      "achievementsTotal": 57,
-      "nameZh": "赛博朋克 2077"
+      "steamAppId": 1091500
     },
     {
       "name": "Inscryption",
       "playtimeHours": 21.5,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 22,
+      "achievementsTotal": 40,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1092790,
-      "achievementsUnlocked": 22,
-      "achievementsTotal": 40
+      "steamAppId": 1092790
     },
     {
       "name": "Fall Guys",
       "playtimeHours": 12.3,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 13,
+      "achievementsTotal": 34,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1097150,
-      "achievementsUnlocked": 13,
-      "achievementsTotal": 34
+      "steamAppId": 1097150
     },
     {
       "name": "Miss Neko",
       "playtimeHours": 0.2,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 18,
+      "achievementsTotal": 104,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1101450,
-      "achievementsUnlocked": 18,
-      "achievementsTotal": 104
+      "steamAppId": 1101450
     },
     {
       "name": "Unpacking",
       "playtimeHours": 4.7,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 12,
+      "achievementsTotal": 25,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1135690,
-      "achievementsUnlocked": 12,
-      "achievementsTotal": 25
+      "steamAppId": 1135690
     },
     {
       "name": "Travellers Rest",
       "playtimeHours": 3.2,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 2,
+      "achievementsTotal": 55,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1139980,
-      "achievementsUnlocked": 2,
-      "achievementsTotal": 55
+      "steamAppId": 1139980
     },
     {
       "name": "Total War: WARHAMMER III",
-      "playtimeHours": 0.0,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "playtimeHours": 0,
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 138,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1142710,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 138
+      "steamAppId": 1142710
     },
     {
       "name": "Ready or Not",
       "playtimeHours": 7.3,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 1,
+      "achievementsTotal": 66,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1144200,
-      "achievementsUnlocked": 1,
-      "achievementsTotal": 66
+      "steamAppId": 1144200
     },
     {
       "name": "Hades",
+      "nameZh": "哈迪斯",
       "playtimeHours": 0.5,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 49,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1145360,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 49,
-      "nameZh": "哈迪斯"
+      "steamAppId": 1145360
     },
     {
       "name": "Yokai's Secret",
-      "playtimeHours": 1.0,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "playtimeHours": 1,
+      "achievementsUnlocked": 49,
+      "achievementsTotal": 49,
       "perfect": true,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1146630,
-      "achievementsUnlocked": 49,
-      "achievementsTotal": 49
+      "steamAppId": 1146630
     },
     {
       "name": "Not For Broadcast",
       "playtimeHours": 0.2,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 95,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1147550,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 95
+      "steamAppId": 1147550
     },
     {
       "name": "Skul: The Hero Slayer",
       "playtimeHours": 14.1,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 20,
+      "achievementsTotal": 101,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1147560,
-      "achievementsUnlocked": 20,
-      "achievementsTotal": 101
+      "steamAppId": 1147560
     },
     {
       "name": "Love wish",
       "playtimeHours": 0.7,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 25,
+      "achievementsTotal": 75,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1153430,
-      "achievementsUnlocked": 25,
-      "achievementsTotal": 75
+      "steamAppId": 1153430
     },
     {
       "name": "STAR WARS Jedi: Fallen Order™",
       "playtimeHours": 5.5,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 5,
+      "achievementsTotal": 39,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1172380,
-      "achievementsUnlocked": 5,
-      "achievementsTotal": 39
+      "steamAppId": 1172380
     },
     {
       "name": "Apex Legends",
+      "nameZh": "Apex 英雄",
       "playtimeHours": 1844.5,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 12,
+      "achievementsTotal": 12,
       "perfect": true,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1172470,
-      "achievementsUnlocked": 12,
-      "achievementsTotal": 12,
-      "nameZh": "Apex 英雄"
+      "steamAppId": 1172470
     },
     {
       "name": "Red Dead Redemption 2",
+      "nameZh": "荒野大镖客：救赎 2",
       "playtimeHours": 80.8,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 9,
+      "achievementsTotal": 51,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1174180,
-      "achievementsUnlocked": 9,
-      "achievementsTotal": 51,
-      "nameZh": "荒野大镖客：救赎 2"
+      "steamAppId": 1174180
     },
     {
       "name": "War of the Three Kingdoms",
       "playtimeHours": 0.4,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
       "perfect": false,
       "featured": false,
       "hidden": false,
@@ -2160,123 +1582,87 @@
     {
       "name": "Gunfire Reborn",
       "playtimeHours": 17.9,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 57,
+      "achievementsTotal": 134,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1217060,
-      "achievementsUnlocked": 57,
-      "achievementsTotal": 134
+      "steamAppId": 1217060
     },
     {
       "name": "A Way Out",
       "playtimeHours": 8.1,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 4,
+      "achievementsTotal": 14,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1222700,
-      "achievementsUnlocked": 4,
-      "achievementsTotal": 14
+      "steamAppId": 1222700
     },
     {
       "name": "STAR WARS™ Battlefront™ II",
       "playtimeHours": 0.1,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 43,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1237950,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 43
+      "steamAppId": 1237950
     },
     {
       "name": "Titanfall® 2",
       "playtimeHours": 6.9,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 33,
+      "achievementsTotal": 50,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1237970,
-      "achievementsUnlocked": 33,
-      "achievementsTotal": 50
+      "steamAppId": 1237970
     },
     {
       "name": "Battlefield™ V",
       "playtimeHours": 44.8,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 13,
+      "achievementsTotal": 21,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1238810,
-      "achievementsUnlocked": 13,
-      "achievementsTotal": 21
+      "steamAppId": 1238810
     },
     {
       "name": "Battlefield™ 1",
       "playtimeHours": 15.2,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 13,
+      "achievementsTotal": 50,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1238840,
-      "achievementsUnlocked": 13,
-      "achievementsTotal": 50
+      "steamAppId": 1238840
     },
     {
       "name": "ELDEN RING",
+      "nameZh": "艾尔登法环",
       "playtimeHours": 355.8,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 42,
+      "achievementsTotal": 42,
       "perfect": true,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1245620,
-      "achievementsUnlocked": 42,
-      "achievementsTotal": 42,
-      "nameZh": "艾尔登法环"
+      "steamAppId": 1245620
     },
     {
       "name": "Party Animals",
       "playtimeHours": 2.8,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 9,
+      "achievementsTotal": 116,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1260320,
-      "achievementsUnlocked": 9,
-      "achievementsTotal": 116
+      "steamAppId": 1260320
     },
     {
       "name": "tModLoader",
       "playtimeHours": 42.9,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
       "perfect": false,
       "featured": false,
       "hidden": false,
@@ -2285,121 +1671,75 @@
     {
       "name": "GWENT: The Witcher Card Game",
       "playtimeHours": 0.2,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 46,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1284410,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 46
+      "steamAppId": 1284410
     },
     {
       "name": "Borderlands® 4",
       "playtimeHours": 2.5,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 63,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1285190,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 63
+      "steamAppId": 1285190
     },
     {
       "name": "Forza Horizon 4",
       "playtimeHours": 7.5,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 10,
+      "achievementsTotal": 178,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1293830,
-      "achievementsUnlocked": 10,
-      "achievementsTotal": 178
+      "steamAppId": 1293830
     },
     {
       "name": "Nioh 2 – The Complete Edition",
       "playtimeHours": 32.1,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 16,
+      "achievementsTotal": 88,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1325200,
-      "achievementsUnlocked": 16,
-      "achievementsTotal": 88
+      "steamAppId": 1325200
     },
     {
       "name": "Sons Of The Forest",
       "playtimeHours": 14.9,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 6,
+      "achievementsTotal": 32,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1326470,
-      "achievementsUnlocked": 6,
-      "achievementsTotal": 32
+      "steamAppId": 1326470
     },
     {
       "name": "雀魂麻将(MahjongSoul)",
+      "nameZh": "雀魂麻将",
       "playtimeHours": 159.9,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1329410,
-      "nameZh": "雀魂麻将"
+      "steamAppId": 1329410
     },
     {
       "name": "Dyson Sphere Program",
       "playtimeHours": 0.5,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
-      "perfect": false,
-      "featured": false,
-      "hidden": false,
-      "steamAppId": 1366540,
       "achievementsUnlocked": 2,
-      "achievementsTotal": 128
-    },
-    {
-      "name": "Crosshair X",
-      "playtimeHours": 275.1,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsTotal": 128,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1366800,
-      "achievementsUnlocked": 11,
-      "achievementsTotal": 17
+      "steamAppId": 1366540
     },
     {
       "name": "No Rest for the Wicked",
       "playtimeHours": 30.4,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
       "perfect": false,
       "featured": false,
       "hidden": false,
@@ -2408,38 +1748,26 @@
     {
       "name": "Luck be a Landlord",
       "playtimeHours": 10.4,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 53,
+      "achievementsTotal": 186,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1404850,
-      "achievementsUnlocked": 53,
-      "achievementsTotal": 186
+      "steamAppId": 1404850
     },
     {
       "name": "World of Tanks",
       "playtimeHours": 0.4,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 1,
+      "achievementsTotal": 60,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1407200,
-      "achievementsUnlocked": 1,
-      "achievementsTotal": 60
+      "steamAppId": 1407200
     },
     {
       "name": "Deadlock",
       "playtimeHours": 0.9,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
       "perfect": false,
       "featured": false,
       "hidden": false,
@@ -2448,95 +1776,67 @@
     {
       "name": "It Takes Two",
       "playtimeHours": 17.9,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 10,
+      "achievementsTotal": 20,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1426210,
-      "achievementsUnlocked": 10,
-      "achievementsTotal": 20
+      "steamAppId": 1426210
     },
     {
       "name": "Yu-Gi-Oh!  Master Duel",
       "playtimeHours": 0.6,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 1,
+      "achievementsTotal": 11,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1449850,
-      "achievementsUnlocked": 1,
-      "achievementsTotal": 11
+      "steamAppId": 1449850
     },
     {
       "name": "NEEDY STREAMER OVERLOAD",
       "playtimeHours": 0.1,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 33,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1451940,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 33
+      "steamAppId": 1451940
     },
     {
       "name": "Cookie Clicker",
-      "playtimeHours": 382.0,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "nameZh": "Cookie Clicker（饼干点击器）",
+      "playtimeHours": 382,
+      "achievementsUnlocked": 556,
+      "achievementsTotal": 637,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1454400,
-      "achievementsUnlocked": 556,
-      "achievementsTotal": 637,
-      "nameZh": "Cookie Clicker（饼干点击器）"
+      "steamAppId": 1454400
     },
     {
       "name": "鬼谷八荒 Tale of Immortal",
-      "playtimeHours": 36.0,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "playtimeHours": 36,
+      "achievementsUnlocked": 53,
+      "achievementsTotal": 169,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1468810,
-      "achievementsUnlocked": 53,
-      "achievementsTotal": 169
+      "steamAppId": 1468810
     },
     {
       "name": "Draw & Guess",
       "playtimeHours": 12.9,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 29,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1483870,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 29
+      "steamAppId": 1483870
     },
     {
       "name": "Incredibox",
       "playtimeHours": 0.1,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
       "perfect": false,
       "featured": false,
       "hidden": false,
@@ -2545,52 +1845,36 @@
     {
       "name": "DREDGE",
       "playtimeHours": 0.6,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 1,
+      "achievementsTotal": 60,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1562430,
-      "achievementsUnlocked": 1,
-      "achievementsTotal": 60
+      "steamAppId": 1562430
     },
     {
       "name": "Goose Goose Duck",
       "playtimeHours": 19.3,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 9,
+      "achievementsTotal": 38,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1568590,
-      "achievementsUnlocked": 9,
-      "achievementsTotal": 38
+      "steamAppId": 1568590
     },
     {
       "name": "Touhou Mystia's Izakaya",
       "playtimeHours": 8.9,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 29,
+      "achievementsTotal": 141,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1584090,
-      "achievementsUnlocked": 29,
-      "achievementsTotal": 141
+      "steamAppId": 1584090
     },
     {
       "name": "The Bazaar",
       "playtimeHours": 0.6,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
       "perfect": false,
       "featured": false,
       "hidden": false,
@@ -2599,10 +1883,6 @@
     {
       "name": "Rubber Bandits: Summer Prologue",
       "playtimeHours": 0.3,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
       "perfect": false,
       "featured": false,
       "hidden": false,
@@ -2611,237 +1891,151 @@
     {
       "name": "Core Keeper",
       "playtimeHours": 4.9,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 55,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1621690,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 55
+      "steamAppId": 1621690
     },
     {
       "name": "Muck",
-      "playtimeHours": 1.0,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "playtimeHours": 1,
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 49,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1625450,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 49
+      "steamAppId": 1625450
     },
     {
       "name": "Volcano Princess",
       "playtimeHours": 10.4,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 52,
+      "achievementsTotal": 234,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1669980,
-      "achievementsUnlocked": 52,
-      "achievementsTotal": 234
+      "steamAppId": 1669980
     },
     {
       "name": "Minecraft Dungeons",
       "playtimeHours": 1.6,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 1,
+      "achievementsTotal": 104,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1672970,
-      "achievementsUnlocked": 1,
-      "achievementsTotal": 104
+      "steamAppId": 1672970
     },
     {
       "name": "Vampire Survivors",
+      "nameZh": "吸血鬼幸存者",
       "playtimeHours": 65.3,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 201,
+      "achievementsTotal": 243,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1794680,
-      "achievementsUnlocked": 201,
-      "achievementsTotal": 243,
-      "nameZh": "吸血鬼幸存者"
+      "steamAppId": 1794680
     },
     {
       "name": "Mirror 2: Project X",
       "playtimeHours": 8.3,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 1,
+      "achievementsTotal": 1,
       "perfect": true,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1832640,
-      "achievementsUnlocked": 1,
-      "achievementsTotal": 1
+      "steamAppId": 1832640
     },
     {
       "name": "Game Dev Story",
+      "nameZh": "游戏发展国++",
       "playtimeHours": 11.4,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 6,
+      "achievementsTotal": 6,
       "perfect": true,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1847240,
-      "achievementsUnlocked": 6,
-      "achievementsTotal": 6,
-      "nameZh": "游戏发展国++"
-    },
-    {
-      "name": "Mirror News Center",
-      "playtimeHours": 0.2,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
-      "perfect": false,
-      "featured": false,
-      "hidden": false,
-      "steamAppId": 1856540
-    },
-    {
-      "name": "Dungeon Village",
-      "playtimeHours": 0.1,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
-      "perfect": false,
-      "featured": false,
-      "hidden": false,
-      "steamAppId": 1859360,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 6
+      "steamAppId": 1847240
     },
     {
       "name": "DAVE THE DIVER",
       "playtimeHours": 31.4,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 25,
+      "achievementsTotal": 43,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1868140,
-      "achievementsUnlocked": 25,
-      "achievementsTotal": 43
+      "steamAppId": 1868140
     },
     {
       "name": "The Sushi Spinnery",
       "playtimeHours": 10.3,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 1,
+      "achievementsTotal": 6,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1921780,
-      "achievementsUnlocked": 1,
-      "achievementsTotal": 6
+      "steamAppId": 1921780
     },
     {
       "name": "Burger Bistro Story",
-      "playtimeHours": 0.0,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "playtimeHours": 0,
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 6,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1933990,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 6
+      "steamAppId": 1933990
     },
     {
       "name": "Call of Duty®",
+      "nameZh": "使命召唤",
       "playtimeHours": 99.8,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 1,
+      "achievementsTotal": 157,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1938090,
-      "achievementsUnlocked": 1,
-      "achievementsTotal": 157,
-      "nameZh": "使命召唤"
+      "steamAppId": 1938090
     },
     {
       "name": "Brotato",
+      "nameZh": "土豆兄弟",
       "playtimeHours": 58.8,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 83,
+      "achievementsTotal": 179,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1942280,
-      "achievementsUnlocked": 83,
-      "achievementsTotal": 179,
-      "nameZh": "土豆兄弟"
+      "steamAppId": 1942280
     },
     {
       "name": "Escape the Backrooms",
       "playtimeHours": 15.1,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 30,
+      "achievementsTotal": 34,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1943950,
-      "achievementsUnlocked": 30,
-      "achievementsTotal": 34
+      "steamAppId": 1943950
     },
     {
       "name": "Stacklands",
+      "nameZh": "堆叠大陆",
       "playtimeHours": 33.9,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 36,
+      "achievementsTotal": 36,
       "perfect": true,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1948280,
-      "achievementsUnlocked": 36,
-      "achievementsTotal": 36,
-      "nameZh": "堆叠大陆"
+      "steamAppId": 1948280
     },
     {
       "name": "Lethal Company",
       "playtimeHours": 15.1,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
       "perfect": false,
       "featured": false,
       "hidden": false,
@@ -2850,38 +2044,26 @@
     {
       "name": "Grand Prix Story",
       "playtimeHours": 2.8,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 1,
+      "achievementsTotal": 6,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1978100,
-      "achievementsUnlocked": 1,
-      "achievementsTotal": 6
+      "steamAppId": 1978100
     },
     {
       "name": "Inside the Backrooms",
       "playtimeHours": 2.2,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 5,
+      "achievementsTotal": 30,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 1987080,
-      "achievementsUnlocked": 5,
-      "achievementsTotal": 30
+      "steamAppId": 1987080
     },
     {
       "name": "Dark and Darker",
-      "playtimeHours": 1.0,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "playtimeHours": 1,
       "perfect": false,
       "featured": false,
       "hidden": false,
@@ -2890,38 +2072,26 @@
     {
       "name": "The Farmer Was Replaced",
       "playtimeHours": 55.2,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 14,
+      "achievementsTotal": 59,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 2060160,
-      "achievementsUnlocked": 14,
-      "achievementsTotal": 59
+      "steamAppId": 2060160
     },
     {
       "name": "BALL x PIT",
       "playtimeHours": 35.1,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 41,
+      "achievementsTotal": 63,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 2062430,
-      "achievementsUnlocked": 41,
-      "achievementsTotal": 63
+      "steamAppId": 2062430
     },
     {
       "name": "THE FINALS PLAYTEST",
       "playtimeHours": 0.9,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
       "perfect": false,
       "featured": false,
       "hidden": false,
@@ -2929,99 +2099,71 @@
     },
     {
       "name": "VillageRhapsody",
+      "nameZh": "乡村狂想曲",
       "playtimeHours": 8.1,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 32,
+      "achievementsTotal": 32,
       "perfect": true,
       "featured": false,
       "hidden": false,
-      "steamAppId": 2109460,
-      "achievementsUnlocked": 32,
-      "achievementsTotal": 32,
-      "nameZh": "乡村狂想曲"
+      "steamAppId": 2109460
     },
     {
       "name": "Overwatch®",
-      "playtimeHours": 393.7,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "nameZh": "守望先锋",
+      "playtimeHours": 1793.7,
+      "achievementsUnlocked": 73,
+      "achievementsTotal": 164,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 2357570,
-      "achievementsUnlocked": 73,
-      "achievementsTotal": 164,
-      "nameZh": "守望先锋"
+      "steamAppId": 2357570
     },
     {
       "name": "Black Myth: Wukong",
+      "nameZh": "黑神话：悟空",
       "playtimeHours": 85.8,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 81,
+      "achievementsTotal": 81,
       "perfect": true,
       "featured": false,
       "hidden": false,
-      "steamAppId": 2358720,
-      "achievementsUnlocked": 81,
-      "achievementsTotal": 81,
-      "nameZh": "黑神话：悟空"
+      "steamAppId": 2358720
     },
     {
       "name": "Delta Force",
       "playtimeHours": 0.2,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 53,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 2507950,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 53
+      "steamAppId": 2507950
     },
     {
       "name": "The Hungry Lamb: Traveling in the Late Ming Dynasty",
       "playtimeHours": 9.7,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 2,
+      "achievementsTotal": 16,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 2593370,
-      "achievementsUnlocked": 2,
-      "achievementsTotal": 16
+      "steamAppId": 2593370
     },
     {
       "name": "ELDEN RING NIGHTREIGN",
+      "nameZh": "艾尔登法环 黑夜君临",
       "playtimeHours": 215.7,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 37,
+      "achievementsTotal": 37,
       "perfect": true,
       "featured": false,
       "hidden": false,
-      "steamAppId": 2622380,
-      "achievementsUnlocked": 37,
-      "achievementsTotal": 37,
-      "nameZh": "艾尔登法环 黑夜君临"
+      "steamAppId": 2622380
     },
     {
       "name": "SNOWBREAK",
       "playtimeHours": 0.4,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
       "perfect": false,
       "featured": false,
       "hidden": false,
@@ -3030,38 +2172,26 @@
     {
       "name": "Palia",
       "playtimeHours": 0.8,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 52,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 2707930,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 52
+      "steamAppId": 2707930
     },
     {
       "name": "Marvel Rivals",
       "playtimeHours": 5.8,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 5,
+      "achievementsTotal": 49,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 2767030,
-      "achievementsUnlocked": 5,
-      "achievementsTotal": 49
+      "steamAppId": 2767030
     },
     {
       "name": "Lost Castle 2 Playtest",
       "playtimeHours": 0.5,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
       "perfect": false,
       "featured": false,
       "hidden": false,
@@ -3070,80 +2200,56 @@
     {
       "name": "Battlefield™ 6",
       "playtimeHours": 5.5,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 1,
+      "achievementsTotal": 53,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 2807960,
-      "achievementsUnlocked": 1,
-      "achievementsTotal": 53
+      "steamAppId": 2807960
     },
     {
       "name": "Ale & Tale Tavern: First Pints",
       "playtimeHours": 1.3,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 8,
+      "achievementsTotal": 14,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 2870840,
-      "achievementsUnlocked": 8,
-      "achievementsTotal": 14
+      "steamAppId": 2870840
     },
     {
       "name": "Content Warning",
       "playtimeHours": 1.1,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 48,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 2881650,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 48
+      "steamAppId": 2881650
     },
     {
       "name": "Banana",
       "playtimeHours": 1.1,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 1,
+      "achievementsTotal": 76,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 2923300,
-      "achievementsUnlocked": 1,
-      "achievementsTotal": 76
+      "steamAppId": 2923300
     },
     {
       "name": "PAPERHEAD EP0",
       "playtimeHours": 0.3,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 11,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 3008200,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 11
+      "steamAppId": 3008200
     },
     {
       "name": "Battlefield™ 6 Open Beta",
       "playtimeHours": 2.2,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
       "perfect": false,
       "featured": false,
       "hidden": false,
@@ -3151,115 +2257,73 @@
     },
     {
       "name": "Sultan's Game",
-      "playtimeHours": 1.0,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "playtimeHours": 1,
+      "achievementsUnlocked": 1,
+      "achievementsTotal": 15,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 3117820,
-      "achievementsUnlocked": 1,
-      "achievementsTotal": 15
+      "steamAppId": 3117820
     },
     {
       "name": "Escape From Duckov",
       "playtimeHours": 7.5,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 10,
+      "achievementsTotal": 55,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 3167020,
-      "achievementsUnlocked": 10,
-      "achievementsTotal": 55
+      "steamAppId": 3167020
     },
     {
       "name": "Tiny Pasture",
       "playtimeHours": 46.4,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 29,
+      "achievementsTotal": 55,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 3167550,
-      "achievementsUnlocked": 29,
-      "achievementsTotal": 55
+      "steamAppId": 3167550
     },
     {
       "name": "Grand Theft Auto V Enhanced",
       "playtimeHours": 21.1,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 5,
+      "achievementsTotal": 77,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 3240220,
-      "achievementsUnlocked": 5,
-      "achievementsTotal": 77
+      "steamAppId": 3240220
     },
     {
       "name": "Demonic Mahjong",
       "playtimeHours": 0.5,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 0,
+      "achievementsTotal": 148,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 3444020,
-      "achievementsUnlocked": 0,
-      "achievementsTotal": 148
+      "steamAppId": 3444020
     },
     {
       "name": "PEAK",
       "playtimeHours": 2.4,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "achievementsUnlocked": 3,
+      "achievementsTotal": 64,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 3527290,
-      "achievementsUnlocked": 3,
-      "achievementsTotal": 64
+      "steamAppId": 3527290
     },
     {
       "name": "BLACK SOULS",
-      "playtimeHours": 10.0,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
+      "playtimeHours": 10,
+      "achievementsUnlocked": 13,
+      "achievementsTotal": 65,
       "perfect": false,
       "featured": false,
       "hidden": false,
-      "steamAppId": 3755860,
-      "achievementsUnlocked": 13,
-      "achievementsTotal": 65
-    },
-    {
-      "name": "Your Mom",
-      "playtimeHours": 8.2,
-      "platforms": [
-        "Steam"
-      ],
-      "status": "",
-      "perfect": true,
-      "featured": false,
-      "hidden": false,
-      "steamAppId": 4147820,
-      "achievementsUnlocked": 12,
-      "achievementsTotal": 12
+      "steamAppId": 3755860
     }
   ]
 }
