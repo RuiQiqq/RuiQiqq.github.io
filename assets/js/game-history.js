@@ -1,5 +1,5 @@
 (() => {
-  const VERSION = "47";
+  const VERSION = "49";
   const MIN_VISIBLE_HOURS = 3;
   const LANGUAGE_KEY = "ruiqi-portfolio-language";
   const $ = (selector) => document.querySelector(selector);
@@ -198,13 +198,10 @@
 
   function renderHero() {
     const settings = DATA.settings || {};
-    const customTitle = meaningful(DATA.experienceTitle) || meaningful(settings.experienceTitle) || meaningful(settings.homeHighlightTitle);
-    const titleNode = $("#games-experience-title");
-    if (titleNode) {
-      titleNode.textContent = customTitle;
-      titleNode.hidden = !customTitle;
-    }
-    $("#games-intro").textContent = lang === "zh" ? meaningful(settings.introZh) : meaningful(settings.introEn);
+    const sharedIntro = lang === "zh" ? meaningful(DATA.homeGameIntroZh) : meaningful(DATA.homeGameIntroEn);
+    const legacySharedIntro = meaningful(DATA.experienceTitle);
+    const originalIntro = lang === "zh" ? meaningful(settings.introZh) : meaningful(settings.introEn);
+    $("#games-intro").textContent = sharedIntro || legacySharedIntro || originalIntro;
     $("#games-source-note").textContent = lang === "zh" ? meaningful(settings.steamNoteZh) : meaningful(settings.steamNoteEn);
     const url = meaningful(settings.steamProfileUrl);
     $("#games-source-actions").innerHTML = url ? `<a class="button secondary" href="${escapeHtml(url)}" target="_blank" rel="noreferrer">${escapeHtml(T.steamProfile)}</a>` : "";

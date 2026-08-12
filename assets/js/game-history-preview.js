@@ -1,5 +1,5 @@
 (() => {
-  const VERSION = "48";
+  const VERSION = "49";
   const MIN_VISIBLE_HOURS = 3;
   const LANGUAGE_KEY = "ruiqi-portfolio-language";
   const $ = (selector) => document.querySelector(selector);
@@ -101,9 +101,10 @@
     return (game.featured ? 1e9 : 0) + num(game.playtimeHours) * 1000 + (perfect(game) ? 75000 : 0) + (num(game.playtimeHours) >= threshold ? 25000 : 0);
   }
 
-  function experienceTitle(data) {
-    const settings = data && typeof data.settings === "object" ? data.settings : {};
-    return text(data?.experienceTitle) || text(settings.experienceTitle) || text(settings.homeHighlightTitle);
+  function sharedExperienceIntro(data) {
+    const explicit = lang === "zh" ? text(data?.homeGameIntroZh) : text(data?.homeGameIntroEn);
+    // Backward-compatible fallbacks for the short-lived v47 field, if the user ever saved it.
+    return explicit || text(data?.experienceTitle);
   }
 
   function allowedOnHome(game) {
@@ -140,8 +141,6 @@
       }
       const games = normalize(data, nameMap);
       const settings = data.settings || {};
-      const cmsIntro = lang === "zh" ? text(settings.introZh) : text(settings.introEn);
-      $("#home-game-intro").textContent = cmsIntro || T.intro;
       const threshold = Math.max(0, num(settings.highlightHours) || 100);
       const configuredLimit = num(settings.homePreviewLimit);
       const limit = Math.min(60, Math.max(33, configuredLimit || 33));
@@ -151,12 +150,8 @@
         <span><strong>280+</strong> ${T.games}</span>
         <span><strong>${totalHours ? Math.round(totalHours).toLocaleString() : "—"}h</strong> ${T.hours}</span>`;
 
-      const titleNode = $("#home-game-experience-title");
-      const customTitle = experienceTitle(data);
-      if (titleNode) {
-        titleNode.textContent = customTitle;
-        titleNode.hidden = !customTitle;
-      }
+      const customIntro = sharedExperienceIntro(data);
+      if (customIntro) $("#home-game-intro").textContent = customIntro;
 
       const selected = games
         .filter(allowedOnHome)
