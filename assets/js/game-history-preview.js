@@ -1,5 +1,5 @@
 (() => {
-  const VERSION = "42";
+  const VERSION = "43";
   const MIN_VISIBLE_HOURS = 3;
   const LANGUAGE_KEY = "ruiqi-portfolio-language";
   const $ = (selector) => document.querySelector(selector);
@@ -26,18 +26,18 @@
   const lang = language();
   const T = lang === "zh" ? {
     kicker: "游戏经历 · STEAM", title: "Steam 游戏记录",
-    intro: "这里直接预览我的 Steam 游玩记录，重点展示投入时间较多、全成就和手动重点游戏。右侧只是 Steam 预览，并不是我的全部游戏平台。",
-    view: "查看全平台所有游戏 →", hours: "Steam 小时", perfect: "全成就", empty: "Steam 游戏导入后，这里会自动显示代表性游戏。",
-    previewTitle: "STEAM · 更多游戏预览", previewNote: "这里只是 Steam；完整页包含主机 / 手机 / 非 Steam 游戏",
-    steamOnlyNote: "以下时长仅统计 Steam，不包含主机、手机及其他平台。",
-    allPlatformCallout: "👇 想看我玩过的全部平台游戏？点击下面按钮进入完整游戏经历：Steam + 主机 + 手机 + 其他平台。"
+    intro: "首页这里只展示我的 Steam 游戏记录；完整的主机、手机与其他平台游戏统一放在全平台游戏经历中。",
+    viewMain: "查看全平台完整游戏经历 →", viewSub: "Steam · 主机 · 手机 · 其他平台",
+    hours: "Steam 小时", perfect: "全成就", empty: "Steam 游戏导入后，这里会自动显示代表性游戏。",
+    previewTitle: "STEAM · 游戏预览", previewNote: "首页仅 Steam · 全平台记录请点击左侧按钮",
+    steamOnlyNote: "本区统计与时长仅来自 Steam；其他平台不计入这里。"
   } : {
     kicker: "Game History · STEAM", title: "Steam Play History",
-    intro: "A compact preview of my Steam play history, emphasizing high-playtime, 100%-achievement, and manually pinned titles. This is only the Steam portion of my overall game history.",
-    view: "View All-Platform Games →", hours: "Steam hours", perfect: "100%", empty: "Representative Steam games will appear here automatically after import.",
-    previewTitle: "STEAM · More Games", previewNote: "Steam preview only; the full page also includes console, mobile, and non-Steam games",
-    steamOnlyNote: "Playtime shown here is Steam-only and excludes console, mobile, and other platforms.",
-    allPlatformCallout: "👇 Want the complete list? Use the button below for my full game history across Steam + console + mobile + other platforms."
+    intro: "This homepage section shows Steam only. Console, mobile, and other platform titles are collected on the full all-platform game history page.",
+    viewMain: "View Full All-Platform Game History →", viewSub: "Steam · Console · Mobile · Other Platforms",
+    hours: "Steam hours", perfect: "100%", empty: "Representative Steam games will appear here automatically after import.",
+    previewTitle: "STEAM · Game Preview", previewNote: "Steam only · use the left button for the complete all-platform record",
+    steamOnlyNote: "Stats and playtime in this section are Steam-only; other platforms are excluded."
   };
 
   function normalize(data, nameMap) {
@@ -87,7 +87,7 @@
     if (sourceNote) sourceNote.textContent = T.previewNote;
     if (steamOnlyNote) steamOnlyNote.textContent = T.steamOnlyNote;
     const link = $("#home-game-preview-link");
-    link.textContent = T.view;
+    link.innerHTML = `<span>${escapeHtml(T.viewMain)}</span><small>${escapeHtml(T.viewSub)}</small>`;
     link.href = `game-history.html${new URLSearchParams(location.search).get("lang") ? `?lang=${lang}` : ""}`;
 
     try {
@@ -107,16 +107,13 @@
       const settings = data.settings || {};
       const threshold = Math.max(0, num(settings.highlightHours) || 100);
       const configuredLimit = num(settings.homePreviewLimit);
-      const limit = configuredLimit >= 20 ? Math.min(48, configuredLimit) : 30;
+      const limit = Math.min(60, Math.max(33, configuredLimit || 33));
       const totalHours = steamGames.reduce((sum, game) => sum + num(game.playtimeHours), 0);
       const perfectCount = steamGames.filter(perfect).length;
 
       $("#home-game-preview-stats").innerHTML = steamGames.length ? `
         <span><strong>${Math.round(totalHours).toLocaleString()}</strong> ${T.hours}</span>
         ${perfectCount ? `<span><strong>${perfectCount}</strong> ${T.perfect}</span>` : ""}` : "";
-      const callout = $("#home-game-all-platform-callout");
-      if (callout) callout.textContent = T.allPlatformCallout;
-
       const selected = steamGames
         .slice()
         .sort((a, b) => score(b, threshold) - score(a, threshold) || currentName(a).localeCompare(currentName(b)))

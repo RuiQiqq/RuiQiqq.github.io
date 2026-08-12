@@ -1,5 +1,5 @@
 (() => {
-  const VERSION = "41";
+  const VERSION = "43";
   const MIN_VISIBLE_HOURS = 3;
   const LANGUAGE_KEY = "ruiqi-portfolio-language";
   const $ = (selector) => document.querySelector(selector);
@@ -16,11 +16,11 @@
   const TEXT = {
     en: {
       navProjects: "Projects", navResume: "Resume", navContact: "Contact",
-      kicker: "Game History", title: "Games Played",
+      kicker: "All-Platform Game History", title: "All-Platform Games",
       steamProfile: "Open Steam Profile",
-      featuredKicker: "Highlighted Play History", featuredTitle: "High-playtime & 100% games",
+      featuredKicker: "Highlighted Across Platforms", featuredTitle: "Highlighted games",
       featuredIntro: "High-playtime, 100% achievement, and manually pinned games are surfaced here automatically.",
-      allKicker: "Full Record", allTitle: "All listed games",
+      allKicker: "Full All-Platform Record", allTitle: "All games across platforms",
       allIntro: "Search, filter, and sort the full record. Steam imports are stored locally, so edits remain under my control.",
       searchLabel: "Search", searchPlaceholder: "Search games", statusLabel: "Status", platformLabel: "Platform", sortLabel: "Sort",
       colGame: "Game", colPlatform: "Platform", colTime: "Playtime", colStatus: "Completion", colAchievements: "Achievements",
@@ -34,15 +34,15 @@
     },
     zh: {
       navProjects: "项目", navResume: "简历", navContact: "联系",
-      kicker: "游戏经历", title: "玩过的游戏",
+      kicker: "游戏经历 · 全平台", title: "全平台游戏经历",
       steamProfile: "查看 Steam 主页",
-      featuredKicker: "重点游戏经历", featuredTitle: "高时长与全成就游戏",
-      featuredIntro: "高时长、全成就和手动重点游戏会自动集中展示在这里。",
-      allKicker: "完整记录", allTitle: "全部游戏记录",
+      featuredKicker: "全平台重点游戏", featuredTitle: "重点游戏经历",
+      featuredIntro: "高时长、100% 全成就和手动重点游戏会自动集中展示在这里。",
+      allKicker: "全平台完整记录", allTitle: "所有平台游戏记录",
       allIntro: "可以搜索、筛选和排序完整记录。Steam 导入后会保存成本地数据，因此时长、状态和展示内容都可以继续修改。",
       searchLabel: "搜索", searchPlaceholder: "搜索游戏", statusLabel: "状态", platformLabel: "平台", sortLabel: "排序",
       colGame: "游戏", colPlatform: "平台", colTime: "时长", colStatus: "完成情况", colAchievements: "成就",
-      backPortfolio: "返回作品集", all: "全部", perfect: "全成就",
+      backPortfolio: "返回作品集", all: "全部", perfect: "100% 全成就",
       statusPlaying: "持续游玩", statusCompleted: "通关", statusMultiple: "多周目通关", statusMainComplete: "主线完成", statusSampled: "试玩／短期体验", statusUnfinished: "未通关", statusUnknown: "—",
       sortFeatured: "重点优先", sortHours: "游玩时长 ↓", sortCompletion: "完成度 ↓", sortName: "名称 A–Z",
       statGames: "游戏记录", statHours: "已知总时长", statCompleted: "已通关", statPerfect: "全成就",
@@ -91,7 +91,7 @@
         nameZh: meaningful(item.nameZh) || meaningful(mapped.zh),
         _source: "manual",
         _key: `manual-${index}-${meaningful(item.name)}`,
-        platforms: item.platforms?.length ? item.platforms : [T.nonSteam],
+        platforms: item.platforms?.length ? item.platforms : (meaningful(item.platform) ? [meaningful(item.platform)] : [T.nonSteam]),
         hidden: Boolean(item.hidden)
       };
     });
@@ -231,7 +231,7 @@
     $("#game-featured-grid").innerHTML = selected.map(game => {
       const status = statusText(game.status);
       const perfect = isPerfect(game);
-      const meta = [formatHours(game.playtimeHours), perfect ? T.perfect : (status !== T.statusUnknown ? status : "")].filter(Boolean).join(" · ");
+      const meta = [platformText(game), formatHours(game.playtimeHours), perfect ? T.perfect : (status !== T.statusUnknown ? status : "")].filter(Boolean).join(" · ");
       return `<article class="game-featured-line${perfect ? " is-perfect" : ""}" title="${escapeHtml(currentName(game))}">
         <strong>${escapeHtml(currentName(game))}</strong>
         <span>${escapeHtml(meta)}</span>
@@ -286,7 +286,7 @@
     empty.hidden = true;
     list.innerHTML = games.map(game => {
       const badges = [];
-      if (isPerfect(game)) badges.push(`<span class="game-perfect-inline">${escapeHtml(lang === "zh" ? "全成就" : "100%")}</span>`);
+      if (isPerfect(game)) badges.push(`<span class="game-perfect-inline">100%</span>`);
       const playthroughs = playthroughText(game);
       return `<article class="game-row${highlighted(game) ? " is-highlighted" : ""}${isPerfect(game) ? " is-perfect" : ""}">
         <div class="game-row-name" title="${escapeHtml(currentName(game))}"><strong>${escapeHtml(currentName(game))}</strong></div>
