@@ -91,6 +91,31 @@
       "name": "愤怒的小鸟-全关卡三星完美通关",
       "playtimeHours": 300,
       "hideFromHome": false
+    },
+    {
+      "name": "塞尔达传说",
+      "playtimeHours": 60,
+      "hideFromHome": false
+    },
+    {
+      "name": "健身环大冒险",
+      "playtimeHours": 80,
+      "hideFromHome": false
+    },
+    {
+      "name": "宝可梦：阿尔宙斯",
+      "playtimeHours": 80,
+      "hideFromHome": false
+    },
+    {
+      "name": "宝可梦：朱紫",
+      "playtimeHours": 40,
+      "hideFromHome": false
+    },
+    {
+      "name": "动物森友会",
+      "playtimeHours": 120,
+      "hideFromHome": false
     }
   ],
   "steamGames": [
