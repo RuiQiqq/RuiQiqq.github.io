@@ -1,5 +1,5 @@
 (() => {
-  const VERSION = "47";
+  const VERSION = "48";
   const MIN_VISIBLE_HOURS = 3;
   const LANGUAGE_KEY = "ruiqi-portfolio-language";
   const $ = (selector) => document.querySelector(selector);
@@ -140,6 +140,8 @@
       }
       const games = normalize(data, nameMap);
       const settings = data.settings || {};
+      const cmsIntro = lang === "zh" ? text(settings.introZh) : text(settings.introEn);
+      $("#home-game-intro").textContent = cmsIntro || T.intro;
       const threshold = Math.max(0, num(settings.highlightHours) || 100);
       const configuredLimit = num(settings.homePreviewLimit);
       const limit = Math.min(60, Math.max(33, configuredLimit || 33));
