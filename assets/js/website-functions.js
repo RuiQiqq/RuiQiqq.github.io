@@ -12,6 +12,13 @@ const UI = {
     navGames: "Games Played",
     navResume: "Resume",
     navContact: "Contact",
+    gamesBridgeKicker: "Game History",
+    gamesBridgeTitle: "Games Played",
+    gamesBridgeText: "A compact record of playtime, completion, achievements, and selected design observations.",
+    gamesBridgeTagHours: "High playtime",
+    gamesBridgeTagComplete: "Completed",
+    gamesBridgeTagPerfect: "100%",
+    gamesBridgeTagPlatforms: "Steam + other platforms",
     viewProjects: "View Projects",
     downloadResume: "Download Resume",
     selectedWork: "Selected Work",
@@ -107,6 +114,13 @@ const UI = {
     navGames: "游戏经历",
     navResume: "简历",
     navContact: "联系",
+    gamesBridgeKicker: "个人游戏经历",
+    gamesBridgeTitle: "游戏经历",
+    gamesBridgeText: "集中查看我的游玩时长、通关情况、全成就记录与部分设计观察。",
+    gamesBridgeTagHours: "高时长",
+    gamesBridgeTagComplete: "已通关",
+    gamesBridgeTagPerfect: "全成就",
+    gamesBridgeTagPlatforms: "Steam + 其他平台",
     viewProjects: "查看项目",
     downloadResume: "下载中文简历",
     selectedWork: "精选作品",
@@ -720,6 +734,51 @@ function renderContactLinks() {
   }
 }
 
+async function renderHomeGameHistoryBridge() {
+  const summary = $("#home-games-summary");
+  if (!summary) return;
+  try {
+    const response = await fetch("content/game-history.json", { cache: "no-store" });
+    if (!response.ok) return;
+    const data = await response.json();
+    const games = Array.isArray(data.games)
+      ? data.games.filter(game => game && game.hidden !== true && (meaningfulText(game.name) || meaningfulText(game.nameZh)))
+      : [];
+    if (!games.length) return;
+    const knownHours = games.reduce((total, game) => total + (Number(game.playtimeHours) || 0), 0);
+    const completed = games.filter(game => game.perfect === true || ["completed", "multiple", "main_complete"].includes(game.status)).length;
+    const perfect = games.filter(game => {
+      if (game.perfect === true) return true;
+      const total = Number(game.achievementsTotal) || 0;
+      const unlocked = Number(game.achievementsUnlocked) || 0;
+      return total > 0 && unlocked >= total;
+    }).length;
+    const roundedHours = Math.round(knownHours).toLocaleString();
+    if (CURRENT_LANGUAGE === "zh") {
+      summary.textContent = `${games.length} 款游戏记录 · ${roundedHours} 小时已知时长 · ${completed} 款通关 · ${perfect} 款全成就`;
+    } else {
+      summary.textContent = `${games.length} games · ${roundedHours} known hours · ${completed} completed · ${perfect} at 100%`;
+    }
+  } catch (error) {}
+}
+
+function initSectionNav() {
+  const links = Array.from(document.querySelectorAll("[data-nav-target]"));
+  if (!links.length) return;
+  const pairs = links.map(link => ({ link, section: document.getElementById(link.dataset.navTarget) })).filter(item => item.section);
+  if (!pairs.length) return;
+  const setCurrent = id => {
+    links.forEach(link => link.classList.toggle("is-current", link.dataset.navTarget === id));
+  };
+  const observer = new IntersectionObserver(entries => {
+    const visible = entries.filter(entry => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+    if (visible.length) setCurrent(visible[0].target.id);
+  }, { rootMargin: "-22% 0px -55% 0px", threshold: [0.05, 0.2, 0.5] });
+  pairs.forEach(item => observer.observe(item.section));
+  const initialHash = location.hash.replace("#", "");
+  if (pairs.some(item => item.section.id === initialHash)) setCurrent(initialHash);
+}
+
 function renderHome() {
   const site = DATA.site || {};
   if ($("#home-eyebrow")) $("#home-eyebrow").textContent = safeText(site.eyebrow, "Portfolio");
@@ -746,6 +805,7 @@ function renderHome() {
   }
   if ($("#library-preview-grid")) $("#library-preview-grid").innerHTML = projects.filter(p => p.library && !p.featured).map(libraryProjectCard).join("");
   renderContactLinks();
+  renderHomeGameHistoryBridge();
   updatePageMetadata(`${safeText(site.name, "Rui Qi")} | ${safeText(site.title, TEXT.footerRole)}`, safeText(site.subtitle));
 }
 
@@ -1014,6 +1074,7 @@ function init() {
   if (page === "detail") renderDetailPage();
   if (page === "contact") renderContactPage();
   if (page === "resume") renderResumeViewer();
+  initSectionNav();
   localizeInternalLinks();
 }
 

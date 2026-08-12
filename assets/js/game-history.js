@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  const VERSION = "31";
+  const VERSION = "32";
   const LANGUAGE_KEY = "ruiqi-portfolio-language";
 
   const UI = {
@@ -440,7 +440,7 @@
       console.error("Game history could not be loaded:", error);
       DATA = { settings: {}, games: [] };
     }
-    allGames = Array.isArray(DATA.games) ? DATA.games.filter(game => game && (meaningful(game.name) || meaningful(game.nameZh))) : [];
+    allGames = Array.isArray(DATA.games) ? DATA.games.filter(game => game && game.hidden !== true && (meaningful(game.name) || meaningful(game.nameZh))) : [];
     renderSource();
     renderStats();
     renderFeatured();
