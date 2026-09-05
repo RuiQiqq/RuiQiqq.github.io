@@ -675,6 +675,28 @@
       "category": "2023 · School Project · Unreal Engine",
       "videoLink": "https://www.bilibili.com/video/BV1Liup6JEXJ",
       "videoPlatform": "Bilibili"
+    },
+    {
+      "id": "redemption",
+      "order": -1,
+      "featured": false,
+      "library": true,
+      "status": "已完成",
+      "title": "Redemption",
+      "category": "Board Game",
+      "role": "Solo Designer — designed the game concept, core mechanics, rules, and overall gameplay system.",
+      "summary": "A complete board game designed for EAE 2100 at the University of Utah. Received a 100% final project grade.",
+      "tools": "Photoshop、Word",
+      "coverImage": "/assets/images/20260905121133322.png",
+      "downloadLinks": [
+        {
+          "label": "Final Game Rule",
+          "url": "/assets/downloads/final-game-ruledes.pdf"
+        }
+      ],
+      "detail": {
+        "overview": "Course: EAE 2100 — Prof. José Zagal"
+      }
     }
   ]
 }
