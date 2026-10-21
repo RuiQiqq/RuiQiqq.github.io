@@ -18,8 +18,8 @@
     root.replaceChildren();
     document.title = `${zh ? '机器人与仿真' : 'Robotics & Simulation'} | Rui Qi`;
     const back = document.getElementById('back-home'); back.textContent = zh ? '查看我的游戏项目' : 'View My Game Projects'; back.href = `index.html?lang=${lang}#featured`;
-    document.getElementById('footer-scope').textContent = zh ? '仿真学习项目 · 非实体部署' : 'Simulation learning · no hardware deployment';
-    root.append(node('p', `${project.status} · Simulation / RGB-D / Decision Learning`, 'eyebrow'));
+    document.getElementById('footer-scope').textContent = 'Isaac Sim / Isaac Lab · 2026';
+    root.append(node('p', project.status, 'eyebrow'));
     root.append(node('h1', project.title));
     root.append(node('p', project.summary, 'robotics-lead'));
     const actions = node('div', '', 'robotics-links');
@@ -30,16 +30,15 @@
     const video = node('video'); video.controls = true; video.playsInline = true; video.preload = 'metadata'; video.poster = project.coverImage; video.src = project.videoFile;
     video.setAttribute('aria-label', zh ? '稳定 V2 推障碍、抓目标与投放的连续演示' : 'Stable V2 continuous obstacle-push, grasp and placement demonstration');
     demo.append(video, node('figcaption', project.detail.workflowNotes)); root.append(demo);
-    root.append(node('p', zh ? '12.08 秒 · 1280 × 720 · 25 fps · 本次补录不新增计入验证样本' : '12.08 seconds · 1280 × 720 · 25 fps · This recording adds no validation sample', 'scope-note'));
     for (const [index, item] of project.detail.breakdown.entries()) {
-      const section = node('section', '', 'robotics-section');
-      section.append(node('h2', item.label), node('p', item.text));
+      const section = node(index === 3 ? 'details' : 'section', '', 'robotics-section');
+      section.append(node(index === 3 ? 'summary' : 'h2', item.label), node('p', item.text));
       if (index === 1) {
         const wrap = node('div', '', 'robotics-table-wrap'); const table = node('table');
         const head = node('thead'); const headRow = node('tr');
-        for (const text of (zh ? ['策略', '完成 / 回合', '平均仿真任务秒'] : ['Policy', 'Completed / episodes', 'Mean simulated task seconds'])) { const th = node('th', text); th.scope = 'col'; headRow.append(th); }
+        for (const text of (zh ? ['方法', '完成任务', '平均用时（仿真秒）'] : ['Method', 'Tasks completed', 'Mean time (simulation seconds)'])) { const th = node('th', text); th.scope = 'col'; headRow.append(th); }
         head.append(headRow); table.append(head); const body = node('tbody');
-        for (const row of [[zh ? '规则基线' : 'Rule baseline', '6 / 6', '9.35'],[zh ? '旧模型（同新版执行器）' : 'Previous model (same executor)', '6 / 6', '11.94'],[zh ? '稳定 V2' : 'Stable V2', '6 / 6', '10.57']]) { const tr = node('tr'); for (const text of row) tr.append(node('td', text)); body.append(tr); }
+        for (const row of [[zh ? '固定规则' : 'Fixed rules', '6 / 6', '9.35'],[zh ? '第一版模型' : 'First model', '6 / 6', '11.94'],[zh ? 'V2 模型' : 'V2 model', '6 / 6', '10.57']]) { const tr = node('tr'); for (const text of row) tr.append(node('td', text)); body.append(tr); }
         table.append(body); wrap.append(table); section.append(wrap);
       }
       for (const m of item.media || []) {
@@ -49,9 +48,9 @@
       }
       root.append(section);
     }
-    const scope = node('section', '', 'robotics-section'); scope.append(node('h2', zh ? '局限与评估边界' : 'Limitations and evaluation boundaries')); for (const text of project.detail.challenges) scope.append(node('p', text)); root.append(scope);
-    const history = node('details', '', 'robotics-section robotics-history'); history.append(node('summary', zh ? '展开早期分拣与感知实验记录' : 'Expand earlier sorting and perception records'));
-    history.append(node('p', zh ? '以下为旧任务的独立记录，不属于稳定 V2 的当前移障结果。旧架构图与演示仅用于历史说明。' : 'These are independent records of earlier tasks, not current Stable V2 obstacle results. Earlier architecture and demonstrations are historical only.'));
+    const scope = node('section', '', 'robotics-section'); scope.append(node('h2', zh ? '目前还做不到什么？' : 'What are the limits so far?')); for (const text of project.detail.challenges) scope.append(node('p', text)); root.append(scope);
+    const history = node('details', '', 'robotics-section robotics-history'); history.append(node('summary', zh ? '看看之前做过的实验' : 'Earlier experiments'));
+    history.append(node('p', zh ? '在尝试移开障碍之前，项目先做了分拣和抓取检查。下面保留了几个阶段的记录。' : 'Before the obstacle task, the project focused on sorting and checking grasps. A few earlier stages are recorded below.'));
     for (const item of project.history || []) { const block = node('section', '', 'robotics-section'); block.append(node('h3', item.label), node('p', item.text)); history.append(block); }
     const old = node('a', zh ? '打开旧 V0.16 分拣演示（GIF，20 MB）' : 'Open historical V0.16 sorting demo (GIF, 20 MB)', 'button secondary'); old.href = '/assets/images/robotics/wrong-color-demo.gif'; history.append(old); root.append(history);
     const links = node('div', '', 'robotics-links');

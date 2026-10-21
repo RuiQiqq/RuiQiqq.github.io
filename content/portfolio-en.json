@@ -106,11 +106,11 @@
         "evaluation"
       ],
       "coverImage": "/assets/images/robotics/stable-v2-cover.png",
-      "status": "Stage deliverable · Stable V2",
-      "title": "Franka: Visual Grasp Verification and Obstacle-Aware Decision Learning",
-      "category": "2026 · Isaac Lab / Isaac Sim · AI-assisted learning project",
-      "role": "I contributed project goals, interactive testing, and failure feedback, with extensive AI assistance in implementation and experimental workflow. I am progressively taking ownership of the key decision modules.",
-      "summary": "A simulation study combining RGB-D localization, visual grasp verification, and a local reinforcement-learning policy to choose between grasping a target, pushing an obstacle, or relocating it.",
+      "status": "Tabletop manipulation experiment · V2",
+      "title": "Franka: Clearing the Way to Grasp a Target",
+      "category": "2026 · Isaac Sim / Isaac Lab · Robotics simulation project",
+      "role": "I set the project goals, repeatedly ran the demonstrations, reported missed grasps and placement failures, and took part in reviewing changes and results. Most implementation, training code and experiment preparation were AI-assisted. I am also learning Python to better understand the programs behind these results.",
+      "summary": "I built a tabletop task in Isaac Sim: a robot arm has to put a blue cube into a bin, while a red cube sometimes blocks the grasp. I wanted to find out when the robot should grasp directly, push the obstacle aside, or move it elsewhere—and whether a trained policy could do better than fixed rules.",
       "tools": "Isaac Lab, Isaac Sim, Python, PyTorch, PPO, RGB-D",
       "externalLinks": [
         {
@@ -119,16 +119,16 @@
         }
       ],
       "detail": {
-        "overview": "A simulation study combining RGB-D localization, visual grasp verification, and a local reinforcement-learning policy to choose between grasping a target, pushing an obstacle, or relocating it.",
+        "overview": "I built a tabletop task in Isaac Sim: a robot arm has to put a blue cube into a bin, while a red cube sometimes blocks the grasp. I wanted to find out when the robot should grasp directly, push the obstacle aside, or move it elsewhere—and whether a trained policy could do better than fixed rules.",
         "whatIBuilt": [],
         "breakdown": [
           {
-            "label": "01 / Task and system boundaries",
-            "text": "The blue cube is the target; the red cube is an explicitly movable obstacle. A small policy uses 14 observable features to select among five macro-actions. Scripted primitives execute the motions. Perception uses color and depth geometry, not an end-to-end neural vision controller."
+            "label": "How does the robot choose an action?",
+            "text": "The camera supplies color and depth images. A program estimates the cubes’ positions from their colors and distances. The policy then chooses whether to grasp the blue cube, push the red cube to either side, move it to the green holding area, or observe again. Existing motion routines handle approaching, closing the gripper, lifting and placing. The policy learns which routine to choose. The video above shows the push-then-grasp route."
           },
           {
-            "label": "02 / Frozen validation: six matched scenes",
-            "text": "Stable V2 was trained over 48 physical-simulation episodes using PPO. On six matched validation scenes, the rule baseline, previous model, and V2 each completed 6/6 tasks. Their mean simulated task times were 9.35s, 11.94s, and 10.57s, respectively. V2 was faster than the previous model under the same executor, but did not outperform the rule baseline.",
+            "label": "Does the trained policy beat the rules?",
+            "text": "Not yet. The rules select actions using predefined conditions; the models learn their choices through training. I compared fixed rules, the first model and V2 on the same six new scenes. All three completed all six tasks. V2 averaged about 1.36 seconds faster than the previous model, but was still about 1.22 seconds slower than the rules. The times measure task execution inside the simulation, excluding software startup. Six scenes are too few to establish reliability in other settings.",
             "media": [
               {
                 "type": "image",
@@ -137,8 +137,8 @@
             ]
           },
           {
-            "label": "03 / Exploratory assessment and final test",
-            "text": "With the same frozen V2 weights, an independent development executor completed 12/12 exploratory layouts for both the rule baseline and model, at mean times of 11.00s and 11.62s. Four injected detection-dropout guard cases produced no grasp/push actions or false completion claims. These assessments are reported separately; the reserved final test has not been run.",
+            "label": "What happens with different layouts?",
+            "text": "The same V2 weights were then checked on twelve broader layouts. Rules and policy both completed all twelve, averaging 11.00 and 11.62 seconds. This assessment used a separate development version of the motion routines, so it is reported separately. Four checks also removed a required cube detection: the robot kept observing rather than manipulating or claiming completion. That behavior comes from programmed safeguards. The reserved final test has not been run.",
             "media": [
               {
                 "type": "image",
@@ -147,8 +147,8 @@
             ]
           },
           {
-            "label": "04 / Training record",
-            "text": "Stable V2 was trained from scratch over 48 PPO episodes: 33 completed and 15 incomplete, with six update batches and 36 gradient steps. No rule-demonstration labels were used. These are training records, not independent validation results; the first pilot’s 24 episodes are not added to this model’s training count.",
+            "label": "How was the policy trained?",
+            "text": "V2 was trained from scratch for 48 episodes using PPO, a reinforcement-learning method that adjusts action choices through trial and feedback. It completed 33 training episodes and left 15 incomplete. Its parameters were then held fixed for the six-scene comparison. It receives 14 numerical features from camera estimates and robot state and chooses among five actions. It does not take full images as input or learn joint control from scratch.",
             "media": [
               {
                 "type": "image",
@@ -157,71 +157,35 @@
             ]
           },
           {
-            "label": "05 / Revising execution after failures",
-            "text": "Earlier runs stopped when visual grasp evidence was insufficient, and one placement descent timed out. Verification views and placement location were revised, failures were preserved, and rules, previous model and V2 were rerun with the same updated executor so executor fixes were not mistaken for policy gains."
+            "label": "What went wrong along the way?",
+            "text": "In early runs, the gripper sometimes closed without picking up a cube. Checks were added after lifting: is the cube still visible, is its color correct, and does it move with the hand? Another failure occurred during descent above the bin after a successful grasp. After revising the observation angles and placement position, rules and models were rerun with the same motion routines to distinguish execution problems from poor action choices."
           },
           {
-            "label": "06 / My role and next steps",
-            "text": "I contributed project goals, interactive testing, and failure feedback, with extensive AI assistance in implementation and experimental workflow. I am progressively taking ownership of the key decision modules. Next, independently explain and modify one key decision, propose an experimental hypothesis and acceptance criteria, then select a more complex perception or layout task."
+            "label": "My part in the project",
+            "text": "I set the project goals, repeatedly ran the demonstrations, reported missed grasps and placement failures, and took part in reviewing changes and results. Most implementation, training code and experiment preparation were AI-assisted. I am also learning Python to better understand the programs behind these results."
           }
         ],
         "challenges": [
-          "Scope: a constrained tabletop simulation with known-size cubes. Arbitrary shapes, stacking, complex terrain, real hardware, and force-level collision safety remain unvalidated.",
-          "The final held-out test has not been run: actual final-test sample count is zero.",
-          "The policy does not read simulator object ground-truth positions; ground truth is used for independent terminal scoring. Detection dropout is a software injection, not physical occlusion or camera hardware failure."
+          "So far this is a simulation with known-size red and blue cubes and restricted workspace locations. It has not been tested on real hardware, stacked objects or arbitrary shapes.",
+          "Space checks before an action are hand-written rules. Contact forces were not measured, so objects remaining on the table at the end does not establish collision-free motion.",
+          "Action selection uses camera-estimated positions. After the task, actual simulator positions are read separately to check placement in the correct bin. The demonstration repeats an existing validation scene; it adds no new test sample."
         ],
-        "workflowNotes": "Stable V2 · learned PPO policy · one uncut episode · fixed third-person spectator camera · 1× simulated time. The robot pushes the red obstacle, grasps the blue target, and places it in the destination bin. This recording is not an additional validation sample."
+        "workflowNotes": "The V2 policy pushes the red cube aside, picks up the blue cube and places it in the bin. This is one continuous episode from a fixed camera, played at the original simulation speed."
       },
       "videoFile": "/assets/videos/robotics/stable-v2.mp4",
-      "videoCaption": "Stable V2 · learned PPO policy · one uncut episode · fixed third-person spectator camera · 1× simulated time. The robot pushes the red obstacle, grasps the blue target, and places it in the destination bin. This recording is not an additional validation sample.",
+      "videoCaption": "The V2 policy pushes the red cube aside, picks up the blue cube and places it in the bin. This is one continuous episode from a fixed camera, played at the original simulation speed.",
       "history": [
         {
-          "label": "01 / The failure: closing the gripper is not enough",
-          "text": "The project encountered attempts where the arm continued toward a bin without a payload. Gripper width alone does not prove that the intended object is held. The integrated guard checks visible target color and motion with the hand before permitting transport.",
-          "media": [
-            {
-              "type": "image",
-              "src": "/assets/images/robotics/franka-demo.png",
-              "alt": "Actual Isaac Sim frame from the V0.16 wrong-color-return engineering demonstration"
-            }
-          ]
+          "label": "Early grasp checks",
+          "text": "The project began with red and blue cube sorting. Empty grasps sometimes led to transport attempts, so visual checks were added after lifting to confirm that a cube moved with the gripper."
         },
         {
-          "label": "02 / The perception-to-action boundary",
-          "text": "Scene setup can place objects; online control receives RGB-D detections and the robot's own state. A separate terminal audit can inspect simulator object positions after control ends. Rules manage motion stages and safety. Object choice and some view/recovery choices use imitation or supervised models, not end-to-end RL.",
-          "media": [
-            {
-              "type": "image",
-              "src": "/assets/images/robotics/architecture.png",
-              "alt": "System architecture and separation of sensing, control and terminal audit"
-            }
-          ]
+          "label": "V0.17: Sorting trials",
+          "text": "The earlier controller completed 16 sorting batches and correctly placed 63 cubes. Two separate camera-failure cases stopped as intended. These sorting results are recorded separately from the current obstacle task."
         },
         {
-          "label": "03 / V0.17: what the results actually mean",
-          "text": "A new sealed challenge recorded 16/16 productive simulation batches completed, totaling 63/63 cubes. Two separate permanent-camera-failure cases met their expected safe-stop behavior. All 18 accepted outcomes must not be called 18 completed sorting batches. 818 stored RGB-D verification frames were recomputed. A frozen offline checker's variable omission was repaired separately after the physical simulations, preserving the original error and controller artifacts.",
-          "media": [
-            {
-              "type": "image",
-              "src": "/assets/images/robotics/v017-metrics.png",
-              "alt": "V0.17 sealed simulation challenge results; productive batches and safety cases are separate"
-            }
-          ]
-        },
-        {
-          "label": "04 / V0.18: a separate perception diagnostic",
-          "text": "A new prototype separated nearby same-color footprints using an explicit known 40-mm axis-aligned cube prior. Ten supported layouts met a 5-mm localization threshold; maximum measured error was about 1.71 mm. Two unsupported layouts returned uncertainty. This is not dense autonomous grasping or a generic learned visual detector.",
-          "media": [
-            {
-              "type": "image",
-              "src": "/assets/images/robotics/footprint-comparison.png",
-              "alt": "Actual simulation RGB-D captures compared with footprint detections; terminal truth is used only for offline scoring"
-            }
-          ]
-        },
-        {
-          "label": "05 / Current personal learning module",
-          "text": "The report tool reads practice JSON, distinguishes completed batches from safe stops and other incomplete results, sums known placed-object counts, reports missing quantities, and avoids dividing by zero. The next step is independently testing it against real report structure. Guided practice and original implementation are not interchangeable."
+          "label": "V0.18: Nearby cubes",
+          "text": "A separate perception experiment examined nearby or touching same-color cubes. Ten supported layouts had localization errors below 5 mm, with a maximum of about 1.71 mm. Two other layouts could not be identified reliably. This used a known 40 mm cube-size assumption and was not yet connected to dense grasping."
         }
       ]
     },

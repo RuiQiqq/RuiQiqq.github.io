@@ -23,6 +23,8 @@
 .robotics-table-wrap th, .robotics-table-wrap td { padding: 12px; border-bottom: 1px solid var(--line); }
 .robotics-section p + p { margin-top: 14px; }
 .robotics-history summary { cursor: pointer; font-weight: 700; color: var(--pink-soft); }
+.robotics-section > summary { cursor: pointer; font-weight: 700; color: var(--pink-soft); }
+.robotics-section[open] > summary { margin-bottom: 16px; }
 .robotics-history > p { margin-top: 18px; }
 .language-switch a { padding: 4px 10px; }
 .robotics-main a:focus-visible, .language-switch a:focus-visible { outline: 3px solid var(--blue); outline-offset: 4px; }
