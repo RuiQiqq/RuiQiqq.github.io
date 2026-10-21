@@ -1,0 +1,19 @@
+.robotics-main { padding-top: 72px; padding-bottom: 72px; }
+.robotics-main h1 { max-width: 980px; font-size: clamp(2.3rem, 5vw, 4.8rem); line-height: 1.12; margin: 18px 0 24px; }
+.robotics-lead { max-width: 760px; font-size: 1.15rem; color: var(--muted); }
+.scope-note { border-left: 3px solid var(--pink); padding: 16px 22px; margin: 30px 0; background: var(--panel); }
+.robotics-case { display: grid; grid-template-columns: 1.1fr 1fr; gap: 36px; align-items: center; margin-top: 48px; padding: 32px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); }
+.robotics-case img { width: 100%; height: auto; border-radius: var(--radius-small); }
+.robotics-case h2 { font-size: clamp(1.6rem, 3vw, 2.5rem); line-height: 1.2; }
+.robotics-section { padding-top: 48px; max-width: 900px; }
+.robotics-section p { color: var(--muted); }
+.robotics-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+.robotics-main h1 { white-space: pre-line; }
+.robotics-section { scroll-margin-top: 100px; }
+.robotics-section figure { margin: 24px 0 0; }
+.robotics-section img { width: 100%; height: auto; border: 1px solid var(--line); border-radius: var(--radius-small); }
+.robotics-section figcaption { color: var(--soft); font-size: .9rem; margin-top: 8px; }
+.robotics-home-cta { box-shadow: 0 0 28px rgba(232,93,158,.23); }
+.language-switch a { padding: 4px 10px; }
+.robotics-main a:focus-visible, .language-switch a:focus-visible { outline: 3px solid var(--blue); outline-offset: 4px; }
+@media (max-width: 760px) { .robotics-main { padding-top: 40px; } .robotics-case { grid-template-columns: 1fr; padding: 20px; } }

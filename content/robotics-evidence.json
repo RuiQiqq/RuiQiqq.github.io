@@ -1,0 +1,60 @@
+{
+  "scope": "Actual simulation experiments, not physical hardware deployment",
+  "publication_status": "Portfolio summary updated 2026-10-21 from saved simulation reports",
+  "v017": {
+    "controller": "V0.16 integrated visual transport guard",
+    "test_version": "V0.17 sealed challenge",
+    "productive_batches_completed": 16,
+    "productive_batches_attempted": 16,
+    "objects_correctly_placed": 63,
+    "objects_expected": 63,
+    "expected_safe_stop_cases": 2,
+    "expected_safe_stop_cases_passed": 2,
+    "accepted_test_outcomes": 18,
+    "raw_rgbd_frames_recomputed": 818,
+    "source_summary_sha256": "da89a87c4b8c818ea37941ddfb5bf7771d7ef05e90b459080ed654f0285dd936",
+    "checker_correction": "Frozen checker omitted a manifest variable. A separate post-run checker verified unchanged simulation reports and frozen controller artifacts. Original error preserved.",
+    "limitation": "Small controlled family of separated 40-mm red/blue cubes with calibrated views; not industrial generalization or a baseline speed comparison."
+  },
+  "v018": {
+    "scope": "Perception diagnostic only; not integrated dense grasping",
+    "supported_layouts_passed": 10,
+    "unsupported_layouts_with_expected_uncertainty": 2,
+    "position_threshold_mm": 5,
+    "max_position_error_mm": 1.7118074465543032,
+    "prior": "Known 40-mm axis-aligned cubes",
+    "sealed_statistical_test": false
+  },
+  "demo": {
+    "version": "V0.16 engineering trial, separate from V0.17 sealed metrics",
+    "scenario": "wrong-color grasp returned safely, then retried",
+    "original_gif_sha256": "6e5b998ca4849481ea7b6023bf8ca2f5568a87d9b37439a2a1130d3a2079f215"
+  },
+  "learning": "Earlier sorting used imitation/supervised modules; latest obstacle stage uses real PPO macro-action training. Low-level control remains programmed.",
+  "vision": "Simulation-camera RGB-D color geometry; not a generic neural object detector",
+  "attribution": "AI-assisted system implementation, training and test automation. Personal observation, failure reporting and guided Python practice are described separately.",
+  "obstacle_learning": {
+    "method": "PPO macro-action policy; fixed motion primitives and programmed safeguards",
+    "training_episodes": 48,
+    "training_completions": 33,
+    "validation": {
+      "cases_per_policy": 6,
+      "rule_completed": 6,
+      "previous_completed": 6,
+      "new_completed": 6,
+      "rule_sim_seconds": 9.353333333333333,
+      "previous_sim_seconds": 11.936666666666667,
+      "new_sim_seconds": 10.573333333333334
+    },
+    "broader_layouts": {
+      "cases_per_policy": 12,
+      "rule_completed": 12,
+      "learned_completed": 12,
+      "rule_sim_seconds": 11.0,
+      "learned_sim_seconds": 11.618333333333334
+    },
+    "sensor_dropout_checks_passed": 4,
+    "final_holdout_used": false,
+    "contact_force_collision_statistics": null
+  }
+}

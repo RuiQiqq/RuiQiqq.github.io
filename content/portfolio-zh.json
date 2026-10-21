@@ -97,6 +97,133 @@
   },
   "projects": [
     {
+      "id": "franka-visual-sorting",
+      "order": 10,
+      "featured": false,
+      "library": false,
+      "tags": [
+        "robotics",
+        "simulation",
+        "rgbd",
+        "evaluation"
+      ],
+      "coverImage": "/assets/images/robotics/obstacle-scene.png",
+      "status": "学习项目 · 仅仿真",
+      "title": "Franka 视觉抓取与移障学习",
+      "category": "2026 · Isaac Lab / Isaac Sim · AI 辅助学习项目",
+      "role": "任务讨论、观察并反馈失败、Python 评估工具指导练习；系统实现及大规模测试由 AI 辅助完成。",
+      "summary": "从相机识别目标，到决定直接抓取、短推或搬走障碍，再验证投放结果。已完成真实仿真 PPO 训练与规则对照；学习模型能够完成验证任务，但效率仍未超过规则。",
+      "tools": "Isaac Lab, Isaac Sim, Python, PyTorch, PPO, RGB-D",
+      "externalLinks": [
+        {
+          "label": "机器人项目入口",
+          "url": "robotics.html?lang=zh"
+        },
+        {
+          "label": "观看移障任务演示（GIF）",
+          "url": "/assets/images/robotics/obstacle-demo.gif"
+        },
+        {
+          "label": "V0.16 实际仿真录像（GIF，20 MB）",
+          "url": "/assets/images/robotics/wrong-color-demo.gif"
+        },
+        {
+          "label": "V0.17 验收证据摘要（JSON）",
+          "url": "/content/robotics-evidence.json"
+        }
+      ],
+      "detail": {
+        "overview": "AI 辅助开发的机器人仿真学习项目。机械臂根据 RGB-D 相机估计和自身状态，在直接抓取、向两侧短推、搬走障碍、重新观察五种动作中选择，再执行抓取与投放。新阶段使用 PPO 学习高层动作选择，低层动作、几何约束与保护逻辑由程序实现。实现、训练与大量实验规划得到 AI 帮助；我的参与包括提出任务方向、观察并反馈失败，以及逐步学习 Python 与报告分析。",
+        "whatIBuilt": [
+          "在交互测试中观察并反馈抓空、运输空气、恢复未触发等问题，追问仿真真值是否进入了控制。",
+          "在独立练习工具中学习函数、条件、列表、字典、循环、缺失字段与 JSON 读取；这是指导下的学习练习，尚不是经过真实报告完整验证的生产评估器。",
+          "明确区分个人观察、学习订正与 AI 辅助实现及验收，不把整套系统写成个人独立编写。"
+        ],
+        "breakdown": [
+          {
+            "label": "01 / 当前任务：移障后抓取",
+            "text": "蓝块是目标，红块是可移动障碍。模型选择高层动作，程序执行固定速度的基础动作；动作后重新观察，最后核验目标是否正确投放。演示来自冻结模型的一个验证回合，不代表所有场景。",
+            "media": [
+              {
+                "type": "image",
+                "src": "/assets/images/robotics/obstacle-demo.gif",
+                "note": "真实仿真录像 · 验证场景 33008"
+              }
+            ]
+          },
+          {
+            "label": "02 / 训练与公平对照",
+            "text": "第二轮完成 48 回合 PPO 训练，其中 33 回合完成任务，进行 6 批参数更新。训练后冻结模型，在同六个新验证布局、同一执行器下，规则、旧模型、新模型均完成 6/6；平均仿真耗时分别为 9.35、11.94、10.57 秒。新模型快于旧模型，仍慢于规则。训练成绩与验证成绩分开统计。",
+            "media": [
+              {
+                "type": "image",
+                "src": "/assets/images/robotics/obstacle-comparison.png"
+              }
+            ]
+          },
+          {
+            "label": "03 / 扩大布局与检测丢失检查",
+            "text": "随后使用固定模型检查 12 个扩大范围布局，规则和模型分别完成 12/12，平均仿真耗时为 11.00 与 11.62 秒。另有 4 次检测丢失注入检查，均重新观察且未盲目抓推或误报成功。这是保护逻辑检查，不是新增训练成果。样本仍小，最终留出测试集尚未使用，也没有接触力碰撞统计。"
+          },
+          {
+            "label": "早期阶段 / 01 / 问题：闭爪不等于夹住",
+            "text": "曾出现机械臂没有夹起方块，却继续向料箱移动。仅看夹爪宽度不能证明夹住了目标。集成版关卡在运输前检查可见目标颜色及物体随手运动证据。",
+            "media": [
+              {
+                "type": "image",
+                "src": "/assets/images/robotics/franka-demo.png",
+                "alt": "Actual Isaac Sim frame from the V0.16 wrong-color-return engineering demonstration"
+              }
+            ]
+          },
+          {
+            "label": "早期阶段 / 02 / 感知与动作的信息边界",
+            "text": "场景创建器可以摆放物体；在线控制接收 RGB-D 检测及机器人自身状态；控制结束后独立裁判才读取仿真物体位置评分。动作阶段与安全检查主要是规则，部分对象、视角和恢复选择使用模仿或监督模型，不是端到端强化学习。",
+            "media": [
+              {
+                "type": "image",
+                "src": "/assets/images/robotics/architecture.png",
+                "alt": "System architecture and separation of sensing, control and terminal audit"
+              }
+            ]
+          },
+          {
+            "label": "早期阶段 / 03 / V0.17：结果究竟证明什么",
+            "text": "新封存挑战中，16/16 批分拣完成，共 63/63 个方块；另有 2 项永久相机故障按预期安全停止。18 项验收通过不能写成 18 批分拣完成。818 张已保存的 RGB-D 验证帧重算一致。封存离线检查器曾漏定义变量，事后使用独立修复检查器核对；原始错误与控制器、实验记录保留。",
+            "media": [
+              {
+                "type": "image",
+                "src": "/assets/images/robotics/v017-metrics.png",
+                "alt": "V0.17 sealed simulation challenge results; productive batches and safety cases are separate"
+              }
+            ]
+          },
+          {
+            "label": "早期阶段 / 04 / V0.18：独立的密集识别诊断",
+            "text": "新原型显式使用已知 40 mm、轴对齐方块的尺寸条件，分离靠近或贴合的同色足迹。10 组支持布局定位通过 5 mm 阈值，最大误差约 1.71 mm；2 组不支持布局报告不确定。密集自主抓取尚未接入，也不是通用神经视觉检测。",
+            "media": [
+              {
+                "type": "image",
+                "src": "/assets/images/robotics/footprint-comparison.png",
+                "alt": "Actual simulation RGB-D captures compared with footprint detections; terminal truth is used only for offline scoring"
+              }
+            ]
+          },
+          {
+            "label": "早期阶段 / 05 / 我正在接管的模块",
+            "text": "Python 练习工具读取 JSON 样本，区分完成批次、安全停止和其他未完成，累计已知成功投放数量、提示缺失数量并避免零除。下一步是由我理解并测试真实报告结构；指导练习不等于原系统独立实现。"
+          }
+        ],
+        "challenges": [
+          "只验证仿真中的受限方块任务，尚无实体机器人或任意物体泛化结果。",
+          "PPO 学习高层动作选择；低层控制与安全约束并非学习得到。",
+          "学习模型尚未超过规则效率；小样本验证不能证明普遍可靠性或统计显著优势。",
+          "早期分拣、感知诊断与最新移障实验分别报告，不合并成一个成功率。"
+        ],
+        "workflowNotes": "更新于 2026-10-21。最新演示与对照来自移障 PPO 第二轮；早期 V0.16、V0.17、V0.18 材料保留各自实验范围。所有演示均为实际仿真输出。项目为 AI 辅助开发与学习过程，本人贡献范围见职责说明。"
+      }
+    },
+    {
       "id": "third-person-soulslike",
       "order": 1,
       "featured": true,

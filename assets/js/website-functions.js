@@ -220,6 +220,14 @@ function getCurrentLanguage() {
 }
 
 const CURRENT_LANGUAGE = getCurrentLanguage();
+document.querySelectorAll('a[href="robotics.html"]:not([data-robotics-cta])').forEach(link => {
+  link.href = `robotics.html?lang=${CURRENT_LANGUAGE}`;
+  link.textContent = CURRENT_LANGUAGE === 'zh' ? '机器人' : 'Robotics';
+});
+document.querySelectorAll('[data-robotics-cta]').forEach(link => {
+  link.href = `robotics.html?lang=${CURRENT_LANGUAGE}`;
+  link.textContent = CURRENT_LANGUAGE === 'zh' ? '查看我的机器人项目 →' : 'View My Robotics Project →';
+});
 const EN_DATA = window.PORTFOLIO_EN || {};
 const ZH_DATA = window.PORTFOLIO_ZH || {};
 
