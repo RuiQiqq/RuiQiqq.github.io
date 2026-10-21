@@ -19,23 +19,29 @@
     document.title = `${zh ? '机器人与仿真' : 'Robotics & Simulation'} | Rui Qi`;
     const back = document.getElementById('back-home'); back.textContent = zh ? '查看我的游戏项目' : 'View My Game Projects'; back.href = `index.html?lang=${lang}#featured`;
     document.getElementById('footer-scope').textContent = zh ? '仿真学习项目 · 非实体部署' : 'Simulation learning · no hardware deployment';
-    root.append(node('p', zh ? '从交互系统到机器人仿真' : 'FROM INTERACTIVE SYSTEMS TO ROBOT SIMULATION', 'eyebrow'));
-    root.append(node('h1', zh ? '看见目标，\n移开障碍，再完成抓取。' : 'See the target.\nClear the way. Complete the grasp.'));
+    root.append(node('p', `${project.status} · Simulation / RGB-D / Decision Learning`, 'eyebrow'));
+    root.append(node('h1', project.title));
     root.append(node('p', project.summary, 'robotics-lead'));
     const actions = node('div', '', 'robotics-links');
     const watch = node('a', zh ? '观看机器人演示 ↓' : 'Watch the robot demo ↓', 'button primary'); watch.href = '#robot-demo';
     const games = node('a', zh ? '查看我的游戏项目 →' : 'View My Game Projects →', 'button secondary'); games.href = `index.html?lang=${lang}#featured`;
     actions.append(watch, games); root.append(actions);
-    root.append(node('p', zh ? 'AI 辅助开发与学习项目 · Isaac Sim / Isaac Lab · 更新于 2026-10-21' : 'AI-assisted development & learning · Isaac Sim / Isaac Lab · Updated October 21, 2026', 'scope-note'));
-    const card = node('article', '', 'robotics-case');
-    const visual = node('img'); visual.src = project.coverImage; visual.alt = zh ? '实际 Isaac Sim 分拣画面' : 'Actual Isaac Sim sorting frame'; visual.width = 640; visual.height = 480;
-    const copy = node('div'); copy.append(node('p', project.status, 'eyebrow'), node('h2', project.title), node('p', project.summary));
-    const link = node('a', zh ? '阅读完整案例与结果 →' : 'Read the case and evidence →', 'button primary'); link.href = `project-detail.html?id=${encodeURIComponent(project.id)}&lang=${lang}`;
-    copy.append(link); card.append(visual, copy); root.append(card);
+    const demo = node('figure', '', 'robotics-demo'); demo.id = 'robot-demo';
+    const video = node('video'); video.controls = true; video.playsInline = true; video.preload = 'metadata'; video.poster = project.coverImage; video.src = project.videoFile;
+    video.setAttribute('aria-label', zh ? '稳定 V2 推障碍、抓目标与投放的连续演示' : 'Stable V2 continuous obstacle-push, grasp and placement demonstration');
+    demo.append(video, node('figcaption', project.detail.workflowNotes)); root.append(demo);
+    root.append(node('p', zh ? '12.08 秒 · 1280 × 720 · 25 fps · 本次补录不新增计入验证样本' : '12.08 seconds · 1280 × 720 · 25 fps · This recording adds no validation sample', 'scope-note'));
     for (const [index, item] of project.detail.breakdown.entries()) {
       const section = node('section', '', 'robotics-section');
-      if (index === 0) section.id = 'robot-demo';
       section.append(node('h2', item.label), node('p', item.text));
+      if (index === 1) {
+        const wrap = node('div', '', 'robotics-table-wrap'); const table = node('table');
+        const head = node('thead'); const headRow = node('tr');
+        for (const text of (zh ? ['策略', '完成 / 回合', '平均仿真任务秒'] : ['Policy', 'Completed / episodes', 'Mean simulated task seconds'])) { const th = node('th', text); th.scope = 'col'; headRow.append(th); }
+        head.append(headRow); table.append(head); const body = node('tbody');
+        for (const row of [[zh ? '规则基线' : 'Rule baseline', '6 / 6', '9.35'],[zh ? '旧模型（同新版执行器）' : 'Previous model (same executor)', '6 / 6', '11.94'],[zh ? '稳定 V2' : 'Stable V2', '6 / 6', '10.57']]) { const tr = node('tr'); for (const text of row) tr.append(node('td', text)); body.append(tr); }
+        table.append(body); wrap.append(table); section.append(wrap);
+      }
       for (const m of item.media || []) {
         if (m.type !== 'image' || !m.src) continue;
         const figure = node('figure'); const img = node('img'); img.src = m.src; img.alt = m.alt || item.label; img.loading = 'lazy';
@@ -43,7 +49,11 @@
       }
       root.append(section);
     }
-    const contribution = node('section', '', 'robotics-section'); contribution.append(node('h2', zh ? '我的参与与下一步' : 'My participation & next steps'), node('p', project.role), node('p', zh ? '下一步：逐渐独立承担报告分析、抓取成功判定与失败案例设计，解释模型和规则之间的取舍。' : 'Next: take increasing ownership of report analysis, grasp-success checks and failure-case design, and explain the tradeoffs between learned and rule-based decisions.')); root.append(contribution);
+    const scope = node('section', '', 'robotics-section'); scope.append(node('h2', zh ? '局限与评估边界' : 'Limitations and evaluation boundaries')); for (const text of project.detail.challenges) scope.append(node('p', text)); root.append(scope);
+    const history = node('details', '', 'robotics-section robotics-history'); history.append(node('summary', zh ? '展开早期分拣与感知实验记录' : 'Expand earlier sorting and perception records'));
+    history.append(node('p', zh ? '以下为旧任务的独立记录，不属于稳定 V2 的当前移障结果。旧架构图与演示仅用于历史说明。' : 'These are independent records of earlier tasks, not current Stable V2 obstacle results. Earlier architecture and demonstrations are historical only.'));
+    for (const item of project.history || []) { const block = node('section', '', 'robotics-section'); block.append(node('h3', item.label), node('p', item.text)); history.append(block); }
+    const old = node('a', zh ? '打开旧 V0.16 分拣演示（GIF，20 MB）' : 'Open historical V0.16 sorting demo (GIF, 20 MB)', 'button secondary'); old.href = '/assets/images/robotics/wrong-color-demo.gif'; history.append(old); root.append(history);
     const links = node('div', '', 'robotics-links');
     for (const item of project.externalLinks.filter(item => !item.url.startsWith('robotics.html'))) { const a = node('a', item.label, 'button secondary'); const url = new URL(item.url, location.href); if (!['http:', 'https:'].includes(url.protocol)) continue; a.href = url.href; links.append(a); }
     root.append(links);

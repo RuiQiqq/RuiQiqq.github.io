@@ -14,6 +14,16 @@
 .robotics-section img { width: 100%; height: auto; border: 1px solid var(--line); border-radius: var(--radius-small); }
 .robotics-section figcaption { color: var(--soft); font-size: .9rem; margin-top: 8px; }
 .robotics-home-cta { box-shadow: 0 0 28px rgba(232,93,158,.23); }
+.robotics-main h1 { font-size: clamp(2rem, 4.2vw, 3.8rem); overflow-wrap: anywhere; }
+.robotics-demo { margin: 36px 0 0; scroll-margin-top: 100px; }
+.robotics-demo video { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: contain; background: #05050a; border: 1px solid var(--line); border-radius: var(--radius-small); }
+.robotics-demo figcaption { margin-top: 14px; color: var(--muted); max-width: 960px; }
+.robotics-table-wrap { overflow-x: auto; margin-top: 24px; }
+.robotics-table-wrap table { width: 100%; border-collapse: collapse; text-align: left; }
+.robotics-table-wrap th, .robotics-table-wrap td { padding: 12px; border-bottom: 1px solid var(--line); }
+.robotics-section p + p { margin-top: 14px; }
+.robotics-history summary { cursor: pointer; font-weight: 700; color: var(--pink-soft); }
+.robotics-history > p { margin-top: 18px; }
 .language-switch a { padding: 4px 10px; }
 .robotics-main a:focus-visible, .language-switch a:focus-visible { outline: 3px solid var(--blue); outline-offset: 4px; }
 @media (max-width: 760px) { .robotics-main { padding-top: 40px; } .robotics-case { grid-template-columns: 1fr; padding: 20px; } }

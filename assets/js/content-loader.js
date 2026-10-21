@@ -3,7 +3,7 @@
   Editable content lives in /content/portfolio-en.json and /content/portfolio-zh.json.
 */
 (async function loadPortfolioContent() {
-  const version = "20261021";
+  const version = "20261021b";
   try {
     const [enResponse, zhResponse] = await Promise.all([
       fetch(`content/portfolio-en.json?v=${version}`, { cache: "no-store" }),

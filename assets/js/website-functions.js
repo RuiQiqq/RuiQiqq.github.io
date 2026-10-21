@@ -422,7 +422,7 @@ function mediaHtml(project) {
   const embedUrl = automaticEmbedUrl(project.videoEmbed, project.videoLink);
   if (embedUrl) return embeddedMediaHtml(embedUrl, `${project.title} ${project.videoPlatform || TEXT.video}`);
   if (isRealLink(project.videoFile)) {
-    return `<div class="video-box"><video controls preload="metadata" src="${escapeHtml(project.videoFile)}"></video></div>`;
+    return `<div class="video-box"><video controls playsinline preload="metadata" poster="${escapeHtml(project.coverImage || '')}" style="object-fit:contain" src="${escapeHtml(project.videoFile)}"></video></div>`;
   }
   if (isRealLink(project.coverImage)) {
     return `<img class="cover-image" src="${escapeHtml(project.coverImage)}" alt="${escapeHtml(project.title)}">`;
