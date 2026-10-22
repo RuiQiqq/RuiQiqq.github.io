@@ -17,6 +17,9 @@
 .robotics-main h1 { font-size: clamp(2rem, 4.2vw, 3.8rem); overflow-wrap: anywhere; }
 .robotics-demo { margin: 36px 0 0; scroll-margin-top: 100px; }
 .robotics-demo video { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: contain; background: #05050a; border: 1px solid var(--line); border-radius: var(--radius-small); }
+.robotics-section video { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: contain; background: #05050a; border: 1px solid var(--line); border-radius: var(--radius-small); }
+.robotics-demo h2 { font-size: clamp(1.35rem, 3vw, 2rem); margin-bottom: 20px; }
+.robotics-section li { color: var(--muted); margin-top: 10px; }
 .robotics-demo figcaption { margin-top: 14px; color: var(--muted); max-width: 960px; }
 .robotics-table-wrap { overflow-x: auto; margin-top: 24px; }
 .robotics-table-wrap table { width: 100%; border-collapse: collapse; text-align: left; }

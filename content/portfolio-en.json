@@ -105,76 +105,133 @@
         "rgbd",
         "evaluation"
       ],
-      "coverImage": "/assets/images/robotics/stable-v2-cover.png",
-      "status": "Tabletop manipulation experiment · V2",
-      "title": "Franka: Clearing the Way to Grasp a Target",
-      "category": "2026 · Isaac Sim / Isaac Lab · Robotics simulation project",
-      "role": "I set the project goals, repeatedly ran the demonstrations, reported missed grasps and placement failures, and took part in reviewing changes and results. Most implementation, training code and experiment preparation were AI-assisted. I am also learning Python to better understand the programs behind these results.",
-      "summary": "I built a tabletop task in Isaac Sim: a robot arm has to put a blue cube into a bin, while a red cube sometimes blocks the grasp. I wanted to find out when the robot should grasp directly, push the obstacle aside, or move it elsewhere—and whether a trained policy could do better than fixed rules.",
-      "tools": "Isaac Lab, Isaac Sim, Python, PyTorch, PPO, RGB-D",
-      "externalLinks": [
-        {
-          "label": "Download the demonstration MP4",
-          "url": "/assets/videos/robotics/stable-v2.mp4"
-        }
-      ],
+      "coverImage": "/assets/images/robotics/verified_recovery_cover.png",
+      "status": "Robotics simulation in Isaac Sim · 2026",
+      "title": "Beyond the Grasp: Occlusion and Failure Recovery",
+      "category": "2026 · Isaac Sim / Isaac Lab",
+      "role": "I helped define the task, observed grasp failures, and questioned whether the red-object push in an earlier demonstration was necessary. That question led to comparisons of grasp directions and then to the stacked-object task. I am also learning to read the localisation, grasp-checking and control code. Implementation and experiment preparation used AI assistance.",
+      "summary": "A red object covers a blue target. The arm has to put the blue object in the bin and leave the red one out. Sometimes it extracts the target directly; sometimes it picks up the wrong object. I wanted the program to check what it actually holds before placing it—and recover when it gets that wrong.",
+      "tools": "Isaac Sim, Isaac Lab, Python, RGB-D",
+      "externalLinks": [],
       "detail": {
-        "overview": "I built a tabletop task in Isaac Sim: a robot arm has to put a blue cube into a bin, while a red cube sometimes blocks the grasp. I wanted to find out when the robot should grasp directly, push the obstacle aside, or move it elsewhere—and whether a trained policy could do better than fixed rules.",
+        "overview": "A red object covers a blue target. The arm has to put the blue object in the bin and leave the red one out. Sometimes it extracts the target directly; sometimes it picks up the wrong object. I wanted the program to check what it actually holds before placing it—and recover when it gets that wrong.",
         "whatIBuilt": [],
+        "workflowNotes": "The first extraction picks up the red object. After checking it, the program places it in the green staging area, locates the blue target again, and puts it in the bin. One complete 18.20-second episode, uncut from a fixed camera at the original simulation speed. Motion and recovery decisions are programmed.",
+        "challenges": [
+          "So far, this has only been tested in simulation with known colors and object sizes, a fixed table and calibrated camera positions. Unfamiliar objects, complex terrain and real hardware remain untested.",
+          "All seven layouts were used during debugging. Their completion rate does not establish reliability elsewhere. The current version has no independent final-test result and has not been shown to be collision-free.",
+          "The next step is to hold the program fixed and compare it on layouts not used during debugging before deciding whether to extend the learned selector."
+        ],
         "breakdown": [
           {
-            "label": "How does the robot choose an action?",
-            "text": "The camera supplies color and depth images. A program estimates the cubes’ positions from their colors and distances. The policy then chooses whether to grasp the blue cube, push the red cube to either side, move it to the green holding area, or observe again. Existing motion routines handle approaching, closing the gripper, lifting and placing. The policy learns which routine to choose. The video above shows the push-then-grasp route."
+            "label": "Why the task changed",
+            "text": "An early demonstration pushed a red cube aside before grasping a blue one. But did the red cube really block the grasp? Would a different approach work directly? Comparisons showed that some layouts could indeed be solved without moving the obstacle. The task then changed to a red object covering the blue target: how can the robot extract the object underneath, and what should it do after grasping the wrong one?",
+            "bullets": [
+              "Color and depth images locate the objects. Preset side views help locate the blue target when it is hidden from above.",
+              "After lifting, checks examine color and whether the object moves with the gripper. A verified red payload triggers staging and another grasp; insufficient evidence causes a stop.",
+              "Completion requires the blue target in the correct bin, the red object outside it, and both objects within the worktable area."
+            ]
           },
           {
-            "label": "Does the trained policy beat the rules?",
-            "text": "Not yet. The rules select actions using predefined conditions; the models learn their choices through training. I compared fixed rules, the first model and V2 on the same six new scenes. All three completed all six tasks. V2 averaged about 1.36 seconds faster than the previous model, but was still about 1.22 seconds slower than the rules. The times measure task execution inside the simulation, excluding software startup. Six scenes are too few to establish reliability in other settings.",
+            "label": "When extraction works directly",
+            "text": "Here, the arm extracts the blue target from the side, checks it, and places it in the bin without recovery. The red object stays on the table. Both recordings use the same program and repeat existing development scenes; they add no new independent test samples.",
             "media": [
               {
-                "type": "image",
-                "src": "/assets/images/robotics/v2-validation.png"
+                "type": "video",
+                "file": "/assets/videos/robotics/direct_extraction.mp4",
+                "poster": "/assets/images/robotics/direct_extraction_cover.png",
+                "note": "12.44 seconds · fixed camera · uncut at original simulation speed"
               }
             ]
           },
           {
-            "label": "What happens with different layouts?",
-            "text": "The same V2 weights were then checked on twelve broader layouts. Rules and policy both completed all twelve, averaging 11.00 and 11.62 seconds. This assessment used a separate development version of the motion routines, so it is reported separately. Four checks also removed a required cube detection: the robot kept observing rather than manipulating or claiming completion. That behavior comes from programmed safeguards. The reserved final test has not been run.",
-            "media": [
-              {
-                "type": "image",
-                "src": "/assets/images/robotics/exploratory-assessment.png"
-              }
-            ]
+            "label": "Results so far",
+            "text": "On seven layouts repeatedly used during debugging, both the current workflow and a relocate-first baseline completed all seven tasks. Of the six stacked layouts, two finished through direct extraction and four required recovery after acquiring the red object. Mean task times were 14.64 and 14.32 seconds, including failed attempts and recovery. The current workflow is not faster. It still needs checking on layouts that were not used for debugging.",
+            "table": {
+              "headers": [
+                "Current workflow and baseline",
+                "Tasks completed",
+                "Mean time (simulation seconds)"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "Extract, with recovery if needed",
+                    "7 / 7",
+                    "14.64"
+                  ]
+                },
+                {
+                  "cells": [
+                    "Move red first, then grasp blue",
+                    "7 / 7",
+                    "14.32"
+                  ]
+                }
+              ]
+            }
           },
           {
-            "label": "How was the policy trained?",
-            "text": "V2 was trained from scratch for 48 episodes using PPO, a reinforcement-learning method that adjusts action choices through trial and feedback. It completed 33 training episodes and left 15 incomplete. Its parameters were then held fixed for the six-scene comparison. It receives 14 numerical features from camera estimates and robot state and chooses among five actions. It does not take full images as input or learn joint control from scratch.",
-            "media": [
-              {
-                "type": "image",
-                "src": "/assets/images/robotics/v2-training.png"
-              }
-            ]
-          },
-          {
-            "label": "What went wrong along the way?",
-            "text": "In early runs, the gripper sometimes closed without picking up a cube. Checks were added after lifting: is the cube still visible, is its color correct, and does it move with the hand? Another failure occurred during descent above the bin after a successful grasp. After revising the observation angles and placement position, rules and models were rerun with the same motion routines to distinguish execution problems from poor action choices."
+            "label": "A separate learning experiment",
+            "text": "A separate PPO experiment trained a model to choose direct grasping, a diagonal grasp, or moving the red object first. Across 96 training episodes, 72 tasks were completed. On the same twelve new development-validation scenes, the trained model and rules each completed ten tasks. The model averaged 12.51 seconds, versus 11.03 for rules, so it did not improve performance. This experiment did not use the current extraction-and-recovery program; its results are kept separate.",
+            "table": {
+              "headers": [
+                "Separate learning experiment",
+                "Tasks completed",
+                "Mean time (simulation seconds)"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "Always grasp directly",
+                    "4 / 12",
+                    "6.92"
+                  ]
+                },
+                {
+                  "cells": [
+                    "Always grasp diagonally",
+                    "10 / 12",
+                    "9.70"
+                  ]
+                },
+                {
+                  "cells": [
+                    "Always relocate first",
+                    "12 / 12",
+                    "14.93"
+                  ]
+                },
+                {
+                  "cells": [
+                    "Rule selector",
+                    "10 / 12",
+                    "11.03"
+                  ]
+                },
+                {
+                  "cells": [
+                    "PPO selector",
+                    "10 / 12",
+                    "12.51"
+                  ]
+                }
+              ]
+            }
           },
           {
             "label": "My part in the project",
-            "text": "I set the project goals, repeatedly ran the demonstrations, reported missed grasps and placement failures, and took part in reviewing changes and results. Most implementation, training code and experiment preparation were AI-assisted. I am also learning Python to better understand the programs behind these results."
+            "text": "I helped define the task, observed grasp failures, and questioned whether the red-object push in an earlier demonstration was necessary. That question led to comparisons of grasp directions and then to the stacked-object task. I am also learning to read the localisation, grasp-checking and control code. Implementation and experiment preparation used AI assistance."
           }
-        ],
-        "challenges": [
-          "So far this is a simulation with known-size red and blue cubes and restricted workspace locations. It has not been tested on real hardware, stacked objects or arbitrary shapes.",
-          "Space checks before an action are hand-written rules. Contact forces were not measured, so objects remaining on the table at the end does not establish collision-free motion.",
-          "Action selection uses camera-estimated positions. After the task, actual simulator positions are read separately to check placement in the correct bin. The demonstration repeats an existing validation scene; it adds no new test sample."
-        ],
-        "workflowNotes": "The V2 policy pushes the red cube aside, picks up the blue cube and places it in the bin. This is one continuous episode from a fixed camera, played at the original simulation speed."
+        ]
       },
-      "videoFile": "/assets/videos/robotics/stable-v2.mp4",
-      "videoCaption": "The V2 policy pushes the red cube aside, picks up the blue cube and places it in the bin. This is one continuous episode from a fixed camera, played at the original simulation speed.",
+      "videoFile": "/assets/videos/robotics/verified_recovery.mp4",
+      "videoCaption": "The first extraction picks up the red object. After checking it, the program places it in the green staging area, locates the blue target again, and puts it in the bin. One complete 18.20-second episode, uncut from a fixed camera at the original simulation speed. Motion and recovery decisions are programmed.",
       "history": [
+        {
+          "label": "2026-10-21 / Franka: Clearing the Way to Grasp a Target",
+          "text": "I built a tabletop task in Isaac Sim: a robot arm has to put a blue cube into a bin, while a red cube sometimes blocks the grasp. I wanted to find out when the robot should grasp directly, push the obstacle aside, or move it elsewhere—and whether a trained policy could do better than fixed rules. Not yet. The rules select actions using predefined conditions; the models learn their choices through training. I compared fixed rules, the first model and V2 on the same six new scenes. All three completed all six tasks. V2 averaged about 1.36 seconds faster than the previous model, but was still about 1.22 seconds slower than the rules. The times measure task execution inside the simulation, excluding software startup. Six scenes are too few to establish reliability in other settings."
+        },
         {
           "label": "Early grasp checks",
           "text": "The project began with red and blue cube sorting. Empty grasps sometimes led to transport attempts, so visual checks were added after lifting to confirm that a cube moved with the gripper."

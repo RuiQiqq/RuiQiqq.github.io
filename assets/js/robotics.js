@@ -28,27 +28,34 @@
     actions.append(watch, games); root.append(actions);
     const demo = node('figure', '', 'robotics-demo'); demo.id = 'robot-demo';
     const video = node('video'); video.controls = true; video.playsInline = true; video.preload = 'metadata'; video.poster = project.coverImage; video.src = project.videoFile;
-    video.setAttribute('aria-label', zh ? '稳定 V2 推障碍、抓目标与投放的连续演示' : 'Stable V2 continuous obstacle-push, grasp and placement demonstration');
-    demo.append(video, node('figcaption', project.detail.workflowNotes)); root.append(demo);
+    video.setAttribute('aria-label', zh ? '抓错红块后恢复，最终把蓝块放进箱子' : 'Recovery after grasping the red object, followed by blue-target placement');
+    demo.append(node('h2', zh ? '抓错以后，怎样把任务做完' : 'Finishing the task after a wrong grasp'), video, node('figcaption', project.detail.workflowNotes)); root.append(demo);
     for (const [index, item] of project.detail.breakdown.entries()) {
       const section = node(index === 3 ? 'details' : 'section', '', 'robotics-section');
       section.append(node(index === 3 ? 'summary' : 'h2', item.label), node('p', item.text));
-      if (index === 1) {
+      if (item.bullets?.length) {
+        const list = node('ul'); for (const text of item.bullets) list.append(node('li', text)); section.append(list);
+      }
+      if (item.table) {
         const wrap = node('div', '', 'robotics-table-wrap'); const table = node('table');
         const head = node('thead'); const headRow = node('tr');
-        for (const text of (zh ? ['方法', '完成任务', '平均用时（仿真秒）'] : ['Method', 'Tasks completed', 'Mean time (simulation seconds)'])) { const th = node('th', text); th.scope = 'col'; headRow.append(th); }
+        for (const text of item.table.headers) { const th = node('th', text); th.scope = 'col'; headRow.append(th); }
         head.append(headRow); table.append(head); const body = node('tbody');
-        for (const row of [[zh ? '固定规则' : 'Fixed rules', '6 / 6', '9.35'],[zh ? '第一版模型' : 'First model', '6 / 6', '11.94'],[zh ? 'V2 模型' : 'V2 model', '6 / 6', '10.57']]) { const tr = node('tr'); for (const text of row) tr.append(node('td', text)); body.append(tr); }
+        for (const row of item.table.rows) { const tr = node('tr'); for (const text of row.cells) tr.append(node('td', text)); body.append(tr); }
         table.append(body); wrap.append(table); section.append(wrap);
       }
       for (const m of item.media || []) {
-        if (m.type !== 'image' || !m.src) continue;
-        const figure = node('figure'); const img = node('img'); img.src = m.src; img.alt = m.alt || item.label; img.loading = 'lazy';
-        figure.append(img); if (m.note) figure.append(node('figcaption', m.note)); section.append(figure);
+        const figure = node('figure');
+        if (m.type === 'video' && m.file) {
+          const clip = node('video'); clip.controls = true; clip.playsInline = true; clip.preload = 'metadata'; clip.poster = m.poster || ''; clip.src = m.file; clip.setAttribute('aria-label',item.label); figure.append(clip);
+        } else if (m.type === 'image' && m.src) {
+          const img = node('img'); img.src = m.src; img.alt = m.alt || item.label; img.loading = 'lazy'; figure.append(img);
+        } else continue;
+        if (m.note) figure.append(node('figcaption', m.note)); section.append(figure);
       }
       root.append(section);
     }
-    const scope = node('section', '', 'robotics-section'); scope.append(node('h2', zh ? '目前还做不到什么？' : 'What are the limits so far?')); for (const text of project.detail.challenges) scope.append(node('p', text)); root.append(scope);
+    const scope = node('section', '', 'robotics-section'); scope.append(node('h2', zh ? '还有哪些没验证？' : 'What remains untested?')); for (const text of project.detail.challenges) scope.append(node('p', text)); root.append(scope);
     const history = node('details', '', 'robotics-section robotics-history'); history.append(node('summary', zh ? '看看之前做过的实验' : 'Earlier experiments'));
     history.append(node('p', zh ? '在尝试移开障碍之前，项目先做了分拣和抓取检查。下面保留了几个阶段的记录。' : 'Before the obstacle task, the project focused on sorting and checking grasps. A few earlier stages are recorded below.'));
     for (const item of project.history || []) { const block = node('section', '', 'robotics-section'); block.append(node('h3', item.label), node('p', item.text)); history.append(block); }

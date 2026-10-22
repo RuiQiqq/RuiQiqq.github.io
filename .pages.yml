@@ -195,6 +195,23 @@ components:
       label: 补充要点（可选）
       type: string
       list: true
+    - name: table
+      label: 结果表格（可选）
+      type: object
+      fields:
+      - name: headers
+        label: 表头
+        type: string
+        list: true
+      - name: rows
+        label: 数据行
+        type: object
+        list: true
+        fields:
+        - name: cells
+          label: 各列内容（与表头顺序一致）
+          type: string
+          list: true
   project:
     type: object
     fields:
