@@ -133,7 +133,7 @@
             "Asked for meaningful comparisons: camera-based localisation rather than presenting simulator object coordinates as vision; learned policies compared with fixed rules; and attention to time and failures as well as successful demonstrations.",
             "Took part in choosing approaches and reviewing results, while learning Python, reading experiment reports and working through visual-coordinate, grasp-checking and control code."
           ],
-          "closingText": "AI assisted with implementation, refactoring, debugging and experiment automation. I directed the task requirements, testing priorities and result review."
+          "closingText": "I also contributed to selected parts of the code implementation with AI assistance. AI supported development, refactoring, debugging and experiment automation; I directed the task requirements, testing priorities and result review."
         }
       ]
     },

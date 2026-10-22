@@ -30,5 +30,11 @@
 .robotics-section[open] > summary { margin-bottom: 16px; }
 .robotics-history > p { margin-top: 18px; }
 .language-switch a { padding: 4px 10px; }
+#application-resume .robotics-links { gap: 14px; }
+#application-resume .button { min-height: 52px; padding: 14px 24px; font-weight: 700; border-width: 2px; transition: transform .15s ease, box-shadow .15s ease; }
+#application-resume .button:nth-child(1) { background: #bce8ff; color: #102537; border-color: #bce8ff; }
+#application-resume .button:nth-child(2) { background: #f4c4e3; color: #35182b; border-color: #f4c4e3; }
+#application-resume .button:nth-child(3) { background: #d8cef8; color: #261b42; border-color: #d8cef8; }
+#application-resume .button:hover { transform: translateY(-2px); box-shadow: 0 6px 22px #0005; }
 .robotics-main a:focus-visible, .language-switch a:focus-visible { outline: 3px solid var(--blue); outline-offset: 4px; }
 @media (max-width: 760px) { .robotics-main { padding-top: 40px; } .robotics-case { grid-template-columns: 1fr; padding: 20px; } }
