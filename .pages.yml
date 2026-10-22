@@ -195,6 +195,9 @@ components:
       label: 补充要点（可选）
       type: string
       list: true
+    - name: closingText
+      label: 要点后的说明（可选）
+      type: text
     - name: table
       label: 结果表格（可选）
       type: object
@@ -455,6 +458,24 @@ components:
       type: number
       description: 自动导入字段，通常不要修改。
 content:
+- name: robotics_zh
+  label: 机器人项目（中文）
+  type: file
+  path: content/robotics-zh.json
+  format: json
+  fields:
+  - name: project
+    label: 机器人项目内容
+    component: project
+- name: robotics_en
+  label: Robotics Project (English)
+  type: file
+  path: content/robotics-en.json
+  format: json
+  fields:
+  - name: project
+    label: Robotics Project Content
+    component: project
 - name: portfolio_content
   label: 作品集内容
   type: group

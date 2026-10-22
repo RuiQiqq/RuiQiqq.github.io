@@ -10,10 +10,10 @@
   const root = document.getElementById('robotics-main');
   const node = (tag, text, className) => { const n = document.createElement(tag); if (text) n.textContent = text; if (className) n.className = className; return n; };
   try {
-    const response = await fetch(`content/portfolio-${lang}.json`, { cache: 'no-store' });
+    const response = await fetch(`content/robotics-${lang}.json`, { cache: 'no-store' });
     if (!response.ok) throw Error(`HTTP ${response.status}`);
     const content = await response.json();
-    const project = content.projects.find(p => p.id === 'franka-visual-sorting');
+    const project = content.project;
     if (!project) throw Error('Robotics case is missing from CMS content.');
     root.replaceChildren();
     document.title = `${zh ? '机器人与仿真' : 'Robotics & Simulation'} | Rui Qi`;
@@ -36,6 +36,7 @@
       if (item.bullets?.length) {
         const list = node('ul'); for (const text of item.bullets) list.append(node('li', text)); section.append(list);
       }
+      if (item.closingText) section.append(node('p', item.closingText));
       if (item.table) {
         const wrap = node('div', '', 'robotics-table-wrap'); const table = node('table');
         const head = node('thead'); const headRow = node('tr');
@@ -59,7 +60,7 @@
     const history = node('details', '', 'robotics-section robotics-history'); history.append(node('summary', zh ? '看看之前做过的实验' : 'Earlier experiments'));
     history.append(node('p', zh ? '在尝试移开障碍之前，项目先做了分拣和抓取检查。下面保留了几个阶段的记录。' : 'Before the obstacle task, the project focused on sorting and checking grasps. A few earlier stages are recorded below.'));
     for (const item of project.history || []) { const block = node('section', '', 'robotics-section'); block.append(node('h3', item.label), node('p', item.text)); history.append(block); }
-    const old = node('a', zh ? '打开旧 V0.16 分拣演示（GIF，20 MB）' : 'Open historical V0.16 sorting demo (GIF, 20 MB)', 'button secondary'); old.href = '/assets/images/robotics/wrong-color-demo.gif'; history.append(old); root.append(history);
+    root.append(history);
     const links = node('div', '', 'robotics-links');
     for (const item of project.externalLinks.filter(item => !item.url.startsWith('robotics.html'))) { const a = node('a', item.label, 'button secondary'); const url = new URL(item.url, location.href); if (!['http:', 'https:'].includes(url.protocol)) continue; a.href = url.href; links.append(a); }
     root.append(links);
