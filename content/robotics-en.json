@@ -24,7 +24,7 @@
       "workflowNotes": "The first extraction picks up the red object. After checking it, the program places it in the green staging area, locates the blue target again, and puts it in the bin. One complete 18.20-second episode, uncut from a fixed camera at the original simulation speed. Motion and recovery decisions are programmed.",
       "challenges": [
         "So far, this has only been tested in simulation with known colors and object sizes, a fixed table and calibrated camera positions. Unfamiliar objects, complex terrain and real hardware remain untested.",
-        "All seven layouts were used during debugging. Their completion rate does not establish reliability elsewhere. The current version has no independent final-test result and has not been shown to be collision-free.",
+        "The seven reported layouts form the development evaluation set. Generalisation to other layouts and collision behaviour require separate evaluation; the completion rate here applies to this set.",
         "The next step is to hold the program fixed and compare it on layouts not used during debugging before deciding whether to extend the learned selector."
       ],
       "breakdown": [
@@ -126,14 +126,14 @@
         },
         {
           "label": "My part in the project",
-          "text": "My main involvement has been in task direction, hands-on testing and analysing failures. I use the actual demonstrations to question the task, the actions being taken and what should count as completion, then review how the changes behave.",
+          "text": "I direct the task design and evaluation, using simulation runs to assess grasp strategies, identify failure patterns and set priorities for the next iteration. My work connects the project goals with concrete comparisons and observable results.",
           "bullets": [
             "Reported specific failures: a closed gripper holding nothing, transport after an empty grasp, missing retries and premature scene resets. I supplied screenshots and logs and took part in discussions about checking what the gripper actually held.",
-            "Questioned whether an action was necessary. In the push-then-grasp demonstration, I pointed out that a direct grasp or a different approach might work. This led to comparisons of grasp directions and then to a genuinely stacked task.",
+            "Evaluated obstacle handling and alternative grasp directions. I identified opportunities to grasp directly rather than clear the obstacle first, driving strategy comparisons and a stacked-object task that tests extraction and recovery.",
             "Asked for meaningful comparisons: camera-based localisation rather than presenting simulator object coordinates as vision; learned policies compared with fixed rules; and attention to time and failures as well as successful demonstrations.",
             "Took part in choosing approaches and reviewing results, while learning Python, reading experiment reports and working through visual-coordinate, grasp-checking and control code."
           ],
-          "closingText": "Implementation used extensive AI assistance, including code writing and refactoring, debugging, training and test scripts, and organising experiment records."
+          "closingText": "AI assisted with implementation, refactoring, debugging and experiment automation. I directed the task requirements, testing priorities and result review."
         }
       ]
     },

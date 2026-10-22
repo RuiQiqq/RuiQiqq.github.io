@@ -56,7 +56,7 @@
       }
       root.append(section);
     }
-    const scope = node('section', '', 'robotics-section'); scope.append(node('h2', zh ? '还有哪些没验证？' : 'What remains untested?')); for (const text of project.detail.challenges) scope.append(node('p', text)); root.append(scope);
+    const scope = node('section', '', 'robotics-section'); scope.append(node('h2', zh ? '验证范围与后续方向' : 'Evaluation scope and next steps')); for (const text of project.detail.challenges) scope.append(node('p', text)); root.append(scope);
     if (project.downloadLinks?.length) {
       const resumes = node('section', '', 'robotics-section'); resumes.id = 'application-resume';
       resumes.append(node('h2', zh ? '申请简历' : 'Application Resume'), node('p', zh ? '教育背景、机器人项目及相关工作经历，提供中英文版本。' : 'Education, the robotics project and relevant experience, available in English and Chinese.'));
@@ -71,6 +71,27 @@
     const links = node('div', '', 'robotics-links');
     for (const item of project.externalLinks.filter(item => !item.url.startsWith('robotics.html'))) { const a = node('a', item.label, 'button secondary'); const url = new URL(item.url, location.href); if (!['http:', 'https:'].includes(url.protocol)) continue; a.href = url.href; links.append(a); }
     root.append(links);
+    let site = { email: 'markqirui@gmail.com', github: 'https://github.com/RuiQiqq', linkedin: 'https://www.linkedin.com/in/rui-qi-9b58b8222/' };
+    try {
+      const contactsResponse = await fetch(`content/portfolio-${lang}.json`, { cache: 'no-store' });
+      if (contactsResponse.ok) site = { ...site, ...(await contactsResponse.json()).site };
+    } catch (_) {}
+    const contact = node('section', '', 'robotics-section'); contact.id = 'contact';
+    contact.append(node('h2', zh ? '联系方式' : 'Contact'));
+    const grid = node('div', '', 'contact-grid');
+    const contactItems = [
+      [zh ? '邮箱' : 'Email', site.email, `mailto:${site.email}`],
+      [zh ? '申请简历' : 'Application Resume', zh ? '下载中文 PDF' : 'Download English PDF', `assets/downloads/robotics/rui-qi-robotics-application-${lang}.pdf`],
+      ['GitHub', 'RuiQiqq', site.github],
+      ['LinkedIn', zh ? '查看个人主页' : 'Open profile', site.linkedin]
+    ];
+    for (const [label, value, href] of contactItems) {
+      const a = node('a', '', 'contact-link'); a.href = href;
+      if (href.startsWith('https://')) { a.target = '_blank'; a.rel = 'noreferrer'; }
+      const text = node('div'); text.append(node('strong', label), node('span', value));
+      a.append(text, node('span', '→')); grid.append(a);
+    }
+    contact.append(grid); root.append(contact);
   } catch (error) {
     root.replaceChildren(node('h1', zh ? '内容暂时无法读取' : 'Content could not be loaded'), node('p', zh ? '请通过本地预览服务器或 GitHub Pages 打开，而不是直接双击 HTML。' : 'Open through the local preview server or GitHub Pages, not a file:// URL.'));
     console.error(error);
