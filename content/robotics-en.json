@@ -78,7 +78,7 @@
         },
         {
           "label": "A separate learning experiment",
-          "text": "A separate PPO experiment trained a model to choose direct grasping, a diagonal grasp, or moving the red object first. Across 96 training episodes, 72 tasks were completed. On the same twelve new development-validation scenes, the trained model and rules each completed ten tasks. The model averaged 12.51 seconds, versus 11.03 for rules, so it did not improve performance. This experiment did not use the current extraction-and-recovery program; its results are kept separate.",
+          "text": "I also explored reinforcement learning with a small neural network, using trial and feedback in simulation to learn when to grasp directly, approach diagonally, or move the red object first. Basic motions remained programmed. This separate PPO experiment ran for 96 training episodes, with 72 training-time completions. On the same twelve new development-validation scenes, the trained model and rules each completed ten tasks. The model averaged 12.51 seconds, versus 11.03 for rules, so it did not improve performance. It did not use the extraction-and-recovery program shown in the current videos; these results are reported separately.",
           "table": {
             "headers": [
               "Separate learning experiment",
@@ -155,6 +155,20 @@
       {
         "label": "V0.18: Nearby cubes",
         "text": "A separate perception experiment examined nearby or touching same-color cubes. Ten supported layouts had localization errors below 5 mm, with a maximum of about 1.71 mm. Two other layouts could not be identified reliably. This used a known 40 mm cube-size assumption and was not yet connected to dense grasping."
+      }
+    ],
+    "downloadLinks": [
+      {
+        "label": "English Resume (PDF)",
+        "url": "/assets/downloads/robotics/rui-qi-robotics-application-en.pdf"
+      },
+      {
+        "label": "中文简历（PDF）",
+        "url": "/assets/downloads/robotics/rui-qi-robotics-application-zh.pdf"
+      },
+      {
+        "label": "English + Chinese (PDF)",
+        "url": "/assets/downloads/robotics/rui-qi-robotics-application-bilingual.pdf"
       }
     ]
   }

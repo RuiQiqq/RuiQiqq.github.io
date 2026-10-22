@@ -57,6 +57,13 @@
       root.append(section);
     }
     const scope = node('section', '', 'robotics-section'); scope.append(node('h2', zh ? '还有哪些没验证？' : 'What remains untested?')); for (const text of project.detail.challenges) scope.append(node('p', text)); root.append(scope);
+    if (project.downloadLinks?.length) {
+      const resumes = node('section', '', 'robotics-section'); resumes.id = 'application-resume';
+      resumes.append(node('h2', zh ? '申请简历' : 'Application Resume'), node('p', zh ? '教育背景、机器人项目及相关工作经历，提供中英文版本。' : 'Education, the robotics project and relevant experience, available in English and Chinese.'));
+      const downloads = node('div', '', 'robotics-links');
+      for (const item of project.downloadLinks) { const a=node('a',item.label,'button secondary'); a.href=item.url; a.setAttribute('download',''); downloads.append(a); }
+      resumes.append(downloads); root.append(resumes);
+    }
     const history = node('details', '', 'robotics-section robotics-history'); history.append(node('summary', zh ? '看看之前做过的实验' : 'Earlier experiments'));
     history.append(node('p', zh ? '在尝试移开障碍之前，项目先做了分拣和抓取检查。下面保留了几个阶段的记录。' : 'Before the obstacle task, the project focused on sorting and checking grasps. A few earlier stages are recorded below.'));
     for (const item of project.history || []) { const block = node('section', '', 'robotics-section'); block.append(node('h3', item.label), node('p', item.text)); history.append(block); }
